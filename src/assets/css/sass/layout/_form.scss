@@ -1,0 +1,18 @@
+.form {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  border-radius: 4px;
+  position: relative;
+  padding: 0;
+  margin: 2px auto;
+  width: 95%;
+  .row{
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  button {
+    float: right;
+    background: linear-gradient(to right, #11d7e4 0%, #48eaa1 100%);
+  }
+}

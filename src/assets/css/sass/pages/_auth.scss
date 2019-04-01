@@ -1,0 +1,30 @@
+.auth{
+  width: 35%;
+  margin: 100px auto;
+  padding-bottom: 25px;
+  >div{
+    margin: 25px;
+    h4{
+      color: $mainTitle;
+    }
+  }
+  .tabs{
+    .tab{
+      width: 50%;
+      background-color: $navbarBackground;
+    }
+    .active{
+      background-color: rgba($navbarBackground, .8);
+    }
+  }
+  .submit{
+    background-color: $navbarBackground;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .auth{
+    width: 90%;
+  }
+}

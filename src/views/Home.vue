@@ -93,10 +93,17 @@
 
 <script>
 import HomeNav from '../components/HomeNav'
+import { mapState, mapActions } from 'vuex';
+
 export default {
   name: 'home',
   components: {
     'home-nav': HomeNav
+  },
+  computed: {
+      ...mapState([
+          'jwtToken',
+      ])
   }
 }
 </script>

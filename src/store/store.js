@@ -1,40 +1,44 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
+import router from '../router';
 
-Vue.use(Vuex)
 
-export const store = new Vuex.Store({
+Vue.use(Vuex);
+
+export const store = new Vuex.Store ({
   state: {
-    products: [
-      {name: 'Banana Skin', price: 20},
-      {name: 'Shiny Start', price: 50},
-      {name: 'Green Shells', price: 22},
-      {name: 'Red Shells', price: 30}
-    ]
+      isLogged: !!localStorage.getItem("token"),
+      progress: false
   },
   getters: {
-    saleProducts: state => {
-      var saleProducts = state.products.map(product => {
-        return {
-          name: '**' + product.name,
-          price: '**' + product.price / 2
-        }
-      })
-      return saleProducts
-    }
+      isLogged: state => {
+          return state.isLogged;
+      }
   },
   mutations: {
-    reducePrice: (state, payload) => {
-      state.products.forEach(product => {
-        product.price -= payload
-      })
-    }
+      LOGIN (state) {
+          state.pending = true;
+      },
+      LOGIN_SUCCESS (state) {
+          state.isLogged = true;
+          state.pending = false;
+      },
+      LOGOUT(state) {
+          state.isLogged = false;
+      },
+      switchProgress(state) {
+          state.progress = !state.progress;
+      },
   },
   actions: {
-    reducePrice: (context, payload) => {
-      setTimeout(function () {
-        context.commit('reducePrice', payload);
-      }, 2000)
-    }
+      logout({ commit }) {
+          localStorage.removeItem("token");
+          router.push('/');
+          commit('LOGOUT');
+      },
+      switchProgress({ commit }) {
+          commit('switchProgress');
+      },
   }
-})
+});

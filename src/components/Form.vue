@@ -1,5 +1,5 @@
 <template>
-    <form  method="get">
+    <div>
         <div id="form-fields">
             <slot name="form-fields"></slot>
 
@@ -7,7 +7,7 @@
         <div id="form-controls">
             <slot name="form-controls"></slot>
         </div>
-    </form>
+    </div>
 </template>
 
 <script>

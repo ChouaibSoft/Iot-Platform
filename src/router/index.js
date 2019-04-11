@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import { store } from '../store/store';
 import App from '../App'
 
-Vue.use(Router)
+Vue.use(Router);
 
-export default new Router({
+const router = new Router({
     routes: [
         {
             path: '/',
@@ -19,13 +20,33 @@ export default new Router({
         {
             path: "/dashboard",
             component: () => import("@/views/Dashboard"),
+            meta: {
+                protected: true
+            },
             children: [
                 {
                     path: "addCanal",
                     name: "addCanal",
+                    meta: {
+                        protected: true
+                    },
                     component: () => import("@/views/CanalAdd")
                 }
             ]
         }
     ]
 })
+router.beforeEach((to, from, next) => {
+
+    if (!to.meta.protected) { //route is public, don't check for authentication
+        next()
+    } else {  //route is protected, if authenticated, proceed. Else, login
+        if(localStorage.token != null){
+            next()
+        }else{
+            router.push('/auth');
+        }
+    }
+})
+export default router;
+

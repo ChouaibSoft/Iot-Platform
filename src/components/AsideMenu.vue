@@ -61,7 +61,7 @@
                     <span>Fermer</span>
                 </li>
                 <li class="item-header">
-                    <a href="#" class="group-name">
+                    <a href="#"  @click="logout" class="group-name">
                         <i class="fa fa-power-off"></i>
                         <span>Logout</span>
                     </a>
@@ -72,8 +72,14 @@
 </template>
 
 <script>
+    import {  mapActions } from 'vuex';
     export default {
-        name: "AsideMenu"
+        name: "AsideMenu",
+        methods: {
+            ...mapActions([
+                'logout'
+            ])
+        }
     }
 </script>
 

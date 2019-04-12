@@ -15,10 +15,14 @@
     "style-loader": "^0.23.1",
     "vue": "^2.6.6",
     "vue-axios": "^2.1.4",
+    "vue-flash-message": "^0.7.2",
     "vue-persistent-state": "^0.2.1",
     "vue-router": "^3.0.2",
+    "vuelidate": "^0.7.4",
     "vuex": "^3.1.0",
-    "vuex-persist": "^2.0.0"
+    "vuex-flash": "^1.0.0",
+    "vuex-persist": "^2.0.0",
+    "vuex-persistedstate": "latest"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",

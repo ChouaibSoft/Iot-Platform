@@ -1,5 +1,5 @@
 <template>
-    <section class="content">
+    <div id="content">
         <div class="row page-title-path">
             <div class="col">
                 <h2>Add Canal</h2>
@@ -16,22 +16,57 @@
                             <div slot="form-fields">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="name" type="text" class="validate" v-model="name">
+                                        <input
+                                                id="name"
+                                                type="text"
+                                                required
+                                                minlength="3"
+                                                class="validate"
+                                                v-model="name"
+                                                @input="$v.name.$touch()">
                                         <label for="name">Name</label>
+                                        <div v-if="$v.name.$dirty">
+                                            <p class="error-message red-text " v-if="!$v.name.required">
+                                                name field is required.
+                                            </p>
+                                            <p class="error-message red-text " v-if="!$v.name.minLength">
+                                                the field length must be greater than 3 characters.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="description" type="text" class="validate" v-model="description">
+                                        <input
+                                                id="description"
+                                                type="text"
+                                                class="validate"
+                                                required
+                                                minlength="5"
+                                                maxlength="30"
+                                                v-model="description"
+                                                @input="$v.description.$touch()">
                                         <label for="description">description</label>
+                                        <div v-if="$v.description.$dirty">
+                                            <p class="error-message red-text " v-if="!$v.description.required">
+                                                description field is required.
+                                            </p>
+                                            <p class="error-message red-text " v-if="!$v.description.minLength">
+                                                the field description must be greater than 5 characters.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row" v-for="(field, index) in fields">
                                     <div class="input-field col s12">
-                                        <input v-bind:id="field.name"  type="text" class="validate" v-model="fields[index].value">
+                                        <input
+                                                v-bind:id="field.name"
+                                                type="text"
+                                                class="validate"
+                                                minlength="3"
+                                                v-model="fields[index].value">
                                         <label  v-bind:for="field.name" >Field {{ index + 1 }}</label>
                                         <i @click="deleteField(index)" v-if="index > 2" class="fa fa-times delete-field red-text text-darken-5"></i>
-
                                     </div>
                                 </div>
                             </div>
@@ -39,7 +74,7 @@
                                 <div>
                                     <div class="row">
                                         <div class="col">
-                                            <div v-if="fields.length < 8" @click="addFeild" class="btn waves-effect waves-light submit">Add Feild</div>
+                                            <div v-if="fields.length < 8" @click="addFeild" class="btn waves-effect waves-light submit"><i style="font-size: .9rem" class="fa fa-plus"></i> Field</div>
                                         </div>
                                         <div class="col right">
                                             <button class="btn waves-effect waves-light" type="submit" name="action">Add
@@ -84,12 +119,12 @@
                 </div>
             </div>
         </section>
-    </section>
+    </div>
 </template>
 
 <script>
-
-    import axios from 'axios';
+    import { mapState } from 'vuex';
+    import { required, minLength, between } from 'vuelidate/lib/validators'
     export default {
         name: "canal-add",
         components: {
@@ -117,52 +152,42 @@
                 dateCreation:'',
             }
         },
+        computed:{
+            ...mapState['userId']
+        },
         methods: {
             addCanal: function () {
-                this.id= localStorage.id;
                 var postData = {
                     nom: this.name,
                     description: this.description,
                     dateCreation:new Date(),
-                    userid: this.id
+                    userid: this.$store.state.userId
                 };
-                console.log(postData);
 
                 for(var i = 1; i <= this.fields.length; i++){
                     var key = 'field' + i,
                         value = this.fields[i-1].value;
-                    console.log(this.fields[i-1].value);
+                    if (value === '') {
+                        break;
+                    }
                     postData[key] = value;
                 }
-                console.log(postData);
-
                 let axiosConfig = {
                     headers: {
                         'Content-Type': 'application/json;charset=UTF-8',
-                        'Authorization': 'Bearer '+localStorage.token,
+                        'Authorization': 'Bearer '+ this.$store.state.token
                     }
                 };
-
+                console.log(postData);
                 this.$http.post('http://localhost:8091/canals', postData, axiosConfig)
                     .then((res) => {
-                        console.log("RESPONSE RECEIVED: ", res);
+                        this.flash('Canal added successfully', 'success');
+                        this.$router.push('/dashboard');
                     })
                     .catch((err) => {
                         console.log("AXIOS ERROR: ", err);
+                        this.flash('Canal add operation failed!', 'warning');
                     })
-
-                // const API_URL = process.env.API_URL || 'http://localhost:8091';
-                // this.$http.post(API_URL+'/canals',{nom:this.name, description: this.description,dateCreation:new Date(),
-                //         userid:this.id,field1:this.field1,field2:this.field2,field3:this.field2
-                //     },{
-                //         headers: {
-                //             'Content-Type': 'application/json',
-                //             'Authorization': 'Bearer '+localStorage.token
-                //         },
-                //     }
-                // ).then(()=> this.$router.push({name:'dash-user'}))
-
-                // this.$router.push({name:'api-key',params:{Pid:this.id}});
             },
             addFeild: function () {
                 var field = "field" + (this.fields.length + 1);
@@ -170,12 +195,24 @@
                     name: field,
                     value: ''
                 });
-                console.log(this.fields);
             },
             deleteField: function (index) {
                 this.fields.splice(index, 1);
             }
-        }
+        },
+        validations: {
+            name: {
+                required,
+                minLength: minLength(3)
+            },
+            description: {
+                required,
+                minLength: minLength(5),
+            },
+            fields: {
+                minLength: minLength(3)
+            }
+        },
     }
 </script>
 

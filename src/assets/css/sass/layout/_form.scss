@@ -22,4 +22,11 @@
     font-size: 17px;
     cursor: pointer;
   }
+  input.valid[type="text"]:not(.browser-default){
+    border-bottom: 1px solid #2bbbad;
+    box-shadow: 0 1px 0 0 #2bbbad;
+  }
+  input[type="text"]:not(.browser-default):focus.valid ~ label{
+    color:#2bbbad;
+  }
 }

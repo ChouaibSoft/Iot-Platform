@@ -49,9 +49,7 @@
             }
         },
         computed: {
-            ...mapState([
-                'isLogged'
-            ])
+
         },
         methods: {
             ...mapActions([
@@ -75,18 +73,18 @@
             loginSuccessful(req) {
                 if (req.headers) {
 
-                    localStorage.token = req.headers.authorization;
+                    //localStorage.token = req.headers.authorization;
+                    this.$store.dispatch('saveUserToken', req.headers.authorization);
                     this.$http.get( 'http://localhost:8091/id',{
                             headers:{
                                 'Content-Type': 'application/json',
-                                'Authorization': 'Bearer '+ localStorage.token
+                                'Authorization': 'Bearer '+ this.$store.state.token
                             }
                         }
 
-                    ).then(request=>this.id=request.data)
+                    ).then(request=>this.$store.dispatch('saveUserId', request.data))
                     this.switchProgress();
                     setTimeout(() => {
-                        console.log('dfdf' + this.id);
                         this.switchProgress();
                         this.$router.push('/dashboard');
                     },2000);

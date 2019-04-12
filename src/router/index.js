@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import { store } from '../store/store';
+import { store } from '../store/store'
 import App from '../App'
 
 Vue.use(Router);
@@ -41,7 +41,8 @@ router.beforeEach((to, from, next) => {
     if (!to.meta.protected) { //route is public, don't check for authentication
         next()
     } else {  //route is protected, if authenticated, proceed. Else, login
-        if(localStorage.token != null){
+        console.log(store.state.token);
+        if(store.state.token != null){
             next()
         }else{
             router.push('/auth');

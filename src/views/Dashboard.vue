@@ -9,10 +9,14 @@
                         <aside-menu></aside-menu>
                     </div>
                     <div class="col l9 s12">
-
-                        <!-- Start Main Content -->
-                        <router-view></router-view>
-                        <!-- End Main Content -->
+                        <section class="content">
+                            <div class="row">
+                                    <flash-message  class="animated infinite fadeInLeft delay-2s"></flash-message>
+                            </div>
+                            <!-- Start Main Content -->
+                            <router-view></router-view>
+                            <!-- End Main Content -->
+                        </section>
                     </div>
                 </div>
             </div>
@@ -37,5 +41,7 @@
 </script>
 
 <style scoped>
-
+.animated.infinite{
+    animation-iteration-count: 2;
+}
 </style>

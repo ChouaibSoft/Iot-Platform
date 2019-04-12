@@ -45,6 +45,7 @@
                 username: '',
                 password: '',
                 error: '',
+                id: ''
             }
         },
         computed: {
@@ -82,9 +83,10 @@
                             }
                         }
 
-                    ).then(request=>this.test(request))
+                    ).then(request=>this.id=request.data)
                     this.switchProgress();
                     setTimeout(() => {
+                        console.log('dfdf' + this.id);
                         this.switchProgress();
                         this.$router.push('/dashboard');
                     },2000);

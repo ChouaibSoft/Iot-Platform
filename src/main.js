@@ -7,7 +7,6 @@ import { store } from './store/store'
 
 Vue.prototype.$http  =  axios;
 
-
 require('@/assets/css/base.css');
 
 new Vue({
@@ -15,7 +14,6 @@ new Vue({
         this.$store.dispatch('switchProgress');
         if(localStorage.token != null){
             this.$store.state.isLogged = true;
-            console.log(this.$store.state.isLogged);
         }
     },
     store: store,

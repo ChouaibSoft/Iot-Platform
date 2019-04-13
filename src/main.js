@@ -19,6 +19,7 @@ Vue.use(VueFlashMessage, {
     }
 });
 
+
 Vue.prototype.$http  =  axios;
 require('vue-flash-message/dist/vue-flash-message.min.css');
 require('@/assets/css/base.css');

@@ -53,14 +53,29 @@ body a:hover {
 body li {
   list-style: none;
 }
+body table thead {
+  background-color: #f9f9f9;
+}
+body table tr {
+  border: 1px double #ccc;
+}
+body table td {
+  border: 1px double #ccc;
+}
+body table th {
+  border: 1px double #ccc;
+}
 body .content {
-  margin: 75px 25px 75px -40px;
+  margin: 75px 35px 75px -50px;
   text-align: left;
 }
 @media (max-width: 992px) {
   body .content {
     margin: 75px 0;
   }
+}
+body .content strong {
+  font-weight: bold;
 }
 body .content .page-title-path h2 {
   font-weight: bold;
@@ -79,7 +94,13 @@ body .content .component-section {
   margin-top: 30px;
 }
 body .content .component-section .help {
+  margin-top: -25px;
   padding-left: 20px;
+}
+@media (max-width: 992px) {
+  body .content .component-section .help {
+    margin-top: 0;
+  }
 }
 body .content .component-section .help h4 {
   color: #5b616e;
@@ -92,6 +113,10 @@ body .content .component-section .help .help-list {
   margin-left: 18px;
 }
 body .content .component-section .help .help-list li {
+  list-style-type: disc !important;
+}
+body .content .component-section .help .help-list li ul li {
+  margin-left: 30px;
   list-style-type: circle !important;
 }
 
@@ -182,6 +207,10 @@ body .content .component-section .help .help-list li {
   .navbar .controls {
     margin-left: 100px;
   }
+}
+
+.navbar-home {
+  background-color: #273146;
 }
 
 .dropdown-content {

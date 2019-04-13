@@ -20,7 +20,6 @@
     "vue-router": "^3.0.2",
     "vuelidate": "^0.7.4",
     "vuex": "^3.1.0",
-    "vuex-flash": "^1.0.0",
     "vuex-persist": "^2.0.0",
     "vuex-persistedstate": "latest"
   },

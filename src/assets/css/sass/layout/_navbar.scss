@@ -1,5 +1,4 @@
 /* Start NavBar */
-
 .navbar{
   background: $navbarBackground;
   margin-bottom: 0;
@@ -76,6 +75,9 @@
       margin-left: 100px;
     }
   }
+}
+.navbar-home{
+  background-color: $navbarBackground;
 }
 .dropdown-content{
   top: 64px !important;

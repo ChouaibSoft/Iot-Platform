@@ -6,6 +6,7 @@ import App from '../App'
 Vue.use(Router);
 
 const router = new Router({
+    mode: 'history',
     routes: [
         {
             path: '/',
@@ -25,12 +26,20 @@ const router = new Router({
             },
             children: [
                 {
-                    path: "addCanal",
-                    name: "addCanal",
+                    path: "channels/new",
+                    name: "add-channel",
                     meta: {
                         protected: true
                     },
-                    component: () => import("@/views/CanalAdd")
+                    component: () => import("@/views/AddChannel")
+                },
+                {
+                    path: "channels",
+                    name: "my-channels",
+                    meta: {
+                        protected: true
+                    },
+                    component: () => import("@/views/MyChannels")
                 }
             ]
         }
@@ -41,7 +50,6 @@ router.beforeEach((to, from, next) => {
     if (!to.meta.protected) { //route is public, don't check for authentication
         next()
     } else {  //route is protected, if authenticated, proceed. Else, login
-        console.log(store.state.token);
         if(store.state.token != null){
             next()
         }else{

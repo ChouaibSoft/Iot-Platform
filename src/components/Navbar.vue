@@ -7,8 +7,14 @@
             <nav class="navbar">
                 <div class="container-fluid">
                     <div class="nav-wrapper">
-                        <a href="#!" class="brand-logo left">Iot Platform</a>
+                        <router-link to="/" class="brand-logo left">Iot Platform</router-link>
                         <ul class="actions right">
+                            <li>
+                            <li>
+                                <router-link to="/dashboard/channels/new" class="btn-floating  waves-effect waves-light btn-large teal lighten-1" style="width: 45px; height: 45px; line-height: 45px">
+                                    <i class="material-icons">add</i>
+                                </router-link>
+                            </li>
                             <li><a class="dropdown-trigger lang " data-target="lang" href="#!"><img src="../assets/images/flag-401.png" alt="profile-image"></a></li>
                             <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><img src="../assets/images/header6.jpg" alt="profile-image"></a></li>
                         </ul>
@@ -20,7 +26,7 @@
                                     <span class="bars"></span>
                                 </a>
                             </li>
-                            <li class="hide-on-med-and-down"><a href="#" class="waves-effect waves-light"><i class="material-icons">search</i></a></li>
+                            <li class="hide-on-med-and-down"><a href="#" data-position="bottom tooltipped" data-tooltip="I am a tooltip" class="waves-effect waves-light"><i class="material-icons">search</i></a></li>
                             <li class="hide-on-med-and-down"><a href="#" class="waves-effect waves-light"><i class="material-icons">notifications_active</i></a></li>
                         </ul>
                     </div>

@@ -27,12 +27,30 @@ body{
   li{
     list-style: none;
   }
+  table{
+    thead{
+      background-color: #f9f9f9;
+    }
+    tr{
+      border: 1px double #ccc;
+    }
+    td{
+      border: 1px double #ccc;
+
+    }
+    th{
+      border: 1px double #ccc;
+    }
+  }
   .content{
-    margin: 75px  25px 75px -40px;
+    margin: 75px  35px 75px -50px;
     @media #{$maxSmall} {
       margin: 75px 0;
     }
     text-align: left;
+    strong{
+      font-weight: bold;
+    }
     .page-title-path{
       h2{
         font-weight: bold;
@@ -51,7 +69,11 @@ body{
     .component-section{
       margin-top: 30px;
       .help{
+        margin-top: -25px;
         padding-left: 20px;
+        @media #{$maxSmall} {
+          margin-top: 0;
+        }
         h4{
           color: $mainTitle;
           margin-bottom: 25px;
@@ -62,7 +84,13 @@ body{
         .help-list{
           margin-left: 18px;
           li{
-            list-style-type: circle !important;
+            list-style-type: disc !important;
+            ul{
+              li{
+                margin-left: 30px;
+                list-style-type: circle !important;
+              }
+            }
           }
         }
       }

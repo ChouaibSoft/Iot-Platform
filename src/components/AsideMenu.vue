@@ -61,7 +61,7 @@
                     <span>Fermer</span>
                 </li>
                 <li class="item-header">
-                    <a href="#"  @click="logout" class="group-name">
+                    <a href=""  @click="logout" class="group-name">
                         <i class="fa fa-power-off"></i>
                         <span>Logout</span>
                     </a>

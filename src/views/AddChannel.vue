@@ -2,11 +2,12 @@
     <div id="content">
         <div class="row page-title-path">
             <div class="col">
-                <h2>Add Canal</h2>
+                <h2>New Channel</h2>
             </div>
             <div class="col right">
                 <p>Home > <span> Ajouter Canal</span></p>
             </div>
+
         </div>
         <section class="component-section">
             <div class="row">
@@ -74,10 +75,11 @@
                                 <div>
                                     <div class="row">
                                         <div class="col">
-                                            <div v-if="fields.length < 8" @click="addFeild" class="btn waves-effect waves-light submit"><i style="font-size: .9rem" class="fa fa-plus"></i> Field</div>
+                                            <div v-if="fields.length < 8" @click="addField" class="btn waves-effect waves-light submit"><i style="font-size: .9rem" class="fa fa-plus"></i> Field</div>
                                         </div>
                                         <div class="col right">
                                             <button class="btn waves-effect waves-light" type="submit" name="action">Add
+                                                <i class="material-icons right">send</i>
                                             </button>
                                         </div>
                                     </div>
@@ -90,29 +92,36 @@
                     <div class="help">
                         <h4>Help</h4>
                         <h5>Channel</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a</p>
-                        <h5>Channel Fields</h5>
+                        <p>
+                            Channels store all the data that a ThingSpeak application collects. Each channel includes eight fields that can hold any type of data, plus three fields for location data and one for status data. Once you collect data in a channel, you can use ThingSpeak apps to analyze and visualize it.
+                        </p>
+                        <h5>Channel Settings</h5>
                         <ul class="help-list">
                             <li>
-                                <p><strong>fields1 :</strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,</p>
+                                <p><strong>Channel Name: </strong>Enter a unique name for the ThingSpeak channel.</p>
                             </li>
                             <li>
-                                <p><strong>fields2 :</strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,</p>
+                                <p><strong>Description : </strong>Enter a description of the ThingSpeak channel.</p>
                             </li>
                             <li>
-                                <p><strong>fields3 :</strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,</p>
+                                <p><strong>Field#: </strong>Check the box to enable the field, and enter a field name. Each ThingSpeak channel can have up to 8 fields.</p>
                             </li>
                             <li>
-                                <p><strong>fields4 :</strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,</p>
-                            </li>
-                            <li>
-                                <p><strong>fields5 :</strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,</p>
-                            </li>
-                            <li>
-                                <p><strong>fields6 :</strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,</p>
-                            </li>
-                            <li>
-                                <p><strong>fields7 :</strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,</p>
+                                <strong>Show Channel Location:</strong>
+                                <ul>
+                                    <li>
+                                        <p><strong>Latitude : </strong>Specify the latitude position in decimal degrees. For example, the latitude of the city of London is 51.5072.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p><strong>Longitude : </strong> Specify the longitude position in decimal degrees. For example, the longitude of the city of London is -0.1275.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p><strong>Elevation : </strong>Specify the elevation position meters. For example, the elevation of the city of London is 35.052.
+                                        </p>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -123,10 +132,10 @@
 </template>
 
 <script>
-    import { mapState } from 'vuex';
-    import { required, minLength, between } from 'vuelidate/lib/validators'
+    import { mapState, mapActions } from 'vuex';
+    import { required, minLength } from 'vuelidate/lib/validators'
     export default {
-        name: "canal-add",
+        name: "add-channel",
         components: {
         },
         data (){
@@ -156,6 +165,7 @@
             ...mapState['userId']
         },
         methods: {
+            ...mapActions(['postRequest']),
             addCanal: function () {
                 var postData = {
                     nom: this.name,
@@ -172,24 +182,17 @@
                     }
                     postData[key] = value;
                 }
-                let axiosConfig = {
-                    headers: {
-                        'Content-Type': 'application/json;charset=UTF-8',
-                        'Authorization': 'Bearer '+ this.$store.state.token
-                    }
-                };
-                console.log(postData);
-                this.$http.post('http://localhost:8091/canals', postData, axiosConfig)
-                    .then((res) => {
-                        this.flash('Canal added successfully', 'success');
-                        this.$router.push('/dashboard');
-                    })
-                    .catch((err) => {
-                        console.log("AXIOS ERROR: ", err);
-                        this.flash('Canal add operation failed!', 'warning');
-                    })
+                var payload = {
+                    'data': postData,
+                    'link': '/canals'};
+                this.postRequest(payload).then(() => {
+                    this.flash('Canal added successfully.', 'success');
+                    this.$router.push('/dashboard/channels');
+                }).catch(() => {
+                        this.flash('Canal add operation failed !', 'warning');
+                })
             },
-            addFeild: function () {
+            addField: function () {
                 var field = "field" + (this.fields.length + 1);
                 this.fields.push({
                     name: field,

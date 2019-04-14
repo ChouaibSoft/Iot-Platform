@@ -78,8 +78,8 @@
                                             <div v-if="fields.length < 8" @click="addField" class="btn waves-effect waves-light submit"><i style="font-size: .9rem" class="fa fa-plus"></i> Field</div>
                                         </div>
                                         <div class="col right">
-                                            <button class="btn waves-effect waves-light" type="submit" name="action">Add
-                                                <i class="material-icons right">send</i>
+                                            <button type="submit" class="button waves-effect waves-light btn">
+                                                Add <i class="material-icons right">send</i>
                                             </button>
                                         </div>
                                     </div>

@@ -126,6 +126,7 @@ body .content .component-section .help .help-list li ul li {
   margin-bottom: 0;
   border: none;
   height: 64px;
+  overflow: hidden;
 }
 .navbar .brand-logo {
   width: 250px;
@@ -354,7 +355,7 @@ aside .items .active > a {
   margin-bottom: 0;
   margin-top: 0;
 }
-.form button {
+.form .button {
   float: right;
   background-color: #273146;
 }

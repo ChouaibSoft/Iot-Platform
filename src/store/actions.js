@@ -16,11 +16,16 @@ const actions = {
         context.commit('saveUserToken', token)
     },
     postRequest({state},  payload){
-        return axios.post(state.apiURL + payload.link, payload.data,{
-            headers: {
-                'Content-Type': 'application/json;charset=UTF-8',
-                //'Authorization': 'Bearer '+ state.token
-            },})
+        var headers = {
+            'Content-Type': 'application/json;charset=UTF-8',
+
+        };
+        if (state.token != null){
+            headers['Authorization'] = 'Bearer '+ state.token
+        }
+        return axios.post(state.apiURL + payload.link, payload.data, {
+            headers
+        })
     },
     getRequest({state, commit}, payload) {
         axios.get(state.apiURL + payload.link, {

@@ -189,7 +189,7 @@
                     this.flash('Canal added successfully.', 'success');
                     this.$router.push('/dashboard/channels');
                 }).catch(() => {
-                        this.flash('Canal add operation failed !', 'warning');
+                        this.flash('Canal add operation failed !', 'error');
                 })
             },
             addField: function () {

@@ -19,8 +19,10 @@ const mutations = {
     saveUserToken (state, token) {
         state.token = token
     },
+    deleteToken(state){
+        state.token = null;
+    },
     setCanals(state, payload){
-        console.log('data' + payload);
         state.canals = payload;
     }
 }

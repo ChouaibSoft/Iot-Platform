@@ -12,12 +12,15 @@
                     v-bind:class="{active:selected == 2}"
                 >Sign Up</li>
             </ul>
-            <ul class="tabs" style="margin-top: -8px">
+            <ul style="margin-top: -8px">
                 <div  v-if="progress" class="progress">
                     <div class="indeterminate"></div>
                 </div>
             </ul>
-            <component v-bind:is="component"></component>
+            <ul style="margin-top: 9px">
+                <flash-message class="center-align"></flash-message>
+            </ul>
+            <component v-bind:is="component" ref="component"></component>
         </div>
             </div>
 </template>
@@ -48,18 +51,8 @@ export default {
         }
     },
     methods: {
-        checkCurrentLogin () {
-            if (this.$store.state.isAuthentificated) {
-                this.$router.replace(this.$route.query.redirect || '/')
-            }
-        },
-    },
-    created () {
-        this.checkCurrentLogin();
-    },
-    updated () {
-        this.checkCurrentLogin();
-    },
+
+    }
 
 }
 </script>

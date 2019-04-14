@@ -19,7 +19,7 @@ const actions = {
         return axios.post(state.apiURL + payload.link, payload.data,{
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
-                'Authorization': 'Bearer '+ state.token
+                //'Authorization': 'Bearer '+ state.token
             },})
     },
     getRequest({state, commit}, payload) {

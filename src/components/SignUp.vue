@@ -7,18 +7,60 @@
                     <div slot="form-fields">
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="username" type="text" class="validate" required v-model="username">
+                                <input
+                                        id="username"
+                                        type="text"
+                                        class="validate"
+                                        required v-model="username"
+                                        @input="$v.username.$touch()">
                                 <label for="username">User Name</label>
+                                <div v-if="$v.username.$dirty">
+                                    <p class="error-message red-text " v-if="!$v.username.required">
+                                        username field is required.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="password" type="password" class="validate" required v-model="password">
+                                <input
+                                        id="password"
+                                        type="password"
+                                        class="validate"
+                                        required
+                                        minlength="8"
+                                        v-model="password"
+                                        @input="$v.password.$touch()">
                                 <label for="password">Password</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="passwordCheck" type="password" class="validate" required v-model="confpass">
+                                <input
+                                        id="passwordCheck"
+                                        type="password"
+                                        class="validate"
+                                        required
+                                        minlength="8"
+                                        v-model="confpass"
+                                        @input="$v.confpass.$touch()">
                                 <label for="passwordCheck">Password Confirmation</label>
+                            </div>
+                            <div class="col s12">
+                                <div v-if="$v.password.$dirty">
+                                    <p class="error-message red-text " v-if="!$v.password.required">
+                                        password field is required.
+                                    </p>
+                                    <p class="error-message red-text " v-if="!$v.password.minLength">
+                                        the field password must be greater than 8 or equal characters.
+                                    </p>
+                                </div>
+                                <div v-if="$v.confpass.$dirty">
+                                    <p class="error-message red-text " v-if="!$v.confpass.required">
+                                        confirmation password  is required.
+                                    </p>
+                                    <p class="error-message red-text " v-if="!$v.confpass.sameAsPassword">
+                                        passwords must match.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -34,6 +76,8 @@
 </template>
 
 <script>
+    import {  mapActions } from 'vuex';
+    import { required, minLength, sameAs } from 'vuelidate/lib/validators'
     import Form from "@/components/Form";
     export default {
         name: "SignUp",
@@ -47,70 +91,48 @@
                 username: '',
                 password: '',
                 confpass:'',
-                error: false,
-                error2:false,
-                msg:'',
-                jwtToken:''
             }
         },
         methods: {
-            checkCurrentLogin () {
-                if (this.currentUser) {
-                    this.$router.replace(this.$route.query.redirect || '/dashboard')
-                }
-            },
+            ...mapActions([
+                'switchProgress',
+                'postRequest'
+            ]),
             register(){
-                const API_URL1 = process.env.API_URL || 'http://localhost:8091';
-                this.$http.post(API_URL1+'/register',{
-
-                        username:this.username,password:this.password,passwordConfirmed:this.confpass
-
-                    }, {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        }
-                    }
-
-                ).then(request=>{
-
-                    this.registerSucess(request)
-
+                var postData = {
+                    username: this.username,
+                    password: this.password,
+                    passwordConfirmed: this.confpass
+                };
+                var payload = {
+                    'data': postData,
+                    'link': '/register'
+                };
+                this.postRequest(payload).then(request => {
+                    this.registerSucess();
+                    this.flash('Congratulation! !', 'success');
                 })
-                    .catch((request)=>{
-                        this.registerError(request)
-                    })
-
-
-            },
-            registerError(request){
-                this.error2=true
-                this.msg=request.response.data.message;
+                    .catch( ()=> {
+                        this.flash('Registration Failed !', 'error')
+                    });
             },
             registerSucess(request){
                 this.$router.push('/dashboard');
-            },
-            test(request){
-                //   console.log(request.data)
-
-                this.$http.get('http://localhost:8091/appUsers/'+request.data+'/canals',{
-
-                    headers:{
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer '+ localStorage.token
-                    }
-                }).then(request=>this.test2(request))
-
-            },
-            test2(request){
-
-            },
-            loginFailed () {
-                this.error = 'Login failed!';
-                delete localStorage.token
             }
-
-
-        }
+        },
+        validations: {
+            username: {
+                required,
+            },
+            password: {
+                required,
+                minLength: minLength(8),
+            },
+            confpass: {
+                required,
+                sameAsPassword: sameAs('password')
+            }
+        },
     }
 </script>
 

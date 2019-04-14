@@ -7,14 +7,36 @@
                     <div slot="form-fields">
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="username" type="text" class="validate" required v-model="username">
+                                <input
+                                        id="username"
+                                        type="text"
+                                        class="validate"
+                                        required
+                                        v-model="username"
+                                        @input="$v.username.$touch()">
                                 <label for="username">Username</label>
+                                <div v-if="$v.username.$dirty">
+                                    <p class="error-message red-text " v-if="!$v.username.required">
+                                        username field is required.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="password" type="password" class="validate" required v-model="password">
+                                <input
+                                        id="password"
+                                        type="password"
+                                        class="validate"
+                                        required
+                                        v-model="password"
+                                        @input="$v.password.$touch()">
                                 <label for="password">Password</label>
+                                <div v-if="$v.password.$dirty">
+                                    <p class="error-message red-text " v-if="!$v.password.required">
+                                        password field is required.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -31,7 +53,8 @@
 
 <script>
     import Form from "@/components/Form";
-    import { mapState, mapActions } from 'vuex';
+    import { required } from 'vuelidate/lib/validators'
+    import {  mapActions } from 'vuex';
 
     export default {
         name: "SignIn",
@@ -44,35 +67,29 @@
                 selected: 1,
                 username: '',
                 password: '',
-                error: '',
-                id: ''
             }
-        },
-        computed: {
-
         },
         methods: {
             ...mapActions([
-                'switchProgress'
+                'switchProgress',
+                'postRequest'
             ]),
             login() {
-                const API_URL = process.env.API_URL || 'http://localhost:8091';
-
-                this.$http.post(API_URL+'/login',{userName:this.username, password: this.password},{
-                        headers: {
-                            'Content-Type': 'application/json',
-                            // 'Authorization': 'Bearer '+ axios.defaults.headers['Authorization']
-                        },
-                    }
-                )
-                .then(request => this.loginSuccessful(request))
-                .catch( ()=> {
-                    this.loginFailed()
-                })
+                var postData = {
+                    userName: this.username,
+                    password: this.password
+                };
+                var payload = {
+                    'data': postData,
+                    'link': '/login'
+                };
+                this.postRequest(payload).then(request => this.loginSuccessful(request))
+                    .catch( ()=> {
+                        this.flash('Login Failed !', 'error')
+                    })
             },
             loginSuccessful(req) {
                 if (req.headers) {
-
                     //localStorage.token = req.headers.authorization;
                     this.$store.dispatch('saveUserToken', req.headers.authorization);
                     this.$http.get( 'http://localhost:8091/id',{
@@ -91,89 +108,19 @@
                     return false;
 
                 }
-                else {
-                    this.error = 'Login Failed'
-                }
-
             },
-            loginFailed () {
-                this.error = 'Login failed!'
-                delete localStorage.token
+        },
+        validations: {
+            username: {
+                required,
             },
-            test(request){
-                //   console.log(request.data)
-
-                this.$http.get('http://localhost:8091/appUsers/'+request.data+'/canals',{
-
-                    headers:{
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer '+ localStorage.token
-                    }
-                }).then(request=>this.test2(request))
-
-            },
-
-            test2(request){
-                console.log(request.data)
+            password: {
+                required,
             }
-        }
+        },
     }
 </script>
 
 <style scoped>
-    .lds-ellipsis {
-        display: inline-block;
-        position: relative;
-        width: 64px;
-        height: 64px;
-    }
-    .lds-ellipsis div {
-        position: absolute;
-        top: 27px;
-        width: 11px;
-        height: 11px;
-        border-radius: 50%;
-        background: #dfc;
-        animation-timing-function: cubic-bezier(0, 1, 1, 0);
-    }
-    .lds-ellipsis div:nth-child(1) {
-        left: 6px;
-        animation: lds-ellipsis1 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(2) {
-        left: 6px;
-        animation: lds-ellipsis2 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(3) {
-        left: 26px;
-        animation: lds-ellipsis2 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(4) {
-        left: 45px;
-        animation: lds-ellipsis3 0.6s infinite;
-    }
-    @keyframes lds-ellipsis1 {
-        0% {
-            transform: scale(0);
-        }
-        100% {
-            transform: scale(1);
-        }
-    }
-    @keyframes lds-ellipsis3 {
-        0% {
-            transform: scale(1);
-        }
-        100% {
-            transform: scale(0);
-        }
-    }
-    @keyframes lds-ellipsis2 {
-        0% {
-            transform: translate(0, 0);
-        }
-        100% {
-            transform: translate(19px, 0);
-        }
-    }
+
 </style>

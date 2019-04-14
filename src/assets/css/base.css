@@ -245,6 +245,7 @@ aside .items .item-header {
 aside .items .item-header > a {
   width: 105%;
   display: inline-block;
+  cursor: pointer;
 }
 aside .items .item-header .has-arrow {
   position: relative;

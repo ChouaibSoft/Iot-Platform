@@ -9,7 +9,6 @@
     "conf-password": "Confirmation du mot de passe",
     "success": "Félicitation !",
     "error": "Echec de l'enregistrement !"
-
   },
   "errors": {
     "required": "ce champ est obligatoire.",

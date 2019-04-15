@@ -16,7 +16,8 @@ export const store = new Vuex.Store ({
       token: null,
       canals: '',
       apiURL: 'http://localhost:8091',
-      locale: 'en' // Default Language
+      locale: 'en', // Default Language,
+      flag: 'us'
   },
   getters: getters,
   mutations: mutations,

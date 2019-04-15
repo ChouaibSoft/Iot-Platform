@@ -126,7 +126,6 @@ body .content .component-section .help .help-list li ul li {
   margin-bottom: 0;
   border: none;
   height: 64px;
-  overflow: hidden;
 }
 .navbar .brand-logo {
   width: 250px;
@@ -147,6 +146,8 @@ body .content .component-section .help .help-list li ul li {
 .navbar a {
   height: 63px;
   line-height: 63px;
+  text-decoration: none;
+  outline: 0;
 }
 .navbar .actions img {
   width: 40px;
@@ -155,24 +156,14 @@ body .content .component-section .help .help-list li ul li {
   margin-right: 10px;
   margin-top: 13px;
 }
-.navbar .actions .lang {
-  margin-top: 8px;
-}
-.navbar .actions .lang img {
-  width: 35px;
-  height: 20px;
-  border-radius: 0;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  -ms-background-size: cover;
-  background-size: cover;
-}
 .navbar .actions .dropdown-trigger {
   height: 63px;
 }
 .navbar .actions i {
   line-height: 63px;
+}
+.navbar .actions span {
+  line-height: 20px;
 }
 .navbar .controls {
   margin-left: 240px;
@@ -216,6 +207,8 @@ body .content .component-section .help .help-list li ul li {
 
 .dropdown-content {
   top: 64px !important;
+  width: max-content !important;
+  height: auto !important;
 }
 
 /* End NavBar */

@@ -26,9 +26,8 @@ const mutations = {
         state.canals = payload;
     },
     changeLocale(state, lang){
-        state.locale = lang
-        console.log(state.locale)
-
+        state.locale = lang.language;
+        state.flag = lang.flag;
     }
 }
 export default mutations

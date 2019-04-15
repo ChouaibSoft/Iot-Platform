@@ -140,9 +140,12 @@
 <script>
     import { mapState, mapActions } from 'vuex';
     import { required, minLength } from 'vuelidate/lib/validators'
+    import Form from "@/components/Form";
+
     export default {
         name: "add-channel",
         components: {
+            'generic-form': Form
         },
         data (){
             return{
@@ -250,7 +253,6 @@
         "longitude-det": "Specify the longitude position in decimal degrees. For example, the longitude of the city of London is -0.1275.",
         "evaluation": "Evaluation : ",
         "evaluation-det": "Specify the elevation position meters. For example, the elevation of the city of London is 35.052. "
-
     }
     },
     "fr": {
@@ -272,7 +274,6 @@
     "longitude-det": "Spécifiez la position de la longitude en degrés décimaux. Par exemple, la longitude de la ville de Londres est -0.1275.",
     "evaluation": "Evaluation : ",
     "evaluation-det": "Spécifiez les indicateurs de position d'élévation. Par exemple, l’altitude de la ville de Londres est de 35,052."
-
     }
     }
     }

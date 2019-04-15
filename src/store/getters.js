@@ -8,6 +8,9 @@ const getters = {
     },
     getCanals: state => {
         return state.canals;
+    },
+    getFlag: state =>{
+        return state.flag
     }
 }
 export default getters

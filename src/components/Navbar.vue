@@ -11,12 +11,12 @@
                         <ul class="actions right">
                             <li>
                             <li>
-                                <router-link to="/dashboard/channels/new" class="btn-floating  waves-effect waves-light btn-large teal lighten-1" style="width: 45px; height: 45px; line-height: 45px">
+                                <router-link to="/dashboard/channels/new" class="btn-floating  waves-effect waves-light btn-large teal lighten-1" style="width: 45px; height: 45px; line-height: 42px">
                                     <i class="material-icons">add</i>
                                 </router-link>
                             </li>
-                            <li><a class="dropdown-trigger lang " data-target="lang" href="#!"><img src="../assets/images/flag-401.png" alt="profile-image"></a></li>
-                            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><img src="../assets/images/header6.jpg" alt="profile-image"></a></li>
+                            <li><a class="dropdown-trigger drop-button waves-effect waves-light" data-target="lang" href=""><flag style="width: 45px; height: 25px;" :iso="getFlag" v-bind:squared=false /></a></li>
+                            <li><a class="dropdown-trigger drop-button" href="" data-target="dropdown1"><img src="../assets/images/header6.jpg" alt="profile-image"></a></li>
                         </ul>
                         <ul class="controls">
                             <li>
@@ -25,13 +25,6 @@
                                     <span class="bars long"></span>
                                     <span class="bars"></span>
                                 </a>
-                            </li>
-                            <li>
-                                <div>
-                                    <button v-for="entry in languages" :key="entry.title" @click="changeLocale(entry.language)">
-                                        <flag :iso="entry.flag" v-bind:squared=false /> {{entry.title}}
-                                    </button>
-                                </div>
                             </li>
                             <li class="hide-on-med-and-down"><a href="#" data-position="bottom tooltipped" data-tooltip="I am a tooltip" class="waves-effect waves-light"><i class="material-icons">search</i></a></li>
                             <li class="hide-on-med-and-down"><a href="#" class="waves-effect waves-light"><i class="material-icons">notifications_active</i></a></li>
@@ -49,34 +42,40 @@
             <li><a href="#!">three</a></li>
         </ul>
 
-        <!--<ul id="lang" class="dropdown-content">-->
-            <!--<li><a href="#!" ><img src="../assets/images/header6.jpg" alt="profile-image"> French</a></li>-->
-            <!--<li><a href="#!" ><img src="../assets/images/header6.jpg" alt="profile-image"> English</a></li>-->
-        <!--</ul>-->
+        <ul id="lang" class="dropdown-content" style="padding: 0" >
+            <li v-for="entry in languages" :key="entry.title" @click="changeLocale(entry)" style="padding-top:10px; min-height: 30px !important;">
+                <p><flag style="width: 35px; height: 20px;" :iso="entry.flag" v-bind:squared=false /> {{entry.title}}</p>
+            </li>
+        </ul>
 
         <!-- End Navbar -->
     </div>
 </template>
 
 <script>
-    import  i18n  from '../i18n';
+    import { mapGetters } from 'vuex'
     export default {
         name: "Navbar",
         data() {
             return {
                 languages: [
-                    { flag: 'us', language: 'en', title: 'English' },
-                    { flag: 'fr', language: 'fr', title: 'French' }
+                    { flag: 'us', language: 'en', title: 'English', selected: true},
+                    { flag: 'fr', language: 'fr', title: 'Français', selected: false}
                 ]
             }
         },
+        computed: {
+            ...mapGetters(['getFlag'])
+        },
         methods: {
             changeLocale(locale) {
-                console.log('fdfdf')
                 this.$store.dispatch('changeLocale', locale);
-            }
+            },
         }
     }
+    $( document ).ready(function() {
+        $(".drop-button").dropdown();
+    });
 </script>
 
 <style scoped>

@@ -30,6 +30,7 @@ require('@/assets/css/base.css');
 new Vue({
     mounted() {
         this.$store.dispatch('switchProgress');
+        i18n.locale = this.$store.state.locale;
         if(this.$store.state.token != null){
             this.$store.state.isLogged = true;
         }

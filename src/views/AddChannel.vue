@@ -234,7 +234,7 @@
     "en": {
     "main-title": "New Channel",
     "channel": "Channel",
-    "channel-des": "Channels store all the data that a ThingSpeak application collects. Each channel includes eight fields that can hold any type of data, plus three fields for location data and one for status data. Once you collect data in a channel, you can use ThingSpeak apps to analyze and visualize it.",
+    "channel-des": "Channels store all the data that a Iot-Platform ESI-SBA application collects. Each channel includes eight fields that can hold any type of data, plus three fields for location data and one for status data. Once you collect data in a channel, you can use ThingSpeak apps to analyze and visualize it.",
     "channel-settings": "Channel Settings",
     "settings": {
         "name": "Channel Name : ",
@@ -256,7 +256,7 @@
     "fr": {
     "main-title": "Nouveau Canal",
     "channel": "Canal",
-    "channel-des": "Les canaux stockent toutes les données collectées par une application ThingSpeak. Chaque canal comprend huit champs pouvant contenir tout type de données, ainsi que trois champs pour les données de localisation et un pour les données d'état. , vous pouvez utiliser les applications ThingSpeak pour l’analyser et le visualiser. ",
+    "channel-des": "Les canaux stockent toutes les données collectées par une application Iot-Platform ESI-SBA. Chaque canal comprend huit champs pouvant contenir tout type de données, ainsi que trois champs pour les données de localisation et un pour les données d'état. , vous pouvez utiliser les applications ThingSpeak pour l’analyser et le visualiser. ",
     "channel-settings": "Paramètres de Canal",
     "settings": {
     "name": "Nom du Canal : ",

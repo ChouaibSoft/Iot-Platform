@@ -1,5 +1,6 @@
 import router from "../router";
 import axios from "axios";
+import i18n from "../i18n";
 
 const actions = {
     logout({ commit }) {
@@ -36,6 +37,10 @@ const actions = {
         }).then(request => {
             commit(payload.mutation, request.data.content);
         })
+    },
+    changeLocale({commit, state}, lang){
+        commit('changeLocale', lang);
+        i18n.locale = state.locale;
     }
 };
 export default actions;

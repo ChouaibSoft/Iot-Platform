@@ -72,7 +72,8 @@
         },
         methods: {
             changeLocale(locale) {
-                i18n.locale = locale;
+                console.log('fdfdf')
+                this.$store.dispatch('changeLocale', locale);
             }
         }
     }

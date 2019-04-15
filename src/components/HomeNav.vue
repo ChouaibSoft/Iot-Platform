@@ -46,7 +46,7 @@
     },
     "fr": {
     "home": "Accueil",
-    "about": "a Propos",
+    "about": "A propos",
     "contact": "Contact",
     "login": "Connexion",
     "dashboard": "Dashboard"

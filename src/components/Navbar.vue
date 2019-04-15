@@ -26,6 +26,13 @@
                                     <span class="bars"></span>
                                 </a>
                             </li>
+                            <li>
+                                <div>
+                                    <button v-for="entry in languages" :key="entry.title" @click="changeLocale(entry.language)">
+                                        <flag :iso="entry.flag" v-bind:squared=false /> {{entry.title}}
+                                    </button>
+                                </div>
+                            </li>
                             <li class="hide-on-med-and-down"><a href="#" data-position="bottom tooltipped" data-tooltip="I am a tooltip" class="waves-effect waves-light"><i class="material-icons">search</i></a></li>
                             <li class="hide-on-med-and-down"><a href="#" class="waves-effect waves-light"><i class="material-icons">notifications_active</i></a></li>
                         </ul>
@@ -52,8 +59,22 @@
 </template>
 
 <script>
+    import  i18n  from '../i18n';
     export default {
-        name: "Navbar"
+        name: "Navbar",
+        data() {
+            return {
+                languages: [
+                    { flag: 'us', language: 'en', title: 'English' },
+                    { flag: 'fr', language: 'fr', title: 'French' }
+                ]
+            }
+        },
+        methods: {
+            changeLocale(locale) {
+                i18n.locale = locale;
+            }
+        }
     }
 </script>
 

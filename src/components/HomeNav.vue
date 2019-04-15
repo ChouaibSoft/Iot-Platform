@@ -7,11 +7,11 @@
                     <i class="material-icons">menu</i>
                 </a>
                 <ul class="right  hide-on-med-and-down">
-                    <li><router-link to="/" class="waves-effect waves-light">Home</router-link></li>
-                    <li><a href="#" class="waves-effect waves-light">About</a></li>
+                    <li><router-link to="/" class="waves-effect waves-light">{{ $t('home') }}</router-link></li>
+                    <li><a href="#" class="waves-effect waves-light">{{ $t('about') }}</a></li>
                     <li><a href="#" class="waves-effect waves-light">Contact</a></li>
-                    <li v-if="!isLogged"><a href="/auth" class="waves-effect waves-light">Login</a></li>
-                    <li v-else><router-link to="/dashboard" class="waves-effect waves-light">Dashboard</router-link></li>
+                    <li v-if="!isLogged"><a href="/auth" class="waves-effect waves-light">{{ $t('login') }}</a></li>
+                    <li v-else><router-link to="/dashboard" class="waves-effect waves-light">{{ $t('dashboard') }}</router-link></li>
                 </ul>
             </div>
         </nav>
@@ -35,3 +35,21 @@
         }
     }
 </script>
+<i18n>
+    {
+    "en": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Login",
+    "dashboard": "Dashboard"
+    },
+    "fr": {
+    "home": "Accueil",
+    "about": "a Propos",
+    "contact": "Contact",
+    "login": "Connexion",
+    "dashboard": "Dashboard"
+    }
+    }
+</i18n>

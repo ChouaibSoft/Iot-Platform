@@ -2,7 +2,7 @@
     <div id="sign-up" class="col s12">
         <form class="col s12" @submit.prevent="register">
             <div class="form-container">
-                <h4>Bienvenue !</h4>
+                <h4>{{ $t('auth.welcome') }}</h4>
                 <generic-form>
                     <div slot="form-fields">
                         <div class="row">
@@ -13,10 +13,10 @@
                                         class="validate"
                                         required v-model="username"
                                         @input="$v.username.$touch()">
-                                <label for="username">User Name</label>
+                                <label for="username">{{ $t('auth.username') }}</label>
                                 <div v-if="$v.username.$dirty">
                                     <p class="error-message red-text " v-if="!$v.username.required">
-                                        username field is required.
+                                        {{ $t('errors.required') }}
                                     </p>
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                                         minlength="8"
                                         v-model="password"
                                         @input="$v.password.$touch()">
-                                <label for="password">Password</label>
+                                <label for="password">{{ $t('auth.password') }}</label>
                             </div>
                             <div class="input-field col s6">
                                 <input
@@ -42,23 +42,23 @@
                                         minlength="8"
                                         v-model="confpass"
                                         @input="$v.confpass.$touch()">
-                                <label for="passwordCheck">Password Confirmation</label>
+                                <label for="passwordCheck">{{ $t('auth.conf-password') }}</label>
                             </div>
                             <div class="col s12">
                                 <div v-if="$v.password.$dirty">
                                     <p class="error-message red-text " v-if="!$v.password.required">
-                                        password field is required.
+                                        {{ $t('errors.required') }}
                                     </p>
                                     <p class="error-message red-text " v-if="!$v.password.minLength">
-                                        the field password must be greater than 8 or equal characters.
+                                        {{ $t('errors.min-length-password', {minLength: 8}) }}
                                     </p>
                                 </div>
                                 <div v-if="$v.confpass.$dirty">
                                     <p class="error-message red-text " v-if="!$v.confpass.required">
-                                        confirmation password  is required.
+                                        {{ $t('errors.required') }}
                                     </p>
                                     <p class="error-message red-text " v-if="!$v.confpass.sameAsPassword">
-                                        passwords must match.
+                                        {{ $t('errors.same-as') }}
                                     </p>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                     </div>
                     <div slot="form-controls">
                         <center>
-                            <button class="btn waves-effect waves-light  submit" type="submit" name="action">Sign Up</button>
+                            <button class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.sign-up') }}</button>
                         </center>
                     </div>
                 </generic-form>
@@ -109,11 +109,11 @@
                     'link': '/register'
                 };
                 this.postRequest(payload).then(request => {
-                    this.registerSucess();
-                    this.flash('Congratulation! !', 'success');
+                    //this.registerSucess();
+                    this.flash(this.$t('auth.success'), 'success');
                 })
                     .catch( ()=> {
-                        this.flash('Registration Failed !', 'error')
+                        this.flash(this.$t('auth.error'), 'error')
                     });
             },
             registerSucess(request){

@@ -31,6 +31,11 @@
     import Navbar from "@/components/Navbar";
     export default {
         name: "Dashboard",
+        date(){
+            return{
+                langs: ['en', 'fr']
+            }
+        },
         components: {
             'aside-menu': AsideMenu,
             'navbar': Navbar

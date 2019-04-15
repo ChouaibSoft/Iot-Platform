@@ -1,0 +1,28 @@
+{
+  "help": "Aide",
+  "auth": {
+    "welcome": "Bienvenue !",
+    "sign-in": "Connexion",
+    "sign-up": "s'inscrire",
+    "username": "Nom d'utilisateur",
+    "password": "mot de passe",
+    "conf-password": "Confirmation du mot de passe",
+    "success": "Félicitation !",
+    "error": "Echec de l'enregistrement !"
+
+  },
+  "errors": {
+    "required": "ce champ est obligatoire.",
+    "same-as": "les mots de passe doivent correspondre!",
+    "min-length-password": "le mot de passe doit être supérieur ou égal à {minLength} caractères",
+    "min-length": "le champ doit être supérieur ou égal à {minLength} caractères"
+  },
+  "canal": {
+    "name": "Nom du canal",
+    "description": "Description",
+    "fieldX": "Champ {num}",
+    "add": "Ajouter",
+    "add-success": "Canal ajouté avec succès.",
+    "add-error": "L'opération d'ajout de canal a échoué !"
+  }
+}

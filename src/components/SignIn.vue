@@ -2,7 +2,7 @@
     <div id="sign-in" class="col s12">
         <form class="col s12"  @submit.prevent="login">
             <div class="form-container">
-                <h4>Bienvenue !</h4>
+                <h4>{{ $t('auth.welcome') }}</h4>
                 <generic-form>
                     <div slot="form-fields">
                         <div class="row">
@@ -14,10 +14,10 @@
                                         required
                                         v-model="username"
                                         @input="$v.username.$touch()">
-                                <label for="username">Username</label>
+                                <label for="username">{{ $t('auth.username') }}</label>
                                 <div v-if="$v.username.$dirty">
                                     <p class="error-message red-text " v-if="!$v.username.required">
-                                        username field is required.
+                                        {{ $t('errors.required') }}
                                     </p>
                                 </div>
                             </div>
@@ -31,10 +31,10 @@
                                         required
                                         v-model="password"
                                         @input="$v.password.$touch()">
-                                <label for="password">Password</label>
+                                <label for="password">{{ $t('auth.password') }}</label>
                                 <div v-if="$v.password.$dirty">
                                     <p class="error-message red-text " v-if="!$v.password.required">
-                                        password field is required.
+                                        {{ $t('errors.required') }}
                                     </p>
                                 </div>
                             </div>
@@ -42,7 +42,7 @@
                     </div>
                     <div slot="form-controls">
                         <center>
-                            <button class="btn waves-effect waves-light  submit" type="submit" name="action">Sign in</button>
+                            <button class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.sign-in') }}</button>
                         </center>
                     </div>
                 </generic-form>

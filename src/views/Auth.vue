@@ -6,11 +6,11 @@
                 <li class="tab col l6 waves-effect waves-light  white-text"
                     @click="component = 'sign-in', selected = 1"
                     v-bind:class="{active:selected == 1}"
-                >Sign In</li>
+                >{{ $t('auth.sign-in') }}</li>
                 <li class="tab col l6 waves-effect waves-light  white-text"
                     @click="component = 'sign-up', selected = 2"
                     v-bind:class="{active:selected == 2}"
-                >Sign Up</li>
+                >{{ $t('auth.sign-up') }}</li>
             </ul>
             <ul style="margin-top: -8px">
                 <div  v-if="progress" class="progress">
@@ -22,7 +22,7 @@
             </ul>
             <component v-bind:is="component" ref="component"></component>
         </div>
-            </div>
+    </div>
 </template>
 
 <script>

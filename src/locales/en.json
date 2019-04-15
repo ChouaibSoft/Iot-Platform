@@ -1,0 +1,27 @@
+{
+  "help": "Help",
+  "auth": {
+    "welcome": "Welcome !",
+    "sign-in": "Sign In",
+    "sign-up": "Sign Up",
+    "username": "Username",
+    "password": "Password",
+    "conf-password": "Password Confirmation",
+    "success": "Congratulation!",
+    "error": "Registration Failed !"
+  },
+  "errors": {
+    "required": "this is field is required.",
+    "same-as": "passwords must match!",
+    "min-length-password": "password must be greater or equal {minLength} characters",
+    "min-length": "this field must be greater or equal {minLength} characters"
+  },
+  "canal": {
+    "name": "Name of the channel",
+    "description": "Description",
+    "fieldX": "Field {num}",
+    "add": "Add",
+    "add-success": "Canal added successfully.",
+    "add-error": "Canal add operation failed !"
+  }
+}

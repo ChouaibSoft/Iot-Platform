@@ -5,10 +5,13 @@ import axios from 'axios';
 import { store } from './store/store';
 import VueFlashMessage from 'vue-flash-message';
 import Vuelidate from 'vuelidate'
+import i18n from './i18n'
+import FlagIcon from 'vue-flag-icon';
 
 
 Vue.use(Vuelidate);
-
+Vue.use(FlagIcon);
+Vue.config.productionTip = false
 
 Vue.use(VueFlashMessage, {
     mixin: true,
@@ -31,9 +34,11 @@ new Vue({
             this.$store.state.isLogged = true;
         }
     },
+
     store: store,
     el: '#app',
     router,
     axios,
+    i18n,
     render: h => h(App)
 }).$mount('#app');

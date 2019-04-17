@@ -20,7 +20,7 @@
             <ul style="margin-top: 9px">
                 <flash-message class="center-align"></flash-message>
             </ul>
-            <component v-bind:is="component" ref="component"></component>
+            <component v-bind:is="component"></component>
         </div>
     </div>
 </template>

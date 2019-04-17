@@ -62,16 +62,35 @@
                         <div class="row">
                             <div class="col s12">
                                 <ul class="tabs">
-                                    <li class="tab col s3"><a class="active" href="#test1">{{ $t('component-toggle.view') }}</a></li>
-                                    <li class="tab col s3"><a href="#test3">{{ $t('component-toggle.api-keys') }}</a></li>
-                                    <li class="tab col s3"><a href="#test2">{{ $t('component-toggle.channel-settings') }}</a></li>
-                                    <li class="tab col s3"><a href="#test4">{{ $t('component-toggle.import-export') }}</a></li>
+                                    <li class="tab col s3">
+                                        <a v-bind:class="{active:selected == 1}"
+                                           @click="component = 'visualisation', selected = 1">
+                                            {{ $t('component-toggle.view') }}
+                                        </a>
+                                    </li>
+                                    <li class="tab col s3">
+                                        <a  v-bind:class="{active:selected == 2}"
+                                           @click="component = 'api-keys', selected = 2">
+                                        {{ $t('component-toggle.api-keys') }}
+                                    </a>
+                                    </li>
+                                    <li class="tab col s3">
+                                        <a v-bind:class="{active:selected == 3}"
+                                           @click="component = 'channel-settings', selected = 3">
+                                            {{ $t('component-toggle.channel-settings') }}
+                                        </a>
+                                    </li>
+                                    <li class="tab col s3">
+                                        <a v-bind:class="{active:selected == 4}"
+                                           @click="component = 'import-export', selected = 4">
+                                            {{ $t('component-toggle.import-export') }}
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
-                            <div id="test1" class="col s12">Test 1</div>
-                            <div id="test2" class="col s12">Test 2</div>
-                            <div id="test3" class="col s12">Test 3</div>
-                            <div id="test4" class="col s12">Test 4</div>
+                            <div  class="col s12">
+                                <component v-bind:is="component"></component>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -82,8 +101,24 @@
 
 <script>
     import { mapGetters } from 'vuex'
+    import Visualisation from '@/components/Visualisation'
+    import APIKeys from '@/components/APIKeys'
+    import ChannelSettings from '@/components/ChannelSettings'
+    import DataImportExport from "@/components/DataImportExport";
     export default {
         name: "detail-channels",
+        components : {
+            'visualisation': Visualisation,
+            'api-keys': APIKeys,
+            'channel-settings': ChannelSettings,
+            'import-export': DataImportExport
+        },
+        data() {
+            return {
+                component: 'visualisation',
+                selected: 1,
+            }
+        },
         computed: {
         },
         created() {

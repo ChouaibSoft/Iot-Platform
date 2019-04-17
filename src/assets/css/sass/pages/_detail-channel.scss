@@ -23,6 +23,7 @@
     .tab {
       a {
         color: $mainTitle;
+        cursor: pointer;
         &.active {color: #2bbbad;}
         &:hover {color: #2bbbad;}
         &:focus {

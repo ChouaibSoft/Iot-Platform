@@ -369,6 +369,7 @@ aside .items .active > a {
 }
 .component-section .actions .tabs .tab a {
   color: #5b616e;
+  cursor: pointer;
 }
 .component-section .actions .tabs .tab a.active {
   color: #2bbbad;

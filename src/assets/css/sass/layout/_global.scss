@@ -54,7 +54,7 @@ body{
     }
   }
   .content{
-    margin: 75px  35px 75px -50px;
+    margin: 50px  35px 75px -50px;
     @media #{$maxSmall} {
       margin: 75px 0;
     }
@@ -79,18 +79,21 @@ body{
     }
     .component-section{
       margin-top: 30px;
+      h4{
+        color: $mainTitle;
+        margin-bottom: 25px;
+      }
+      h5{
+        color: $mainTitle;
+      }
       .help{
         margin-top: -25px;
         padding-left: 20px;
-        @media #{$maxSmall} {
-          margin-top: 0;
-        }
-        h4{
-          color: $mainTitle;
-          margin-bottom: 25px;
-        }
         h5{
           color: $greyColor;
+        }
+        @media #{$maxSmall} {
+          margin-top: 0;
         }
         .help-list{
           margin-left: 18px;

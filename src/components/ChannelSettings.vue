@@ -1,5 +1,14 @@
 <template>
-    <div>settings</div>
+    <div id="settings">
+        <div class="row">
+            <div class="col s12 l6">
+                hello
+            </div>
+            <div class="col s12 l6">
+                hello
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>

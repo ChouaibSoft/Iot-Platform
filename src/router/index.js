@@ -48,13 +48,33 @@ const router = new Router({
                     component: () => import("@/views/MyChannels")
                 },
                 {
-                    path: "channels/detail",
+                    path: "channels/:id/detail",
                     name: "detail-channels",
                     meta: {
                         protected: true,
                         title: 'Detail Channel'
                     },
-                    component: () => import("@/views/DetailChannel")
+                    component: () => import("@/views/DetailChannel"),
+                    children: [
+                        {
+                            path: "channels/:id/api-key",
+                            name: "api-key",
+                            meta: {
+                                protected: true,
+                                title: 'New Channel'
+                            },
+                            component: () => import("@/components/APIKeys")
+                        },
+                        {
+                            path: "channels/:id/settings",
+                            name: "api-key",
+                            meta: {
+                                protected: true,
+                                title: 'New Channel'
+                            },
+                            component: () => import("@/components/ChannelSettings")
+                        }
+                    ]
                 }
             ]
         }

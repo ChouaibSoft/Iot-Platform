@@ -12,43 +12,15 @@
         <section class="component-section">
             <div class="row">
                 <div class="col s12 l5">
-                    <div class="channel-head" style="border-right: 1px solid #9e9e9e">
-                        <div class="row">
-                            <div class="col">
-                                <strong>{{ $t('channel-name') }}</strong>
-                            </div>
-                            <div class="col">
-                                <p>My Channel</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <strong>{{ $t('channel-id') }}</strong>
-                            </div>
-                            <div class="col">
-                                <p>#1253</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <strong>{{ $t('channel-owner') }}</strong>
-                            </div>
-                            <div class="col">
-                                <p>@chouaib</p>
-                            </div>
-                        </div>
+                    <div class="channel-head">
+                        <p><strong>{{ $t('channel-name') }}</strong> My Channel</p>
+                        <p><strong>{{ $t('channel-id') }}</strong> #52555</p>
+                        <p><strong>{{ $t('channel-name')}}</strong> @chouaibl</p>
                     </div>
                 </div>
                 <div class="col s12 l7">
-                    <div class="channel-head">
-                        <div class="row">
-                            <div class="col">
-                                <strong>{{ $t('description') }} </strong>
-                            </div>
-                            <div class="col">
-                                <p>this is description about my channel</p>
-                            </div>
-                        </div>
+                    <div class="channel-head" style="border-left: 1px solid #9e9e9e; padding: 0 20px 5px 30px">
+                        <p class="description"><strong>{{ $t('description')}}</strong> this is description, this is description, this is description, this is description, this is description</p>
                         <div>
                             <router-link to="/dashboard/channels/new" class="waves-effect waves-light btn delete-channel">
                                 <i class="fa fa-trash fa-small"></i>
@@ -61,35 +33,35 @@
                     <div class="actions">
                         <div class="row">
                             <div class="col s12">
-                                <ul class="tabs">
+                                <ul class="tabs" id="tabs-swipe-demo">
                                     <li class="tab col s3">
-                                        <a v-bind:class="{active:selected == 1}"
+                                        <a href="" v-bind:class="{active:selected == 1}"
                                            @click="component = 'visualisation', selected = 1">
                                             {{ $t('component-toggle.view') }}
                                         </a>
                                     </li>
                                     <li class="tab col s3">
-                                        <a  v-bind:class="{active:selected == 2}"
+                                        <a href="" v-bind:class="{active:selected == 2}"
                                            @click="component = 'api-keys', selected = 2">
                                         {{ $t('component-toggle.api-keys') }}
                                     </a>
                                     </li>
                                     <li class="tab col s3">
-                                        <a v-bind:class="{active:selected == 3}"
+                                        <a href="" v-bind:class="{active:selected == 3}"
                                            @click="component = 'channel-settings', selected = 3">
                                             {{ $t('component-toggle.channel-settings') }}
                                         </a>
                                     </li>
                                     <li class="tab col s3">
-                                        <a v-bind:class="{active:selected == 4}"
+                                        <a href="" v-bind:class="{active:selected == 4}"
                                            @click="component = 'import-export', selected = 4">
                                             {{ $t('component-toggle.import-export') }}
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                            <div  class="col s12">
-                                <component v-bind:is="component"></component>
+                            <div  class="col s12 call-component">
+                                <component  v-bind:is="component"></component>
                             </div>
                         </div>
                     </div>
@@ -107,7 +79,7 @@
     import DataImportExport from "@/components/DataImportExport";
     export default {
         name: "detail-channels",
-        components : {
+        components: {
             'visualisation': Visualisation,
             'api-keys': APIKeys,
             'channel-settings': ChannelSettings,
@@ -119,10 +91,9 @@
                 selected: 1,
             }
         },
-        computed: {
-        },
+        computed: {},
         created() {
-
+            console.log(this.$route.params.id)
         }
     }
     $(document).ready(function () {
@@ -159,7 +130,7 @@
     "description": "Description :",
     "delete-channel": "Canal",
     "component-toggle": {
-    "view": "VisualisImport / export de donnéesation",
+    "view": "Visualisation",
     "api-keys": "API keys",
     "channel-settings": "Paramètres",
     "import-export": "Import / Export de données"

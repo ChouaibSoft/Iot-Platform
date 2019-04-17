@@ -2,7 +2,7 @@
     <div id="api-key">
         <div class="row">
             <div class="col s12 l6">
-                <form class="form" id="add-canal" @submit.prevent="keyGenerator">
+                <form class="form" id="add-canal" @submit.prevent.once="keyGenerator">
                     <generic-form>
                         <div slot="form-fields">
                             <div class="row">
@@ -10,9 +10,7 @@
                                     <input
                                             id="write-key"
                                             type="text"
-                                            required
-                                            autofocus
-                                            v-model="getCanal.cleEcriture"
+                                            v-model="this.keyWrite"
                                             class="validate"
                                             >
                                     <label for="write-key">{{ $t('write-api-key') }}</label>
@@ -23,8 +21,7 @@
                                         <input
                                             id="read-key"
                                             type="text"
-                                            required
-                                            v-model="getCanal.cleLecture"
+                                            v-model="this.keyRead"
                                             class="validate"/>
                                     <label for="read-key">{{ $t('read-api-key') }}</label>
                                 </div>
@@ -49,8 +46,9 @@
                     <h6>{{$t('update-url')}}</h6>
                     <pre>  POST : <span>http://localhost:8091/record?key=</span><span class="key">{{getCanal.cleEcriture}}{{this.paramlist}}</span></pre>
                     <h6>{{$t('read-url')}}</h6>
-                    <pre v-for="f in getFields" v-bind:key="f.id">  GET : <span>http://localhost:8091/record?key=</span><span class="key">={{getCanal.cleLecture}}&field={{f.nom}}</span></pre>
-
+                    <div v-if="isShow">
+                        <pre  v-for="f in displayFields()" v-bind:key="f.id">  GET : <span>http://localhost:8091/record?key=</span><span class="key">={{getCanal.cleLecture}}&field={{f.nom}}</span></pre>
+                    </div>
                 </div>
             </div>
             <div class="col s12 l6">
@@ -86,6 +84,9 @@
         data(){
             return{
                 paramlist: '',
+                keyWrite: '',
+                keyRead: '',
+                isShow: false
             }
         },
         computed:{
@@ -99,9 +100,16 @@
                     'all': true
                 };
                 this.$store.dispatch('getRequest', payload);
+                this.keyWrite = this.$store.getters.getCanal.cleEcriture;
+                this.keyRead = this.$store.getters.getCanal.cleLecture;
                 this.getFields.forEach( f => {
                     this.paramlist=this.paramlist + "&"+f.nom+"=";
                 });
+                this.displayFields();
+                this.isShow = true;
+            },
+            displayFields(){
+                return this.$store.getters.getFields
             }
         }
     }

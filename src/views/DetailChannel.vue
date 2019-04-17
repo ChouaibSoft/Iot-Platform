@@ -87,10 +87,6 @@
                 'all': false
             };
             this.$store.dispatch('getRequest', payload);
-        },
-        destroyed(){
-            //this.$store.dispatch('setNull')
-
         }
     }
     $(document).ready(function () {

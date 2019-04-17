@@ -46,6 +46,15 @@ const router = new Router({
                         title: 'My Channels'
                     },
                     component: () => import("@/views/MyChannels")
+                },
+                {
+                    path: "channels/detail",
+                    name: "detail-channels",
+                    meta: {
+                        protected: true,
+                        title: 'Detail Channel'
+                    },
+                    component: () => import("@/views/DetailChannel")
                 }
             ]
         }
@@ -53,13 +62,13 @@ const router = new Router({
 })
 router.beforeEach((to, from, next) => {
     if (!to.meta.protected) { //route is public, don't check for authentication
-        if(store.state.token != null && to.path === '/auth'){
+        if(store.getters.getToken != null && to.path === '/auth'){
             router.push('/dashboard');
         }else{
             next()
         }
     } else {  //route is protected, if authenticated, proceed. Else, login
-        if(store.state.token != null){
+        if(store.getters.getToken!= null){
             next()
         }else{
             router.push('/auth');

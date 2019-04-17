@@ -11,12 +11,19 @@
                         <ul class="actions right">
                             <li>
                             <li>
-                                <router-link to="/dashboard/channels/new" class="btn-floating  waves-effect waves-light btn-large teal lighten-1" style="width: 45px; height: 45px; line-height: 42px">
+                                <router-link to="/dashboard/channels/new"
+                                             class="tooltipped btn-floating  waves-effect waves-light btn-large teal lighten-1"
+                                             data-position="bottom" :data-tooltip="this.$t('tooltips.add-channel')"
+                                             style="width: 45px; height: 45px; line-height: 42px">
                                     <i class="material-icons">add</i>
                                 </router-link>
                             </li>
-                            <li><a class="dropdown-trigger drop-button waves-effect waves-light" data-target="lang" href=""><flag style="width: 45px; height: 25px;" :iso="getFlag" v-bind:squared=false /></a></li>
-                            <li><a class="dropdown-trigger drop-button" href="" data-target="dropdown1"><img src="../assets/images/header6.jpg" alt="profile-image"></a></li>
+                            <li>
+                                <a class="dropdown-trigger drop-button waves-effect waves-light" data-target="lang" href="">
+                                    <flag style="width: 45px; height: 25px;" :iso="getFlag" v-bind:squared=false />
+                                 </a>
+                            </li>
+                            <li><a class=" dropdown-trigger drop-button waves-effect waves-light" href="" data-target="dropdown1"><img src="../assets/images/header6.jpg" alt="profile-image"></a></li>
                         </ul>
                         <ul class="controls">
                             <li>
@@ -26,8 +33,16 @@
                                     <span class="bars"></span>
                                 </a>
                             </li>
-                            <li class="hide-on-med-and-down"><a href="#" data-position="bottom tooltipped" data-tooltip="I am a tooltip" class="waves-effect waves-light"><i class="material-icons">search</i></a></li>
-                            <li class="hide-on-med-and-down"><a href="#" class="waves-effect waves-light"><i class="material-icons">notifications_active</i></a></li>
+                            <li class="hide-on-med-and-down">
+                                <a href="#"
+                                   data-position="bottom" :data-tooltip="this.$t('tooltips.search')"
+                                   class="waves-effect waves-light tooltipped"><i class="material-icons">search</i></a>
+                            </li>
+                            <li class="hide-on-med-and-down">
+                                <a href="#" class="waves-effect waves-light tooltipped"
+                                   data-position="bottom" :data-tooltip="this.$t('tooltips.notification')">
+                                <i class="material-icons">notifications_active</i></a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -75,6 +90,10 @@
     }
     $( document ).ready(function() {
         $(".drop-button").dropdown();
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+            $('.tooltipped').tooltip();
+        });
     });
 </script>
 

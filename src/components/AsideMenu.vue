@@ -88,10 +88,10 @@
                     <span>Bussiness</span>
                 </li>
                 <li class="item-header">
-                    <a href="#" class="group-name has-arrow">
+                    <router-link to="/dashboard/channels" class="group-name has-arrow">
                         <i class="fa fa-chart-bar"></i>
                         <span>Canaux</span>
-                    </a>
+                    </router-link>
                 </li>
                 <li class="small-cap">
                     <span>Fermer</span>

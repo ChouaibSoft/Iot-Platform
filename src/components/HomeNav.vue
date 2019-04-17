@@ -34,6 +34,9 @@
             ])
         }
     }
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+    });
 </script>
 <i18n>
     {

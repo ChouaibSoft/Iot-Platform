@@ -36,12 +36,12 @@
     }
     .dropdown-trigger{
       height: 63px;
+      span{
+        line-height: 20px;
+      }
     }
     i{
       line-height: 63px;
-    }
-    span{
-      line-height: 20px;
     }
   }
   .controls{

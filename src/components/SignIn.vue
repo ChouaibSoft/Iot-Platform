@@ -90,7 +90,6 @@
             },
             loginSuccessful(req) {
                 if (req.headers) {
-                    //localStorage.token = req.headers.authorization;
                     this.$store.dispatch('saveUserToken', req.headers.authorization);
                     this.$http.get( 'http://localhost:8091/id',{
                             headers:{
@@ -98,7 +97,6 @@
                                 'Authorization': 'Bearer '+ this.$store.state.token
                             }
                         }
-
                     ).then(request=>this.$store.dispatch('saveUserId', request.data))
                     this.switchProgress();
                     setTimeout(() => {
@@ -106,7 +104,6 @@
                         this.$router.push('/dashboard');
                     },2000);
                     return false;
-
                 }
             },
         },

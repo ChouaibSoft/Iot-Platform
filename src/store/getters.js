@@ -3,14 +3,14 @@ const getters = {
     isLogged: state => {
         return state.isLogged;
     },
-    token: state => {
+    getToken: state => {
         return state.token;
-    },
-    getCanals: state => {
-        return state.canals;
     },
     getFlag: state =>{
         return state.flag
+    },
+    getCanals: state =>{
+        return state.canals
     }
 }
 export default getters

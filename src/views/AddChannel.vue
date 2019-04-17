@@ -38,15 +38,14 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input
+                                        <textarea
                                                 id="description"
-                                                type="text"
                                                 class="validate"
                                                 required
                                                 minlength="5"
-                                                maxlength="30"
                                                 v-model="description"
                                                 @input="$v.description.$touch()">
+                                        </textarea>
                                         <label for="description">{{ $t('canal.description') }}</label>
                                         <div v-if="$v.description.$dirty">
                                             <p class="error-message red-text " v-if="!$v.description.required">
@@ -69,7 +68,7 @@
                                         <label  v-bind:for="field.name" >
                                            {{ $t('canal.fieldX', {num: index + 1}) }}
                                         </label>
-                                        <i @click="deleteField(index)" v-if="index > 2" class="fa fa-times delete-field red-text text-darken-5"></i>
+                                        <i @click="deleteField(index)" v-if="index > 0" class="fa fa-times delete-field red-text text-darken-5"></i>
                                     </div>
                                 </div>
                             </div>
@@ -157,17 +156,8 @@
                         name: 'field1',
                         value: ''
                     },
-                    {
-                        name: 'field2',
-                        value: ''
-                    },
-                    {
-                        name: 'field3',
-                        value: ''
-                    }
                 ],
                 iduser:'',
-                dateCreation:'',
             }
         },
         computed:{
@@ -179,8 +169,7 @@
                 var postData = {
                     nom: this.name,
                     description: this.description,
-                    dateCreation:new Date(),
-                    userid: this.$store.state.userId
+                    userId: this.$store.state.userId
                 };
 
                 for(var i = 1; i <= this.fields.length; i++){

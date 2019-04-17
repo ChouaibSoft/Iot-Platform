@@ -1,11 +1,4 @@
 const mutations = {
-    LOGIN (state) {
-        state.pending = true;
-    },
-    LOGIN_SUCCESS (state) {
-        state.isLogged = true;
-        state.pending = false;
-    },
     LOGOUT(state) {
         state.token = null;
         state.isLogged = false;

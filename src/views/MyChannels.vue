@@ -2,7 +2,7 @@
     <div id="content">
         <div class="row page-title-path">
             <div class="col">
-                <h2>My Channels</h2>
+                <h2>{{ $t('main-title') }}</h2>
             </div>
             <div class="col right">
                 <p>Home > <span> My Channels</span></p>
@@ -10,7 +10,7 @@
 
         </div>
         <section class="component-section">
-            <div class="row">
+            <div v-if="getCanals.length > 0" class="row">
                 <div class="col s12 l8">
                     <table class = "striped bordered responsive-table">
                         <thead>
@@ -22,7 +22,7 @@
                         </thead>
 
                         <tbody>
-                        <tr v-for="canal in getCanals">
+                        <tr v-for="canal in getCanals" v-bind:key="canal">
                             <td>{{canal.nom}}</td>
                             <td>{{canal.description}}</td>
                             <td>{{canal.dateCreation}}</td>
@@ -40,6 +40,16 @@
                     </div>
                 </div>
             </div>
+            <div v-else class="row">
+                <div  class="col s12">
+                    <div class="alert alert-info" role="alert">
+                        {{ $t('no-channel') }}
+                    </div>
+                    <router-link to="/dashboard/channels/new" class="waves-effect waves-light btn">
+                        {{ $t('add-channel') }}
+                    </router-link>
+                </div>
+            </div>
         </section>
     </div>
 </template>
@@ -53,7 +63,7 @@
         },
         created() {
             var payload = {
-                'link': 'appUsers/' + this.$store.state.userId + '/canals',
+                'link': '/appUsers/' + this.$store.state.userId + '/canals',
                 'mutation': 'setCanals'
 
             };
@@ -65,3 +75,18 @@
 <style scoped>
 
 </style>
+<i18n>
+    {
+    "en": {
+    "main-title": "My Channels",
+    "no-channel": "No Channel to displayed",
+    "add-channel": "New Channel"
+    },
+    "fr": {
+    "main-title": "Mes Canaux",
+    "no-channel": "Aucun Canal à Afficher",
+    "add-channel": "Nouveau Canal"
+
+    }
+    }
+</i18n>

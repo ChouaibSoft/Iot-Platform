@@ -23,5 +23,10 @@
     "add": "Add",
     "add-success": "Canal added successfully.",
     "add-error": "Canal add operation failed !"
+  },
+  "tooltips": {
+    "add-channel": "new channel",
+    "notification": "notifications",
+    "search": "search here"
   }
 }

@@ -8,7 +8,7 @@
     "password": "mot de passe",
     "conf-password": "Confirmation du mot de passe",
     "success": "Félicitation !",
-    "error": "Echec de l'enregistrement !"
+    "error": "E●●●●●●chec de l'enregistrement !"
   },
   "errors": {
     "required": "ce champ est obligatoire.",
@@ -23,5 +23,10 @@
     "add": "Ajouter",
     "add-success": "Canal ajouté avec succès.",
     "add-error": "L'opération d'ajout de canal a échoué !"
+  },
+  "tooltips": {
+    "add-channel": "nouveau canal",
+    "notification": "notifications",
+    "search": "rechercher ici"
   }
 }

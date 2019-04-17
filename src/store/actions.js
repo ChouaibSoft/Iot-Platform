@@ -35,12 +35,19 @@ const actions = {
                 'Authorization': 'Bearer ' + state.token
             }
         }).then(request => {
-            commit(payload.mutation, request.data.content);
+            if (payload.all){
+                commit(payload.mutation, request.data.content);
+            }else{
+                commit(payload.mutation, request.data);
+            }
         })
     },
     changeLocale({commit, state}, lang){
         commit('changeLocale', lang);
         i18n.locale = state.locale;
+    },
+    setNull({commit}){
+        commit('setNull')
     }
 };
 export default actions;

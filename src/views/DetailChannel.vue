@@ -13,14 +13,14 @@
             <div class="row">
                 <div class="col s12 l5">
                     <div class="channel-head">
-                        <p><strong>{{ $t('channel-name') }}</strong> My Channel</p>
-                        <p><strong>{{ $t('channel-id') }}</strong> #52555</p>
-                        <p><strong>{{ $t('channel-name')}}</strong> @chouaibl</p>
+                        <p><strong>{{ $t('channel-name') }}</strong>{{ getCanal.nom }}</p>
+                        <p><strong>{{ $t('channel-id') }}</strong>#{{ getCanal.id }}</p>
+                        <p><strong>{{ $t('channel-name')}}</strong>@chouaib</p>
                     </div>
                 </div>
                 <div class="col s12 l7">
                     <div class="channel-head" style="border-left: 1px solid #9e9e9e; padding: 0 20px 5px 30px">
-                        <p class="description"><strong>{{ $t('description')}}</strong> this is description, this is description, this is description, this is description, this is description</p>
+                        <p class="description"><strong>{{ $t('description')}}</strong>{{ getCanal.description }}</p>
                         <div>
                             <router-link to="/dashboard/channels/new" class="waves-effect waves-light btn delete-channel">
                                 <i class="fa fa-trash fa-small"></i>
@@ -35,22 +35,22 @@
                             <div class="col s12">
                                 <ul class="tabs" id="tabs-swipe-demo">
                                     <li class="tab col s3">
-                                        <router-link to="/dashboard/channels/3/detail/view">
+                                        <router-link to="/dashboard/channels/1/view">
                                             {{ $t('component-toggle.view') }}
                                         </router-link>
                                     </li>
                                     <li class="tab col s3">
-                                        <router-link to="/dashboard/channels/3/detail/api-key">
+                                        <router-link to="/dashboard/channels/1/api-key">
                                         {{ $t('component-toggle.api-keys') }}
                                     </router-link>
                                     </li>
                                     <li class="tab col s3">
-                                        <router-link to="/dashboard/channels/3/detail/settings">
+                                        <router-link to="/dashboard/channels/3/settings">
                                             {{ $t('component-toggle.channel-settings') }}
                                         </router-link>
                                     </li>
                                     <li class="tab col s3">
-                                        <router-link to="/dashboard/channels/3/detail/data-import-export">
+                                        <router-link to="/dashboard/channels/3/data-import-export">
                                             {{ $t('component-toggle.import-export') }}
                                         </router-link>
                                     </li>
@@ -69,27 +69,28 @@
 
 <script>
     import { mapGetters } from 'vuex'
-    import Visualisation from '@/components/Visualisation'
-    import APIKeys from '@/components/APIKeys'
-    import ChannelSettings from '@/components/ChannelSettings'
-    import DataImportExport from "@/components/DataImportExport";
+
     export default {
         name: "detail-channels",
-        components: {
-            'visualisation': Visualisation,
-            'api-keys': APIKeys,
-            'channel-settings': ChannelSettings,
-            'import-export': DataImportExport
-        },
         data() {
             return {
-                component: 'visualisation',
-                selected: 1,
             }
         },
-        computed: {},
-        created() {
-            console.log(this.$route.params.id)
+        computed: {
+            ...mapGetters(['getCanal'])
+        },
+        created(){
+
+            var payload = {
+                'link': '/appUsers/' + this.$store.state.userId + '/canals/' + this.$route.params.id,
+                'mutation': 'setCanal',
+                'all': false
+            };
+            this.$store.dispatch('getRequest', payload);
+        },
+        destroyed(){
+            //this.$store.dispatch('setNull')
+
         }
     }
     $(document).ready(function () {

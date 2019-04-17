@@ -2,7 +2,7 @@
     <div id="api-key">
         <div class="row">
             <div class="col s12 l6">
-                <form class="form" id="add-canal" @submit.prevent="">
+                <form class="form" id="add-canal" @submit.prevent="keyGenerator">
                     <generic-form>
                         <div slot="form-fields">
                             <div class="row">
@@ -11,7 +11,8 @@
                                             id="write-key"
                                             type="text"
                                             required
-                                            minlength="3"
+                                            autofocus
+                                            v-model="getCanal.cleEcriture"
                                             class="validate"
                                             >
                                     <label for="write-key">{{ $t('write-api-key') }}</label>
@@ -20,11 +21,11 @@
                             <div class="row">
                                 <div class="input-field col s12">
                                         <input
-                                                id="read-key"
-                                                type="text"
-                                                class="validate"
-                                                required
-                                                minlength="5"/>
+                                            id="read-key"
+                                            type="text"
+                                            required
+                                            v-model="getCanal.cleLecture"
+                                            class="validate"/>
                                     <label for="read-key">{{ $t('read-api-key') }}</label>
                                 </div>
                             </div>
@@ -46,9 +47,9 @@
                 <h5>{{$t('api-requests')}}</h5>
                 <div class="urls">
                     <h6>{{$t('update-url')}}</h6>
-                    <pre>  POST : <span>http://localhost:8091/record?key=</span><span class="key">454545454dfd5f4d5f4d5f4d5f4d5f4d5fdfdf</span></pre>
+                    <pre>  POST : <span>http://localhost:8091/record?key=</span><span class="key">{{getCanal.cleEcriture}}{{this.paramlist}}</span></pre>
                     <h6>{{$t('read-url')}}</h6>
-                    <pre>  GET : <span>http://localhost:8091/record?key=</span><span class="key">454545454dfd5f4d5f4d5f4d5f4d5f4d5fdfdf</span></pre>
+                    <pre v-for="f in getFields" v-bind:key="f.id">  GET : <span>http://localhost:8091/record?key=</span><span class="key">={{getCanal.cleLecture}}&field={{f.nom}}</span></pre>
 
                 </div>
             </div>
@@ -75,8 +76,34 @@
 </template>
 
 <script>
+    import Form from "@/components/Form";
+    import {mapGetters } from 'vuex'
     export default {
-        name: "API-keys"
+        name: "API-keys",
+        components: {
+            'generic-form': Form,
+        },
+        data(){
+            return{
+                paramlist: '',
+            }
+        },
+        computed:{
+            ...mapGetters(['getCanal', 'getFields'])
+        },
+        methods: {
+            keyGenerator(){
+                var payload = {
+                    'link': '/canals/' + this.$store.state.canal.id + '/fields',
+                    'mutation': 'setFields',
+                    'all': true
+                };
+                this.$store.dispatch('getRequest', payload);
+                this.getFields.forEach( f => {
+                    this.paramlist=this.paramlist + "&"+f.nom+"=";
+                });
+            }
+        }
     }
 </script>
 
@@ -97,7 +124,7 @@
     "generate": "Generate New API Key",
     "api-requests": "API Requests",
     "update-url": "Update URL",
-    "read-url": "Read URL"
+    "read-url": "Read URLs"
     },
     "fr": {
     "api-key-des": "Les clés API vous permettent d'écrire des données sur un canal ou de lire des données d'un canal privé. Les clés API sont générées automatiquement lorsque vous créez un nouveau canal.",
@@ -111,7 +138,7 @@
     "generate": "Générer une nouvelle clé API",
     "api-requests": "Requêtes API",
     "update-url": "Update URL",
-    "read-url": "Read URL"
+    "read-url": "Read URLs"
     }
     }
 </i18n>

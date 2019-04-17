@@ -11,6 +11,12 @@ const getters = {
     },
     getCanals: state =>{
         return state.canals
+    },
+    getCanal: state =>{
+        return state.canal
+    },
+    getFields: state =>{
+        return state.fields
     }
 }
 export default getters

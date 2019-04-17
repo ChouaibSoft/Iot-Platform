@@ -48,7 +48,7 @@ const router = new Router({
                     component: () => import("@/views/MyChannels")
                 },
                 {
-                    path: "channels/:id/detail",
+                    path: "channels/:id",
                     name: "detail-channels",
                     meta: {
                         protected: true,

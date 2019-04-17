@@ -15,6 +15,8 @@ export const store = new Vuex.Store ({
       userId: '',
       token: null,
       canals: null,
+      canal: null,
+      fields: null,
       apiURL: 'http://localhost:8091',
       locale: 'en', // Default Language,
       flag: 'us'

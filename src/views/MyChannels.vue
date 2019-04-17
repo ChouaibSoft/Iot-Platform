@@ -64,8 +64,8 @@
         created() {
             var payload = {
                 'link': '/appUsers/' + this.$store.state.userId + '/canals',
-                'mutation': 'setCanals'
-
+                'mutation': 'setCanals',
+                'all': true
             };
             this.$store.dispatch('getRequest', payload);
         }

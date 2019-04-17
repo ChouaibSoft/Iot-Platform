@@ -18,6 +18,15 @@ const mutations = {
     setCanals(state, payload){
         state.canals = payload;
     },
+    setCanal(state, payload){
+        state.canal = payload;
+    },
+    setFields(state, payload){
+        state.fields = payload;
+    },
+    setNull(state){
+        state.fields = null;
+    },
     changeLocale(state, lang){
         state.locale = lang.language;
         state.flag = lang.flag;

@@ -389,7 +389,7 @@ aside .items .active > a {
   margin-top: 30px;
 }
 .component-section .call-component .urls {
-  margin-left: 20px;
+  margin-left: 1rem;
 }
 .component-section .call-component .urls h6 {
   color: #9098ac;

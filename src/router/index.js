@@ -57,22 +57,40 @@ const router = new Router({
                     component: () => import("@/views/DetailChannel"),
                     children: [
                         {
-                            path: "channels/:id/api-key",
+                            path: "view",
+                            name: "view",
+                            meta: {
+                                protected: true,
+                                title: 'Channel Visualisation'
+                            },
+                            component: () => import("@/components/Visualisation")
+                        },
+                        {
+                            path: "api-key",
                             name: "api-key",
                             meta: {
                                 protected: true,
-                                title: 'New Channel'
+                                title: 'API key'
                             },
                             component: () => import("@/components/APIKeys")
                         },
                         {
-                            path: "channels/:id/settings",
+                            path: "settings",
                             name: "api-key",
                             meta: {
                                 protected: true,
-                                title: 'New Channel'
+                                title: 'Channel Settings'
                             },
                             component: () => import("@/components/ChannelSettings")
+                        },
+                        {
+                            path: "data-import-export",
+                            name: "data-import-export",
+                            meta: {
+                                protected: true,
+                                title: 'Data Import Export'
+                            },
+                            component: () => import("@/components/DataImportExport")
                         }
                     ]
                 }

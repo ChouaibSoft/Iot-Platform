@@ -2,7 +2,7 @@
     <div id="settings">
         <div class="row">
             <div class="col s12 l6">
-                hello
+                settings
             </div>
             <div class="col s12 l6">
                 hello

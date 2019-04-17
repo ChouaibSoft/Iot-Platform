@@ -35,33 +35,29 @@
                             <div class="col s12">
                                 <ul class="tabs" id="tabs-swipe-demo">
                                     <li class="tab col s3">
-                                        <a href="" v-bind:class="{active:selected == 1}"
-                                           @click="component = 'visualisation', selected = 1">
+                                        <router-link to="/dashboard/channels/3/detail/view">
                                             {{ $t('component-toggle.view') }}
-                                        </a>
+                                        </router-link>
                                     </li>
                                     <li class="tab col s3">
-                                        <a href="" v-bind:class="{active:selected == 2}"
-                                           @click="component = 'api-keys', selected = 2">
+                                        <router-link to="/dashboard/channels/3/detail/api-key">
                                         {{ $t('component-toggle.api-keys') }}
-                                    </a>
+                                    </router-link>
                                     </li>
                                     <li class="tab col s3">
-                                        <a href="" v-bind:class="{active:selected == 3}"
-                                           @click="component = 'channel-settings', selected = 3">
+                                        <router-link to="/dashboard/channels/3/detail/settings">
                                             {{ $t('component-toggle.channel-settings') }}
-                                        </a>
+                                        </router-link>
                                     </li>
                                     <li class="tab col s3">
-                                        <a href="" v-bind:class="{active:selected == 4}"
-                                           @click="component = 'import-export', selected = 4">
+                                        <router-link to="/dashboard/channels/3/detail/data-import-export">
                                             {{ $t('component-toggle.import-export') }}
-                                        </a>
+                                        </router-link>
                                     </li>
                                 </ul>
                             </div>
                             <div  class="col s12 call-component">
-                                <component  v-bind:is="component"></component>
+                                <router-view></router-view>
                             </div>
                         </div>
                     </div>

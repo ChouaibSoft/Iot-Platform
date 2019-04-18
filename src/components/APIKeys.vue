@@ -31,7 +31,7 @@
                             <div>
                                 <div class="row">
                                     <div class="col right">
-                                        <button type="submit" class="button waves-effect waves-light btn">
+                                        <button type="submit" class="button waves-effect waves-light btn" :disabled="isDisabled">
                                             {{ $t('generate') }}
                                             <i class="material-icons right">send</i>
                                         </button>
@@ -88,7 +88,8 @@
                 paramlist: '',
                 keyWrite: '',
                 keyRead: '',
-                isShow: false
+                isShow: false,
+                isDisabled: false
             }
         },
         computed:{
@@ -109,6 +110,7 @@
                 });
                 this.displayFields();
                 this.isShow = true;
+                this.isDisabled = true;
             },
             displayFields(){
                 return this.$store.getters.getFields

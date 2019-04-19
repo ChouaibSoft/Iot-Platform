@@ -36,18 +36,23 @@ const actions = {
             }
         }).then(request => {
             if (payload.all){
-                commit(payload.mutation, request.data.content);
+                if (request.data.content[0].id === undefined){
+                    commit(payload.mutation, null);
+                }else{
+                    commit(payload.mutation, request.data.content);
+
+                }
             }else{
                 commit(payload.mutation, request.data);
             }
+        }).catch(error => {
+            commit(payload.mutation, null);
+            router.push("/dashboard");
         })
     },
     changeLocale({commit, state}, lang){
         commit('changeLocale', lang);
         i18n.locale = state.locale;
-    },
-    setNull({commit}){
-        commit('setNull')
     }
 };
 export default actions;

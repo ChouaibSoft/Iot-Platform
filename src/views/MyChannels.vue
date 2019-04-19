@@ -10,7 +10,7 @@
 
         </div>
         <section class="component-section">
-            <div v-if="getCanals.length > 0" class="row">
+            <div v-if="!(this.$store.state.canals === null) " class="row">
                 <div class="col s12 l8">
                     <table class = "striped bordered responsive-table">
                         <thead>
@@ -68,6 +68,7 @@
                 'all': true
             };
             this.$store.dispatch('getRequest', payload);
+            console.log(this.$store.state.canals)
         }
     }
 </script>

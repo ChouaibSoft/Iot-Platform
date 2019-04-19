@@ -25,6 +25,8 @@ const mutations = {
         state.fields = payload;
     },
     setNull(state){
+        state.canals = null,
+        state.canal = null,
         state.fields = null;
     },
     changeLocale(state, lang){

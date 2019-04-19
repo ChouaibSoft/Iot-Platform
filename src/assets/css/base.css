@@ -452,6 +452,7 @@ aside .items .active > a {
   width: 100%;
   height: 90px;
   border-bottom: 1px solid #9e9e9e;
+  outline: none !important;
 }
 .form textarea:focus + label {
   color: #2bbbad;

@@ -140,6 +140,7 @@ body .content .component-section .help h5 {
 @media (max-width: 992px) {
   body .content .component-section .help {
     margin-top: 0;
+    padding-left: 0px;
   }
 }
 body .content .component-section .help .help-list {
@@ -317,24 +318,25 @@ aside .items .item-header .items-group li:hover a {
 aside .items .item-header > a {
   color: rgba(209, 209, 209, 0.7);
 }
-aside .items .active {
+aside .items .now {
   margin-left: -10px;
 }
-aside .items .active .has-arrow::after {
+aside .items .now .has-arrow::after {
   -webkit-transform: rotate(230deg);
   -moz-transform: rotate(230deg);
   -o-transform: rotate(230deg);
   -ms-transform: rotate(230deg);
   transform: rotate(230deg);
 }
-aside .items .active .items-group {
-  display: block;
-}
-aside .items .active > a {
+aside .items .now > a {
   background: linear-gradient(to right, #11d7e4 0%, #48eaa1 100%);
   border-radius: 60px;
   padding: 9px 15px;
   color: #fff;
+}
+aside .items .now .active {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: bold;
 }
 
 .full-aside {
@@ -456,7 +458,7 @@ aside .items .active > a {
   border-radius: 4px;
   position: relative;
   padding: 0;
-  margin: 2px auto;
+  margin: 2px 0;
   width: 95%;
 }
 .form .row {

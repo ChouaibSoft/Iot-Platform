@@ -5,10 +5,10 @@
         <section class="dashboard">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col l3 hide-on-med-and-down" style="padding: 0 !important;">
+                    <div class="col l3" style="padding: 0 !important;">
                         <aside-menu></aside-menu>
                     </div>
-                    <div class="col l9 s12">
+                    <div class="col l9 s12 dash-area">
                         <section class="content">
                             <div class="row">
                                 <flash-message  class="in-left"></flash-message>

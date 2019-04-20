@@ -28,7 +28,8 @@
   "tooltips": {
     "add-channel": "nouveau canal",
     "notification": "notifications",
-    "search": "rechercher ici"
+    "search": "rechercher ici",
+    "collapse-menu": "Réduire le menu"
   },
   "page-title": {
     "auth": "Authentication",

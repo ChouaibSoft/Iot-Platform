@@ -26,8 +26,9 @@
                             <li><a class=" dropdown-trigger drop-button waves-effect waves-light" href="" data-target="dropdown1"><img src="../assets/images/header6.jpg" alt="profile-image"></a></li>
                         </ul>
                         <ul class="controls">
-                            <li>
-                                <a href="#" class="sidenav-trigger waves-effect waves-light">
+                            <li class="collapse-menu">
+                                <a href="#!" class="sidenav-trigger waves-effect waves-light tooltipped"
+                                   data-position="bottom" :data-tooltip="this.$t('tooltips.collapse-menu')">
                                     <span class="bars"></span>
                                     <span class="bars long"></span>
                                     <span class="bars"></span>
@@ -90,10 +91,37 @@
     }
     $( document ).ready(function() {
         $(".drop-button").dropdown();
-        $(document).ready(function(){
-            $('.sidenav').sidenav();
-            $('.tooltipped').tooltip();
+        $('.sidenav').sidenav();
+        $('.tooltipped').tooltip();
+
+        // Fixed Menu
+        $(".collapse-menu").on("click", function(){
+            var fixedMenu = $("aside"),
+                dashArea = $(".dash-area");
+            fixedMenu.toggleClass("is-visible");
+            if (fixedMenu.hasClass("is-visible")){
+                fixedMenu.animate({
+                    left : "-256px"
+                },500);
+                if(window.innerWidth > 992) {
+                    dashArea.animate({
+                        paddingLeft: "90px",
+                        paddingRight: 0,
+                        width: "100%"
+                    }, 500);
+                }
+            }else{
+                fixedMenu.animate({
+                    left : '-2px'
+                },500);
+                if(window.innerWidth > 992) {
+                    dashArea.animate({
+                        paddingLeft: "340px"
+                    }, 500);
+                }
+            }
         });
+
     });
 </script>
 

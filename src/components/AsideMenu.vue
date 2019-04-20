@@ -5,69 +5,64 @@
                 <li class="small-cap">
                     <span>Personnal</span>
                 </li>
-                <li class="item-header" v-bind:class="{active: selected === 'item1'}">
-                    <a  class="group-name has-arrow" @click="selected = 'item1'">
+                <li class="item-header">
+                    <a  class="group-name has-arrow">
                         <i class="fa fa-home"></i>
                         <span>Dashboard</span>
                     </a>
-                    <transition name="slide">
-                        <div v-if="selected === 'item1'">
-                            <ul class="items-group">
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-dot-circle"></i>
-                                        <span>Dashboard-1</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-dot-circle"></i>
-                                        <span>Dashboard-2</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-dot-circle"></i>
-                                        <span>Dashboard-3</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </transition>
+                    <div>
+                        <ul class="items-group">
+                            <li>
+                                <a href="#" class="active">
+                                    <i class="fa fa-dot-circle"></i>
+                                    <span>Dashboard-1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-dot-circle"></i>
+                                    <span>Dashboard-2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-dot-circle"></i>
+                                    <span>Dashboard-3</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
-
                 <li class="small-cap">
                     <span>Information</span>
                 </li>
-                <li class="item-header" v-bind:class="{active: selected === 'item2'}">
-                    <a  class="group-name has-arrow" @click="selected = 'item2'">
+                <li class="item-header">
+                    <a class="group-name has-arrow">
                         <i class="fa fa-home"></i>
                         <span>Dashboard</span>
                     </a>
-                    <transition name="slide">
-                        <div v-if="selected === 'item2'">
-                            <ul class="items-group">
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-dot-circle"></i>
-                                        <span>Dashboard-1</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-dot-circle"></i>
-                                        <span>Dashboard-2</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-dot-circle"></i>
-                                        <span>Dashboard-3</span>
-                                    </a>
-                                </li>
-                            </ul>
-                    </div>
-                    </transition>
+                    <div>
+                        <ul class="items-group">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-dot-circle"></i>
+                                    <span>Dashboard-1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-dot-circle"></i>
+                                    <span>Dashboard-2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-dot-circle"></i>
+                                    <span>Dashboard-3</span>
+                                </a>
+                            </li>
+                        </ul>
+                     </div>
                 </li>
                 <li class="small-cap">
                     <span>Information</span>
@@ -122,6 +117,64 @@
             ])
         }
     }
+    $(document).ready(function(){
+        var aside = $("aside"),
+            dashArea = $(".dash-area");
+        if(window.innerWidth < 992){
+            aside.animate({
+                left : "-256px"
+            },500);
+            dashArea.animate({
+                width: "98vw",
+                paddingLeft: "15px"
+            }, 500);
+        }
+
+        // Adjust Aside Menu During Window Resize
+        $(window).resize(function () {
+            if(window.innerWidth > 992){
+                if (aside.hasClass("is-visible")){
+                    aside.animate({
+                        left : '-256px'
+                    },500);
+                    dashArea.animate({
+                        paddingLeft: "90px",
+                        paddingRight: 0,
+                        width: "100%"
+                    }, 500);
+                }else{
+                    aside.animate({
+                        left : '0'
+                    },500);
+                    dashArea.animate({
+                        paddingLeft: "340px",
+                    }, 500);
+                }
+            }else{
+                aside.animate({
+                    left : "-256px"
+                },500);
+                dashArea.animate({
+                    width: "98vw",
+                    paddingLeft: "15px"
+                }, 500);
+            }
+        });
+
+        // Add now class to active dropdow list
+        $(".item-header").click(function() {
+            $(this).addClass("now").siblings().removeClass("now").end()
+                .find('.items-group').slideDown(300).end()
+                .siblings('.item-header').find('.items-group').slideUp(300);
+        });
+        // Add Selected Class in Active Link
+        $(".item-header").each(function () {
+            if ($(this).find("a").hasClass("active")){
+                $(this).addClass('now').find('.items-group').slideDown(300).end()
+                    .siblings('.item-header').find('.items-group').slideUp(300);
+            }
+        });
+    });
 </script>
 
 <style scoped>

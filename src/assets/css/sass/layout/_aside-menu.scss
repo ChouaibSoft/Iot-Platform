@@ -71,21 +71,22 @@ aside {
         color: rgba($textColor, .7);
       }
     }
-    .active{
+    .now{
       margin-left: -10px;
       .has-arrow{
         &::after{
           @include prefixer(transform, rotate(230deg), webkit moz o ms);
         }
       }
-      .items-group{
-        display: block;
-      }
       >a{
         background: linear-gradient(to right, #11d7e4 0%, #48eaa1 100%);
         border-radius: 60px;
         padding: 9px 15px;
         color: #fff;
+      }
+      .active{
+        color: rgba(#fff, .8) !important;
+        font-weight: bold;
       }
     }
   }

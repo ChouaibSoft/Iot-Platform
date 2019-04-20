@@ -3,63 +3,35 @@
         <div class="items s12 left-align">
             <ul>
                 <li class="small-cap">
-                    <span>Personnal</span>
+                    <span>{{ $t('home') }}</span>
                 </li>
                 <li class="item-header">
-                    <a  class="group-name has-arrow">
+                    <router-link :to="{ name: 'dashboard'}" class="group-name">
                         <i class="fa fa-home"></i>
-                        <span>Dashboard</span>
-                    </a>
-                    <div>
-                        <ul class="items-group">
-                            <li>
-                                <a href="#" class="active">
-                                    <i class="fa fa-dot-circle"></i>
-                                    <span>Dashboard-1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-dot-circle"></i>
-                                    <span>Dashboard-2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-dot-circle"></i>
-                                    <span>Dashboard-3</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                        <span>{{ $t('page-title.dashboard') }}</span>
+                    </router-link>
                 </li>
                 <li class="small-cap">
-                    <span>Information</span>
+                    <span>Business</span>
                 </li>
                 <li class="item-header">
                     <a class="group-name has-arrow">
                         <i class="fa fa-home"></i>
-                        <span>Dashboard</span>
+                        <span>{{ $t('channel') }}</span>
                     </a>
                     <div>
                         <ul class="items-group">
                             <li>
-                                <a href="#">
+                                <router-link :to="{ name: 'my-channels'}">
                                     <i class="fa fa-dot-circle"></i>
-                                    <span>Dashboard-1</span>
-                                </a>
+                                    <span>{{ $t('page-title.my-channels') }}</span>
+                                </router-link>
                             </li>
                             <li>
-                                <a href="#">
+                                <router-link :to="{ name: 'new-channel'}">
                                     <i class="fa fa-dot-circle"></i>
-                                    <span>Dashboard-2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-dot-circle"></i>
-                                    <span>Dashboard-3</span>
-                                </a>
+                                    <span>{{ $t('page-title.new-channel') }}</span>
+                                </router-link>
                             </li>
                         </ul>
                      </div>
@@ -80,21 +52,21 @@
                     </a>
                 </li>
                 <li class="small-cap">
-                    <span>Bussiness</span>
+                    <span>{{ $t('help') }}</span>
                 </li>
                 <li class="item-header">
-                    <router-link to="/dashboard/channels" class="group-name has-arrow">
-                        <i class="fa fa-chart-bar"></i>
-                        <span>Canaux</span>
-                    </router-link>
+                    <a href=""   class="group-name">
+                        <i class="fa fa-question-circle"></i>
+                        <span>FAQ</span>
+                    </a>
                 </li>
                 <li class="small-cap">
-                    <span>Fermer</span>
+                    <span>{{ $t('close') }}</span>
                 </li>
                 <li class="item-header">
                     <a href=""  @click="logout" class="group-name">
                         <i class="fa fa-power-off"></i>
-                        <span>Logout</span>
+                        <span>{{ $t('logout') }}</span>
                     </a>
                 </li>
             </ul>
@@ -128,28 +100,21 @@
                 width: "98vw",
                 paddingLeft: "15px"
             }, 500);
+        }else{
+            aside.addClass("is-visible");
         }
 
         // Adjust Aside Menu During Window Resize
         $(window).resize(function () {
-            if(window.innerWidth > 992){
-                if (aside.hasClass("is-visible")){
+            if(window.innerWidth > 992) {
+                if (!(aside.hasClass("is-visible"))){
                     aside.animate({
-                        left : '-256px'
-                    },500);
-                    dashArea.animate({
-                        paddingLeft: "90px",
-                        paddingRight: 0,
-                        width: "100%"
+                        left: '0'
                     }, 500);
-                }else{
-                    aside.animate({
-                        left : '0'
-                    },500);
                     dashArea.animate({
                         paddingLeft: "340px",
                     }, 500);
-                }
+                 }
             }else{
                 aside.animate({
                     left : "-256px"
@@ -169,7 +134,7 @@
         });
         // Add Selected Class in Active Link
         $(".item-header").each(function () {
-            if ($(this).find("a").hasClass("active")){
+            if ($(this).find("a").hasClass("router-link-exact-active")){
                 $(this).addClass('now').find('.items-group').slideDown(300).end()
                     .siblings('.item-header').find('.items-group').slideUp(300);
             }
@@ -178,35 +143,21 @@
 </script>
 
 <style scoped>
-    .slide-enter-active {
-        -moz-transition-duration: 0.3s;
-        -webkit-transition-duration: 0.3s;
-        -o-transition-duration: 0.3s;
-        transition-duration: 0.3s;
-        -moz-transition-timing-function: ease-in;
-        -webkit-transition-timing-function: ease-in;
-        -o-transition-timing-function: ease-in;
-        transition-timing-function: ease-in;
-    }
 
-    .slide-leave-active {
-        -moz-transition-duration: 0.3s;
-        -webkit-transition-duration: 0.3s;
-        -o-transition-duration: 0.3s;
-        transition-duration: 0.3s;
-        -moz-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-        -webkit-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-        -o-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-        transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-    }
-
-    .slide-enter-to, .slide-leave {
-        max-height: 100px;
-        overflow: hidden;
-    }
-
-    .slide-enter, .slide-leave-to {
-        overflow: hidden;
-        max-height: 0;
-    }
 </style>
+<i18n>
+    {
+    "en": {
+    "channel": "Channels",
+    "logout": "Log out",
+    "close": "close",
+    "home": "home"
+    },
+    "fr": {
+    "channel": "Canaux",
+    "logout": "Deconnexion",
+    "close": "fermer",
+    "home": "acceuil"
+    }
+    }
+</i18n>

@@ -334,7 +334,7 @@ aside .items .now > a {
   padding: 9px 15px;
   color: #fff;
 }
-aside .items .now .active {
+aside .items .now .router-link-exact-active {
   color: rgba(255, 255, 255, 0.8) !important;
   font-weight: bold;
 }

@@ -8,7 +8,7 @@
     "password": "mot de passe",
     "conf-password": "Confirmation du mot de passe",
     "success": "Félicitation !",
-    "error": "E●●●●●●chec de l'enregistrement !"
+    "error": "échec d'inscription !"
   },
   "errors": {
     "required": "ce champ est obligatoire.",
@@ -35,7 +35,7 @@
     "auth": "Authentication",
     "dashboard": "Dashboard",
     "new-channel": "Nouveau  Canal",
-    "my-channels": "mes Canaux",
+    "my-channels": "Mes Canaux",
     "detail-channel": "Detail Cananl",
     "view": "Canla Visualisation",
     "api-key": "Canal API Keys",

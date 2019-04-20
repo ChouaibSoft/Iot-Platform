@@ -57,7 +57,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" v-for="(field, index) in fields">
+                                <div class="row" v-for="(field, index) in fields" :key="field">
                                     <div class="input-field col s12">
                                         <input
                                                 v-bind:id="field.name"

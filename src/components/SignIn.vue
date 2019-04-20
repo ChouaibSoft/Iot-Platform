@@ -7,6 +7,7 @@
                     <div slot="form-fields">
                         <div class="row">
                             <div class="input-field col s12">
+                                <i class="material-icons prefix">account_circle</i>
                                 <input
                                         id="username"
                                         type="text"
@@ -24,6 +25,7 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
+                                <i class="material-icons prefix">lock</i>
                                 <input
                                         id="password"
                                         type="password"

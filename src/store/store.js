@@ -4,28 +4,31 @@ import createPersistedState from "vuex-persistedstate";
 import getters from './getters'
 import mutations from './mutations'
 import actions from './actions'
+import User from './modules/User'
 
 
 Vue.use(Vuex);
 
+
+
+// noinspection JSAnnotator
 export const store = new Vuex.Store ({
   state: {
-      isLogged: !!localStorage.getItem("token"),
       progress: false,
-      userId: '',
-      token: null,
       canals: null,
       canal: null,
       fields: null,
       apiURL: 'http://localhost:8091',
-      locale: 'en', // Default Language,
-      flag: 'us'
   },
   getters: getters,
   mutations: mutations,
   actions: actions,
+  modules:{
+      user : User
+  },
   plugins: [
-    createPersistedState()
-    ]
-
+    createPersistedState({
+        path: ['user']
+    })
+  ]
 });

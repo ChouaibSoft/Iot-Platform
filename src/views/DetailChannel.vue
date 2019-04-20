@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="col s12 l7">
-                    <div class="channel-head" style="border-left: 1px solid #9e9e9e; padding: 0 20px 5px 30px">
+                    <div class="channel-head ch-head-2" style="border-left: 1px solid #9e9e9e; padding: 0 20px 5px 30px">
                         <p class="description"><strong>{{ $t('description')}}</strong>{{ getCanal.description }}</p>
                         <div>
                             <router-link to="/dashboard/channels/new" class="waves-effect waves-light btn delete-channel">
@@ -35,19 +35,19 @@
                             <div class="col s12">
                                 <ul class="tabs" id="tabs-swipe-demo">
                                     <li class="tab col s3">
-                                        <router-link  :to="{ name: 'view', params: { id: 12}}"
+                                        <router-link  :to="{ name: 'view', params: { id: getCanal.id}}"
                                                       exact-active-class="active">
                                             {{ $t('component-toggle.view') }}
                                         </router-link>
                                     </li>
                                     <li class="tab col s3">
-                                        <router-link :to="{ name: 'api-key', params: { id: 12}}"
+                                        <router-link :to="{ name: 'api-key', params: { id: getCanal.id}}"
                                                      exact-active-class="active">
                                         {{ $t('component-toggle.api-keys') }}
                                     </router-link>
                                     </li>
                                     <li class="tab col s3">
-                                        <router-link to="/dashboard/channels/12/settings"
+                                        <router-link :to="{ name: 'settings', params: { id: getCanal.id}}"
                                                      exact-active-class="active">
                                             {{ $t('component-toggle.channel-settings') }}
                                         </router-link>
@@ -84,12 +84,18 @@
             ...mapGetters(['getCanal'])
         },
         created(){
-            var payload = {
+            var payloadA = {
                 'link': '/appUsers/' + this.$store.state.userId + '/canals/' + this.$route.params.id,
                 'mutation': 'setCanal',
                 'all': false
             };
-            this.$store.dispatch('getRequest', payload);
+            this.$store.dispatch('getRequest', payloadA);
+            var payloadB = {
+                'link': '/canals/' + this.$store.state.canal.id + '/fields',
+                'mutation': 'setFields',
+                'all': true
+            };
+            this.$store.dispatch('getRequest', payloadB);
         }
     }
     $(document).ready(function () {

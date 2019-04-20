@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import { store } from '../store/store'
-import App from '../App'
+import i18n from '../i18n'
 
 Vue.use(Router);
 
@@ -18,23 +18,24 @@ const router = new Router({
             name: 'auth',
             component: () => import("@/views/Auth"),
             meta: {
-                title: 'Authentication'
+                title: i18n.t('page-title.auth')
             },
         },
         {
             path: "/dashboard",
+            name:"dashboard",
             component: () => import("@/views/Dashboard"),
             meta: {
                 protected: true,
-                title: 'Dashboard'
+                title: i18n.t('page-title.dashboard')
             },
             children: [
                 {
                     path: "channels/new",
-                    name: "add-channel",
+                    name: "new-channel",
                     meta: {
                         protected: true,
-                        title: 'New Channel'
+                        title: i18n.t('page-title.new-channel')
                     },
                     component: () => import("@/views/AddChannel")
                 },
@@ -43,7 +44,7 @@ const router = new Router({
                     name: "my-channels",
                     meta: {
                         protected: true,
-                        title: 'My Channels'
+                        title: i18n.t('page-title.my-channels')
                     },
                     component: () => import("@/views/MyChannels")
                 },
@@ -52,7 +53,7 @@ const router = new Router({
                     name: "detail-channels",
                     meta: {
                         protected: true,
-                        title: 'Detail Channel'
+                        title: i18n.t('page-title.detail-channel')
                     },
                     component: () => import("@/views/DetailChannel"),
                     children: [
@@ -61,7 +62,7 @@ const router = new Router({
                             name: "view",
                             meta: {
                                 protected: true,
-                                title: 'Channel Visualisation'
+                                title: i18n.t('page-title.view')
                             },
                             component: () => import("@/components/Visualisation")
                         },
@@ -70,16 +71,16 @@ const router = new Router({
                             name: "api-key",
                             meta: {
                                 protected: true,
-                                title: 'API key'
+                                title: i18n.t('page-title.api-key')
                             },
                             component: () => import("@/components/APIKeys")
                         },
                         {
                             path: "settings",
-                            name: "api-key",
+                            name: "settings",
                             meta: {
                                 protected: true,
-                                title: 'Channel Settings'
+                                title: i18n.t('page-title.settings')
                             },
                             component: () => import("@/components/ChannelSettings")
                         },
@@ -88,7 +89,7 @@ const router = new Router({
                             name: "data-import-export",
                             meta: {
                                 protected: true,
-                                title: 'Data Import Export'
+                                title: i18n.t('page-title.import-export')
                             },
                             component: () => import("@/components/DataImportExport")
                         }

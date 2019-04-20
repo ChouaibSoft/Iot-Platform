@@ -142,21 +142,6 @@
                 fields: []
             }
         },
-        created(){
-            var payload = {
-                'link': '/canals/' + this.$store.state.canal.id + '/fields',
-                'mutation': 'setFields',
-                'all': true
-            };
-            this.$store.dispatch('getRequest', payload);
-            this.getFields.forEach( f => {
-                this.fields.push({
-                    name: 'field',
-                    value: f.nom
-                })
-            });
-            console.log(this.field)
-        },
         computed:{
             ...mapState['userId'],
             ...mapGetters(['getFields'])
@@ -200,6 +185,14 @@
                 this.fields.splice(index, 1);
             }
         },
+        created(){
+            this.getFields.forEach( f => {
+                this.fields.push({
+                    name: 'field',
+                    value: f.nom
+                })
+            });
+        },
         validations: {
             name: {
                 required,
@@ -228,7 +221,7 @@
     "channel-settings": "Channel Settings",
     "settings": {
     "name": "Channel Name : ",
-    "name-det": "Enter a unique name for the ThingSpeak channel.",
+    "name-det": "Enter a unique name for the Iot-Platform ESI-SBA channel.",
     "description": "Description : ",
     "description-det": "Enter a description of the Iot-Platform ESI-SBA channel.",
     "field#": "Field# : ",
@@ -248,7 +241,7 @@
     "channel-settings": "Paramètres de Canal",
     "settings": {
     "name": "Nom du Canal : ",
-    "name-det": "Enter a unique name for the ThingSpeak channel.",
+    "name-det": "Enter a unique name for the Iot-Platform ESI-SBA channel.",
     "description": "Description : ",
     "description-det": "Entrez un nom unique pour le canal Iot-Platform ESI-SBA.",
     "field#": "Champ# : ",

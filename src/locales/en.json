@@ -21,6 +21,7 @@
     "description": "Description",
     "fieldX": "Field {num}",
     "add": "Add",
+    "update": "Update",
     "add-success": "Canal added successfully.",
     "add-error": "Canal add operation failed !"
   },
@@ -28,5 +29,16 @@
     "add-channel": "new channel",
     "notification": "notifications",
     "search": "search here"
+  },
+  "page-title": {
+    "auth": "Authentication",
+    "dashboard": "Dashboard",
+    "new-channel": "New Channel",
+    "my-channels": "My Channels",
+    "detail-channel": "Detail Channel",
+    "view": "Channel Visualisation",
+    "api-key": "Channel API Keys",
+    "settings": "Channel Settings",
+    "import-export": "Import/Export Data"
   }
 }

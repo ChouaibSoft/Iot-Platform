@@ -21,6 +21,7 @@
     "description": "Description",
     "fieldX": "Champ {num}",
     "add": "Ajouter",
+    "update": "Modifier",
     "add-success": "Canal ajouté avec succès.",
     "add-error": "L'opération d'ajout de canal a échoué !"
   },
@@ -28,5 +29,16 @@
     "add-channel": "nouveau canal",
     "notification": "notifications",
     "search": "rechercher ici"
+  },
+  "page-title": {
+    "auth": "Authentication",
+    "dashboard": "Dashboard",
+    "new-channel": "Nouveau  Canal",
+    "my-channels": "mes Canaux",
+    "detail-channel": "Detail Cananl",
+    "view": "Canla Visualisation",
+    "api-key": "Canal API Keys",
+    "settings": "paramètres de Canal",
+    "import-export": "Import/Export Données"
   }
 }

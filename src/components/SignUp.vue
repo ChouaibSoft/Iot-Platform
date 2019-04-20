@@ -7,6 +7,7 @@
                     <div slot="form-fields">
                         <div class="row">
                             <div class="input-field col s12">
+                                <i class="material-icons prefix">account_circle</i>
                                 <input
                                         id="username"
                                         type="text"
@@ -23,6 +24,7 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
+                                <i class="material-icons prefix">lock</i>
                                 <input
                                         id="password"
                                         type="password"
@@ -46,7 +48,7 @@
                             </div>
                             <div class="col s12">
                                 <div v-if="$v.password.$dirty">
-                                    <p class="error-message red-text " v-if="!$v.password.required">
+                                    <p class="error-message red-text " v-if="!$v.password.required || !$v.confpass.required">
                                         {{ $t('errors.required') }}
                                     </p>
                                     <p class="error-message red-text " v-if="!$v.password.minLength">
@@ -54,9 +56,6 @@
                                     </p>
                                 </div>
                                 <div v-if="$v.confpass.$dirty">
-                                    <p class="error-message red-text " v-if="!$v.confpass.required">
-                                        {{ $t('errors.required') }}
-                                    </p>
                                     <p class="error-message red-text " v-if="!$v.confpass.sameAsPassword">
                                         {{ $t('errors.same-as') }}
                                     </p>

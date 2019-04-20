@@ -11,9 +11,10 @@
                                             id="write-key"
                                             type="text"
                                             v-model="this.keyWrite"
+                                            :class="{valid: isValid}"
                                             class="validate"
                                             >
-                                    <label for="write-key">{{ $t('write-api-key') }}</label>
+                                    <label for="write-key" :class="{active: isActive}">{{ $t('write-api-key') }}</label>
                                 </div>
                             </div>
                             <div class="row">
@@ -22,8 +23,9 @@
                                             id="read-key"
                                             type="text"
                                             v-model="this.keyRead"
+                                            :class="{valid: isValid}"
                                             class="validate"/>
-                                    <label for="read-key">{{ $t('read-api-key') }}</label>
+                                    <label for="read-key" :class="{active: isActive}">{{ $t('read-api-key') }}</label>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +91,9 @@
                 keyWrite: '',
                 keyRead: '',
                 isShow: false,
-                isDisabled: false
+                isDisabled: false,
+                isValid: false,
+                isActive: false
             }
         },
         computed:{
@@ -111,6 +115,8 @@
                 this.displayFields();
                 this.isShow = true;
                 this.isDisabled = true;
+                this.isValid = true;
+                this.isActive = true;
             },
             displayFields(){
                 return this.$store.getters.getFields

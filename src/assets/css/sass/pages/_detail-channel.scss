@@ -14,6 +14,14 @@
     }
     @media #{$maxSmall} {
       border: none !important;
+      .ch-head-2{
+        padding: 0;
+      }
+    }
+  }
+  .ch-head-2{
+    @media #{$maxSmall} {
+      padding: 0 !important;
     }
   }
   .actions{

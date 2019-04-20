@@ -29,6 +29,7 @@ require('@/assets/css/base.css');
 
 new Vue({
     mounted() {
+        console.log(this.$store.state.token);
         this.$store.dispatch('switchProgress');
         i18n.locale = this.$store.state.locale;
         if(this.$store.getters.getToken != null){

@@ -7,11 +7,11 @@
             <nav class="navbar">
                 <div class="container-fluid">
                     <div class="nav-wrapper">
-                        <router-link to="/" class="brand-logo left">Iot Platform</router-link>
+                        <router-link :to="{ name: 'home'}" class="brand-logo left">Iot Platform</router-link>
                         <ul class="actions right">
                             <li>
                             <li>
-                                <router-link to="/dashboard/channels/new"
+                                <router-link :to="{ name: 'new-channel'}"
                                              class="tooltipped btn-floating  waves-effect waves-light btn-large teal lighten-1"
                                              data-position="bottom" :data-tooltip="this.$t('tooltips.add-channel')"
                                              style="width: 45px; height: 45px; line-height: 42px">
@@ -19,7 +19,7 @@
                                 </router-link>
                             </li>
                             <li>
-                                <a class="dropdown-trigger drop-button waves-effect waves-light" data-target="lang" href="">
+                                <a class="dropdown-trigger drop-button waves-effect waves-light" data-target="lang" href="#!">
                                     <flag style="width: 45px; height: 25px;" :iso="getFlag" v-bind:squared=false />
                                  </a>
                             </li>

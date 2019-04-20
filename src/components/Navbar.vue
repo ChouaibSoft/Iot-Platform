@@ -98,26 +98,29 @@
         $(".collapse-menu").on("click", function(){
             var fixedMenu = $("aside"),
                 dashArea = $(".dash-area");
-            fixedMenu.toggleClass("is-visible");
             if (fixedMenu.hasClass("is-visible")){
                 fixedMenu.animate({
                     left : "-256px"
                 },500);
+                fixedMenu.removeClass("is-visible");
                 if(window.innerWidth > 992) {
                     dashArea.animate({
                         paddingLeft: "90px",
                         paddingRight: 0,
                         width: "100%"
                     }, 500);
+                    dashArea.addClass("full-size");
                 }
             }else{
                 fixedMenu.animate({
                     left : '-2px'
                 },500);
+                fixedMenu.addClass("is-visible");
                 if(window.innerWidth > 992) {
                     dashArea.animate({
                         paddingLeft: "340px"
                     }, 500);
+                    dashArea.removeClass("full-size");
                 }
             }
         });

@@ -114,7 +114,17 @@
                     dashArea.animate({
                         paddingLeft: "340px",
                     }, 500);
-                 }
+                }else{
+                    if(!(dashArea.hasClass("full-size"))) {
+                        aside.animate({
+                            left: '0'
+                        }, 500);
+                        dashArea.animate({
+                            paddingLeft: "340px",
+                        }, 500);
+                    }
+                }
+                dashArea.addClass("full-size");
             }else{
                 aside.animate({
                     left : "-256px"
@@ -123,6 +133,8 @@
                     width: "98vw",
                     paddingLeft: "15px"
                 }, 500);
+                aside.addClass("is-visible");
+                dashArea.removeClass("full-size");
             }
         });
 

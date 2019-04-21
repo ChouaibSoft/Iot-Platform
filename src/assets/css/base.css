@@ -169,6 +169,9 @@ body .content .component-section .help .help-list li ul li {
   padding-left: 1.2rem;
   color: #d1d1d1;
   font-weight: bold;
+  -webkit-transition: width 0.05s linear;
+  transition: all 0.3s linear;
+  -webkit-transform: translateZ(0) scale(1, 1);
 }
 @media (max-width: 992px) {
   .navbar .brand-logo {
@@ -201,6 +204,9 @@ body .content .component-section .help .help-list li ul li {
 }
 .navbar .controls {
   margin-left: 240px;
+  -webkit-transition: width 0.05s linear;
+  transition: all 0.3s linear;
+  -webkit-transform: translateZ(0) scale(1, 1);
 }
 .navbar .controls .sidenav-trigger {
   display: block;
@@ -245,40 +251,83 @@ body .content .component-section .help .help-list li ul li {
   height: auto !important;
 }
 
+.collapse-nav .brand-logo {
+  width: 63px;
+  color: #fff;
+  background-color: #2bbbad;
+}
+.collapse-nav .controls {
+  margin-left: 54px;
+}
+
 /* End NavBar */
-/* Start Aside-menu */
-aside {
+aside .main-menu {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  line-height: 30px;
+  background: #273146;
+  border-right: 1px solid #e5e5e5;
   position: fixed;
   top: 63px;
-  text-align: center;
-  background-color: #273146;
-  height: 100vh;
-  padding: 2% 0;
-  z-index: 999;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  width: 255px;
+  padding: 0 1%;
+  -webkit-transition: width 0.3s linear;
+  transition: width 0.3s linear;
+  -webkit-transform: translateZ(0) scale(1, 1);
+  z-index: 1000;
+}
+aside .main-menu:hover {
   overflow: auto;
 }
-aside .items {
-  margin: 0 20px;
+aside .main-menu li {
+  width: 230px;
+  margin: 0;
 }
-aside .items .small-cap span {
+aside .main-menu li > a {
+  position: relative;
+  display: table;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 14px;
+  text-decoration: none;
+  -webkit-transform: translateZ(0) scale(1, 1);
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+}
+aside .main-menu .nav-text {
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+  width: 190px;
+  font-size: 1rem;
+}
+aside .small-cap span {
   text-transform: uppercase;
   color: rgba(209, 209, 209, 0.8);
   font-size: 11px;
+  margin-left: 10px;
 }
-aside .items .item-header {
+aside .item-header {
+  position: relative;
+  display: block;
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 18px;
 }
-aside .items .item-header > a {
-  width: 105%;
-  display: inline-block;
-  cursor: pointer;
+aside .item-header > a {
+  width: 100%;
+  outline: 0;
 }
-aside .items .item-header .has-arrow {
+aside .item-header .has-arrow {
   position: relative;
 }
-aside .items .item-header .has-arrow::after {
+aside .item-header .has-arrow::after {
   position: absolute;
   content: "";
   width: 7px;
@@ -293,57 +342,90 @@ aside .items .item-header .has-arrow::after {
   -ms-transform: rotate(140deg);
   transform: rotate(140deg);
 }
-aside .items .item-header .group-name i {
+aside .item-header .group-name {
+  -webkit-transition: width 0.05s linear;
+  transition: all 0.3s linear;
+  -webkit-transform: translateZ(0) scale(1, 1);
+}
+aside .item-header .group-name .fa {
+  position: relative;
+  display: table-cell;
+  width: 60px;
+  height: 45px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px;
+}
+aside .item-header .group-name i {
   margin-right: 10px;
 }
-aside .items .item-header .items-group {
+aside .item-header .items-group {
   margin-top: 10px;
-  margin-left: 10px;
+  margin-left: 20px;
   display: none;
 }
-aside .items .item-header .items-group li {
-  padding: 5px;
+aside .item-header .items-group li {
+  padding: 0;
 }
-aside .items .item-header .items-group li a {
+aside .item-header .items-group li a {
   color: rgba(209, 209, 209, 0.6);
 }
-aside .items .item-header .items-group li a i {
+aside .item-header .items-group li a i {
   margin-right: 10px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: normal;
 }
-aside .items .item-header .items-group li:hover a {
+aside .item-header .items-group li:hover a {
   color: #d1d1d1;
 }
-aside .items .item-header > a {
+aside .item-header > a {
   color: rgba(209, 209, 209, 0.7);
 }
-aside .items .now {
-  margin-left: -10px;
-}
-aside .items .now .has-arrow::after {
+aside .now .has-arrow::after {
   -webkit-transform: rotate(230deg);
   -moz-transform: rotate(230deg);
   -o-transform: rotate(230deg);
   -ms-transform: rotate(230deg);
   transform: rotate(230deg);
 }
-aside .items .now > a {
+aside .now > a {
   background: linear-gradient(to right, #11d7e4 0%, #48eaa1 100%);
   border-radius: 60px;
-  padding: 9px 15px;
+  padding: 9px 0;
   color: #fff;
 }
-aside .items .now .router-link-exact-active {
+aside .now .router-link-exact-active {
   color: rgba(255, 255, 255, 0.8) !important;
   font-weight: bold;
 }
 
-.full-aside {
-  width: 250px;
+.collapse .main-menu {
+  width: 65px;
+}
+.collapse .small-cap {
+  display: none;
+}
+.collapse .item-header {
+  margin-top: 15px;
+}
+.collapse .item-header .group-name {
+  margin-left: -8px;
+  width: 50px;
+  text-align: center;
+}
+.collapse .item-header .group-name .nav-text {
+  display: none;
+}
+.collapse .item-header .group-name i {
+  font-size: 22px;
+}
+.collapse .item-header .group-name::after {
+  display: none;
+}
+.collapse .item-header .items-group {
+  display: none !important;
 }
 
-/* End Aside-menu */
 .auth {
   width: 35%;
   margin: 100px auto;
@@ -488,6 +570,7 @@ aside .items .now .router-link-exact-active {
   width: 100%;
   height: 90px;
   border-bottom: 1px solid #9e9e9e;
+  outline: 0;
 }
 .form textarea:focus + label {
   color: #2bbbad;

@@ -96,31 +96,42 @@
 
         // Fixed Menu
         $(".collapse-menu").on("click", function(){
-            var fixedMenu = $("aside"),
-                dashArea = $(".dash-area");
-            if (fixedMenu.hasClass("is-visible")){
-                fixedMenu.animate({
-                    left : "-256px"
-                },500);
-                fixedMenu.removeClass("is-visible");
-                if(window.innerWidth > 992) {
-                    dashArea.animate({
-                        paddingLeft: "90px",
-                        paddingRight: 0,
-                        width: "100%"
-                    }, 500);
-                    dashArea.addClass("full-size");
-                }
-            }else{
-                fixedMenu.animate({
-                    left : '-2px'
-                },500);
-                fixedMenu.addClass("is-visible");
-                if(window.innerWidth > 992) {
+            var aside = $("aside"),
+                mainAside = $(".main-menu"),
+                dashArea = $(".dash-area"),
+                navbar = $(".navbar"),
+                windowsSize = window.innerWidth;
+            if(windowsSize > 992){
+                if(aside.hasClass("collapse")){
                     dashArea.animate({
                         paddingLeft: "340px"
-                    }, 500);
+                    }, 300);
                     dashArea.removeClass("full-size");
+                    aside.removeClass("collapse");
+                    navbar.removeClass("collapse-nav");
+                }else{
+                    dashArea.animate({
+                        paddingLeft: "150px",
+                        width: "98%"
+                    }, 300);
+                    dashArea.addClass("full-size");
+                    aside.addClass("collapse");
+                    navbar.addClass("collapse-nav");
+                }
+            }else{
+                aside.removeClass("collapse");
+                if(mainAside.hasClass("is-visible")){
+                    mainAside.animate({
+                        left: "-255px",
+                    }, 300);
+                    mainAside.removeClass("is-visible");
+                    navbar.addClass("collapse-nav");
+                }else{
+                    mainAside.animate({
+                        left: "0",
+                    }, 300);
+                    mainAside.addClass("is-visible");
+                    navbar.addClass("collapse-nav");
                 }
             }
         });

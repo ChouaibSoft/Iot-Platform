@@ -1,4 +1,5 @@
 /* Start NavBar */
+
 .navbar{
   background: $navbarBackground;
   margin-bottom: 0;
@@ -14,6 +15,9 @@
     padding-left: 1.2rem;
     color: $textColor;
     font-weight: bold;
+    -webkit-transition:width .05s linear;
+    transition:all .3s linear;
+    -webkit-transform:translateZ(0) scale(1,1);
     @media #{$maxSmall} {
       width: 110px;
       margin-left: -6px;
@@ -46,6 +50,9 @@
   }
   .controls{
     margin-left: 240px;
+    -webkit-transition:width .05s linear;
+    transition:all .3s linear;
+    -webkit-transform:translateZ(0) scale(1,1);
     .sidenav-trigger{
       display: block;
       padding-top: 23px;
@@ -81,6 +88,16 @@
   top: 64px !important;
   width: max-content !important;
   height:auto !important;
+}
+.collapse-nav{
+  .brand-logo{
+    width: 63px;
+    color: #fff;
+    background-color: #2bbbad;
+  }
+  .controls{
+    margin-left: 54px;
+  }
 }
 
 /* End NavBar */

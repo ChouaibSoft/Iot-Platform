@@ -15,7 +15,7 @@ aside {
     height:100%;
     left:0;
     width:255px;
-    padding: 0 1%;
+    padding: 25px  1% 0 1%;
     -webkit-transition:width .3s linear;
     transition:width .3s linear;
     -webkit-transform:translateZ(0) scale(1,1);
@@ -141,6 +141,7 @@ aside {
 .collapse{
   .main-menu {
     width:65px;
+    overflow: hidden;
   }
   .small-cap{
     display: none;
@@ -151,8 +152,9 @@ aside {
       .nav-text{
         display: none;
       }
-      margin-left: -8px;
-      width: 50px;
+      margin-left: -7px;
+      width: 45px;
+      border-radius: 50%;
       text-align: center;
       i{
         font-size: 22px;

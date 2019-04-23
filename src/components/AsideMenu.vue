@@ -1,6 +1,6 @@
 <template>
     <aside>
-    <div class="main-menu  items">
+    <div class="main-menu" id="items">
         <ul>
             <li class="small-cap">
                 <span>{{ $t('home') }}</span>
@@ -15,8 +15,8 @@
                 <span>Business</span>
             </li>
             <li class="item-header">
-                <a class="group-name has-arrow">
-                    <i class="fa fa-home"></i>
+                <a href="#" class="group-name has-arrow">
+                    <i class="fa fa-chart-bar"></i>
                     <span class="nav-text">{{ $t('channel') }}</span>
                 </a>
                 <div>
@@ -100,9 +100,9 @@
                 left: "-256px"
             }, 500);
             dashArea.animate({
-                width: "98vw",
+                width: "100%",
                 paddingLeft: "15px"
-            }, 500);
+            }, 0);
         }else{
             mainAside.addClass("is-visible");
             dashArea.removeClass("full-size");
@@ -121,14 +121,14 @@
                     if(dashArea.hasClass("full-size")){
                         dashArea.animate({
                             paddingLeft: "340px",
-                        }, 500);
+                        }, 0);
                         dashArea.removeClass("full-size");
                     }
                 } else {
                     if (dashArea.hasClass("full-size")) {
                         dashArea.animate({
                             paddingLeft: "340px",
-                        }, 500);
+                        }, 0);
                         mainAside.addClass("is-visible");
                         dashArea.removeClass("full-size");
                     }
@@ -140,29 +140,31 @@
                     left: "-256px"
                 }, 500);
                 dashArea.animate({
-                    width: "98vw",
+                    width: "100%",
                     paddingLeft: "15px"
-                }, 500);
+                    }, 0);
                 mainAside.removeClass("is-visible");
                 dashArea.addClass("full-size");
             }
         });
 
         //Remove Collapse when hover on aside menu
-        mainAside.on({
-            mouseleave: function() {
+        $("#items").on({
+            mouseleave: function(event) {
                 if(window.innerWidth > 992){
                     if(!(aside.hasClass("collapse"))){
                         if(dashArea.hasClass("full-size")){
                             aside.addClass("collapse");
+                            event.stopPropagation();
                         }
                     }
                 }
             },
-            mouseenter: function() {
+            mouseover: function(event) {
                 if(window.innerWidth > 992){
                     if((aside.hasClass("collapse"))){
                         aside.removeClass("collapse");
+                        event.stopPropagation();
                     }
                 }
             }

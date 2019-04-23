@@ -105,15 +105,15 @@
                 if(aside.hasClass("collapse")){
                     dashArea.animate({
                         paddingLeft: "340px"
-                    }, 300);
+                    }, 0);
                     dashArea.removeClass("full-size");
                     aside.removeClass("collapse");
                     navbar.removeClass("collapse-nav");
                 }else{
                     dashArea.animate({
                         paddingLeft: "150px",
-                        width: "98%"
-                    }, 300);
+                        width: "100%"
+                    }, 0);
                     dashArea.addClass("full-size");
                     aside.addClass("collapse");
                     navbar.addClass("collapse-nav");

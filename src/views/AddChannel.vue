@@ -40,7 +40,8 @@
                                     <div class="input-field col s12">
                                         <textarea
                                                 id="description"
-                                                class="validate"
+                                                data-length="120"
+                                                class="materialize-textarea validate"
                                                 required
                                                 minlength="5"
                                                 v-model="description"
@@ -215,6 +216,9 @@
             }
         },
     }
+    $(document).ready(function () {
+        $('textarea#description').characterCounter();
+    })
 </script>
 
 <style scoped lang="scss">

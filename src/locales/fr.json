@@ -5,6 +5,7 @@
     "sign-in": "Connexion",
     "sign-up": "s'inscrire",
     "username": "Nom d'utilisateur",
+    "email": "Email",
     "password": "mot de passe",
     "conf-password": "Confirmation du mot de passe",
     "success": "Félicitation !",

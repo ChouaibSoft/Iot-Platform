@@ -9,15 +9,15 @@
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">account_circle</i>
                                 <input
-                                        id="username"
+                                        id="email"
                                         type="text"
                                         class="validate"
                                         required
-                                        v-model="username"
-                                        @input="$v.username.$touch()">
-                                <label for="username">{{ $t('auth.username') }}</label>
-                                <div v-if="$v.username.$dirty">
-                                    <p class="error-message red-text " v-if="!$v.username.required">
+                                        v-model="email"
+                                        @input="$v.email.$touch()">
+                                <label for="email">{{ $t('auth.email') }}</label>
+                                <div v-if="$v.email.$dirty">
+                                    <p class="error-message red-text " v-if="!$v.email.required">
                                         {{ $t('errors.required') }}
                                     </p>
                                 </div>
@@ -67,7 +67,7 @@
             return {
                 component: 'sign-in',
                 selected: 1,
-                username: '',
+                email: '',
                 password: '',
             }
         },
@@ -78,7 +78,7 @@
             ]),
             login() {
                 var postData = {
-                    userName: this.username,
+                    email: this.email,
                     password: this.password
                 };
                 var payload = {
@@ -110,7 +110,7 @@
             },
         },
         validations: {
-            username: {
+            email: {
                 required,
             },
             password: {

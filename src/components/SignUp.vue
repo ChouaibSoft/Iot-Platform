@@ -23,6 +23,23 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">email</i>
+                                <input
+                                        id="email"
+                                        type="email"
+                                        class="validate"
+                                        required v-model="email"
+                                        @input="$v.email.$touch()">
+                                <label for="email">{{ $t('auth.email') }}</label>
+                                <div v-if="$v.email.$dirty">
+                                    <p class="error-message red-text " v-if="!$v.email.required">
+                                        {{ $t('errors.required') }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="input-field col s6">
                                 <i class="material-icons prefix">lock</i>
                                 <input
@@ -88,6 +105,7 @@
                 component: 'sign-up',
                 selected: 1,
                 username: '',
+                email: '',
                 password: '',
                 confpass:'',
             }
@@ -100,6 +118,7 @@
             register(){
                 var postData = {
                     username: this.username,
+                    email: this.email,
                     password: this.password,
                     passwordConfirmed: this.confpass
                 };
@@ -107,20 +126,18 @@
                     'data': postData,
                     'link': '/register'
                 };
-                this.postRequest(payload).then(request => {
-                    //this.registerSucess();
+                this.postRequest(payload).then(() => {
                     this.flash(this.$t('auth.success'), 'success');
-                })
-                    .catch( ()=> {
-                        this.flash(this.$t('auth.error'), 'error')
-                    });
-            },
-            registerSucess(request){
-                this.$router.push('/dashboard');
+                }).catch( ()=> {
+                    this.flash(this.$t('auth.error'), 'error')
+                });
             }
         },
         validations: {
             username: {
+                required,
+            },
+            email: {
                 required,
             },
             password: {

@@ -55,7 +55,7 @@
   </div>
 
      <footer class="footer-distributed">
-
+      <div class="container">
        <div class="footer-left">
 
          <h3>ESI-SBA<span>IOT</span></h3>
@@ -110,7 +110,7 @@
          <!--         </div>-->
 
        </div>
-
+      </div>
      </footer>
 
 

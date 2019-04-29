@@ -37,6 +37,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
+  font-family: "Raleway", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
 }
 body .alert {
   padding: 15px;
@@ -284,6 +285,7 @@ aside .main-menu {
   z-index: 1000;
 }
 aside .main-menu:hover {
+  height: 100%;
   overflow: auto;
 }
 aside .main-menu li {

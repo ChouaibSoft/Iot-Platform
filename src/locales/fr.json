@@ -26,11 +26,34 @@
     "add-success": "Canal ajouté avec succès.",
     "add-error": "L'opération d'ajout de canal a échoué !"
   },
+  "trigger": {
+    "name": "Nom du Trigger",
+    "commandeX": "Commande {num}",
+    "add": "Ajouter",
+    "update": "Modifier",
+    "add-success": "Trigger ajouté avec succès.",
+    "add-error": "L'opération d'ajout de Trigger a échoué !"
+  },
+
+  "react": {
+    "name": "Nom du React",
+    "canal": "Log To Canal",
+    "Condition": "Condition du React",
+    "Valeur": "Valeur de la condition",
+    "add": "Ajouter",
+    "update": "Modifier",
+    "add-success": "React ajouté avec success",
+    "add-error": "L'opération d'ajout de React a échoué !"
+  },
+
+
   "tooltips": {
     "add-channel": "nouveau canal",
     "notification": "notifications",
     "search": "rechercher ici",
-    "collapse-menu": "Réduire le menu"
+    "collapse-menu": "Réduire le menu",
+    "new-trigger": "nouveau trigger",
+    "new-react": "nouveau react"
   },
   "page-title": {
     "auth": "Authentication",
@@ -41,6 +64,11 @@
     "view": "Canla Visualisation",
     "api-key": "Canal API Keys",
     "settings": "paramètres de Canal",
-    "import-export": "Import/Export Données"
+    "import-export": "Import/Export Données",
+    "new-trigger": "Nouveau Trigger",
+    "my-triggers": "Mes Triggers",
+    "new-react": "Nouveau React",
+    "my-reacts": "Mes reacts"
+
   }
 }

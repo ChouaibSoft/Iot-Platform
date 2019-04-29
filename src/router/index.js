@@ -49,6 +49,46 @@ const router = new Router({
                     component: () => import("@/views/MyChannels")
                 },
                 {
+                    path: "triggers/new",
+                    name: "new-trigger",
+                    meta: {
+                        protected: true,
+                        title: i18n.t('page-title.new-trigger')
+                    },
+                    component: () => import("@/views/AddTrigger")
+                },
+                {
+                    path: "triggers",
+                    name: "my-triggers",
+                    meta: {
+                        protected: true,
+                        title: i18n.t('page-title.my-triggers')
+                    },
+                    component: () => import("@/views/MyTriggers")
+                },
+                {
+                    path: "react/new",
+                    name: "add-react",
+                    meta: {
+                        protected: true,
+                        title: i18n.t('page-title.new-react')
+                    },
+                    component: () => import("@/views/AddReact")
+                },
+                {
+                    path: "reacts",
+                    name: "my-reacts",
+                    meta: {
+                        protected: true,
+                        title: i18n.t('page-title.my-reacts')
+                    },
+                    component: () => import("@/views/MyReact")
+                },
+
+
+
+
+                {
                     path: "channels/:id",
                     name: "detail-channels",
                     meta: {
@@ -120,4 +160,3 @@ router.afterEach((to) => {
     });
 })
 export default router;
-

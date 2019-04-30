@@ -74,7 +74,7 @@
             }
         },
         computed: {
-            ...mapGetters(['getCanals'])
+            ...mapGetters(['getCanals', 'getUserId'])
         },
         methods:{
             getDateCreated(data){
@@ -83,7 +83,7 @@
         },
         created() {
             var payload = {
-                'link': '/appUsers/' + this.$store.state.userId + '/canals',
+                'link': '/appUsers/' + this.getUserId + '/canals',
                 'mutation': 'setCanals',
                 'all': true
             };

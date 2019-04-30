@@ -38,12 +38,15 @@
 
   "react": {
     "name": "Nom du React",
-    "canal": "Log To Canal",
+    "channel": "Log To Canal",
+    "channel-select": "choisir un Canal",
     "field": "Les champs de canal",
-    "Condition": "Condition du React",
-    "Valeur": "Valeur de la condition",
+    "condition": "Condition du React",
+    "condition-select": "Choisir une condition",
+    "value": "Valeur de la condition",
     "action" : "Action",
     "message": "Message",
+    "provider": "Provider",
     "add": "Ajouter",
     "update": "Modifier",
     "add-success": "React ajouté avec success",

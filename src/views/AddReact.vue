@@ -36,100 +36,76 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
                                 <div class="row">
-
-                                    <div class="mdl-selectfield">
-                                        <label>{{$t('react.canal')}}</label>
-
-                                        <select v-model="selected" class="browser-default" >
-
-                                            <option  v-for="c in (this.$store.state.canals)" v-bind:key="c"  :value="c.id" >{{c.nom}}</option>
+                                    <div class="input-field  col s12">
+                                        <select  @change="getChannelFields" v-model="channelID">
+                                            <option value="" disabled selected>{{$t('react.channel-select')}}</option>
+                                            <option  v-for="canal in getCanals" :value="canal.id">{{ canal.nom }}</option>
                                         </select>
-
+                                        <label>{{$t('react.channel')}}</label>
                                     </div>
                                 </div>
-
-
                                 <div class="row">
-
-                                    <div class="mdl-selectfield">
-                                        <label>{{$t('react.field')}}</label>
-
-                                        <select class="browser-default" v-model="selected2"  @click="getFieldCanal" >
-
-                                            <option  v-for="f in (this.$store.getters.getFields)" v-bind:key="f" :value="f.id">{{f.nom}}</option>
-                                        </select>
-
-                                    </div>
+                                    <p v-for="field in this.channelFields" class="col">
+                                        <label>
+                                            <input :value="field.id" name="group1" v-model="fieldID" type="radio" class="with-gap" />
+                                            <span>{{ field.nom }}</span>
+                                        </label>
+                                    </p>
                                 </div>
-
                                 <div class="row">
-
-                                    <div class="mdl-selectfield">
-                                        <label>{{$t('react.Condition')}}</label>
-
-                                        <select class="browser-default" v-model="selected3" >
-
-                                            <option></option>
+                                    <div class="input-field  col s12">
+                                        <select v-model="condition">
+                                            <option value="" disabled selected>{{$t('react.condition-select')}}</option>
                                             <option >is greater than</option>
                                             <option >is less than</option>
                                             <option>is equal to</option>
                                         </select>
-
+                                        <label>{{$t('react.condition')}}</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input
-                                                id="valeur"
+                                                id="value"
                                                 type="number"
                                                 required
-                                                v-model.number="valeur">
-                                        <label for="name">{{ $t('react.Valeur') }}</label>
-
+                                                class="validate"
+                                                v-model.number="value"
+                                                @input="$v.value.$touch()">
+                                        <label for="value">{{ $t('react.value') }}</label>
+                                        <div v-if="$v.value.$dirty">
+                                            <p class="error-message red-text " v-if="!$v.value.required">
+                                                {{ $t('errors.required') }}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-
-
-
                                 <div class="row">
-
-                                    <div class="mdl-selectfield">
-                                        <label>{{$t('react.action')}}</label>
-
-                                        <select class="browser-default" v-model="selected4" >
+                                    <div class="input-field  col s12">
+                                        <select v-model="provider">
+                                            <option value="" disabled selected>Choose a provider</option>
                                             <option value="">ESI-IOT TWILIO</option>
                                         </select>
-
+                                        <label>{{$t('react.provider')}}</label>
                                     </div>
                                 </div>
-
-
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input
                                                 id="msg"
                                                 type="text"
-                                              
                                                 v-model="message">
                                         <label for="name">{{ $t('react.message') }}</label>
 
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <vue-tel-input v-model="tel" enabledCountryCode
+                                <div class="row" style="margin-bottom: 30px">
+                                    <vue-tel-input v-model="phone" enabledCountryCode
                                                    :preferredCountries="['dz']"
-
                                     ></vue-tel-input>
                                 </div>
-
                             </div>
-
-
                             <div slot="form-controls">
                                 <div>
                                     <div class="row">
@@ -145,7 +121,25 @@
                         </generic-form>
                     </form>
                 </div>
+                <div class="col l7 s12">
+                    <h4>{{ $t('help') }}</h4>
+                    <h5>{{ $t('react-settings') }}</h5>
+                    <ul class="help-list">
+                        <li>
+                            <p><strong>{{ $t('settings.name') }}</strong>{{ $t('settings.name-det') }}</p>
+                        </li>
+                        <li>
+                            <p v-html="this.$t('settings.condition-type')"></p>
+                        </li>
+                        <li>
+                            <p v-html="this.$t('settings.test-frequency')"></p>
+                        </li>
+                        <li>
+                            <p v-html="this.$t('settings.condition')"></p>
+                        </li>
+                    </ul>
 
+                </div>
             </div>
         </section>
     </div>
@@ -159,7 +153,6 @@
     import VueTelInput from 'vue-tel-input';
 
     export default {
-
         name: "new-react",
         components: {
             'generic-form': Form,
@@ -168,55 +161,42 @@
         data (){
             return{
                 name: '',
-                selected: '',
-                selected2:'',
-                selected3:'',
-                selected4:'',
-                tel: '',
-
-                valeur:'',
+                channelFields : null,
+                channelID: '',
+                fieldID:'',
+                condition:'',
+                provider:'',
+                phone: '',
+                value:'',
                 message:'',
-
                 id: '',
                 iduser:'',
             }
         },
         computed:{
             ...mapState['userId'],
-            ...mapGetters['getCanals','getFields','getValeurs']
+            ...mapGetters(['getCanals','getFields', 'getUserId', 'getToken', 'getAPIUrl'])
 
         },
-
         created() {
             var payload = {
-                'link': '/appUsers/' + this.$store.state.userId + '/canals',
+                'link': '/appUsers/' + this.getUserId + '/canals',
                 'mutation': 'setCanals',
                 'all': true
             };
             this.$store.dispatch('getRequest', payload);
         },
-
-
-
         methods: {
-
-
             ...mapActions(['postRequest']),
-
-
-
-
             addReact: function () {
-
-                console.log(this.tel)
                 var postData = {
                     nom: this.name,
-                    condition:this.selected3,
-                    valeur:this.valeur,
-                    CanalId:this.selected,
-                    fieldId:this.selected2,
+                    condition:this.condition,
+                    valeur:this.value,
+                    CanalId:this.channelID,
+                    fieldId:this.fieldID,
                     message:this.message,
-                    tel:this.tel,
+                    tel:this.phone,
                     userId: this.$store.state.userId
 
                 };
@@ -232,37 +212,37 @@
                     this.flash(this.$t('react.add-error'), 'error');
                 })
             },
+            getChannelFields(e){
+                // e => Get Selected Channel Id
+                if(e.target.options.selectedIndex > -1) {
+                    var canalId = e.target.options[e.target.options.selectedIndex].value;
+                    this.$http.get(this.getAPIUrl + '/canals/' + canalId + '/fields' , {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer ' + this.getToken
+                        }
+                    }).then(request => {
+                        this.channelFields = request.data.content;
+                    }).catch(error => {
 
-        }
-
-
-        ,
-        getFieldCanal(){
-
-            var payload = {
-                'link': 'canals/' + this.selected + '/fields',
-                'mutation': 'setFields',
-                'all': true
-            };
-            this.$store.dispatch('getRequest', payload);
-
-
-
+                    })
+                }
+            }
 
         },
-
         validations: {
             name: {
                 required,
                 minLength: minLength(3)
             },
-            commandes: {
-                minLength: minLength(3)
+            value: {
+                required,
             }
         },
     }
     $(document).ready(function () {
         $('textarea#description').characterCounter();
+        $('select').formSelect();
     })
 </script>
 
@@ -277,13 +257,13 @@
     "no-channel": "No Channel to displayed",
     "add-channel": "New Channel",
     "help": "Help",
-    "text": "Collect data in a Iot-Platform ESI-SBA channel from a device, from another channel, or from the web. <br>Click <strong>New Channel </strong> to create a new Iot-Platform ESI-SBA channel. <br>Click on the column headers of the table to sort by the entries in that column or click on a tag to show channels with that tag.",
-    "table": {
-    "name": "Name",
-    "description": "Description",
-    "created": "Created",
-    "updated": "Updated",
-    "actions": "Actions"
+    "react-settings": "React Settings",
+    "settings": {
+    "name": "React Name : ",
+    "name-det": "Enter a unique name for your React.",
+    "condition-type":  "<strong>Condition Type : </strong> Select a condition type corresponding with your data. A channel can hold numeric sensor data, text, strings, status updates, or geographic location information.",
+    "test-frequency":  "<strong>Test Frequency : </strong> Choose whether to test your condition every time data enters the channel or on a periodic basis.",
+    "condition":  "<strong>Condition : </strong> Select a channel, a field and the condition for your React."
     }
     },
     "fr": {
@@ -291,13 +271,13 @@
     "no-channel": "Aucun Canal à Afficher",
     "add-react": "Nouveau React",
     "help": "Aide",
-    "text": "Collectez des données sur un canal ESI-SBA Iot-Platform à partir d'un périphérique, d'un autre canal ou du Web. <br> Cliquez sur <strong> Nouveau canal </strong> pour créer un nouveau canal ESI-SBA Iot-Platform. <br> Cliquez sur les en-têtes de colonne du tableau pour trier les entrées de cette colonne ou cliquez sur une balise pour afficher les canaux avec cette balise.",
-    "table": {
-    "name": "Nom",
-    "description": "Description",
-    "created": "Créé",
-    "updated": "mis à jour",
-    "actions": "Actions"
+    "react-settings": "Paramètres de  React",
+    "settings": {
+    "name": "Nom de  React : ",
+    "name-det": " Entrez un nom unique pour votre React.",
+    "condition-type":  "<strong> Type de condition: </ strong> sélectionnez un type de condition correspondant à vos données. Un canal peut contenir des données de capteur numérique, du texte, des chaînes, des mises à jour de statut ou des informations de localisation géographique.",
+    "test-frequency":  "<strong> Fréquence de test: </ strong> choisissez de tester votre condition à chaque fois que des données entrent dans le canal ou de manière périodique..",
+    "condition":  "<strong> Condition </strong>: sélectionnez un canal, un champ et la condition de votre réaction."
     }
     }
     }

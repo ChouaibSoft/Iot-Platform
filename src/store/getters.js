@@ -17,6 +17,12 @@ const getters = {
     },
     getFields: state =>{
         return state.fields
+    },
+    getUserId: state=>{
+        return state.userId
+    },
+    getAPIUrl: state=>{
+        return state.apiURL;
     }
 }
 export default getters

@@ -4,6 +4,7 @@ import router from "./router";
 import axios from 'axios';
 import { store } from './store/store';
 import VueFlashMessage from 'vue-flash-message';
+import 'vue-tel-input/dist/vue-tel-input.css';
 import Vuelidate from 'vuelidate'
 import i18n from './i18n'
 import FlagIcon from 'vue-flag-icon';

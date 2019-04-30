@@ -37,8 +37,11 @@
   "react": {
     "name": "Name of The React",
     "canal": "Log to Canal",
+    "field": "Field of canal",
     "Condition": "Condition Of React",
     "Valeur": "Value of the condition",
+    "action" : "Action",
+    "message": "Message",
     "add": "Add",
     "update": "Update",
     "add-success": "React added successfully.",

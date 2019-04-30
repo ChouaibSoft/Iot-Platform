@@ -44,12 +44,83 @@
                                     <div class="mdl-selectfield">
                                         <label>{{$t('react.canal')}}</label>
 
-                                        <select class="browser-default"  v-for="c in getCanals" v-bind:key="c">
+                                        <select v-model="selected" class="browser-default" >
 
-                                            <option value="1">{{c.nom}}</option>
+                                            <option  v-for="c in (this.$store.state.canals)" v-bind:key="c"  :value="c.id" >{{c.nom}}</option>
                                         </select>
+
                                     </div>
                                 </div>
+
+
+                                <div class="row">
+
+                                    <div class="mdl-selectfield">
+                                        <label>{{$t('react.field')}}</label>
+
+                                        <select class="browser-default" v-model="selected2"  @click="getFieldCanal" >
+
+                                            <option  v-for="f in (this.$store.getters.getFields)" v-bind:key="f" :value="f.id">{{f.nom}}</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="mdl-selectfield">
+                                        <label>{{$t('react.Condition')}}</label>
+
+                                        <select class="browser-default" v-model="selected3" >
+
+                                            <option></option>
+                                            <option >is greater than</option>
+                                            <option >is less than</option>
+                                            <option>is equal to</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input
+                                                id="valeur"
+                                                type="number"
+                                                required
+                                                v-model.number="valeur">
+                                        <label for="name">{{ $t('react.Valeur') }}</label>
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row">
+
+                                    <div class="mdl-selectfield">
+                                        <label>{{$t('react.action')}}</label>
+
+                                        <select class="browser-default" v-model="selected4" >
+                                            <option value="">ESI-IOT TWILIO</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input
+                                                id="msg"
+                                                type="text"
+                                                required
+                                                v-model="message">
+                                        <label for="name">{{ $t('react.message') }}</label>
+
+                                    </div>
+                                </div>
+
+
 
                             </div>
                             <div slot="form-controls">
@@ -77,8 +148,9 @@
     import {mapState, mapActions, mapGetters} from 'vuex';
     import { required, minLength } from 'vuelidate/lib/validators'
     import Form from "@/components/Form";
+
     export default {
-        name: "new-trigger",
+        name: "new-react",
         components: {
             'generic-form': Form
         },
@@ -86,14 +158,23 @@
             return{
                 name: '',
                 selected: '',
+                selected2:'',
+                selected3:'',
+                selected4:'',
+
+                valeur:'',
+                message:'',
+
                 id: '',
                 iduser:'',
             }
         },
         computed:{
             ...mapState['userId'],
-            ...mapGetters['getCanals']
+            ...mapGetters['getCanals','getFields','getValeurs']
+
         },
+
         created() {
             var payload = {
                 'link': 'appUsers/' + this.$store.state.userId + '/canals',
@@ -102,35 +183,61 @@
             };
             this.$store.dispatch('getRequest', payload);
         },
+
+
+
         methods: {
+
+
             ...mapActions(['postRequest']),
-            addTrigger: function () {
+
+
+
+
+            addReact: function () {
+
+
                 var postData = {
                     nom: this.name,
-                    CanalId:this.$store.state.canal,
+                    condition:this.selected3,
+                    valeur:this.valeur,
+                    CanalId:this.selected,
+                    fieldId:this.selected2,
+                    message:this.message,
                     userId: this.$store.state.userId
+
                 };
+
                 var payload = {
                     'data': postData,
-                    'link': '/trigger'};
+                    'link': 'react'};
                 this.postRequest(payload).then(() => {
-                    this.flash(this.$t('trigger.add-success'), 'success');
-                    this.$router.push('/dashboard/triggers');
+                    this.flash(this.$t('react.add-success'), 'success');
+                    this.$router.push('/dashboard/reacts');
+                    // this.twilio();
                 }).catch(() => {
-                    this.flash(this.$t('trigger.add-error'), 'error');
+                    this.flash(this.$t('react.add-error'), 'error');
                 })
             },
-            addCommande: function () {
-                var commande = "Commande" + (this.commandes.length + 1);
-                this.commandes.push({
-                    name: commande,
-                    value: ''
-                });
-            },
-            deleteCommande: function (index) {
-                this.commandes.splice(index, 1);
-            }
+
+        }
+
+
+        ,
+        getFieldCanal(){
+
+            var payload = {
+                'link': 'canals/' + this.selected + '/fields',
+                'mutation': 'setFields',
+                'all': true
+            };
+            this.$store.dispatch('getRequest', payload);
+
+
+
+
         },
+
         validations: {
             name: {
                 required,
@@ -147,6 +254,8 @@
 </script>
 
 <style scoped lang="scss">
+
+
 </style>
 <i18n>
     {

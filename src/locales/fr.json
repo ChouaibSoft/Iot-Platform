@@ -35,11 +35,15 @@
     "add-error": "L'opération d'ajout de Trigger a échoué !"
   },
 
+
   "react": {
     "name": "Nom du React",
     "canal": "Log To Canal",
+    "field": "Les champs de canal",
     "Condition": "Condition du React",
     "Valeur": "Valeur de la condition",
+    "action" : "Action",
+    "message": "Message",
     "add": "Ajouter",
     "update": "Modifier",
     "add-success": "React ajouté avec success",

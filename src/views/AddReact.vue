@@ -189,7 +189,7 @@
 
         created() {
             var payload = {
-                'link': 'appUsers/' + this.$store.state.userId + '/canals',
+                'link': '/appUsers/' + this.$store.state.userId + '/canals',
                 'mutation': 'setCanals',
                 'all': true
             };
@@ -223,7 +223,7 @@
 
                 var payload = {
                     'data': postData,
-                    'link': 'react'};
+                    'link': '/react'};
                 this.postRequest(payload).then(() => {
                     this.flash(this.$t('react.add-success'), 'success');
                     this.$router.push('/dashboard/reacts');

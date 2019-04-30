@@ -58,6 +58,41 @@
                     </ul>
                 </div>
             </li>
+            
+            
+              <li class="small-cap">
+                <span>Business</span>
+            </li>
+            <li class="item-header">
+                <a href="#" class="group-name has-arrow">
+                    <i class="fa fa-chart-bar"></i>
+                    <span class="nav-text">{{ $t('React') }}</span>
+                </a>
+                <div>
+                    <ul class="items-group">
+                        <li>
+                            <router-link :to="{ name: 'my-reacts'}">
+                                <i class="fa fa-dot-circle"></i>
+                                <span>{{ $t('page-title.my-reacts') }}</span>
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name: 'add-react'}">
+                                <i class="fa fa-dot-circle"></i>
+                                <span>{{ $t('page-title.new-react') }}</span>
+                            </router-link>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
             <li class="small-cap">
                 <span>Information</span>
             </li>

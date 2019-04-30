@@ -4,7 +4,7 @@ import createPersistedState from "vuex-persistedstate";
 import getters from './getters'
 import mutations from './mutations'
 import actions from './actions'
-import User from './modules/User'
+import user from './modules/user'
 
 
 Vue.use(Vuex);
@@ -24,11 +24,11 @@ export const store = new Vuex.Store ({
   mutations: mutations,
   actions: actions,
   modules:{
-      user : User
+      user : user
   },
   plugins: [
     createPersistedState({
-        path: ['user']
-    })
-  ]
+        modules: ['user']
+    }),
+  ],
 });

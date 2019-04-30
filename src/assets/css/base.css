@@ -170,6 +170,7 @@ body .content .component-section .help .help-list li ul li {
   padding-left: 1.2rem;
   color: #d1d1d1;
   font-weight: bold;
+  display: table;
   -webkit-transition: width 0.03s linear;
   transition: width 0.3s linear;
   -webkit-transform: translateZ(0) scale(1, 1);
@@ -180,6 +181,12 @@ body .content .component-section .help .help-list li ul li {
     margin-left: -6px;
     padding-left: 10px !important;
   }
+}
+.navbar .brand-logo img {
+  display: table-cell;
+  vertical-align: middle;
+  width: 120px;
+  height: 50px;
 }
 .navbar a {
   height: 63px;
@@ -255,8 +262,14 @@ body .content .component-section .help .help-list li ul li {
 .collapse-nav .brand-logo {
   width: 63px;
   color: #fff;
-  background-color: #56a69a;
   overflow: hidden;
+}
+.collapse-nav .brand-logo img {
+  width: 100%;
+  margin-left: -8px;
+}
+.collapse-nav .brand-logo span {
+  display: none;
 }
 .collapse-nav .controls {
   margin-left: 54px;

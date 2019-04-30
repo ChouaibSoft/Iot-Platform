@@ -101,7 +101,6 @@
         },
         methods: {
             keyGenerator(){
-                this.$store.dispatch('getRequest', payload);
                 this.keyWrite = this.$store.getters.getCanal.cleEcriture;
                 this.keyRead = this.$store.getters.getCanal.cleLecture;
                 this.getFields.forEach( f => {

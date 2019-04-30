@@ -15,6 +15,7 @@
     padding-left: 1.2rem;
     color: $textColor;
     font-weight: bold;
+    display: table;
     -webkit-transition:width .03s linear;
     transition:width .3s linear;
     -webkit-transform:translateZ(0) scale(1,1);
@@ -22,6 +23,12 @@
       width: 110px;
       margin-left: -6px;
       padding-left: 10px !important;
+    }
+    img{
+      display: table-cell;
+      vertical-align: middle;
+      width: 120px;
+      height: 50px;
     }
   }
   a{
@@ -93,8 +100,14 @@
   .brand-logo{
     width: 63px;
     color: #fff;
-    background-color: #56a69a;
     overflow: hidden;
+    img{
+      width: 100%;
+      margin-left: -8px;
+    }
+    span{
+      display: none;
+    }
   }
   .controls{
     margin-left: 54px;

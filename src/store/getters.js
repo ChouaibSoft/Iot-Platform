@@ -6,8 +6,8 @@ const getters = {
     getToken: state => {
         return state.token;
     },
-    getFlag: state =>{
-        return state.flag
+    getLang: state =>{
+        return state.locale
     },
     getCanals: state =>{
         return state.canals

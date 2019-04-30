@@ -4,6 +4,7 @@
             <div class="col s12">
             </div>
             <div v-for="field in getFields" class="col s12 l6">
+                {{ field.nom }}
                 <field-chart v-bind:nameField="field.nom" v-bind:idField="field.id"></field-chart>
             </div>
         </div>
@@ -19,15 +20,17 @@
         components:{
             'field-chart': fieldChart
         },
-        data(){
-            return{
-                valeur:null,
-                date:null,
-                chart:null,
-            }
-        },
         computed: {
             ...mapGetters(['getFields'])
+        },
+        created(){
+            var canalId = this.$route.params.id;
+            var payloadB = {
+                'link': '/canals/' + canalId + '/fields',
+                'mutation': 'setFields',
+                'all': true
+            };
+            this.$store.dispatch('getRequest', payloadB);
         }
 
     }

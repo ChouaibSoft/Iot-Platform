@@ -7,11 +7,12 @@
             <nav class="navbar">
                 <div class="container-fluid">
                     <div class="nav-wrapper">
-                        <router-link :to="{ name: 'home'}" class="brand-logo left">Iot Platform</router-link>
+                        <router-link :to="{ name: 'home'}" class="brand-logo left"><img src="../assets/images/esiot_green.png"/>
+                            <span>Platform</span></router-link>
                         <ul class="actions right">
                             <li>
                                 <a class="dropdown-trigger drop-button waves-effect waves-light" data-target="lang" href="#!">
-                                    {{ this.$store.state.locale }}
+                                    {{ getLang }}
                                  </a>
                             </li>
                             <li><a class=" dropdown-trigger drop-button waves-effect waves-light" href="" data-target="dropdown1"><img src="../assets/images/header6.jpg" alt="profile-image"></a></li>
@@ -80,7 +81,7 @@
             }
         },
         computed: {
-            ...mapGetters(['getFlag'])
+            ...mapGetters(['getLang'])
         },
         methods: {
             changeLocale(locale) {

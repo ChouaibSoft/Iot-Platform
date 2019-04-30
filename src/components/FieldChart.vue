@@ -27,12 +27,12 @@
                 valeur:null,
                 date:null,
                 chart:null,
-                id: this.nameField + '-' + this.idField
+                id: ''
             }
         },
         props: ['nameField', 'idField'],
         created () {
-            // console.log("àààààààààààààààààà"+s.$sthitore.state.canal.id)
+            this.id = this.nameField + '-' + this.idField;
             Pusher.logToConsole = true;
 
             var key = this.$store.state.canal.cleLecture,

@@ -81,28 +81,29 @@
             }
         },
         computed: {
-            ...mapGetters(['getCanal'])
+            ...mapGetters(['getCanal', 'getFields'])
         },
         created(){
+            var canalId = this.$route.params.id;
             var payloadA = {
-                'link': '/appUsers/' + this.$store.state.userId + '/canals/' + this.$route.params.id,
+                'link': '/appUsers/' + this.$store.state.userId + '/canals/' + canalId,
                 'mutation': 'setCanal',
                 'all': false
             };
             this.$store.dispatch('getRequest', payloadA);
             var payloadB = {
-                'link': '/canals/' + this.$store.state.canal.id + '/fields',
+                'link': '/canals/' + canalId + '/fields',
                 'mutation': 'setFields',
                 'all': true
             };
             this.$store.dispatch('getRequest', payloadB);
-        }
+        },
     }
     $(document).ready(function () {
         $(document).ready(function(){
             $('.tabs').tabs();
         });
-    })
+    });
 </script>
 
 <style scoped>

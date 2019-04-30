@@ -138,10 +138,11 @@ const router = new Router({
             ]
         }
     ]
-})
+});
 router.beforeEach((to, from, next) => {
     if (!to.meta.protected) { //route is public, don't check for authentication
-        if(store.getters.getToken != null && to.path === '/auth'){
+        console.log('toooken' + store.state.token);
+        if(store.state.token!= null && to.path === '/auth'){
             router.push('/dashboard');
         }else{
             next()
@@ -158,5 +159,5 @@ router.afterEach((to) => {
     Vue.nextTick( () => {
         document.title = to.meta.title ? to.meta.title : 'Iot Platform ESI-SBA';
     });
-})
+});
 export default router;

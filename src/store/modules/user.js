@@ -1,10 +1,10 @@
-const User = {
+const user = {
     state:{
-        isLogged: !!localStorage.getItem("token"),
+        isLogged: false,
         userId: '',
         token: null,
         locale: 'en', // Default Language,
         flag: 'us'
     }
 }
-export default User
+export default user

@@ -113,16 +113,23 @@
                                         <input
                                                 id="msg"
                                                 type="text"
-                                                required
+                                              
                                                 v-model="message">
                                         <label for="name">{{ $t('react.message') }}</label>
 
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <vue-tel-input v-model="tel" enabledCountryCode
+                                                   :preferredCountries="['dz']"
 
+                                    ></vue-tel-input>
+                                </div>
 
                             </div>
+
+
                             <div slot="form-controls">
                                 <div>
                                     <div class="row">
@@ -148,11 +155,15 @@
     import {mapState, mapActions, mapGetters} from 'vuex';
     import { required, minLength } from 'vuelidate/lib/validators'
     import Form from "@/components/Form";
+    import 'vue-tel-input/dist/vue-tel-input.css';
+    import VueTelInput from 'vue-tel-input';
 
     export default {
+
         name: "new-react",
         components: {
-            'generic-form': Form
+            'generic-form': Form,
+            VueTelInput,
         },
         data (){
             return{
@@ -161,6 +172,7 @@
                 selected2:'',
                 selected3:'',
                 selected4:'',
+                tel: '',
 
                 valeur:'',
                 message:'',
@@ -196,7 +208,7 @@
 
             addReact: function () {
 
-
+                console.log(this.tel)
                 var postData = {
                     nom: this.name,
                     condition:this.selected3,
@@ -204,6 +216,7 @@
                     CanalId:this.selected,
                     fieldId:this.selected2,
                     message:this.message,
+                    tel:this.tel,
                     userId: this.$store.state.userId
 
                 };

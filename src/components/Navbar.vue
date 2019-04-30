@@ -10,17 +10,8 @@
                         <router-link :to="{ name: 'home'}" class="brand-logo left">Iot Platform</router-link>
                         <ul class="actions right">
                             <li>
-                            <li>
-                                <router-link :to="{ name: 'new-channel'}"
-                                             class="tooltipped btn-floating  waves-effect waves-light btn-large teal lighten-1"
-                                             data-position="bottom" :data-tooltip="this.$t('tooltips.add-channel')"
-                                             style="width: 45px; height: 45px; line-height: 42px">
-                                    <i class="material-icons">add</i>
-                                </router-link>
-                            </li>
-                            <li>
                                 <a class="dropdown-trigger drop-button waves-effect waves-light" data-target="lang" href="#!">
-                                    <flag style="width: 45px; height: 25px;" :iso="getFlag" v-bind:squared=false />
+                                    {{ this.$store.state.locale }}
                                  </a>
                             </li>
                             <li><a class=" dropdown-trigger drop-button waves-effect waves-light" href="" data-target="dropdown1"><img src="../assets/images/header6.jpg" alt="profile-image"></a></li>
@@ -65,6 +56,14 @@
         </ul>
 
         <!-- End Navbar -->
+
+        <!-- new Channel Floating Button -->
+        <div class="fixed-action-btn">
+            <router-link :to="{ name: 'new-channel'}" class="tooltipped btn-floating  waves-effect waves-light btn-large teal lighten-1"
+                         data-position="left" :data-tooltip="this.$t('tooltips.add-channel')">
+                <i class="large material-icons">add</i>
+            </router-link>
+        </div>
     </div>
 </template>
 

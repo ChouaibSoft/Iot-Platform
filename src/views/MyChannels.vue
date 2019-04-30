@@ -25,7 +25,7 @@
                         <tbody>
                         <tr v-for="canal in getCanals" v-bind:key="canal">
                             <td>{{canal.nom}}</td>
-                            <td>{{canal.description}}</td>
+                            <td>{{canal.description.length > 40 ? canal.description.substring(1, 50) + '...': canal.description }}</td>
                             <td>{{getDateCreated(canal.dateCreation)}}</td>
                             <td>{{getDateCreated(canal.dateCreation)}}</td>
                             <td class="action" width="15%">
@@ -74,7 +74,7 @@
             }
         },
         computed: {
-            ...mapGetters(['getCanals']),
+            ...mapGetters(['getCanals'])
         },
         methods:{
             getDateCreated(data){

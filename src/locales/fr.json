@@ -28,7 +28,7 @@
   },
   "trigger": {
     "name": "Nom du Trigger",
-    "commandeX": "Commande {num}",
+    "commandX": "Commande {num}",
     "add": "Ajouter",
     "update": "Modifier",
     "add-success": "Trigger ajouté avec succès.",

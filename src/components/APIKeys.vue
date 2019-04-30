@@ -44,14 +44,14 @@
                     </generic-form>
                 </form>
                 <h5>{{$t('api-requests')}}</h5>
-                <div class="urls">
-                    <div v-if="isShow">
+                <div v-if="isShow" class="urls">
+                    <div>
                         <h6>{{$t('update-url')}}</h6>
                         <pre>  POST : <span>http://localhost:8091/record?key=</span><span class="key">{{getCanal.cleEcriture}}{{this.paramlist}}</span></pre>
                     </div>
                     <div v-if="isShow">
                         <h6>{{$t('read-url')}}</h6>
-                        <pre  v-for="f in displayFields()" v-bind:key="f.id">  GET : <span>http://localhost:8091/record?key=</span><span class="key">={{getCanal.cleLecture}}&field={{f.nom}}</span></pre>
+                        <pre  v-for="f in displayFields()" v-bind:key="f.id">  GET : <span>http://localhost:8091/read?key=</span><span class="key">{{getCanal.cleLecture}}&field={{f.nom}}</span></pre>
                     </div>
                 </div>
             </div>
@@ -101,11 +101,6 @@
         },
         methods: {
             keyGenerator(){
-                var payload = {
-                    'link': '/canals/' + this.$store.state.canal.id + '/fields',
-                    'mutation': 'setFields',
-                    'all': true
-                };
                 this.$store.dispatch('getRequest', payload);
                 this.keyWrite = this.$store.getters.getCanal.cleEcriture;
                 this.keyRead = this.$store.getters.getCanal.cleLecture;

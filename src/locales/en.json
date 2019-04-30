@@ -28,14 +28,12 @@
   },
   "trigger": {
     "name": "Name of The Trigger",
-    "commandeX": "Commande {num}",
+    "commandX": "Command {num}",
     "add": "Add",
     "update": "Update",
     "add-success": "Trigger added successfully.",
     "add-error": "Trigger add operation failed !"
   },
-
-
   "react": {
     "name": "Name of The React",
     "canal": "Log to Canal",
@@ -46,8 +44,6 @@
     "add-success": "React added successfully.",
     "add-error": "React add operation failed !"
   },
-
-
 
   "tooltips": {
     "add-channel": "new channel",

@@ -46,7 +46,7 @@
                                                 minlength="3"
                                                 v-model="commandes[index].value">
                                         <label  v-bind:for="cmd.name" >
-                                            {{ $t('trigger.commandeX', {num: index + 1}) }}
+                                            {{ $t('trigger.commandX', {num: index + 1}) }}
                                         </label>
                                         <i @click="deleteCommande(index)" v-if="index > 0" class="fa fa-times delete-field red-text text-darken-5"></i>
                                     </div>
@@ -57,7 +57,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <div v-if="commandes.length < 8" @click="addCommande" class="btn waves-effect waves-light submit">
-                                                <i style="font-size: .9rem" class="fa fa-plus"></i> {{ $t('trigger.commandeX', {num: ''}) }}
+                                                <i style="font-size: .9rem" class="fa fa-plus"></i> {{ $t('trigger.commandX', {num: ''}) }}
                                             </div>
                                         </div>
                                         <div class="col right">
@@ -72,7 +72,20 @@
                         </generic-form>
                     </form>
                 </div>
+                <div class="col l7 s12">
+                    <h4>{{ $t('help') }}</h4>
+                    <p>{{ $t('trigger-des') }}</p>
+                    <h5>{{ $t('trigger-settings') }}</h5>
+                    <ul class="help-list">
+                        <li>
+                            <p><strong>{{ $t('settings.name') }}</strong>{{ $t('settings.name-det') }}</p>
+                        </li>
+                        <li>
+                            <p v-html="this.$t('settings.command-det')"></p>
+                        </li>
+                    </ul>
 
+                </div>
             </div>
         </section>
     </div>
@@ -110,7 +123,6 @@
                     nom: this.name,
                     userId: this.$store.state.userId
                 };
-                console.log(this.$store.state.userId)
                 for(var i = 1; i <= this.commandes.length; i++){
                     var key = 'commande' + i,
                         value = this.commandes[i-1].value;
@@ -160,31 +172,25 @@
 <i18n>
     {
     "en": {
-    "main-title": "Nouveau Trigger",
-    "no-channel": "No Channel to displayed",
-    "add-channel": "New Channel",
-    "help": "Help",
-    "text": "Collect data in a Iot-Platform ESI-SBA channel from a device, from another channel, or from the web. <br>Click <strong>New Channel </strong> to create a new Iot-Platform ESI-SBA channel. <br>Click on the column headers of the table to sort by the entries in that column or click on a tag to show channels with that tag.",
-    "table": {
-    "name": "Name",
-    "description": "Description",
-    "created": "Created",
-    "updated": "Updated",
-    "actions": "Actions"
+    "main-title": "New Trigger",
+    "trigger-des": "Use the TalkBack app to send new commands to any device.",
+    "trigger-settings": "Trigger Settings",
+    "settings": {
+    "name": "Trigger Name : ",
+    "name-det": "Enter a unique name for your Trigger.",
+    "command": "Commands",
+    "command-det": "<strong>Commands : </strong> Click  <strong>+ command </strong> to queue new commands to your TalkBack. You can also queue up commands using the Trigger API."
     }
+
     },
     "fr": {
     "main-title": "Nouveau Trigger",
-    "no-channel": "Aucun Canal à Afficher",
-    "add-channel": "Nouveau Trigger",
-    "help": "Aide",
-    "text": "Collectez des données sur un canal ESI-SBA Iot-Platform à partir d'un périphérique, d'un autre canal ou du Web. <br> Cliquez sur <strong> Nouveau canal </strong> pour créer un nouveau canal ESI-SBA Iot-Platform. <br> Cliquez sur les en-têtes de colonne du tableau pour trier les entrées de cette colonne ou cliquez sur une balise pour afficher les canaux avec cette balise.",
-    "table": {
-    "name": "Nom",
-    "description": "Description",
-    "created": "Créé",
-    "updated": "mis à jour",
-    "actions": "Actions"
+    "trigger-settings": "Paramètres de Trigger",
+    "settings": {
+    "name": "Nom du Trigger : ",
+    "name-det": "Entrez un nom unique pour votre triggers.",
+    "command": "Commandes",
+    "command-det": "<strong>Commandes : </strong> Cliquez sur  <strong>+ commande </strong> pour ajouter une nouvelle commande pour votre trigger"
     }
     }
     }

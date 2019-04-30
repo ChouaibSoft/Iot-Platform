@@ -11,7 +11,7 @@ import FlagIcon from 'vue-flag-icon';
 
 Vue.use(Vuelidate);
 Vue.use(FlagIcon);
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 Vue.use(VueFlashMessage, {
     mixin: true,
@@ -29,7 +29,6 @@ require('@/assets/css/base.css');
 
 new Vue({
     mounted() {
-        console.log(this.$store.state.token);
         this.$store.dispatch('switchProgress');
         i18n.locale = this.$store.state.locale;
         if(this.$store.getters.getToken != null){

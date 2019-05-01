@@ -75,7 +75,7 @@
     import { mapGetters } from 'vuex'
 
     export default {
-        name: "detail-channels",
+        name: "detail-channel",
         data() {
             return {
             }
@@ -100,9 +100,7 @@
         },
     }
     $(document).ready(function () {
-        $(document).ready(function(){
-            $('.tabs').tabs();
-        });
+        $('.tabs').tabs();
     });
 </script>
 

@@ -75,7 +75,10 @@
     "new-trigger": "Nouveau Trigger",
     "my-triggers": "Mes Triggers",
     "new-react": "Nouveau React",
-    "my-reacts": "Mes reacts"
+    "my-reacts": "Mes reacts",
+    "detail-trigger": "Detail de Trigger",
+    "trigger-overview": "Trigger Overview",
+    "trigger-settings": "Paramètres de Trigger"
 
   }
 }

@@ -84,10 +84,6 @@ const router = new Router({
                     },
                     component: () => import("@/views/MyReact")
                 },
-
-
-
-
                 {
                     path: "channels/:id",
                     name: "detail-channels",
@@ -133,6 +129,35 @@ const router = new Router({
                             },
                             component: () => import("@/components/DataImportExport")
                         }
+                    ]
+                },
+                {
+                    path: "triggers/:id",
+                    name: "detail-trigger",
+                    meta: {
+                        protected: true,
+                        title: i18n.t('page-title.detail-trigger')
+                    },
+                    component: () => import("@/views/DetailTrigger"),
+                    children: [
+                        {
+                            path: "overview",
+                            name: "overview",
+                            meta: {
+                                protected: true,
+                                title: i18n.t('page-title.trigger-overview')
+                            },
+                            component: () => import("@/components/TriggerOverview")
+                        },
+                        {
+                            path: "settings",
+                            name: "settings",
+                            meta: {
+                                protected: true,
+                                title: i18n.t('page-title.trigger-settings')
+                            },
+                            component: () => import("@/components/TriggerSettings")
+                        },
                     ]
                 }
             ]

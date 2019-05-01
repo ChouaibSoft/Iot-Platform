@@ -72,6 +72,9 @@
     "new-trigger": "New Trigger",
     "my-triggers": "My Triggers",
     "new-react": "New React",
-    "my-reacts": "My Reacts"
+    "my-reacts": "My Reacts",
+    "detail-trigger": "Detail Trigger",
+    "trigger-overview": "Trigger Overview",
+    "trigger-settings": "Trigger Settings"
   }
 }

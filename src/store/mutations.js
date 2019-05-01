@@ -25,6 +25,9 @@ const mutations = {
     setFields(state, payload){
         state.fields = payload;
     },
+    setTriggers(state, payload){
+        state.triggers = payload;
+    },
     changeLocale(state, lang){
         state.locale = lang.language;
         state.flag = lang.flag;

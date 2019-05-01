@@ -55,7 +55,7 @@
                     <div class="alert alert-info" role="alert">
                         {{ $t('no-channel') }}
                     </div>
-                    <router-link to="/dashboard/channels/new" class="waves-effect waves-light btn">
+                    <router-link :to="{ name: 'new-channel' }" class="waves-effect waves-light btn">
                         {{ $t('add-channel') }}
                     </router-link>
                 </div>
@@ -74,7 +74,7 @@
             }
         },
         computed: {
-            ...mapGetters(['getCanals', 'getUserId'])
+            ...mapGetters(['getCanals'])
         },
         methods:{
             getDateCreated(data){
@@ -83,7 +83,7 @@
         },
         created() {
             var payload = {
-                'link': '/appUsers/' + this.getUserId + '/canals',
+                'link': '/appUsers/' + this.$store.state.userId + '/canals',
                 'mutation': 'setCanals',
                 'all': true
             };

@@ -38,7 +38,7 @@
             </li>
             <li class="item-header">
                 <a href="#" class="group-name has-arrow">
-                    <i class="fa fa-chart-bar"></i>
+                    <i class="fa fa-charging-station"></i>
                     <span class="nav-text">{{ $t('Trigger') }}</span>
                 </a>
                 <div>
@@ -58,14 +58,9 @@
                     </ul>
                 </div>
             </li>
-            
-            
-              <li class="small-cap">
-                <span>Business</span>
-            </li>
             <li class="item-header">
                 <a href="#" class="group-name has-arrow">
-                    <i class="fa fa-chart-bar"></i>
+                    <i class="fa fa-react"></i>
                     <span class="nav-text">{{ $t('React') }}</span>
                 </a>
                 <div>
@@ -85,14 +80,6 @@
                     </ul>
                 </div>
             </li>
-            
-            
-            
-            
-            
-            
-            
-            
             <li class="small-cap">
                 <span>Information</span>
             </li>
@@ -230,6 +217,7 @@
 
         // Add now class to active dropdow list
         $(".item-header").click(function() {
+            console.log('clicked');
             $(this).addClass("now").siblings().removeClass("now").end()
                 .find('.items-group').slideDown(300).end()
                 .siblings('.item-header').find('.items-group').slideUp(300);

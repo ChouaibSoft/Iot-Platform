@@ -18,6 +18,9 @@ const getters = {
     getFields: state =>{
         return state.fields
     },
+    getTriggers: state =>{
+        return state.triggers
+    },
     getUserId: state=>{
         return state.userId
     },

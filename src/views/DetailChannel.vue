@@ -81,13 +81,13 @@
             }
         },
         computed: {
-            ...mapGetters(['getCanal', 'getFields'])
+            ...mapGetters(['getCanal', 'getFields', 'getUserId'])
         },
         mounted(){
             // this.$nextTick(function () {
                     var canalId = this.$route.params.id;
                     var payloadA = {
-                        'link': '/appUsers/' + this.$store.state.userId + '/canals/' + canalId,
+                        'link': '/appUsers/' + this.getUserId + '/canals/' + canalId,
                         'mutation': 'setCanal',
                         'all': false
                     };

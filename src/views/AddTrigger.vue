@@ -36,7 +36,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row" v-for="(cmd, index) in commandes" :key="cmd">
                                     <div class="input-field col s12">
                                         <input
@@ -133,7 +132,8 @@
                 }
                 var payload = {
                     'data': postData,
-                    'link': '/trigger'};
+                    'link': '/trigger'
+                };
                 this.postRequest(payload).then(() => {
                     this.flash(this.$t('trigger.add-success'), 'success');
                     this.$router.push('/dashboard/triggers');

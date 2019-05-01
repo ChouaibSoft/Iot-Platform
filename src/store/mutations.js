@@ -16,6 +16,7 @@ const mutations = {
     deleteToken(state){
         state.token = null;
     },
+    // Channels & Fields
     setCanals(state, payload){
         state.canals = payload;
     },
@@ -25,8 +26,15 @@ const mutations = {
     setFields(state, payload){
         state.fields = payload;
     },
+    // Triggers & Commands
     setTriggers(state, payload){
         state.triggers = payload;
+    },
+    setTrigger(state, payload){
+        state.trigger = payload;
+    },
+    setCommands(state, payload){
+        state.commands = payload;
     },
     changeLocale(state, lang){
         state.locale = lang.language;

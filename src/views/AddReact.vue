@@ -57,9 +57,9 @@
                                     <div class="input-field  col s12">
                                         <select v-model="condition">
                                             <option value="" disabled selected>{{$t('react.condition-select')}}</option>
-                                            <option >is greater than</option>
-                                            <option >is less than</option>
-                                            <option>is equal to</option>
+                                            <option >{{$t('react.is-greater-than')}}</option>
+                                            <option >{{$t('react.is-less-than')}}</option>
+                                            <option >{{$t('react.is-equal-to')}}</option>
                                         </select>
                                         <label>{{$t('react.condition')}}</label>
                                     </div>

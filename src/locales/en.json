@@ -48,7 +48,11 @@
     "add": "Add",
     "update": "Update",
     "add-success": "React added successfully.",
-    "add-error": "React add operation failed !"
+    "add-error": "React add operation failed !",
+    "is-greater-than": "is greater than",
+    "is-less-than": "is less than",
+    "is-equal-to": "is equal to"
+
   },
 
   "tooltips": {

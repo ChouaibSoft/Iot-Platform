@@ -97,6 +97,9 @@
   top: 64px !important;
   width: max-content !important;
   height:auto !important;
+  span{
+    vertical-align: middle;
+  }
 }
 .collapse-nav{
   .brand-logo{

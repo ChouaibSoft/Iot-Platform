@@ -50,7 +50,10 @@
     "add": "Ajouter",
     "update": "Modifier",
     "add-success": "React ajouté avec success",
-    "add-error": "L'opération d'ajout de React a échoué !"
+    "add-error": "L'opération d'ajout de React a échoué !",
+    "is-greater-than": "est supérieur à",
+    "is-less-than": "est inférieur à",
+    "is-equal-to": "est égal à"
   },
 
 

@@ -10,30 +10,28 @@
 
         </div>
         <section class="component-section">
-            <div v-if="!(this.$store.state.triggers === null) " class="row">
+            <div v-if="!(this.getTriggers === null) " class="row">
                 <div class="col s12 l8">
                     <table class = "striped bordered">
                         <thead>
                         <tr>
                             <th>{{ $t('table.id') }}</th>
                             <th>{{ $t('table.name') }}</th>
-                            <!--<th>{{ $t('table.created') }}</th>-->
+                            <th>{{ $t('table.created') }}</th>
                             <th>{{ $t('table.actions') }}</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="trigger in getTriggers" v-bind:key="trigger">
-                            <td>{{trigger.id}}</td>
+                        <tr v-for="(trigger, index) in this.getTriggers" :data-url="'/dashboard/triggers/' + trigger.id">
+                            <td>{{index + 1}}</td>
                             <td>{{trigger.nom}}</td>
+                            <td>30/04/2019</td>
                             <td class="action" width="15%">
-                                <router-link :to="{ name: 'view', params: { id: canal.id}}">
+                                <router-link :to="{ name: 'trigger-overview', params: { id: trigger.id}}">
                                     <i class="fa fa-chart-bar"></i>
                                 </router-link>
-                                <router-link :to="{ name: 'api-key', params: { id: canal.id}}">
+                                <router-link :to="{ name: 'trigger-settings', params: { id: trigger.id}}">
                                     <i class="material-icons prefix">vpn_key</i>
-                                </router-link>
-                                <router-link :to="{ name: 'settings', params: { id: canal.id}}">
-                                    <i class="material-icons prefix">settings</i>
                                 </router-link>
                             </td>
                         </tr>
@@ -80,11 +78,18 @@
         },
         created() {
             var payload = {
-                'link': '/appUsers/' + this.getUserId + '/trigger',
+                'link': '/appUsers/' + this.getUserId + '/trigers',
                 'mutation': 'setTriggers',
                 'all': true
             };
             this.$store.dispatch('getRequest', payload);
+        },
+        mounted(){
+            $("tr").find("td").click(function(){
+                if (!($(this).hasClass("not-allowed"))){
+                    window.location = $(this).parent("tr").data('url');
+                }
+            });
         }
     }
 </script>

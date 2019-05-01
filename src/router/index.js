@@ -142,7 +142,7 @@ const router = new Router({
                     children: [
                         {
                             path: "overview",
-                            name: "overview",
+                            name: "trigger-overview",
                             meta: {
                                 protected: true,
                                 title: i18n.t('page-title.trigger-overview')
@@ -151,7 +151,7 @@ const router = new Router({
                         },
                         {
                             path: "settings",
-                            name: "settings",
+                            name: "trigger-settings",
                             meta: {
                                 protected: true,
                                 title: i18n.t('page-title.trigger-settings')

@@ -9,6 +9,7 @@ const getters = {
     getLang: state =>{
         return state.locale
     },
+    // Channels & Fields
     getCanals: state =>{
         return state.canals
     },
@@ -18,9 +19,17 @@ const getters = {
     getFields: state =>{
         return state.fields
     },
+    // Triggers & Commands
     getTriggers: state =>{
         return state.triggers
     },
+    getTrigger: state =>{
+        return state.trigger
+    },
+    getCommands: state =>{
+        return state.commands
+    },
+
     getUserId: state=>{
         return state.userId
     },

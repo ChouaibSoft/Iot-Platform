@@ -10,7 +10,7 @@
 
         </div>
         <section class="component-section">
-            <div v-if="!(this.$store.state.canals === null) " class="row">
+            <div v-if="!(this.getCanals === null) " class="row">
                 <div class="col s12 l8">
                     <table class = "striped bordered">
                         <thead>
@@ -76,7 +76,7 @@
             }
         },
         computed: {
-            ...mapGetters(['getCanals'])
+            ...mapGetters(['getCanals', 'getUserId'])
         },
         methods:{
             getDateCreated(data){
@@ -85,7 +85,7 @@
         },
         created() {
             var payload = {
-                'link': '/appUsers/' + this.$store.state.userId + '/canals',
+                'link': '/appUsers/' + this.getUserId + '/canals',
                 'mutation': 'setCanals',
                 'all': true
             };

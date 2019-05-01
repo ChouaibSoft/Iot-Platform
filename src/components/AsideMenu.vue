@@ -15,7 +15,7 @@
                 <span>Business</span>
             </li>
             <li class="item-header">
-                <a href="#" class="group-name has-arrow">
+                <a href="#!" class="group-name has-arrow">
                     <i class="fa fa-chart-bar"></i>
                     <span class="nav-text">{{ $t('channel') }}</span>
                 </a>
@@ -37,7 +37,7 @@
                 </div>
             </li>
             <li class="item-header">
-                <a href="#" class="group-name has-arrow">
+                <a href="#!" class="group-name has-arrow">
                     <i class="fa fa-charging-station"></i>
                     <span class="nav-text">{{ $t('Trigger') }}</span>
                 </a>
@@ -59,7 +59,7 @@
                 </div>
             </li>
             <li class="item-header">
-                <a href="#" class="group-name has-arrow">
+                <a href="#!" class="group-name has-arrow">
                     <i class="fa fa-react"></i>
                     <span class="nav-text">{{ $t('React') }}</span>
                 </a>
@@ -131,105 +131,97 @@
             ...mapActions([
                 'logout'
             ])
-        }
-    }
-    $(document).ready(function() {
-        var aside = $("aside"),
-            mainAside = $(".main-menu"),
-            navbar = $(".navbar"),
-            dashArea = $(".dash-area");
-        if (window.innerWidth < 992) {
-            aside.addeClass("collapse");
-            mainAside.animate({
-                left: "-256px"
-            }, 500);
-            dashArea.animate({
-                width: "100%",
-                paddingLeft: "15px"
-            }, 0);
-        }else{
-            mainAside.addClass("is-visible");
-            dashArea.removeClass("full-size");
-            navbar.removeClass("collapse-nav");
-        }
-        // Adjust Aside Menu During Window Resize
-        $(window).resize(function () {
-            if (window.innerWidth > 992) {
-                aside.removeClass("collapse");
-                navbar.removeClass("collapse-nav");
-                if (!(mainAside.hasClass("is-visible"))) {
-                    mainAside.animate({
-                        left: '0'
-                    }, 500);
-                    mainAside.addClass("is-visible");
-                    if(dashArea.hasClass("full-size")){
-                        dashArea.animate({
-                            paddingLeft: "340px",
-                        }, 0);
-                        dashArea.removeClass("full-size");
-                    }
-                } else {
-                    if (dashArea.hasClass("full-size")) {
-                        dashArea.animate({
-                            paddingLeft: "340px",
-                        }, 0);
-                        mainAside.addClass("is-visible");
-                        dashArea.removeClass("full-size");
-                    }
-                }
-            } else {
-                navbar.addClass("collapse-nav");
-                aside.removeClass("collapse");
+        },
+        mounted(){
+            var aside = $("aside"),
+                mainAside = $(".main-menu"),
+                navbar = $(".navbar"),
+                dashArea = $(".dash-area");
+            if (window.innerWidth < 992) {
+                aside.addeClass("collapse");
                 mainAside.animate({
                     left: "-256px"
                 }, 500);
                 dashArea.animate({
                     width: "100%",
                     paddingLeft: "15px"
-                    }, 0);
-                mainAside.removeClass("is-visible");
-                dashArea.addClass("full-size");
+                }, 0);
+            }else{
+                mainAside.addClass("is-visible");
+                dashArea.removeClass("full-size");
+                navbar.removeClass("collapse-nav");
             }
-        });
-
-        //Remove Collapse when hover on aside menu
-        $("#items").on({
-            mouseleave: function(event) {
-                if(window.innerWidth > 992){
-                    if(!(aside.hasClass("collapse"))){
+            // Adjust Aside Menu During Window Resize
+            $(window).resize(function () {
+                if (window.innerWidth > 992) {
+                    aside.removeClass("collapse");
+                    navbar.removeClass("collapse-nav");
+                    if (!(mainAside.hasClass("is-visible"))) {
+                        mainAside.animate({
+                            left: '0'
+                        }, 500);
+                        mainAside.addClass("is-visible");
                         if(dashArea.hasClass("full-size")){
-                            aside.addClass("collapse");
+                            dashArea.animate({
+                                paddingLeft: "340px",
+                            }, 0);
+                            dashArea.removeClass("full-size");
+                        }
+                    } else {
+                        if (dashArea.hasClass("full-size")) {
+                            dashArea.animate({
+                                paddingLeft: "340px",
+                            }, 0);
+                            mainAside.addClass("is-visible");
+                            dashArea.removeClass("full-size");
+                        }
+                    }
+                } else {
+                    navbar.addClass("collapse-nav");
+                    aside.removeClass("collapse");
+                    mainAside.animate({
+                        left: "-256px"
+                    }, 500);
+                    dashArea.animate({
+                        width: "100%",
+                        paddingLeft: "15px"
+                    }, 0);
+                    mainAside.removeClass("is-visible");
+                    dashArea.addClass("full-size");
+                }
+            });
+
+            //Remove Collapse when hover on aside menu
+            $("#items").on({
+                mouseleave: function(event) {
+                    if(window.innerWidth > 992){
+                        if(!(aside.hasClass("collapse"))){
+                            if(dashArea.hasClass("full-size")){
+                                aside.addClass("collapse");
+                                event.stopPropagation();
+                            }
+                        }
+                    }
+                },
+                mouseover: function(event) {
+                    if(window.innerWidth > 992){
+                        if((aside.hasClass("collapse"))){
+                            aside.removeClass("collapse");
                             event.stopPropagation();
                         }
                     }
                 }
-            },
-            mouseover: function(event) {
-                if(window.innerWidth > 992){
-                    if((aside.hasClass("collapse"))){
-                        aside.removeClass("collapse");
-                        event.stopPropagation();
-                    }
-                }
-            }
-        });
+            });
 
 
-        // Add now class to active dropdow list
-        $(".item-header").click(function() {
-            console.log('clicked');
-            $(this).addClass("now").siblings().removeClass("now").end()
-                .find('.items-group').slideDown(300).end()
-                .siblings('.item-header').find('.items-group').slideUp(300);
-        });
-        // Add Selected Class in Active Link
-        $(".item-header").each(function () {
-            if ($(this).find("a").hasClass("router-link-exact-active")){
-                $(this).addClass('now').find('.items-group').slideDown(300).end()
+            // Add now class to active dropdow list
+            $(".item-header").on('click', function() {
+                $(this).addClass("now").siblings().removeClass("now").end()
+                    .find('.items-group').slideDown(300).end()
                     .siblings('.item-header').find('.items-group').slideUp(300);
-            }
-        });
-    });
+            });
+        }
+    }
 </script>
 
 <style scoped>

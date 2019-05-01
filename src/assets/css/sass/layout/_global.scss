@@ -53,6 +53,14 @@ body{
     th{
       border: 1px double #ccc;
     }
+    tbody{
+      tr{
+        cursor: pointer;
+      }
+      .not-allowed{
+        cursor: auto;
+      }
+    }
   }
   .content{
     margin: 45px  35px 75px -50px;

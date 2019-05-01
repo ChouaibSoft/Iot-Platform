@@ -15,14 +15,14 @@ aside {
     height:100%;
     left:0;
     width:255px;
-    padding: 25px  1% 0 1%;
+    padding: 25px  1% 63px 1%;
     -webkit-transition:width .3s linear;
     transition:width .3s linear;
     -webkit-transform:translateZ(0) scale(1,1);
     z-index:1000;
     &:hover{
-      height: 100%;
-      overflow: auto;
+      max-height: 100%;
+      overflow-y: auto;
     }
     li {
       width: 230px;

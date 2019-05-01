@@ -230,6 +230,10 @@
             }
 
         },
+        mounted(){
+            $('textarea#description').characterCounter();
+            $('select').formSelect();
+        },
         validations: {
             name: {
                 required,
@@ -240,10 +244,6 @@
             }
         },
     }
-    $(document).ready(function () {
-        $('textarea#description').characterCounter();
-        $('select').formSelect();
-    })
 </script>
 
 <style scoped lang="scss">

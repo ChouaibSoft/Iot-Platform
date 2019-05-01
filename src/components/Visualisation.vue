@@ -4,7 +4,6 @@
             <div class="col s12">
             </div>
             <div v-for="field in getFields" class="col s12 l6">
-                {{ field.nom }}
                 <field-chart v-bind:nameField="field.nom" v-bind:idField="field.id"></field-chart>
             </div>
         </div>

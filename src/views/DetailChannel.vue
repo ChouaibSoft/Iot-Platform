@@ -98,10 +98,10 @@
             };
             this.$store.dispatch('getRequest', payloadB);
         },
+        mounted(){
+            $('.tabs').tabs();
+        }
     }
-    $(document).ready(function () {
-        $('.tabs').tabs();
-    });
 </script>
 
 <style scoped>

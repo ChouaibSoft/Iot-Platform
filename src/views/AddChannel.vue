@@ -202,6 +202,10 @@
                 this.fields.splice(index, 1);
             }
         },
+        mounted(){
+            $('textarea#description').characterCounter();
+
+        },
         validations: {
             name: {
                 required,
@@ -216,9 +220,6 @@
             }
         },
     }
-    $(document).ready(function () {
-        $('textarea#description').characterCounter();
-    })
 </script>
 
 <style scoped lang="scss">

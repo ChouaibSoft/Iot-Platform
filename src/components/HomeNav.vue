@@ -32,11 +32,12 @@
             ...mapGetters([
                 'isLogged'
             ])
+        },
+        mounted(){
+            $('.sidenav').sidenav();
+
         }
     }
-    $(document).ready(function(){
-        $('.sidenav').sidenav();
-    });
 </script>
 <i18n>
     {

@@ -37,13 +37,13 @@
                                     <li class="tab col s3">
                                         <router-link  :to="{ name: 'overview', params: { id: getTrigger.id}}"
                                                       exact-active-class="active">
-                                            {{ $t('component-toggle.view') }}
+                                            {{ $t('component-toggle.overview') }}
                                         </router-link>
                                     </li>
                                     <li class="tab col s3">
                                         <router-link :to="{ name: 'settings', params: { id: getTrigger.id}}"
                                                      exact-active-class="active">
-                                            {{ $t('component-toggle.api-keys') }}
+                                            {{ $t('component-toggle.trigger-settings') }}
                                         </router-link>
                                     </li>
                                 </ul>
@@ -118,7 +118,7 @@
     "delete-Trigger": "Trigger",
     "component-toggle": {
     "overview": "Overview",
-    "trigger-settings": "Paramètres"
+    "trigger-settings": "Paramètres de Trigger"
     }
     }
     }

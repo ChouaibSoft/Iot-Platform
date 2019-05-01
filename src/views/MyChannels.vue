@@ -15,6 +15,7 @@
                     <table class = "striped bordered">
                         <thead>
                         <tr>
+                            <th>{{ $t('table.num') }}</th>
                             <th>{{ $t('table.name') }}</th>
                             <th>{{ $t('table.description') }}</th>
                             <th>{{ $t('table.created') }}</th>
@@ -23,12 +24,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="canal in getCanals" v-bind:key="canal">
+                        <tr v-for="(canal, index) in getCanals"  :data-url="'/dashboard/channels/' + canal.id +  '/view'">
+                            <td>{{ index + 1 }}</td>
                             <td>{{canal.nom}}</td>
                             <td>{{canal.description.length > 40 ? canal.description.substring(1, 50) + '...': canal.description }}</td>
                             <td>{{getDateCreated(canal.dateCreation)}}</td>
                             <td>{{getDateCreated(canal.dateCreation)}}</td>
-                            <td class="action" width="15%">
+                            <td class="action not-allowed" width="15%">
                                 <router-link :to="{ name: 'view', params: { id: canal.id}}">
                                     <i class="fa fa-chart-bar"></i>
                                 </router-link>
@@ -88,6 +90,13 @@
                 'all': true
             };
             this.$store.dispatch('getRequest', payload);
+        },
+        mounted(){
+            $("tr").find("td").click(function(){
+                if (!($(this).hasClass("not-allowed"))){
+                    window.location = $(this).parent("tr").data('url');
+                }
+            });
         }
     }
 </script>
@@ -100,6 +109,7 @@
     "help": "Help",
     "text": "Collect data in a Iot-Platform ESI-SBA channel from a device, from another channel, or from the web. <br>Click <strong>New Channel </strong> to create a new Iot-Platform ESI-SBA channel. <br>Click on the column headers of the table to sort by the entries in that column or click on a tag to show channels with that tag.",
     "table": {
+        "num": "#",
         "name": "Name",
         "description": "Description",
         "created": "Created",
@@ -114,6 +124,7 @@
     "help": "Aide",
     "text": "Collectez des données sur un canal ESI-SBA Iot-Platform à partir d'un périphérique, d'un autre canal ou du Web. <br> Cliquez sur <strong> Nouveau canal </strong> pour créer un nouveau canal ESI-SBA Iot-Platform. <br> Cliquez sur les en-têtes de colonne du tableau pour trier les entrées de cette colonne ou cliquez sur une balise pour afficher les canaux avec cette balise.",
     "table": {
+        "num": "#",
         "name": "Nom",
         "description": "Description",
         "created": "Créé",

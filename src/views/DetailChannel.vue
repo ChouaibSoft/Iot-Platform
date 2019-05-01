@@ -43,8 +43,8 @@
                                     <li class="tab col s3">
                                         <router-link :to="{ name: 'api-key', params: { id: getCanal.id}}"
                                                      exact-active-class="active">
-                                        {{ $t('component-toggle.api-keys') }}
-                                    </router-link>
+                                            {{ $t('component-toggle.api-keys') }}
+                                        </router-link>
                                     </li>
                                     <li class="tab col s3">
                                         <router-link :to="{ name: 'settings', params: { id: getCanal.id}}"
@@ -83,22 +83,22 @@
         computed: {
             ...mapGetters(['getCanal', 'getFields'])
         },
-        created(){
-            var canalId = this.$route.params.id;
-            var payloadA = {
-                'link': '/appUsers/' + this.$store.state.userId + '/canals/' + canalId,
-                'mutation': 'setCanal',
-                'all': false
-            };
-            this.$store.dispatch('getRequest', payloadA);
-            var payloadB = {
-                'link': '/canals/' + canalId + '/fields',
-                'mutation': 'setFields',
-                'all': true
-            };
-            this.$store.dispatch('getRequest', payloadB);
-        },
         mounted(){
+            // this.$nextTick(function () {
+                    var canalId = this.$route.params.id;
+                    var payloadA = {
+                        'link': '/appUsers/' + this.$store.state.userId + '/canals/' + canalId,
+                        'mutation': 'setCanal',
+                        'all': false
+                    };
+                    this.$store.dispatch('getRequest', payloadA);
+                    var payloadB = {
+                        'link': '/canals/' + canalId + '/fields',
+                        'mutation': 'setFields',
+                        'all': true
+                    };
+                    this.$store.dispatch('getRequest', payloadB);
+            // });
             $('.tabs').tabs();
         }
     }

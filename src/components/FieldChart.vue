@@ -6,7 +6,7 @@
                     <i class="material-icons">filter_drama</i>Field :  <span class="teal-text lighten-1">{{ this.nameField }}</span>
                 </div>
                 <div class="collapsible-body" style="display: block; position:relative; height: 290px !important; overflow: hidden">
-                    <canvas :id="this.id" class="chartjs" width="100%" height="100%" style="display: block; position: absolute; width: 100%; height: 300px !important; top:0; left:0;"></canvas>
+                    <canvas :id="this.id"  width="100%" height="100%" style="display: block; position: absolute; width: 100%; height: 300px !important; top:0; left:0;"></canvas>
                 </div>
             </li>
         </ul>
@@ -18,8 +18,6 @@
     import  axios from 'axios';
     import Chart from 'chart.js'
     import Pusher from 'pusher-js'
-
-
     export default {
         name:"FieldChart",
         data(){
@@ -77,7 +75,6 @@
                         })
                 }
             });
-
             this.getData()
         },
         mounted () {

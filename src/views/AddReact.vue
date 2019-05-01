@@ -93,10 +93,10 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input
-                                                id="msg"
+                                                id="message"
                                                 type="text"
                                                 v-model="message">
-                                        <label for="name">{{ $t('react.message') }}</label>
+                                        <label for="message">{{ $t('react.message') }}</label>
 
                                     </div>
                                 </div>

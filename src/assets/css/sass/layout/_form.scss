@@ -29,6 +29,14 @@
   input[type="text"]:not(.browser-default):focus.valid ~ label{
     color:#2bbbad;
   }
+  .vue-tel-input{
+    border: none;
+    box-shadow: none !important;
+    &:hover{
+      border: none;
+      box-shadow: none;
+    }
+  }
   textarea{
     resize: none;
     width: 100%;

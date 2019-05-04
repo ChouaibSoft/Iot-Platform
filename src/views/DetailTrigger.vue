@@ -44,7 +44,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr v-for="(command, index) in this.getCommands" v-bind:class="{ 'green lighten-5': command.executed	 }" >
+                                    <tr v-for="(command, index) in this.$store.getters.getCommands" v-bind:key="command" v-bind:class="{ 'green lighten-5': command.executed	 }" >
                                         <td>{{ index + 1 }}</td>
                                         <td>{{command.id}}</td>
                                         <td>{{command.valeur}}</td>
@@ -93,7 +93,7 @@
                                 <div class="urls">
                                     <div>
                                         <h6>{{$t('update-url')}}</h6>
-                                        <pre>  POST : http://localhost:8091/ExecuteCommande/<span class="key">{id}</span></pre>
+                                        <pre>  POST : http://localhost:8091/ExecuteCommands/<span class="key">{{IdTriger}}</span></pre>
                                     </div>
                                 </div>
                             </div>
@@ -107,13 +107,17 @@
 
 <script>
     import { mapGetters, mapActions } from 'vuex'
-
+    import Form from "@/components/Form";
     export default {
         name: "detail-trigger",
         data() {
             return {
                 commands: [],
+                IdTriger:''
             }
+        },
+        components: {
+            'generic-form': Form,
         },
         computed: {
             ...mapGetters(['getTrigger', 'getCommands', 'getUserId'])
@@ -122,8 +126,8 @@
             ...mapActions(['postRequest']),
             pushCommand: function () {
                 var postData = {
-                    nom: this.getTrigger.nom,
-                    userId: this.$store.state.userId
+                    //nom: this.getTrigger.nom,
+                    //userId: this.$store.state.userId
                 };
                 for(var i = 1; i <= this.commands.length; i++){
                     var key = 'commande' + i,
@@ -135,12 +139,12 @@
                 }
                 var payload = {
                     'data': postData,
-                    'link': '/trigger'
+                    'link': '/trigers/'+this.IdTriger
                 };
                 this.postRequest(payload).then(() => {
-                    this.flash(this.$t('trigger.add-success'), 'success');
+                    this.flash(this.$t('commande.add-success'), 'success');
                 }).catch(() => {
-                    this.flash(this.$t('trigger.add-error'), 'error');
+                    this.flash(this.$t('commande.add-error'), 'error');
                 })
             },
             addCommand: function () {
@@ -156,6 +160,7 @@
         },
         created(){
             var triggerId = this.$route.params.id;
+            this.IdTriger=triggerId
             var payloadA = {
                 'link': '/appUsers/' + this.getUserId + '/trigers/' + triggerId ,
                 'mutation': 'setTrigger',
@@ -168,13 +173,11 @@
                 'all': true
             };
             this.$store.dispatch('getRequest', payloadB);
-            console.log("commands" +  this.getCommands);
         },
     }
 </script>
 
 <style scoped>
-
 </style>
 <i18n>
     {

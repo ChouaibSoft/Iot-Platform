@@ -65,6 +65,7 @@
                                                 type="text"
                                                 class="validate"
                                                 minlength="3"
+                                                required
                                                 v-model="fields[index].value">
                                         <label  v-bind:for="field.name" >
                                            {{ $t('canal.fieldX', {num: index + 1}) }}
@@ -167,21 +168,21 @@
         methods: {
             ...mapActions(['postRequest']),
             addCanal: function () {
-                var postData = {
+                let postData = {
                     nom: this.name,
                     description: this.description,
                     userId: this.$store.state.userId
                 };
 
-                for(var i = 1; i <= this.fields.length; i++){
-                    var key = 'field' + i,
+                for(let i = 1; i <= this.fields.length; i++){
+                    let key = 'field' + i,
                         value = this.fields[i-1].value;
                     if (value === '') {
                         break;
                     }
                     postData[key] = value;
                 }
-                var payload = {
+                let payload = {
                     'data': postData,
                     'link': '/canals'};
                 this.postRequest(payload).then(() => {
@@ -192,7 +193,7 @@
                 })
             },
             addField: function () {
-                var field = "field" + (this.fields.length + 1);
+                let field = "field" + (this.fields.length + 1);
                 this.fields.push({
                     name: field,
                     value: ''

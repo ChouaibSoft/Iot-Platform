@@ -2,7 +2,7 @@
     <div id="channel-settings">
         <div class="row">
                 <div class="col s12 l5">
-                    <form class="form" id="add-canal" @submit.prevent="addCanal">
+                    <form class="form" id="add-canal" @submit.prevent="updateCanal">
                         <generic-form>
                             <div slot="form-fields">
                                 <div class="row">
@@ -54,11 +54,12 @@
                                                 type="text"
                                                 class="validate valid"
                                                 minlength="3"
-                                                v-model="fields[index].value">
+                                                required
+                                                v-model="fields[index].nom">
                                         <label  v-bind:for="field.name" class="active">
                                             {{ $t('canal.fieldX', {num: index + 1}) }}
                                         </label>
-                                        <i @click="deleteField(index)" v-if="index > 0" class="fa fa-times delete-field red-text text-darken-5"></i>
+                                        <i @click="deleteField(index)" class="fa fa-times delete-field red-text text-darken-5"></i>
                                     </div>
                                 </div>
                             </div>
@@ -139,46 +140,39 @@
             return{
                 name: this.$store.getters.getCanal.nom,
                 description: this.$store.getters.getCanal.description,
-                fields: []
+                fields: [],
+                field: {}
             }
         },
         computed:{
             ...mapState['userId'],
-            ...mapGetters(['getFields'])
+            ...mapGetters(['getFields', 'getCanal', 'getUserId'])
 
         },
         methods: {
             ...mapActions(['postRequest']),
-            addCanal: function () {
-                var postData = {
+            updateCanal: function () {
+                let postData = {
                     nom: this.name,
                     description: this.description,
-                    userId: this.$store.state.userId
+                    userId: this.$store.state.userId,
+                    fields: this.fields
                 };
-
-                for(var i = 1; i <= this.fields.length; i++){
-                    var key = 'field' + i,
-                        value = this.fields[i-1].value;
-                    if (value === '') {
-                        break;
-                    }
-                    postData[key] = value;
-                }
-                var payload = {
+                let payload = {
                     'data': postData,
-                    'link': '/canals'};
+                    'link': '/canals/' + this.$route.params.id
+                };
                 this.postRequest(payload).then(() => {
-                    this.flash(this.$t('canal.add-success'), 'success');
-                    this.$router.push('/dashboard/channels');
+                    this.flash(this.$t('canal.update-success'), 'success');
                 }).catch(() => {
-                    this.flash(this.$t('canal.add-error'), 'error');
-                })
+                    this.flash(this.$t('canal.update-error'), 'error');
+                });
+
             },
             addField: function () {
-                var field = "field" + (this.fields.length + 1);
                 this.fields.push({
-                    name: field,
-                    value: ''
+                    id: -1,
+                    nom: ''
                 });
             },
             deleteField: function (index) {
@@ -188,8 +182,8 @@
         created(){
             this.getFields.forEach( f => {
                 this.fields.push({
-                    name: 'field',
-                    value: f.nom
+                    id: f.id,
+                    nom: f.nom
                 })
             });
         },
@@ -201,9 +195,6 @@
             description: {
                 required,
                 minLength: minLength(5),
-            },
-            fields: {
-                minLength: minLength(3)
             }
         },
     }

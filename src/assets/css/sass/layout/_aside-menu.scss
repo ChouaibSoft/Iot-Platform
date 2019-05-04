@@ -21,7 +21,6 @@ aside {
     -webkit-transform:translateZ(0) scale(1,1);
     z-index:1000;
     &:hover{
-      max-height: 100%;
       overflow-y: auto;
     }
     li {

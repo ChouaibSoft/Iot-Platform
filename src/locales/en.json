@@ -23,8 +23,10 @@
     "fieldX": "Field {num}",
     "add": "Add",
     "update": "Update",
-    "add-success": "Canal added successfully.",
-    "add-error": "Canal add operation failed !"
+    "add-success": "Channel added successfully.",
+    "update-success": "Channel updated successfully .",
+    "add-error": "add Channel operation failed !",
+    "update-error": "Update Channel operation failed!"
   },
   "trigger": {
     "name": "Name of The Trigger",

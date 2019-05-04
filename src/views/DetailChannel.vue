@@ -21,11 +21,11 @@
                 <div class="col s12 l7">
                     <div class="channel-head ch-head-2" style="border-left: 1px solid #9e9e9e; padding: 0 20px 5px 30px">
                         <p class="description"><strong>{{ $t('description')}}</strong>{{ getCanal.description }}</p>
-                        <div>
-                            <router-link to="/dashboard/channels/new" class="waves-effect waves-light btn delete-channel">
+                        <div @click="deleteCanal" >
+                            <a class="waves-effect waves-light btn delete-channel">
                                 <i class="fa fa-trash fa-small"></i>
                                 {{ $t('delete-channel') }}
-                            </router-link>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -83,16 +83,25 @@
         computed: {
             ...mapGetters(['getCanal', 'getFields', 'getUserId'])
         },
+        methods: {
+            deleteCanal:function () {
+                let payloadC={
+                    'link':'/canals/'+ this.getCanal.id,
+                    'mutation':'setCanals',
+                };
+                this.$store.dispatch('deleteRequest',payloadC);
+            }
+        },
         mounted(){
             // this.$nextTick(function () {
-                    var canalId = this.$route.params.id;
-                    var payloadA = {
+                    let canalId = this.$route.params.id;
+                    let payloadA = {
                         'link': '/appUsers/' + this.getUserId + '/canals/' + canalId,
                         'mutation': 'setCanal',
                         'all': false
                     };
                     this.$store.dispatch('getRequest', payloadA);
-                    var payloadB = {
+                    let payloadB = {
                         'link': '/canals/' + canalId + '/fields',
                         'mutation': 'setFields',
                         'all': true
@@ -103,7 +112,6 @@
         }
     }
 </script>
-
 <style scoped>
 
 </style>

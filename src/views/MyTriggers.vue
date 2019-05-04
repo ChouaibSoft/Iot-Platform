@@ -77,7 +77,7 @@
             }
         },
         created() {
-            var payload = {
+            let payload = {
                 'link': '/appUsers/' + this.getUserId + '/trigers',
                 'mutation': 'setTriggers',
                 'all': true

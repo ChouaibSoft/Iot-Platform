@@ -179,7 +179,7 @@
 
         },
         created() {
-            var payload = {
+            let payload = {
                 'link': '/appUsers/' + this.getUserId + '/canals',
                 'mutation': 'setCanals',
                 'all': true
@@ -189,7 +189,7 @@
         methods: {
             ...mapActions(['postRequest']),
             addReact: function () {
-                var postData = {
+                let postData = {
                     nom: this.name,
                     condition:this.condition,
                     valeur:this.value,
@@ -201,7 +201,7 @@
 
                 };
 
-                var payload = {
+                let payload = {
                     'data': postData,
                     'link': '/react'};
                 this.postRequest(payload).then(() => {
@@ -215,7 +215,7 @@
             getChannelFields(e){
                 // e => Get Selected Channel Id
                 if(e.target.options.selectedIndex > -1) {
-                    var canalId = e.target.options[e.target.options.selectedIndex].value;
+                    let canalId = e.target.options[e.target.options.selectedIndex].value;
                     this.$http.get(this.getAPIUrl + '/canals/' + canalId + '/fields' , {
                         headers: {
                             'Content-Type': 'application/json',

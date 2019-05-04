@@ -43,6 +43,7 @@
                                                 type="text"
                                                 class="validate"
                                                 minlength="3"
+                                                required
                                                 v-model="commandes[index].value">
                                         <label  v-bind:for="cmd.name" >
                                             {{ $t('trigger.commandX', {num: index + 1}) }}

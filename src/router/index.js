@@ -40,15 +40,6 @@ const router = new Router({
                     component: () => import("@/views/AddChannel")
                 },
                 {
-                    path: "channels",
-                    name: "my-channels",
-                    meta: {
-                        protected: true,
-                        title: i18n.t('page-title.my-channels')
-                    },
-                    component: () => import("@/views/MyChannels")
-                },
-                {
                     path: "triggers/new",
                     name: "new-trigger",
                     meta: {
@@ -83,6 +74,15 @@ const router = new Router({
                         title: i18n.t('page-title.my-reacts')
                     },
                     component: () => import("@/views/MyReact")
+                },
+                {
+                    path: "channels",
+                    name: "my-channels",
+                    meta: {
+                        protected: true,
+                        title: i18n.t('page-title.my-channels')
+                    },
+                    component: () => import("@/views/MyChannels")
                 },
                 {
                     path: "channels/:id",

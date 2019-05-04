@@ -28,6 +28,15 @@ const actions = {
             headers
         })
     },
+    deleteRequest({state},payload){
+        axios.delete(state.apiURL+payload.link, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + state.token
+                }
+            }
+        );
+    },
     getRequest({state, commit}, payload) {
         axios.get(state.apiURL + payload.link, {
             headers: {

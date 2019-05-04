@@ -143,7 +143,6 @@
                 description: this.$store.getters.getCanal.description,
                 fields: [],
                 field: {},
-                meg: '',
                 updated: false
             }
         },
@@ -154,9 +153,6 @@
         },
         watch: {
             updated(newValue, oldValue) {
-                console.log(`Updating from ${oldValue} to ${newValue}`);
-
-                // Do whatever makes sense now
                 if (newValue != oldValue ) {
                     let canalId = this.$route.params.id;
                     let payloadA = {
@@ -171,20 +167,15 @@
                         'all': true
                     };
                     this.$store.dispatch('getRequest', payloadB);
-                    this.fields = null;
-                    this.getFields.forEach( f => {
-                        this.fields.push({
-                            id: f.id,
-                            nom: f.nom
-                        })
-                    });
+
+                    this.updated = false;
                 }
-            },
+            }
         },
         methods: {
             ...mapActions(['postRequest']),
             updateCanal: function () {
-                let postData = {
+                var postData = {
                     nom: this.name,
                     description: this.description,
                     userId: this.$store.state.userId,
@@ -199,7 +190,7 @@
                 }).catch(() => {
                     this.flash(this.$t('canal.update-error'), 'error');
                 });
-                this.updated = true
+                this.updated = true;
 
             },
             addField: function () {

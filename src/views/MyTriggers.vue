@@ -26,13 +26,13 @@
                             <td>{{index + 1}}</td>
                             <td>{{trigger.nom}}</td>
                             <td>30/04/2019</td>
-                            <td class="action" width="15%">
+                            <td class="action not-allowed" width="15%">
                                 <router-link :to="{ name: 'trigger-overview', params: { id: trigger.id}}">
                                     <i class="fa fa-chart-bar"></i>
                                 </router-link>
-                                <router-link :to="{ name: 'trigger-settings', params: { id: trigger.id}}">
+                                <a  class="waves-effect waves-light modal-trigger" href="#modal1">
                                     <i class="material-icons prefix">vpn_key</i>
-                                </router-link>
+                                </a>
                             </td>
                         </tr>
                         </tbody>
@@ -56,6 +56,17 @@
                 </div>
             </div>
         </section>
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Modal Header</h4>
+                <p>A bunch of text</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -90,6 +101,7 @@
                     window.location = $(this).parent("tr").data('url');
                 }
             });
+            $('.modal').modal();
         }
     }
 </script>

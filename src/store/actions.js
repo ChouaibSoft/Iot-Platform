@@ -65,7 +65,6 @@ const actions = {
     },
     setNull({commit}){
         commit('setNull');
-        console.log('set Null ');
     }
 };
 export default actions;

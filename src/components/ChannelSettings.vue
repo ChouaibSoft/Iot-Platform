@@ -3,6 +3,7 @@
         <div class="row">
                 <div class="col s12 l5">
                     <form class="form" id="add-canal" @submit.prevent="updateCanal">
+                        Message : {{ msg }}
                         <generic-form>
                             <div slot="form-fields">
                                 <div class="row">
@@ -141,13 +142,44 @@
                 name: this.$store.getters.getCanal.nom,
                 description: this.$store.getters.getCanal.description,
                 fields: [],
-                field: {}
+                field: {},
+                meg: '',
+                updated: false
             }
         },
         computed:{
             ...mapState['userId'],
             ...mapGetters(['getFields', 'getCanal', 'getUserId'])
 
+        },
+        watch: {
+            updated(newValue, oldValue) {
+                console.log(`Updating from ${oldValue} to ${newValue}`);
+
+                // Do whatever makes sense now
+                if (newValue != oldValue ) {
+                    let canalId = this.$route.params.id;
+                    let payloadA = {
+                        'link': '/appUsers/' + this.getUserId + '/canals/' + canalId,
+                        'mutation': 'setCanal',
+                        'all': false
+                    };
+                    this.$store.dispatch('getRequest', payloadA);
+                    let payloadB = {
+                        'link': '/canals/' + canalId + '/fields',
+                        'mutation': 'setFields',
+                        'all': true
+                    };
+                    this.$store.dispatch('getRequest', payloadB);
+                    this.fields = null;
+                    this.getFields.forEach( f => {
+                        this.fields.push({
+                            id: f.id,
+                            nom: f.nom
+                        })
+                    });
+                }
+            },
         },
         methods: {
             ...mapActions(['postRequest']),
@@ -167,6 +199,7 @@
                 }).catch(() => {
                     this.flash(this.$t('canal.update-error'), 'error');
                 });
+                this.updated = true
 
             },
             addField: function () {

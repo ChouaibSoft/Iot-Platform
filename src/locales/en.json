@@ -14,7 +14,7 @@
   "errors": {
     "required": "this is field is required.",
     "same-as": "passwords must match!",
-    "min-length-password": "password must be greater or equal {minLength} characters",
+    "min-length-passwotrd": "password must be greater or equal {minLength} characters",
     "min-length": "this field must be greater or equal {minLength} characters"
   },
   "canal": {
@@ -35,6 +35,11 @@
     "update": "Update",
     "add-success": "Trigger added successfully.",
     "add-error": "Trigger add operation failed !"
+  },
+  "commande": {
+    "add-success": "Commande added successfully. ",
+    "add-error": "Commande add operation failed !"
+
   },
   "react": {
     "name": "Name of The React",

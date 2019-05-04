@@ -28,6 +28,11 @@
     "add-error": "L'opération d'ajout de canal a échoué !",
     "update-error": "L'opération de modification de canal a échoué !"
   },
+  "commande": {
+    "add-success": "Commande ajouté avec succès. ",
+    "add-error": "L'opération d'ajout de Commande a échoué ! "
+
+  },
   "trigger": {
     "name": "Nom du Trigger",
     "commandX": "Commande {num}",
@@ -36,8 +41,6 @@
     "add-success": "Trigger ajouté avec succès.",
     "add-error": "L'opération d'ajout de Trigger a échoué !"
   },
-
-
   "react": {
     "name": "Nom du React",
     "channel": "Log To Canal",

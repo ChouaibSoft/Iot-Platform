@@ -62,9 +62,6 @@ const actions = {
     changeLocale({commit, state}, lang){
         commit('changeLocale', lang);
         i18n.locale = state.locale;
-    },
-    setNull({commit}){
-        commit('setNull');
     }
 };
 export default actions;

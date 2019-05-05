@@ -21,7 +21,7 @@
                 <div class="col s12 l7">
                     <div class="channel-head ch-head-2" style="border-left: 1px solid #9e9e9e; padding: 0 20px 5px 30px">
                         <p class="description"><strong>{{ $t('description')}}</strong>{{ getCanal.description }}</p>
-                        <div @click="deleteCanal" >
+                        <div @click="deleteChannel" >
                             <a class="waves-effect waves-light btn delete-channel">
                                 <i class="fa fa-trash fa-small"></i>
                                 {{ $t('delete-channel') }}
@@ -85,7 +85,7 @@
         },
         methods: {
             ...mapActions(['deleteRequest']),
-            deleteCanal:function () {
+            deleteChannel:function () {
                 var confirmR = confirm("are you sure do delete this page");
                 if (confirmR){
                     let payloadC={

@@ -30,7 +30,7 @@
                             <td>{{canal.description.length > 40 ? canal.description.substring(1, 50) + '...': canal.description }}</td>
                             <td>{{getDateCreated(canal.dateCreation)}}</td>
                             <td>{{getDateCreated(canal.dateCreation)}}</td>
-                            <td class="action not-allowed" width="15%">
+                            <td class="action not-allowed" width="19%">
                                 <router-link :to="{ name: 'view', params: { id: canal.id}}">
                                     <i class="fa fa-chart-bar"></i>
                                 </router-link>
@@ -40,6 +40,9 @@
                                 <router-link :to="{ name: 'settings', params: { id: canal.id}}">
                                     <i class="material-icons prefix">settings</i>
                                 </router-link>
+                                <a href="#" @click="deleteChannel(canal.id)">
+                                    <i class="material-icons prefix red-text lighten-2">delete</i>
+                                </a>
                             </td>
                         </tr>
                         </tbody>
@@ -67,7 +70,7 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import { mapGetters, mapActions } from 'vuex'
     export default {
         name: "my-channels",
         data(){
@@ -79,8 +82,30 @@
             ...mapGetters(['getCanals', 'getUserId'])
         },
         methods:{
+            ...mapActions(['deleteRequest']),
             getDateCreated(data){
                 return data.substring(0,10);
+            },
+            deleteChannel:function (canalID) {
+                var confirmR = confirm("are you sure do delete this page");
+                if (confirmR){
+                    let payload={
+                        'link':'/canals/'+ canalID,
+                        'mutation':'setCanals',
+                    };
+                    this.deleteRequest(payload).then(() => {
+                        let payload = {
+                            'link': '/appUsers/' + this.getUserId + '/canals',
+                            'mutation': 'setCanals',
+                            'all': true
+                        };
+                        this.$store.dispatch('getRequest', payload);
+                        this.flash(this.$t('canal.delete-success'), 'success');
+
+                    }).catch(() => {
+                        this.flash(this.$t('canal.delete-error'), 'error');
+                    })
+                }
             }
         },
         created() {

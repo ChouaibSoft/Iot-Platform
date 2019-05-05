@@ -72,7 +72,7 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import { mapGetters, mapActions } from 'vuex'
 
     export default {
         name: "detail-channel",
@@ -84,12 +84,27 @@
             ...mapGetters(['getCanal', 'getFields', 'getUserId'])
         },
         methods: {
+            ...mapActions(['deleteRequest']),
             deleteCanal:function () {
-                let payloadC={
-                    'link':'/canals/'+ this.getCanal.id,
-                    'mutation':'setCanals',
-                };
-                this.$store.dispatch('deleteRequest',payloadC);
+                var confirmR = confirm("are you sure do delete this page");
+                if (confirmR){
+                    let payloadC={
+                        'link':'/canals/'+ this.getCanal.id,
+                        'mutation':'setCanals',
+                    };
+                    this.deleteRequest(payloadC).then(() => {
+                        this.flash(this.$t('canal.delete-success'), 'success');
+                        let payload = {
+                            'link': '/appUsers/' + this.getUserId + '/canals',
+                            'mutation': 'setCanals',
+                            'all': true
+                        };
+                        this.$store.dispatch('getRequest', payload);
+                        this.$router.push('/dashboard/channels');
+                    }).catch(() => {
+                        this.flash(this.$t('canal.delete-error'), 'error');
+                    })
+                }
             }
         },
         mounted(){

@@ -31,7 +31,7 @@
                                     <i class="fa fa-chart-bar"></i>
                                 </router-link>
                                 <a  class="waves-effect waves-light modal-trigger" href="#modal1">
-                                    <i class="material-icons prefix">vpn_key</i>
+                                    <i class="material-icons prefix">settings</i>
                                 </a>
                             </td>
                         </tr>

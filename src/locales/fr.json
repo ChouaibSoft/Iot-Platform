@@ -26,7 +26,9 @@
     "add-success": "Canal ajouté avec succès.",
     "update-success": "Canal modifié avec succès.",
     "add-error": "L'opération d'ajout de canal a échoué !",
-    "update-error": "L'opération de modification de canal a échoué !"
+    "update-error": "L'opération de modification de canal a échoué !",
+    "delete-success": "Channel successfully deleted",
+    "delete-error": "Channel delete operation failed"
   },
   "commande": {
     "add-success": "Commande ajouté avec succès. ",

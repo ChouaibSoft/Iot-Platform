@@ -3,7 +3,6 @@
         <div class="row">
                 <div class="col s12 l5">
                     <form class="form" id="add-canal" @submit.prevent="updateCanal">
-                        Message : {{ msg }}
                         <generic-form>
                             <div slot="form-fields">
                                 <div class="row">

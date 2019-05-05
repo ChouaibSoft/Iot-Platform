@@ -126,6 +126,7 @@ body .content .component-section .pagination a {
 }
 body .content .component-section .pagination .active {
   background-color: #26a69a;
+  border-radius: 50%;
 }
 body .content .component-section .action {
   text-align: left;

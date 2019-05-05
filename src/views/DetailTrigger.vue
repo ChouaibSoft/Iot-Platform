@@ -143,6 +143,13 @@
                 };
                 this.postRequest(payload).then(() => {
                     this.flash(this.$t('commande.add-success'), 'success');
+                    var payloadB = {
+                        'link': '/trigers/' + this.IdTriger  + '/commandes',
+                        'mutation': 'setCommands',
+                        'all': true
+                    };
+                    this.$store.dispatch('getRequest', payloadB);
+                    this.commands = [];
                 }).catch(() => {
                     this.flash(this.$t('commande.add-error'), 'error');
                 })

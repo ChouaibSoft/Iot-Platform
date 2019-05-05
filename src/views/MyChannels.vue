@@ -30,7 +30,7 @@
                             <td>{{canal.description.length > 40 ? canal.description.substring(1, 50) + '...': canal.description }}</td>
                             <td>{{getDateCreated(canal.dateCreation)}}</td>
                             <td>{{getDateCreated(canal.dateCreation)}}</td>
-                            <td class="action not-allowed" width="19%">
+                            <td class="action not-allowed">
                                 <router-link :to="{ name: 'view', params: { id: canal.id}}">
                                     <i class="fa fa-chart-bar"></i>
                                 </router-link>

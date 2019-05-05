@@ -114,13 +114,13 @@
                         };
                         this.$store.dispatch('getRequest', payload);
                         this.flash(this.$t('canal.delete-success'), 'success');
-
                     }).catch(() => {
                         this.flash(this.$t('canal.delete-error'), 'error');
                     })
                 }
             },
             setPages () {
+                this.pages = [];
                 let numberOfPages = Math.ceil(this.getCanals.length / this.perPage);
                 for (let index = 1; index <= numberOfPages; index++) {
                     this.pages.push(index);

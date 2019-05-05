@@ -53,7 +53,7 @@
                                     </tbody>
                                 </table>
                                 <div class="right">
-                                    <ul class="pagination">
+                                    <ul v-if="pages.length > 1" class="pagination">
                                         <li v-if="page != 1" @click="page--"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
                                         <li v-for="pageNumber in pages.slice(page-1, page+5)" @click="page = pageNumber" :class="{active: page == pageNumber }"><a href="#!">{{pageNumber}}</a></li>
                                         <li class="waves-effect"  @click="page++" v-if="page < pages.length"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
@@ -176,6 +176,7 @@
                 this.commands.splice(index, 1);
             },
             setPages () {
+                this.pages = [];
                 let numberOfPages = Math.ceil(this.getCommands.length / this.perPage);
                 for (let index = 1; index <= numberOfPages; index++) {
                     this.pages.push(index);

@@ -100,6 +100,7 @@
                 return data.substring(0,10);
             },
             setPages () {
+                this.pages = [];
                 let numberOfPages = Math.ceil(this.getTriggers.length / this.perPage);
                 for (let index = 1; index <= numberOfPages; index++) {
                     this.pages.push(index);

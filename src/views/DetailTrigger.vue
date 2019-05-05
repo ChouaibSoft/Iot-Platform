@@ -44,7 +44,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr v-for="(command, index) in this.$store.getters.getCommands" v-bind:key="command" v-bind:class="{ 'green lighten-5': command.executed	 }" >
+                                    <tr v-for="(command, index) in displayCommands" v-bind:key="command" v-bind:class="{ 'green lighten-5': command.executed	 }" >
                                         <td>{{ index + 1 }}</td>
                                         <td>{{command.id}}</td>
                                         <td>{{command.valeur}}</td>
@@ -52,6 +52,13 @@
                                     </tr>
                                     </tbody>
                                 </table>
+                                <div class="right">
+                                    <ul class="pagination">
+                                        <li v-if="page != 1" @click="page--"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                                        <li v-for="pageNumber in pages.slice(page-1, page+5)" @click="page = pageNumber" :class="{active: page == pageNumber }"><a href="#!">{{pageNumber}}</a></li>
+                                        <li class="waves-effect"  @click="page++" v-if="page < pages.length"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                                    </ul>
+                                </div>
                                 <form class="form add-command" id="add-command" @submit.prevent="pushCommand">
                                     <generic-form>
                                         <div slot="form-fields" style="width: 104%; overflow: hidden">
@@ -113,21 +120,25 @@
         data() {
             return {
                 commands: [],
-                IdTriger:''
+                IdTriger:'',
+                page: 1,
+                perPage: 4,
+                pages: [],
             }
         },
         components: {
             'generic-form': Form,
         },
         computed: {
-            ...mapGetters(['getTrigger', 'getCommands', 'getUserId'])
+            ...mapGetters(['getTrigger', 'getCommands', 'getUserId']),
+            displayCommands () {
+                return this.paginate(this.getCommands);
+            }
         },
         methods: {
             ...mapActions(['postRequest']),
             pushCommand: function () {
                 var postData = {
-                    //nom: this.getTrigger.nom,
-                    //userId: this.$store.state.userId
                 };
                 for(var i = 1; i <= this.commands.length; i++){
                     var key = 'commande' + i,
@@ -163,6 +174,24 @@
             },
             deleteCommand: function (index) {
                 this.commands.splice(index, 1);
+            },
+            setPages () {
+                let numberOfPages = Math.ceil(this.getCommands.length / this.perPage);
+                for (let index = 1; index <= numberOfPages; index++) {
+                    this.pages.push(index);
+                }
+            },
+            paginate (commands) {
+                let page = this.page;
+                let perPage = this.perPage;
+                let from = (page * perPage) - perPage;
+                let to = (page * perPage);
+                return  commands.slice(from, to);
+            }
+        },
+        watch: {
+            getCommands() {
+                this.setPages();
             }
         },
         created(){

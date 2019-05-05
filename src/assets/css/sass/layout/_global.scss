@@ -94,9 +94,18 @@ body{
       h5{
         color: $mainTitle;
       }
+      .pagination{
+        margin-top: 15px;
+        a{
+          outline: 0;
+        }
+        .active{
+          background-color: #26a69a;
+        }
+      }
       .action{
         text-align: left;
-        width: 19%;
+        width: 19% !important;
         i{
           font-size: 21px;
           margin-left: 8px;

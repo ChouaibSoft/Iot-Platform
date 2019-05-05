@@ -22,21 +22,28 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(trigger, index) in this.getTriggers" :data-url="'/dashboard/triggers/' + trigger.id">
-                            <td>{{index + 1}}</td>
-                            <td>{{trigger.nom}}</td>
-                            <td>30/04/2019</td>
-                            <td class="action not-allowed" width="15%">
-                                <router-link :to="{ name: 'trigger-overview', params: { id: trigger.id}}">
-                                    <i class="fa fa-chart-bar"></i>
-                                </router-link>
-                                <a  class="waves-effect waves-light modal-trigger" href="#modal1">
-                                    <i class="material-icons prefix">settings</i>
-                                </a>
-                            </td>
-                        </tr>
+                            <tr v-for="(trigger, index) in displayTriggers" :data-url="'/dashboard/triggers/' + trigger.id">
+                                <td>{{index + 1}}</td>
+                                <td>{{trigger.nom}}</td>
+                                <td>30/04/2019</td>
+                                <td class="action not-allowed" width="15%">
+                                    <router-link :to="{ name: 'trigger-overview', params: { id: trigger.id}}">
+                                        <i class="fa fa-chart-bar"></i>
+                                    </router-link>
+                                    <a  class="waves-effect waves-light modal-trigger" href="#modal1">
+                                        <i class="material-icons prefix">settings</i>
+                                    </a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
+                    <div class="right">
+                        <ul v-if="pages.length > 1" class="pagination">
+                            <li v-if="page != 1" @click="page--"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                            <li v-for="pageNumber in pages.slice(page-1, page+5)" @click="page = pageNumber" :class="{active: page == pageNumber }"><a href="#!">{{pageNumber}}</a></li>
+                            <li class="waves-effect"  @click="page++" v-if="page < pages.length"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="col l4 s12">
                     <div class="help">
@@ -76,15 +83,39 @@
         name: "my-triggers",
         data(){
             return{
-                CreatedDate: ''
+                CreatedDate: '',
+                page: 1,
+                perPage: 3,
+                pages: [],
             }
         },
         computed: {
-            ...mapGetters(['getTriggers', 'getUserId'])
+            ...mapGetters(['getTriggers', 'getUserId']),
+            displayTriggers () {
+                return this.paginate(this.getTriggers);
+            }
         },
         methods:{
             getDateCreated(data){
                 return data.substring(0,10);
+            },
+            setPages () {
+                let numberOfPages = Math.ceil(this.getTriggers.length / this.perPage);
+                for (let index = 1; index <= numberOfPages; index++) {
+                    this.pages.push(index);
+                }
+            },
+            paginate (triggers) {
+                let page = this.page;
+                let perPage = this.perPage;
+                let from = (page * perPage) - perPage;
+                let to = (page * perPage);
+                return  triggers.slice(from, to);
+            },
+        },
+        watch: {
+            getTriggers() {
+                this.setPages();
             }
         },
         created() {

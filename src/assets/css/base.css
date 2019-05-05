@@ -118,9 +118,18 @@ body .content .component-section h4 {
 body .content .component-section h5 {
   color: #5b616e;
 }
+body .content .component-section .pagination {
+  margin-top: 15px;
+}
+body .content .component-section .pagination a {
+  outline: 0;
+}
+body .content .component-section .pagination .active {
+  background-color: #26a69a;
+}
 body .content .component-section .action {
   text-align: left;
-  width: 19%;
+  width: 19% !important;
 }
 body .content .component-section .action i {
   font-size: 21px;

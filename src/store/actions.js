@@ -62,6 +62,19 @@ const actions = {
     changeLocale({commit, state}, lang){
         commit('changeLocale', lang);
         i18n.locale = state.locale;
+    },
+    setPages (perPageParam) {
+        let numberOfPages = Math.ceil(this.getCommands.length / perPageParam);
+        for (let index = 1; index <= numberOfPages; index++) {
+            this.pages.push(index);
+        }
+    },
+    paginate (record, pageParam, perPageParam) {
+        let page = pageParam;
+        let perPage = perPageParam;
+        let from = (page * perPage) - perPage;
+        let to = (page * perPage);
+        return  record.slice(from, to);
     }
 };
 export default actions;

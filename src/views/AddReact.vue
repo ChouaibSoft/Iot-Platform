@@ -45,6 +45,8 @@
                                         <label>{{$t('react.channel')}}</label>
                                     </div>
                                 </div>
+
+
                                 <div class="row">
                                     <p v-for="field in this.channelFields" class="col">
                                         <label>
@@ -53,6 +55,7 @@
                                         </label>
                                     </p>
                                 </div>
+
                                 <div class="row">
                                     <div class="input-field  col s12">
                                         <select v-model="condition">
@@ -85,11 +88,17 @@
                                     <div class="input-field  col s12">
                                         <select v-model="provider">
                                             <option value="" disabled selected>Choose a provider</option>
-                                            <option value="">ESI-IOT TWILIO</option>
+                                            <option value="twilio">ESI-IOT TWILIO</option>
+                                            <option value="http">ESI-IOT HTTP</option>
                                         </select>
                                         <label>{{$t('react.provider')}}</label>
                                     </div>
                                 </div>
+
+
+
+
+                                <div v-if="provider==='twilio'">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input
@@ -100,11 +109,45 @@
 
                                     </div>
                                 </div>
+
+
                                 <div class="row" style="margin-bottom: 30px">
                                     <vue-tel-input v-model="phone" enabledCountryCode
                                                    :preferredCountries="['dz']"
                                     ></vue-tel-input>
                                 </div>
+
+                                </div>
+
+                                <div v-if="provider==='http'">
+
+                                    <div class="row">
+                                        <div class="input-field col s12">
+
+                                           <p v-for="triger in getTriggers" v-bind:key="triger">
+                                               <label>
+                                               <input :value="triger.id" name="group2" v-model="trigeID" type="radio" class="with-gap" />
+
+                                            <span>{{triger.nom}}</span>
+                                               </label>
+                                           </p>
+
+                                            <input id="cmd"
+                                                    type="text"
+                                                    class="validate"
+                                                    minlength="3"
+                                                   v-model="commande"
+                                                   placeholder="Commande"
+                                            >
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+
                             </div>
                             <div slot="form-controls">
                                 <div>
@@ -171,11 +214,15 @@
                 message:'',
                 id: '',
                 iduser:'',
+                canals:'',
+                trigeID:'',
+                commande:''
+
             }
         },
         computed:{
             ...mapState['userId'],
-            ...mapGetters(['getCanals','getFields', 'getUserId', 'getToken', 'getAPIUrl'])
+            ...mapGetters(['getCanals','getFields', 'getUserId', 'getToken', 'getAPIUrl','getTriggers'])
 
         },
         created() {
@@ -185,6 +232,16 @@
                 'all': true
             };
             this.$store.dispatch('getRequest', payload);
+
+            let payloadB={
+                'link': '/appUsers/' + this.getUserId + '/trigers',
+                'mutation': 'setTriggers',
+                'all': true
+            };
+            this.$store.dispatch('getRequest',payloadB)
+
+
+
         },
         methods: {
             ...mapActions(['postRequest']),
@@ -197,6 +254,9 @@
                     fieldId:this.fieldID,
                     message:this.message,
                     tel:this.phone,
+                    commande:this.commande,
+                    trigerId:this.trigeID
+                    ,
                     userId: this.$store.state.userId
 
                 };
@@ -227,7 +287,8 @@
 
                     })
                 }
-            }
+            },
+
 
         },
         mounted(){

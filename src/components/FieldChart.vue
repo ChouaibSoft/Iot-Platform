@@ -6,7 +6,7 @@
                     <i class="material-icons">filter_drama</i>Field :  <span class="teal-text lighten-1">{{ this.nameField }}</span>
                 </div>
                 <div class="collapsible-body" style="display: block; position:relative; height: 290px !important; overflow: hidden">
-                    <canvas :id="this.id"  width="100%" height="100%" style="display: block; position: absolute; width: 100%; height: 300px !important; top:0; left:0;"></canvas>
+                    <div :id="this.id"  width="100%" height="100%" style="display: block; position: absolute; width: 100%; height: 300px !important; top:0; left:0;"></div>
                 </div>
             </li>
         </ul>
@@ -18,6 +18,7 @@
     import  axios from 'axios';
     import Chart from 'chart.js'
     import Pusher from 'pusher-js'
+    import Plotly from 'plotly.js'
     export default {
         name:"FieldChart",
         data(){
@@ -26,12 +27,13 @@
                 date:null,
                 chart:null,
                 id: ''
+
             }
         },
         props: ['nameField', 'idField'],
         created () {
             this.id = this.nameField + '-' + this.idField;
-            Pusher.logToConsole = true;
+            //   Pusher.logToConsole = true;
 
             var key = this.$store.state.canal.cleLecture,
                 keyWrite = this.$store.state.canal.cleEcriture,
@@ -59,23 +61,36 @@
                             let valueresult = results.map(a => a.valeur);
                             this.valeur = valueresult;
                             this.date = dateresult;
-                            this.chart = new Chart(document.getElementById(idChart),
 
-                                {"type":"line"
-                                    ,"data":
-                                        {"labels": this.date
-                                            ,"datasets":[{"label":"My First Dataset",
-                                                "data":this.valeur,
-                                                "fill":false,
-                                                "borderColor":"rgb(75, 192, 192)","lineTension":0.1}]},
-                                });
+                            let x=[];
+
+                            for(let i=0;i< dateresult.length; i++){
+                                x.push(i);
+                            }
+
+                            var layout = {
+                                title: nameF,
+                                xaxis: {
+                                    title: 'Date',
+                                    showticklabels: false,
+                                    tickangle: 'auto',
+                                    tickvals:x,
+                                    ticktext : dateresult
+
+                                },
+                                yaxis: {
+                                    title: 'Values',
+                                    showticklabels: true,
+                                }
+                            };
+                            Plotly.newPlot(idChart,[{ y:valueresult}],layout);
 
                         })
                         .catch(error => {
                         })
                 }
             });
-            this.getData()
+
         },
         mounted () {
             this.getData()
@@ -98,16 +113,29 @@
                         let valueresult = results.map(a => a.valeur);
                         this.valeur = valueresult;
                         this.date = dateresult;
-                        this.chart = new Chart(document.getElementById(idChart),
-                            {"type":"line"
-                                ,"data":
-                                    {"labels": this.date
-                                        ,"datasets":[{"label": this.nameField,
-                                            "data":this.valeur,
-                                            "fill":false,
-                                            "borderColor":"rgb(75, 192, 192)","lineTension":0.1}]},
 
-                            });
+                        let x=[];
+
+                        for(let i=0;i< dateresult.length; i++){
+                            x.push(i);
+                        }
+
+                        var layout = {
+                            title: nameF,
+                            xaxis: {
+                                title: 'Date',
+                                showticklabels: false,
+                                tickangle: 'auto',
+                                tickvals:x,
+                                ticktext : dateresult
+
+                            },
+                            yaxis: {
+                                title: 'Values',
+                                showticklabels: true,
+                            }
+                        };
+                        Plotly.newPlot(idChart,[{ y:valueresult}],layout);
                     })
                     .catch(error => {
                     })

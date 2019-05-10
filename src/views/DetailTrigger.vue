@@ -44,7 +44,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr v-for="(command, index) in displayCommands" v-bind:key="command" v-bind:class="{ 'green lighten-5': command.executed	 }" >
+                                    <tr v-for="(command, index) in displayCommands" v-bind:key="command" v-bind:class="{ 'hide': command.executed	 }" >
                                         <td>{{ index + 1 }}</td>
                                         <td>{{command.id}}</td>
                                         <td>{{command.valeur}}</td>

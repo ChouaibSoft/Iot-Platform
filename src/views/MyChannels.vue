@@ -102,7 +102,7 @@
             deleteChannel:function (canalID) {
                 var confirmR = confirm("are you sure do delete this page");
                 if (confirmR){
-                    let payload={
+                    var payload={
                         'link':'/canals/'+ canalID,
                         'mutation':'setCanals',
                     };

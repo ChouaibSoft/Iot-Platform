@@ -36,6 +36,15 @@ const mutations = {
     setCommands(state, payload){
         state.commands = payload;
     },
+
+    // React
+    setReacts(state, payload){
+        state.reacts = payload;
+    },
+    setReact(state, payload){
+        state.react = payload;
+    },
+
     changeLocale(state, lang){
         state.locale = lang.language;
         state.flag = lang.flag;

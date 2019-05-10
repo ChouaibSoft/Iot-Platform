@@ -30,6 +30,14 @@ const getters = {
         return state.commands
     },
 
+    // Reacts
+    getReacts: state =>{
+        return state.reacts
+    },
+    getReact: state =>{
+        return state.react
+    },
+
     getUserId: state=>{
         return state.userId
     },

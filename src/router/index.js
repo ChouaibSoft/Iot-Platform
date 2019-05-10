@@ -73,7 +73,7 @@ const router = new Router({
                         protected: true,
                         title: i18n.t('page-title.my-reacts')
                     },
-                    component: () => import("@/views/MyReact")
+                    component: () => import("@/views/MyReacts")
                 },
                 {
                     path: "channels",

@@ -19,6 +19,8 @@ export const store = new Vuex.Store ({
       canal: null,
       triggers: null,
       trigger: null,
+      reacts: null,
+      react: null,
       commands: null,
       fields: null,
       apiURL: 'http://localhost:8091'

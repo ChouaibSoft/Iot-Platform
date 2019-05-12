@@ -15,6 +15,15 @@
     float: right;
     background-color: $navbarBackground;
   }
+  .forget-password{
+    margin: 40px 0 10px 43px;
+    color: rgba($navbarBackground, .8);
+    font-size: .9rem;
+    text-decoration: none;
+    &:hover{
+      text-decoration: none;
+    }
+  }
   .delete-field {
     position: absolute;
     top: 32%;

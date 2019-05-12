@@ -9,7 +9,10 @@
     "password": "mot de passe",
     "conf-password": "Confirmation du mot de passe",
     "success": "Félicitation !",
-    "error": "échec d'inscription !"
+    "error": "échec d'inscription !",
+    "forgot-password": "Mot de passe oublié?",
+    "submit": "Submit",
+    "cancel": "Annuler"
   },
   "errors": {
     "required": "ce champ est obligatoire.",

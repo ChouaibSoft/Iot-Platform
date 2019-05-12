@@ -5,7 +5,7 @@
                 <h2>{{ $t('main-title') }}</h2>
             </div>
             <div class="col right">
-                <p>Home > <span>{{ this.$breadcrumbs }}</span></p>
+                <p>Home > <span></span></p>
             </div>
 
         </div>

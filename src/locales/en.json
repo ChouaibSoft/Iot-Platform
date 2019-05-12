@@ -9,7 +9,10 @@
     "email": "Email",
     "conf-password": "Password Confirmation",
     "success": "Congratulation!",
-    "error": "Registration Failed !"
+    "error": "Registration Failed !",
+    "forgot-password": "Forgot Password?",
+    "submit": "Submit",
+    "cancel": "Cancel"
   },
   "errors": {
     "required": "this is field is required.",

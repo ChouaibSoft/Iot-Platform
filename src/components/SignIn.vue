@@ -1,6 +1,6 @@
 <template>
     <div id="sign-in" class="col s12">
-        <form class="col s12"  @submit.prevent="login">
+        <form v-if="!forgetPassword" class="col s12 form"  @submit.prevent="login">
             <div class="form-container">
                 <h4>{{ $t('auth.welcome') }}</h4>
                 <generic-form>
@@ -39,12 +39,46 @@
                                         {{ $t('errors.required') }}
                                     </p>
                                 </div>
+                               <a href="#" class="forget-password" @click="forgetPassword = !forgetPassword">{{ $t('auth.forgot-password') }}</a>
                             </div>
                         </div>
                     </div>
                     <div slot="form-controls">
                         <center>
                             <button class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.sign-in') }}</button>
+                        </center>
+                    </div>
+                </generic-form>
+            </div>
+        </form>
+        <form v-else class="col s12"  @submit.prevent="forgetPassword">
+            <div class="form-container">
+                <h4>{{ $t('auth.forgot-password') }}</h4>
+                <generic-form>
+                    <div slot="form-fields">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">email</i>
+                                <input
+                                        id="email-2"
+                                        type="text"
+                                        class="validate"
+                                        required
+                                        v-model="email"
+                                        @input="$v.email.$touch()">
+                                <label for="email-2">{{ $t('auth.email') }}</label>
+                                <div v-if="$v.email.$dirty">
+                                    <p class="error-message red-text " v-if="!$v.email.required">
+                                        {{ $t('errors.required') }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>o
+                    <div slot="form-controls">
+                        <center>
+                            <button @click="forgetPassword= !forgetPassword" class="btn waves-effect waves-light" type="submit" name="action">{{ $t('auth.cancel') }}</button>
+                            <a style="margin-left: 50px" class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.submit') }}</a>
                         </center>
                     </div>
                 </generic-form>
@@ -69,6 +103,7 @@
                 selected: 1,
                 email: '',
                 password: '',
+                forgetPassword: false
             }
         },
         methods: {

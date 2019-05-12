@@ -1,6 +1,6 @@
 <template>
     <div id="sign-up" class="col s12">
-        <form class="col s12" @submit.prevent="register">
+        <form class="form col s12" @submit.prevent="register">
             <div class="form-container">
                 <h4>{{ $t('auth.welcome') }}</h4>
                 <generic-form>

@@ -593,6 +593,15 @@ aside .now .router-link-exact-active {
   float: right;
   background-color: #273146;
 }
+.form .forget-password {
+  margin: 40px 0 10px 43px;
+  color: rgba(39, 49, 70, 0.8);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.form .forget-password:hover {
+  text-decoration: none;
+}
 .form .delete-field {
   position: absolute;
   top: 32%;

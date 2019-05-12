@@ -8,6 +8,19 @@
                 <div class="collapsible-body" style="display: block; position:relative; height: 290px !important; overflow: hidden">
                     <div :id="this.id"  width="100%" height="100%" style="display: block; position: absolute; width: 100%; height: 300px !important; top:0; left:0;"></div>
                 </div>
+
+            </li>
+            <li  style="text-align: center;">
+                <br>
+                <a  class="btn"  :href="'http://localhost:8091/export-data/' + this.idField">
+                    Export as csv
+                </a>
+                <br>
+                <br>
+                <input type="file" accept=".csv" @change="processFile($event)">
+                <button class="btn" v-on:click="importCSV()">Import file</button>
+                <br><br>
+
             </li>
         </ul>
     </div>
@@ -19,6 +32,7 @@
     import Chart from 'chart.js'
     import Pusher from 'pusher-js'
     import Plotly from 'plotly.js'
+    import { constants } from 'crypto';
     export default {
         name:"FieldChart",
         data(){
@@ -26,7 +40,9 @@
                 valeur:null,
                 date:null,
                 chart:null,
-                id: ''
+                id: '',
+                file:null,
+                idfield:null
 
             }
         },
@@ -140,6 +156,37 @@
                     .catch(error => {
                     })
             },
+
+
+
+            // import
+
+            processFile(event) {
+                this.file = event.target.files[0];
+            },
+
+            importCSV:function(){
+
+                if (this.file.type == "application/vnd.ms-excel"){
+
+                    let formData = new FormData();
+                    formData.append('file', this.file);
+
+                    axios.post('http://localhost:8091/import-data/'+ this.idField ,formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'Authorization': 'Bearer ' + this.$store.state.token,
+                        }
+
+                    }).then(function(){
+                        console.log('SUCCESS!!');
+                    }).catch(function(){
+                        console.log('FAILURE!!');
+                    });
+                }
+
+            },
+
         }
     }
 </script>

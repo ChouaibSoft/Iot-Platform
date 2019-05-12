@@ -86,7 +86,7 @@
         methods: {
             ...mapActions(['deleteRequest']),
             deleteChannel:function () {
-                var confirmR = confirm("are you sure do delete this page");
+                var confirmR = confirm(this.$t('canal.delete-msg'));
                 if (confirmR){
                     let payloadC={
                         'link':'/canals/'+ this.getCanal.id,

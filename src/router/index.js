@@ -26,6 +26,7 @@ const router = new Router({
             name:"dashboard",
             component: () => import("@/views/Dashboard"),
             meta: {
+                breadcrumb: 'Home Page',
                 protected: true,
                 title: i18n.t('page-title.dashboard')
             },
@@ -34,9 +35,9 @@ const router = new Router({
                     path: "channels/new",
                     name: "new-channel",
                     meta: {
+                        breadcrumb: 'Items',
                         protected: true,
-                        title: i18n.t('page-title.new-channel')
-                    },
+                        title: i18n.t('page-title.new-channel'),},
                     component: () => import("@/views/AddChannel")
                 },
                 {
@@ -44,7 +45,8 @@ const router = new Router({
                     name: "new-trigger",
                     meta: {
                         protected: true,
-                        title: i18n.t('page-title.new-trigger')
+                        title: i18n.t('page-title.new-trigger'),
+                        breadcrumb: 'Home Page'
                     },
                     component: () => import("@/views/AddTrigger")
                 },
@@ -78,11 +80,12 @@ const router = new Router({
                 {
                     path: "channels",
                     name: "my-channels",
+                    component: () => import("@/views/MyChannels"),
                     meta: {
                         protected: true,
-                        title: i18n.t('page-title.my-channels')
-                    },
-                    component: () => import("@/views/MyChannels")
+                        title: i18n.t('page-title.my-channels'),
+                        breadcrumb: 'Home Page'
+                    }
                 },
                 {
                     path: "channels/:id",
@@ -166,7 +169,6 @@ const router = new Router({
 });
 router.beforeEach((to, from, next) => {
     if (!to.meta.protected) { //route is public, don't check for authentication
-        console.log('toooken' + store.state.token);
         if(store.state.token!= null && to.path === '/auth'){
             router.push('/dashboard');
         }else{

@@ -8,8 +8,11 @@ import 'vue-tel-input/dist/vue-tel-input.css';
 import Vuelidate from 'vuelidate'
 import i18n from './i18n'
 import FlagIcon from 'vue-flag-icon';
+import VueBreadcrumbs from 'vue-breadcrumbs'
 
 
+
+Vue.use(VueBreadcrumbs)
 Vue.use(Vuelidate);
 Vue.use(FlagIcon);
 Vue.config.productionTip = false;
@@ -21,6 +24,13 @@ Vue.use(VueFlashMessage, {
         important: true,
         pauseOnInteract: true
     }
+});
+
+Vue.use(VueBreadcrumbs, {
+    registerComponent: false,
+    template: '<nav class="breadcrumb" v-if="$breadcrumbs.length"> ' +
+        '<router-link class="breadcrumb-item" v-for="(crumb, key) in $breadcrumbs" :to="linkProp(crumb)" :key="key">{{ crumb | crumbText }}</router-link> ' +
+        '</nav>'
 });
 
 
@@ -36,7 +46,6 @@ new Vue({
             this.$store.state.isLogged = true;
         }
     },
-
     store: store,
     el: '#app',
     router,

@@ -5,9 +5,8 @@
                 <h2>{{ $t('main-title') }}</h2>
             </div>
             <div class="col right">
-                <p>Home > <span> My Channels</span></p>
+                <p>Home > <span></span></p>
             </div>
-
         </div>
         <section class="component-section">
             <div v-if="!(this.getCanals === null) " class="row">
@@ -15,7 +14,7 @@
                     <table class = "striped bordered">
                         <thead>
                         <tr>
-                            <th>{{ $t('table.num') }}</th>
+                            <th style="width: 4%">{{ $t('table.num') }}</th>
                             <th>{{ $t('table.name') }}</th>
                             <th>{{ $t('table.description') }}</th>
                             <th>{{ $t('table.created') }}</th>
@@ -100,7 +99,7 @@
                 return data.substring(0,10);
             },
             deleteChannel:function (canalID) {
-                var confirmR = confirm("are you sure do delete this page");
+                var confirmR = confirm(this.$t('canal.delete-msg'));
                 if (confirmR){
                     var payload={
                         'link':'/canals/'+ canalID,

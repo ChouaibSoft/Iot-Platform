@@ -10,12 +10,12 @@
 
         </div>
         <section class="component-section">
-            <div v-if="!(this.getReacts === null) " class="row">
+            <div v-if="!(this.getReacts === null)" class="row">
                 <div class="col s12 l8">
                     <table class = "striped bordered">
                         <thead>
                         <tr>
-                            <th>{{ $t('table.id') }}</th>
+                            <th style="width: 4%">{{ $t('table.id') }}</th>
                             <th>{{ $t('table.name') }}</th>
                             <th>{{ $t('table.created') }}</th>
                             <th>{{ $t('table.actions') }}</th>
@@ -121,7 +121,7 @@
         },
         created() {
             let payload = {
-                'link': '/appUsers/' + this.getUserId + '/trigers',
+                'link': '/appUsers/' + this.getUserId + '/reacts',
                 'mutation': 'setReacts',
                 'all': true
             };
@@ -146,7 +146,7 @@
     "help": "Help",
     "text": "React works with ThingHTTP, ThingTweet, and MATLAB Analysis apps to perform actions when channel data meets a certain condition. For example, you can have a mobile app report your latitude and longitude to a ThingSpeak channel. When your position is within a certain distance of your house, have ThingHTTP turn on your living room lights <br>To create a new reaction, click <strong>New React</strong>.",
     "table": {
-    "id": "ID",
+    "id": "#",
     "name": "Name",
     "created": "Created",
     "actions": "Actions"
@@ -157,9 +157,9 @@
     "no-React": "Aucun React à Afficher",
     "add-React": "Nouveau React",
     "help": "Aide",
-    "text": "React fonctionne avec les applications ThingHTTP, ThingTweet et MATLAB Analysis pour effectuer des actions lorsque les données de canal remplissent certaines conditions. Par exemple, vous pouvez demander à une application mobile d'indiquer votre latitude et votre longitude à un canal ThingSpeak. Lorsque votre position est à une certaine distance de votre maison, demandez à ThingHTTP d’allumer les lumières de votre salon. <br>Pour créer une nouvelle réaction, cliquez sur <strong> Nouvelle réaction </strong>.",
+    "text": "React fonctionne avec les applications ThingHTTP, ThingTweet et MATLAB Analysis pour effectuer des actions lorsque les données de canal remplissent certaines conditions. Par exemple, vous pouvez demander à une application mobile d'indiquer votre latitude et votre longitude à un canal ThingSpeak. Lorsque votre position est à une certaine distance de votre maison, demandez à ThingHTTP d’allumer les lumières de votre salon. <br>Pour créer une nouvelle réaction, cliquez sur <strong> Nouveau React </strong>.",
     "table": {
-    "id": "ID",
+    "id": "#",
     "name": "Nom",
     "created": "Créé",
     "actions": "Actions"

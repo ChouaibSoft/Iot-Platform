@@ -5,7 +5,7 @@
                 <h2>{{ $t('main-title') }}</h2>
             </div>
             <div class="col right">
-                <p>Home > <span> My Channels</span></p>
+                <p>Home > <span>{{ this.$breadcrumbs }}</span></p>
             </div>
 
         </div>
@@ -15,7 +15,7 @@
                     <table class = "striped bordered">
                         <thead>
                         <tr>
-                            <th>{{ $t('table.id') }}</th>
+                            <th style="width: 4%">{{ $t('table.id') }}</th>
                             <th>{{ $t('table.name') }}</th>
                             <th>{{ $t('table.created') }}</th>
                             <th>{{ $t('table.actions') }}</th>
@@ -146,7 +146,7 @@
     "help": "Help",
     "text": "TalkBack enables any device to act on queued commands. For example, if you have a door that is outfitted with Wi-Fi and a motion sensor, you can queue up commands to open and close the door. When the door senses someone nearby, open the door. After a specified time, close the door. If there are no more commands in the queue, the door does not open when the next person approaches.",
     "table": {
-    "id": "ID",
+    "id": "#",
     "name": "Name",
     "created": "Created",
     "actions": "Actions"
@@ -159,7 +159,7 @@
     "help": "Aide",
     "text": "TalkBack permet à tout appareil d'agir sur les commandes en file d'attente. Par exemple, si une porte est équipée du Wi-Fi et d'un détecteur de mouvement, vous pouvez mettre en file d'attente les commandes permettant d'ouvrir et de fermer la porte. Lorsque la porte détecte quelqu'un à proximité, ouvrez-la. Après un temps spécifié, fermez la porte. S'il n'y a plus de commandes dans la file d'attente, la porte ne s'ouvre pas à l'approche de la personne suivante. ",
     "table": {
-    "id": "ID",
+    "id": "#",
     "name": "Nom",
     "created": "Créé",
     "actions": "Actions"

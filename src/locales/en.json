@@ -28,7 +28,8 @@
     "add-error": "add Channel operation failed !",
     "update-error": "Update Channel operation failed!",
     "delete-success": "Channel successfully deleted",
-    "delete-error": "Channel delete operation failed"
+    "delete-error": "Channel delete operation failed",
+    "delete-msg": "Are you sure to delete this channel"
   },
   "trigger": {
     "name": "Name of The Trigger",
@@ -36,7 +37,8 @@
     "add": "Add",
     "update": "Update",
     "add-success": "Trigger added successfully.",
-    "add-error": "Trigger add operation failed !"
+    "add-error": "Trigger add operation failed !",
+    "delete-msg": "Are you sure to delete this Trigger"
   },
   "commande": {
     "add-success": "Commande added successfully. ",
@@ -60,8 +62,8 @@
     "add-error": "React add operation failed !",
     "is-greater-than": "is greater than",
     "is-less-than": "is less than",
-    "is-equal-to": "is equal to"
-
+    "is-equal-to": "is equal to",
+    "delete-msg": "Are you sure to delete this React"
   },
 
   "tooltips": {

@@ -28,7 +28,9 @@
     "add-error": "L'opération d'ajout de canal a échoué !",
     "update-error": "L'opération de modification de canal a échoué !",
     "delete-success": "Channel successfully deleted",
-    "delete-error": "Channel delete operation failed"
+    "delete-error": "Channel delete operation failed",
+    "delete-msg": "Êtes-vous sûr de supprimer ce Canal"
+
   },
   "commande": {
     "add-success": "Commande ajouté avec succès. ",
@@ -41,7 +43,9 @@
     "add": "Ajouter",
     "update": "Modifier",
     "add-success": "Trigger ajouté avec succès.",
-    "add-error": "L'opération d'ajout de Trigger a échoué !"
+    "add-error": "L'opération d'ajout de Trigger a échoué !",
+    "delete-msg": "Êtes-vous sûr de supprimer ce Trigger"
+
   },
   "react": {
     "name": "Nom du React",
@@ -60,7 +64,8 @@
     "add-error": "L'opération d'ajout de React a échoué !",
     "is-greater-than": "est supérieur à",
     "is-less-than": "est inférieur à",
-    "is-equal-to": "est égal à"
+    "is-equal-to": "est égal à",
+    "delete-msg": "Êtes-vous sûr de supprimer ce React"
   },
 
 

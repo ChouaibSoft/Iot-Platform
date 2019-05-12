@@ -49,7 +49,6 @@ const actions = {
                     commit(payload.mutation, null);
                 }else{
                     commit(payload.mutation, request.data.content);
-
                 }
             }else{
                 commit(payload.mutation, request.data);

@@ -48,9 +48,12 @@ body{
     }
     td{
       border: 1px double #ccc;
+      padding-left: 10px;
+
     }
     th{
       border: 1px double #ccc;
+      padding-left: 10px;
     }
     tbody{
       tr{
@@ -109,7 +112,7 @@ body{
         width: 19% !important;
         i{
           font-size: 21px;
-          margin-left: 8px;
+          margin-left: 5px;
           &:hover{
             color: none;
           }

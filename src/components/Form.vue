@@ -4,7 +4,7 @@
             <slot name="form-fields"></slot>
 
         </div>
-        <div id="form-controls">
+        <div id="form-controls" class="form-controls">
             <slot name="form-controls"></slot>
         </div>
     </div>

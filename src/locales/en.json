@@ -13,7 +13,8 @@
     "forgot-password": "Forgot Password?",
     "submit": "Submit",
     "cancel": "Cancel",
-    "account-not-activated": "Your account is not activated, please check your inbox to confirm your email."
+    "account-not-activated": "Your account is not activated, please check your inbox to confirm your email.",
+    "login-failed": "email or password wrong"
   },
   "errors": {
     "required": "this is field is required.",

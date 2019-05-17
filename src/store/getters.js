@@ -9,6 +9,9 @@ const getters = {
     getLang: state =>{
         return state.locale
     },
+    getApiUrl: state=>{
+        return state.apiURL;
+    },
     // Channels & Fields
     getCanals: state =>{
         return state.canals

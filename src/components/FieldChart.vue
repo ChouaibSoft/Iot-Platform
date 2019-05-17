@@ -32,6 +32,7 @@
     import axios from 'axios';
     import Pusher from 'pusher-js'
     import Plotly from 'plotly.js'
+    import {  mapGetters } from 'vuex';
 
     export default {
         name: "FieldChart",
@@ -45,6 +46,9 @@
                 idfield: null
 
             }
+        },
+        computed: {
+            ...mapGetters(['getApiUrl'])
         },
         props: ['nameField', 'idField'],
         created() {
@@ -65,7 +69,7 @@
             var channel = pusher.subscribe('my-channel');
             channel.bind('my-event', function (data) {
                 if (data['data'] === keyWrite) {
-                    axios.get('http://localhost:8091/read?key=' + key + '&field=' + nameF, {
+                    axios.get( this.getApiUrl +  '/read?key=' + key + '&field=' + nameF, {
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': 'Bearer ' + token
@@ -121,7 +125,7 @@
                     token = this.$store.state.token,
                     nameF = this.nameField,
                     idChart = this.id;
-                axios.get('http://localhost:8091/read?key=' + key + '&field=' + nameF, {
+                axios.get( this.getApiUrl +  '/read?key=' + key + '&field=' + nameF, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': 'Bearer ' + token
@@ -175,7 +179,7 @@
                     let formData = new FormData();
                     formData.append('file', this.file);
 
-                    axios.post('http://localhost:8091/import-data/' + this.idField, formData, {
+                    axios.post( this.getApiUrl +  '/import-data/' + this.idField, formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             'Authorization': 'Bearer ' + this.$store.state.token,

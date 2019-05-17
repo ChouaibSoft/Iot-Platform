@@ -52,8 +52,8 @@
             </div>
         </form>
         <form v-else class="col s12"  @submit.prevent="forgetPassword">
-            <div class="form-container">
-                <h4>{{ $t('auth.forgot-password') }}</h4>
+            <div class="form-container form">
+                <h5>{{ $t('auth.forgot-password') }}</h5>
                 <generic-form>
                     <div slot="form-fields">
                         <div class="row">
@@ -77,7 +77,7 @@
                     </div>o
                     <div slot="form-controls">
                         <center>
-                            <button @click="forgetPassword= !forgetPassword" class="btn waves-effect waves-light" type="submit" name="action">{{ $t('auth.cancel') }}</button>
+                            <a @click="forgetPassword= !forgetPassword" class="btn waves-effect waves-light" name="action">{{ $t('auth.cancel') }}</a>
                             <a style="margin-left: 50px" class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.submit') }}</a>
                         </center>
                     </div>
@@ -90,7 +90,7 @@
 <script>
     import Form from "@/components/Form";
     import { required } from 'vuelidate/lib/validators'
-    import {  mapActions } from 'vuex';
+    import {  mapActions, mapGetters } from 'vuex';
 
     export default {
         name: "SignIn",
@@ -105,6 +105,9 @@
                 password: '',
                 forgetPassword: false
             }
+        },
+        computed: {
+            ...mapGetters(['getApiUrl'])
         },
         methods: {
             ...mapActions([
@@ -122,13 +125,13 @@
                 };
                 this.postRequest(payload).then(request => this.loginSuccessful(request))
                     .catch( ()=> {
-                        this.flash('Login Failed !', 'error')
+                        this.flash(this.$t('auth.login-failed'), 'error')
                     })
             },
             loginSuccessful(req) {
                 if (req.headers) {
                     this.$store.dispatch('saveUserToken', req.headers.authorization);
-                    this.$http.get( 'http://localhost:8091/id',{
+                    this.$http.get( this.getApiUrl +  '/id',{
                             headers:{
                                 'Content-Type': 'application/json',
                                 'Authorization': 'Bearer '+ this.$store.state.token

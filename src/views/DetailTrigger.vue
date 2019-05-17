@@ -68,7 +68,7 @@
                                 </div>
                                 <form class="form add-command" id="add-command" @submit.prevent="pushCommand">
                                     <generic-form>
-                                        <div slot="form-fields" style="width: 104%; overflow: hidden">
+                                        <div slot="form-fields">
                                             <div class="row" v-for="(cmd, index) in this.commands" :key="cmd">
                                                 <div class="input-field col s12">
                                                     <input
@@ -85,7 +85,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div slot="form-controls" style="width: 104%; overflow: hidden">
+                                        <div slot="form-controls">
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="btn waves-effect waves-light submit"

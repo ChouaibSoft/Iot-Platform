@@ -490,7 +490,7 @@ aside .now .router-link-exact-active {
 .auth > div {
   margin: 25px;
 }
-.auth > div h4 {
+.auth > div h4, .auth > div h5 {
   color: #5b616e;
 }
 .auth p {
@@ -593,7 +593,7 @@ aside .now .router-link-exact-active {
   position: relative;
   padding: 0;
   margin: 2px 0;
-  width: 95%;
+  width: 100%;
 }
 .form .row {
   margin-bottom: 0;
@@ -656,6 +656,10 @@ aside .now .router-link-exact-active {
 }
 .form.add-command {
   margin-top: 30px;
+}
+.form .form-controls {
+  margin-top: 10px;
+  margin-bottom: -5px;
 }
 
 /* Start Footer */

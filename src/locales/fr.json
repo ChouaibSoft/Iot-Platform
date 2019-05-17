@@ -7,13 +7,14 @@
     "username": "Nom d'utilisateur",
     "email": "Email",
     "password": "mot de passe",
-    "conf-password": "Confirmation du mot de passe",
+    "conf-password": "Confirmation",
     "success": "Félicitation !",
     "error": "échec d'inscription !",
     "forgot-password": "Mot de passe oublié?",
     "submit": "Submit",
     "cancel": "Annuler",
-    "account-not-activated": "Votre compte n'est pas activé, veuillez vérifier votre boîte de réception pour confirmer votre email."
+    "account-not-activated": "Votre compte n'est pas activé, veuillez vérifier votre boîte de réception pour confirmer votre email.",
+    "login-failed": "email ou mot de passe incorrect"
   },
   "errors": {
     "required": "ce champ est obligatoire.",

@@ -10,6 +10,7 @@
                     </div>
                     <div class="col l9 s12 dash-area">
                         <section class="content">
+                            <div v-show="false" class="account-not-activated">{{ $t('auth.account-not-activated') }}</div>
                             <div class="row">
                                 <flash-message></flash-message>
                             </div>

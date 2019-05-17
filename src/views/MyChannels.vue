@@ -23,7 +23,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(canal, index) in displayChannels"  :data-url="'/dashboard/channels/' + canal.id +  '/view'">
+                            <tr v-for="(canal, index) in displayChannels"  :key="index" :data-url="'/dashboard/channels/' + canal.id +  '/view'">
                                 <td>{{ index + 1 }}</td>
                                 <td>{{canal.nom}}</td>
                                 <td>{{canal.description.length > 40 ? canal.description.substring(1, 50) + '...': canal.description }}</td>
@@ -39,7 +39,7 @@
                                     <router-link :to="{ name: 'settings', params: { id: canal.id}}">
                                         <i class="material-icons prefix">settings</i>
                                     </router-link>
-                                    <a href="#" @click="deleteChannel(canal.id)">
+                                    <a href="#" @click="deleteChannel(canal.id, index)">
                                         <i class="material-icons prefix red-text lighten-2">delete</i>
                                     </a>
                                 </td>
@@ -49,7 +49,7 @@
                     <div class="right">
                         <ul v-if="pages.length > 1" class="pagination">
                             <li v-if="page != 1" @click="page--"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                            <li v-for="pageNumber in pages.slice(page-1, page+5)" @click="page = pageNumber" :class="{active: page == pageNumber }"><a href="#!">{{pageNumber}}</a></li>
+                            <li v-for="pageNumber in pages.slice(page-1, page+5)" :key="pageNumber" @click="page = pageNumber" :class="{active: page == pageNumber }"><a href="#!">{{pageNumber}}</a></li>
                             <li class="waves-effect"  @click="page++" v-if="page < pages.length"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
                         </ul>
                     </div>
@@ -98,7 +98,7 @@
             getDateCreated(data){
                 return data.substring(0,10);
             },
-            deleteChannel:function (canalID) {
+            deleteChannel:function (canalID, index) {
                 var confirmR = confirm(this.$t('canal.delete-msg'));
                 if (confirmR){
                     var payload={
@@ -106,12 +106,10 @@
                         'mutation':'setCanals',
                     };
                     this.deleteRequest(payload).then(() => {
-                        let payload = {
-                            'link': '/appUsers/' + this.getUserId + '/canals',
-                            'mutation': 'setCanals',
-                            'all': true
-                        };
-                        this.$store.dispatch('getRequest', payload);
+                        this.getCanals.splice(index, 1);
+                        if(this.getCanals.length === 0){
+                            this.$store.state.canals = null;
+                        }
                         this.flash(this.$t('canal.delete-success'), 'success');
                     }).catch(() => {
                         this.flash(this.$t('canal.delete-error'), 'error');

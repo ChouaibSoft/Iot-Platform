@@ -22,7 +22,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(React, index) in displayReacts" :data-url="'/dashboard/Reacts/' + React.id">
+                        <tr v-for="(React, index) in displayReacts" :key="index" :data-url="'/dashboard/Reacts/' + React.id">
                             <td>{{index + 1}}</td>
                             <td>{{React.nom}}</td>
                             <td>30/04/2019</td>

@@ -12,7 +12,8 @@
     "error": "échec d'inscription !",
     "forgot-password": "Mot de passe oublié?",
     "submit": "Submit",
-    "cancel": "Annuler"
+    "cancel": "Annuler",
+    "account-not-activated": "Votre compte n'est pas activé, veuillez vérifier votre boîte de réception pour confirmer votre email."
   },
   "errors": {
     "required": "ce champ est obligatoire.",

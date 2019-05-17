@@ -12,10 +12,11 @@ import VueBreadcrumbs from 'vue-breadcrumbs'
 
 
 
-Vue.use(VueBreadcrumbs)
+Vue.use(VueBreadcrumbs);
 Vue.use(Vuelidate);
 Vue.use(FlagIcon);
 Vue.config.productionTip = false;
+
 
 Vue.use(VueFlashMessage, {
     mixin: true,

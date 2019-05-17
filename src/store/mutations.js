@@ -48,11 +48,6 @@ const mutations = {
     changeLocale(state, lang){
         state.locale = lang.language;
         state.flag = lang.flag;
-    },
-    setNull(state){
-        state.canal = null;
-        state.canals = null;
-        state.fields = null;
     }
 }
 export default mutations

@@ -65,6 +65,17 @@ body a:hover {
 body li {
   list-style: none;
 }
+body .account-not-activated {
+  position: fixed;
+  width: 100%;
+  top: 63px;
+  left: 0;
+  padding: 10px 0;
+  background-color: #f2dede;
+  color: #a94442;
+  text-align: center;
+  z-index: 999;
+}
 body table thead {
   background-color: #f9f9f9;
 }
@@ -232,7 +243,7 @@ body .content .component-section .help .help-list li ul li {
   line-height: 63px;
 }
 .navbar .controls {
-  margin-left: 240px;
+  margin-left: 243px;
   -webkit-transition: width 0.05s linear;
   transition: all 0.3s linear;
   -webkit-transform: translateZ(0) scale(1, 1);
@@ -574,7 +585,6 @@ aside .now .router-link-exact-active {
 .component-section .urls pre .key {
   color: #2bbbad;
 }
-
 .form {
   font-family: "Roboto", sans-serif;
   font-weight: 400;

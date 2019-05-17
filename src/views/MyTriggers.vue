@@ -22,7 +22,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(trigger, index) in displayTriggers" :data-url="'/dashboard/triggers/' + trigger.id">
+                            <tr v-for="(trigger, index) in displayTriggers" :key="index" :data-url="'/dashboard/triggers/' + trigger.id">
                                 <td>{{index + 1}}</td>
                                 <td>{{trigger.nom}}</td>
                                 <td>30/04/2019</td>

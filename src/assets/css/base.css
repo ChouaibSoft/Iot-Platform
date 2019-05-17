@@ -191,6 +191,7 @@ body .content .component-section .help .help-list li ul li {
   margin-bottom: 0;
   border: none;
   height: 64px;
+  z-index: 99999;
 }
 .navbar .brand-logo {
   width: 250px;
@@ -585,6 +586,25 @@ aside .now .router-link-exact-active {
 .component-section .urls pre .key {
   color: #2bbbad;
 }
+.component-section .field-chart {
+  position: relative;
+}
+.component-section .field-chart .chart ul {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+}
+.component-section .field-chart .chart ul li {
+  display: inline-block;
+  margin-left: 10px;
+}
+.component-section .field-chart .chart ul li i {
+  width: 2.5rem;
+}
+.component-section .field-chart .chart ul li input {
+  display: none;
+}
+
 .form {
   font-family: "Roboto", sans-serif;
   font-weight: 400;

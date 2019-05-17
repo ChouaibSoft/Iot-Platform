@@ -5,6 +5,7 @@
   margin-bottom: 0;
   border:none;
   height: 64px;
+  z-index: 99999;
   @media #{$maxSmall} {
   }
   .brand-logo{

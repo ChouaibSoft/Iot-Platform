@@ -34,28 +34,22 @@
                         <div class="row">
                             <div class="col s12">
                                 <ul class="tabs" id="tabs-swipe-demo">
-                                    <li class="tab col s3">
+                                    <li class="tab col s4">
                                         <router-link  :to="{ name: 'view', params: { id: getCanal.id}}"
                                                       exact-active-class="active">
                                             {{ $t('component-toggle.view') }}
                                         </router-link>
                                     </li>
-                                    <li class="tab col s3">
+                                    <li class="tab col s4">
                                         <router-link :to="{ name: 'api-key', params: { id: getCanal.id}}"
                                                      exact-active-class="active">
                                             {{ $t('component-toggle.api-keys') }}
                                         </router-link>
                                     </li>
-                                    <li class="tab col s3">
+                                    <li class="tab col s4">
                                         <router-link :to="{ name: 'settings', params: { id: getCanal.id}}"
                                                      exact-active-class="active">
                                             {{ $t('component-toggle.channel-settings') }}
-                                        </router-link>
-                                    </li>
-                                    <li class="tab col s3">
-                                        <router-link to="/dashboard/channels/12/data-import-export"
-                                                     exact-active-class="active">
-                                            {{ $t('component-toggle.import-export') }}
                                         </router-link>
                                     </li>
                                 </ul>

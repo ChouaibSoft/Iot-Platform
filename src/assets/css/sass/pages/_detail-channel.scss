@@ -73,10 +73,22 @@
     }
   }
   .field-chart{
+    position: relative;
     .chart{
-
-      .fixed-action-btn{
-
+      ul{
+        position: absolute;
+        top: 2%;
+        right: 2%;
+        li{
+          display: inline-block;
+          margin-left: 10px;
+          i{
+            width: 2.5rem;
+          }
+          input{
+            display: none;
+          }
+        }
       }
     }
   }

@@ -2,26 +2,29 @@
     <div id="field-chart" class="field-chart">
         <ul class="collapsible">
             <li>
-                <div class="collapsible-header chart">
-                    <i class="material-icons">filter_drama</i>Field : <span class="teal-text lighten-1">{{ this.nameField }}</span>
+                <div class="collapsible-header chart" style="opacity: 1">
+                    <i class="material-icons">filter_drama</i>{{ $t('canal.fieldX', {num: ''}) }} : <span class="teal-text lighten-1">{{ this.nameField }}</span>
+                    <ul class="right">
+                        <li>
+                            <label for="import-file">
+                                <a class="btn-floating  grey darken-1 tooltipped"
+                                   data-position="bottm" :data-tooltip="this.$t('tooltips.import')">
+                                    <i  class="material-icons">attach_file</i></a>
+                            </label>
+                            <input id="import-file" type="file" accept=".csv" @change="processFile($event)">
+                        </li>
+                        <li><a class="btn-floating publish tooltipped"
+                               data-position="bottom" :data-tooltip="this.$t('tooltips.export')"
+                               :href=" this.getApiUrl +  '/export-data/' + this.idField">
+                            <i class="material-icons">publish</i></a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="collapsible-body"
                      style="display: block; position:relative; height: 290px !important; overflow: hidden">
                     <div :id="this.id" width="100%" height="100%"
                          style="display: block; position: absolute; width: 100%; height: 300px !important; top:0; left:0;"></div>
                 </div>
-            </li>
-            <li style="text-align: center;">
-                <br>
-                <a class="btn" :href="'http://localhost:8091/export-data/' + this.idField">
-                    Export as csv
-                </a>
-                <br>
-                <br>
-                <input type="file" accept=".csv" @change="processFile($event)">
-                <button class="btn" v-on:click="importCSV()">Import file</button>
-                <br><br>
-
             </li>
         </ul>
     </div>
@@ -113,10 +116,11 @@
 
         },
         mounted() {
+            $('.tooltipped').tooltip();
             this.getData();
             $('.fixed-action-btn').floatingActionButton({
+                hoverEnabled: false,
                 direction: 'left',
-                hoverEnabled: false
             });
         },
         methods: {
@@ -171,6 +175,7 @@
 
             processFile(event) {
                 this.file = event.target.files[0];
+                this.importCSV();
             },
             importCSV: function () {
 

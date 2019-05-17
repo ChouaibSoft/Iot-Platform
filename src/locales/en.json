@@ -77,7 +77,9 @@
     "search": "search here",
     "collapse-menu": "Collapse Menu",
     "new-trigger": "new trigger",
-    "new-react": "new react"
+    "new-react": "new react",
+    "import": "Import File",
+    "export": "Export as CSV"
   },
   "page-title": {
     "auth": "Authentication",

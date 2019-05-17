@@ -80,7 +80,9 @@
     "search": "rechercher ici",
     "collapse-menu": "Réduire le menu",
     "new-trigger": "nouveau trigger",
-    "new-react": "nouveau react"
+    "new-react": "nouveau react",
+    "import": "Importer un fichier",
+    "export": "Exporter"
   },
   "page-title": {
     "auth": "Authentication",

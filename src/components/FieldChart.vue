@@ -46,7 +46,7 @@
                 chart: null,
                 id: '',
                 file: null,
-                idfield: null
+                idfield: null,
 
             }
         },
@@ -69,10 +69,11 @@
                 forceTLS: true
             });
 
-            var channel = pusher.subscribe('my-channel');
+            var channel = pusher.subscribe('my-channel'),
+                apiUrl  =  this.getApiUrl;
             channel.bind('my-event', function (data) {
                 if (data['data'] === keyWrite) {
-                    axios.get( this.getApiUrl +  '/read?key=' + key + '&field=' + nameF, {
+                    axios.get( apiUrl +  '/read?key=' + key + '&field=' + nameF, {
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': 'Bearer ' + token
@@ -128,8 +129,9 @@
                 var key = this.$store.state.canal.cleLecture,
                     token = this.$store.state.token,
                     nameF = this.nameField,
+                    apiUrl  =  this.getApiUrl,
                     idChart = this.id;
-                axios.get( this.getApiUrl +  '/read?key=' + key + '&field=' + nameF, {
+                axios.get( apiUrl +  '/read?key=' + key + '&field=' + nameF, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': 'Bearer ' + token
@@ -182,9 +184,11 @@
                 if (this.file.type == "application/vnd.ms-excel") {
 
                     let formData = new FormData();
+                    let apiUrl  =  this.getApiUrl;
+
                     formData.append('file', this.file);
 
-                    axios.post( this.getApiUrl +  '/import-data/' + this.idField, formData, {
+                    axios.post( apiUrl +  '/import-data/' + this.idField, formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             'Authorization': 'Bearer ' + this.$store.state.token,

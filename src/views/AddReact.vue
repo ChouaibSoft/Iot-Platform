@@ -90,6 +90,7 @@
                                             <option value="" disabled selected>Choose a provider</option>
                                             <option value="twilio">ESI-IOT TWILIO</option>
                                             <option value="http">ESI-IOT HTTP</option>
+                                            <option value="email">ESI-IOT EMAIL</option>
                                         </select>
                                         <label>{{$t('react.provider')}}</label>
                                     </div>
@@ -99,23 +100,23 @@
 
 
                                 <div v-if="provider==='twilio'">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input
-                                                id="message"
-                                                type="text"
-                                                v-model="message">
-                                        <label for="message">{{ $t('react.message') }}</label>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input
+                                                    id="message"
+                                                    type="text"
+                                                    v-model="message">
+                                            <label for="message">{{ $t('react.message') }}</label>
 
+                                        </div>
                                     </div>
-                                </div>
 
 
-                                <div class="row" style="margin-bottom: 30px">
-                                    <vue-tel-input v-model="phone" enabledCountryCode
-                                                   :preferredCountries="['dz']"
-                                    ></vue-tel-input>
-                                </div>
+                                    <div class="row" style="margin-bottom: 30px">
+                                        <vue-tel-input v-model="phone" enabledCountryCode
+                                                       :preferredCountries="['dz']"
+                                        ></vue-tel-input>
+                                    </div>
 
                                 </div>
 
@@ -124,18 +125,18 @@
                                     <div class="row">
                                         <div class="input-field col s12">
 
-                                           <p v-for="triger in getTriggers" v-bind:key="triger">
-                                               <label>
-                                               <input :value="triger.id" name="group2" v-model="trigeID" type="radio" class="with-gap" />
+                                            <p v-for="triger in getTriggers" v-bind:key="triger">
+                                                <label>
+                                                    <input :value="triger.id" name="group2" v-model="trigeID" type="radio" class="with-gap" />
 
-                                            <span>{{triger.nom}}</span>
-                                               </label>
-                                           </p>
+                                                    <span>{{triger.nom}}</span>
+                                                </label>
+                                            </p>
 
                                             <input id="cmd"
-                                                    type="text"
-                                                    class="validate"
-                                                    minlength="3"
+                                                   type="text"
+                                                   class="validate"
+                                                   minlength="3"
                                                    v-model="commande"
                                                    placeholder="Commande"
                                             >
@@ -146,6 +147,36 @@
 
                                 </div>
 
+
+
+                                <div v-if="provider==='email'">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+
+                                            <input
+                                                    id="message_email"
+                                                    type="text"
+                                                    v-model="message_email">
+                                            <label for="message_email">{{ $t('react.email') }}</label>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="input-field col s12">
+
+
+                                            <input
+                                                    id="email"
+                                                    type="text"
+                                                    v-model="email_react">
+                                            <label for="message">{{ $t('react.message') }}</label>
+
+                                        </div>
+                                    </div>
+
+                                </div>
 
 
                             </div>
@@ -216,7 +247,9 @@
                 iduser:'',
                 canals:'',
                 trigeID:'',
-                commande:''
+                commande:'',
+                email_react:'',
+                message_email:''
 
             }
         },
@@ -226,17 +259,17 @@
 
         },
         created() {
-            let payload = {
-                'link': '/appUsers/' + this.getUserId + '/canals',
+            var payload = {
+                'link': '/canal-service/canals/'+ this.getUserId,
                 'mutation': 'setCanals',
-                'all': true
+                'all': false
             };
             this.$store.dispatch('getRequest', payload);
 
             let payloadB={
-                'link': '/appUsers/' + this.getUserId + '/trigers',
+                'link': '/trigger-service/userTriger/' + this.getUserId ,
                 'mutation': 'setTriggers',
-                'all': true
+                'all': false
             };
             this.$store.dispatch('getRequest',payloadB)
 
@@ -255,6 +288,8 @@
                     message:this.message,
                     tel:this.phone,
                     commande:this.commande,
+                    email_react:this.email_react,
+                    message_email:this.message_email,
                     trigerId:this.trigeID
                     ,
                     userId: this.$store.state.userId
@@ -263,7 +298,7 @@
 
                 let payload = {
                     'data': postData,
-                    'link': '/react'};
+                    'link': '/trigger-service/react'};
                 this.postRequest(payload).then(() => {
                     this.flash(this.$t('react.add-success'), 'success');
                     this.$router.push('/dashboard/reacts');
@@ -276,7 +311,7 @@
                 // e => Get Selected Channel Id
                 if(e.target.options.selectedIndex > -1) {
                     let canalId = e.target.options[e.target.options.selectedIndex].value;
-                    this.$http.get(this.getAPIUrl + '/canals/' + canalId + '/fields' , {
+                    this.$http.get(this.getAPIUrl + '/canal-service/canals/' + canalId + '/fields' , {
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': 'Bearer ' + this.getToken

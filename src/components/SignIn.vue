@@ -39,7 +39,7 @@
                                         {{ $t('errors.required') }}
                                     </p>
                                 </div>
-                               <a href="#" class="forget-password" @click="forgetPassword = !forgetPassword">{{ $t('auth.forgot-password') }}</a>
+                                <a href="#" class="forget-password" @click="forgetPassword = !forgetPassword">{{ $t('auth.forgot-password') }}</a>
                             </div>
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                 };
                 var payload = {
                     'data': postData,
-                    'link': '/login'
+                    'link': '/authentification-service/login'
                 };
                 this.postRequest(payload).then(request => this.loginSuccessful(request))
                     .catch( ()=> {
@@ -131,14 +131,18 @@
             loginSuccessful(req) {
                 if (req.headers) {
                     this.$store.dispatch('saveUserToken', req.headers.authorization);
-                    this.$http.get( this.getApiUrl +  '/id',{
+                    this.$http.get( this.getApiUrl +  '/authentification-service/id',{
                             headers:{
                                 'Content-Type': 'application/json',
                                 'Authorization': 'Bearer '+ this.$store.state.token
                             }
                         }
-                    ).then(request=>this.$store.dispatch('saveUserId', request.data))
-                    this.switchProgress();
+                    ).then(request=>{this.$store.dispatch('saveUserId', request.data)
+                        console.log(request.data)
+                    })
+                    this.switchProgress()
+
+
                     setTimeout(() => {
                         this.switchProgress();
                         this.$router.push('/dashboard');

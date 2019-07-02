@@ -68,7 +68,7 @@
                                                 required
                                                 v-model="fields[index].value">
                                         <label  v-bind:for="field.name" >
-                                           {{ $t('canal.fieldX', {num: index + 1}) }}
+                                            {{ $t('canal.fieldX', {num: index + 1}) }}
                                         </label>
                                         <i @click="deleteField(index)" v-if="index > 0" class="fa fa-times delete-field red-text text-darken-5"></i>
                                     </div>
@@ -79,7 +79,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <div v-if="fields.length < 8" @click="addField" class="btn waves-effect waves-light submit">
-                                            <i style="font-size: .9rem" class="fa fa-plus"></i> {{ $t('canal.fieldX', {num: ''}) }}
+                                                <i style="font-size: .9rem" class="fa fa-plus"></i> {{ $t('canal.fieldX', {num: ''}) }}
                                             </div>
                                         </div>
                                         <div class="col right">
@@ -139,7 +139,7 @@
 </template>
 
 <script>
-    import { mapState, mapActions } from 'vuex';
+    import { mapState, mapActions,mapGetters } from 'vuex';
     import { required, minLength } from 'vuelidate/lib/validators'
     import Form from "@/components/Form";
 
@@ -167,11 +167,13 @@
         },
         methods: {
             ...mapActions(['postRequest']),
+            ...mapGetters(['getUserId']),
+
             addCanal: function () {
                 let postData = {
                     nom: this.name,
                     description: this.description,
-                    userId: this.$store.state.userId
+                    userId:1
                 };
 
                 for(let i = 1; i <= this.fields.length; i++){
@@ -184,12 +186,12 @@
                 }
                 let payload = {
                     'data': postData,
-                    'link': '/canals'};
+                    'link': '/canal-service/add-canal'};
                 this.postRequest(payload).then(() => {
                     this.flash(this.$t('canal.add-success'), 'success');
                     this.$router.push('/dashboard/channels');
                 }).catch(() => {
-                        this.flash(this.$t('canal.add-error'), 'error');
+                    this.flash(this.$t('canal.add-error'), 'error');
                 })
             },
             addField: function () {
@@ -235,19 +237,19 @@
     "channel-des": "Channels store all the data that a Iot-Platform ESI-SBA application collects. Each channel includes eight fields that can hold any type of data, plus three fields for location data and one for status data. Once you collect data in a channel, you can use ThingSpeak apps to analyze and visualize it.",
     "channel-settings": "Channel Settings",
     "settings": {
-        "name": "Channel Name : ",
-        "name-det": "Enter a unique name for the Iot-Platform ESI-SBA channel.",
-        "description": "Description : ",
-        "description-det": "Enter a description of the Iot-Platform ESI-SBA channel.",
-        "field#": "Field# : ",
-        "field#-det": "Check the box to enable the field, and enter a field name. Each Iot-Platform ESI-SBA channel can have up to 8 fields.",
-        "location": "Show Channel Location : ",
-        "latitude": "Latitude : ",
-        "latitude-det": "Specify the latitude position in decimal degrees. For example, the latitude of the city of London is 51.5072.",
-        "longitude": "Longitude : ",
-        "longitude-det": "Specify the longitude position in decimal degrees. For example, the longitude of the city of London is -0.1275.",
-        "evaluation": "Evaluation : ",
-        "evaluation-det": "Specify the elevation position meters. For example, the elevation of the city of London is 35.052. "
+    "name": "Channel Name : ",
+    "name-det": "Enter a unique name for the Iot-Platform ESI-SBA channel.",
+    "description": "Description : ",
+    "description-det": "Enter a description of the Iot-Platform ESI-SBA channel.",
+    "field#": "Field# : ",
+    "field#-det": "Check the box to enable the field, and enter a field name. Each Iot-Platform ESI-SBA channel can have up to 8 fields.",
+    "location": "Show Channel Location : ",
+    "latitude": "Latitude : ",
+    "latitude-det": "Specify the latitude position in decimal degrees. For example, the latitude of the city of London is 51.5072.",
+    "longitude": "Longitude : ",
+    "longitude-det": "Specify the longitude position in decimal degrees. For example, the longitude of the city of London is -0.1275.",
+    "evaluation": "Evaluation : ",
+    "evaluation-det": "Specify the elevation position meters. For example, the elevation of the city of London is 35.052. "
     }
     },
     "fr": {

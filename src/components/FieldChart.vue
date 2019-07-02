@@ -15,7 +15,7 @@
                         </li>
                         <li><a class="btn-floating publish tooltipped"
                                data-position="bottom" :data-tooltip="this.$t('tooltips.export')"
-                               :href=" this.getApiUrl +  '/export-data/' + this.idField">
+                               :href=" this.getApiUrl +  '/canal-service/export-data/' + this.idField">
                             <i class="material-icons">publish</i></a>
                         </li>
                     </ul>
@@ -73,7 +73,7 @@
                 apiUrl  =  this.getApiUrl;
             channel.bind('my-event', function (data) {
                 if (data['data'] === keyWrite) {
-                    axios.get( apiUrl +  '/read?key=' + key + '&field=' + nameF, {
+                    axios.get( apiUrl +  '/canal-service/read?key=' + key + '&field=' + nameF, {
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': 'Bearer ' + token
@@ -131,7 +131,7 @@
                     nameF = this.nameField,
                     apiUrl  =  this.getApiUrl,
                     idChart = this.id;
-                axios.get( apiUrl +  '/read?key=' + key + '&field=' + nameF, {
+                axios.get( apiUrl +  '/canal-service/read?key=' + key + '&field=' + nameF, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': 'Bearer ' + token
@@ -188,7 +188,7 @@
 
                     formData.append('file', this.file);
 
-                    axios.post( apiUrl +  '/import-data/' + this.idField, formData, {
+                    axios.post( apiUrl +  '/canal-service/import-data/' + this.idField, formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             'Authorization': 'Bearer ' + this.$store.state.token,

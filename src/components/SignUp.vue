@@ -124,7 +124,7 @@
                 };
                 var payload = {
                     'data': postData,
-                    'link': '/register'
+                    'link': '/authentification-service/register'
                 };
                 this.postRequest(payload).then(() => {
                     this.flash(this.$t('auth.success'), 'success');

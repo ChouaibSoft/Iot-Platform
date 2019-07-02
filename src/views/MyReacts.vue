@@ -121,9 +121,9 @@
         },
         created() {
             let payload = {
-                'link': '/appUsers/' + this.getUserId + '/reacts',
+                'link': '/trigger-service/UserReact/' + this.getUserId ,
                 'mutation': 'setReacts',
-                'all': true
+                'all': false
             };
             this.$store.dispatch('getRequest', payload);
         },

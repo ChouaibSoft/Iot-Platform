@@ -26,37 +26,34 @@
 </template>
 
 <script>
-import homeNav from '@/components/HomeNav'
-import singnIn from '@/components/SignIn'
-import signUp from '@/components/SignUp'
-import Form from "@/components/Form";
+    import homeNav from '@/components/HomeNav'
+    import singnIn from '@/components/SignIn'
+    import signUp from '@/components/SignUp'
+    import Form from "@/components/Form";
 
-import { mapState } from 'vuex';
+    import { mapState } from 'vuex';
 
-export default {
-    name : 'auth',
-    components : {
-        'home-nav': homeNav,
-        'sign-in': singnIn,
-        'sign-up': signUp,
-        'generic-form': Form
-    },
-    computed: {
-        ...mapState(['progress'])
-    },
-    data() {
-        return {
-            component: 'sign-in',
-            selected: 1,
+    export default {
+        name : 'auth',
+        components : {
+            'home-nav': homeNav,
+            'sign-in': singnIn,
+            'sign-up': signUp,
+            'generic-form': Form
+        },
+        computed: {
+            ...mapState(['progress'])
+        },
+        data() {
+            return {
+                component: 'sign-in',
+                selected: 1,
+            }
+        },
+        methods: {
+
         }
-    },
-    methods: {
 
     }
-
-}
 </script>
 
-<style scoped>
-
-</style>

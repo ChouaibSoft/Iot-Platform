@@ -161,12 +161,12 @@
                 }
                 var payload = {
                     'data': postData,
-                    'link': '/trigers/' + this.IdTriger
+                    'link': '/trigger-service/trigger/' + this.IdTriger
                 };
                 this.postRequest(payload).then(() => {
                     this.flash(this.$t('commande.add-success'), 'success');
                     var payloadB = {
-                        'link': '/trigers/' + this.IdTriger + '/commandes',
+                        'link': '/trigger-service/trigers/' + this.IdTriger + '/commandes',
                         'mutation': 'setCommands',
                         'all': true
                     };
@@ -210,13 +210,13 @@
             var triggerId = this.$route.params.id;
             this.IdTriger = triggerId
             var payloadA = {
-                'link': '/appUsers/' + this.getUserId + '/trigers/' + triggerId,
-                'mutation': 'setTrigger',
+                'link': '/trigger-service/userTriger/' + this.getUserId ,
+                'mutation': 'setTriggers',
                 'all': false
             };
             this.$store.dispatch('getRequest', payloadA);
             var payloadB = {
-                'link': '/trigers/' + triggerId + '/commandes',
+                'link': '/trigger-service/trigers/' + triggerId + '/commandes',
                 'mutation': 'setCommands',
                 'all': true
             };

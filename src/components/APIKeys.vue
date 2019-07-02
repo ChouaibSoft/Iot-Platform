@@ -13,13 +13,13 @@
                                             v-model="this.keyWrite"
                                             :class="{valid: isValid}"
                                             class="validate"
-                                            >
+                                    >
                                     <label for="write-key" :class="{active: isActive}">{{ $t('write-api-key') }}</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                        <input
+                                    <input
                                             id="read-key"
                                             type="text"
                                             v-model="this.keyRead"
@@ -47,11 +47,11 @@
                 <div v-if="isShow" class="urls">
                     <div>
                         <h6>{{$t('update-url')}}</h6>
-                        <pre>  POST : <span>http://localhost:8091/record?key=</span><span class="key">{{getCanal.cleEcriture}}{{this.paramlist}}</span></pre>
+                        <pre>  POST : <span>http://localhost:8082/canal-service/record?key=</span><span class="key">{{getCanal.cleEcriture}}{{this.paramlist}}</span></pre>
                     </div>
                     <div v-if="isShow">
                         <h6>{{$t('read-url')}}</h6>
-                        <pre  v-for="f in displayFields()" v-bind:key="f.id">  GET : <span>http://localhost:8091/read?key=</span><span class="key">{{getCanal.cleLecture}}&field={{f.nom}}</span></pre>
+                        <pre  v-for="f in displayFields()" v-bind:key="f.id">  GET : <span>http://localhost:8082/canal-service/read?key=</span><span class="key">{{getCanal.cleLecture}}&field={{f.nom}}</span></pre>
                     </div>
                 </div>
             </div>
@@ -101,6 +101,7 @@
         },
         methods: {
             keyGenerator(){
+                console.log(this.$store)
                 this.keyWrite = this.$store.getters.getCanal.cleEcriture;
                 this.keyRead = this.$store.getters.getCanal.cleLecture;
                 this.getFields.forEach( f => {

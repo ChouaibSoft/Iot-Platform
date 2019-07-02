@@ -83,15 +83,15 @@
                 var confirmR = confirm(this.$t('canal.delete-msg'));
                 if (confirmR){
                     let payloadC={
-                        'link':'/canals/'+ this.getCanal.id,
+                        'link':'/canal-service/canals/'+ this.getCanal.id,
                         'mutation':'setCanals',
                     };
                     this.deleteRequest(payloadC).then(() => {
                         this.flash(this.$t('canal.delete-success'), 'success');
                         let payload = {
-                            'link': '/appUsers/' + this.getUserId + '/canals',
+                            'link': '/canal-service/canals/'+ this.getUserId,
                             'mutation': 'setCanals',
-                            'all': true
+                            'all': false
                         };
                         this.$store.dispatch('getRequest', payload);
                         this.$router.push('/dashboard/channels');
@@ -103,19 +103,23 @@
         },
         mounted(){
             // this.$nextTick(function () {
-                    let canalId = this.$route.params.id;
-                    let payloadA = {
-                        'link': '/appUsers/' + this.getUserId + '/canals/' + canalId,
-                        'mutation': 'setCanal',
-                        'all': false
-                    };
-                    this.$store.dispatch('getRequest', payloadA);
-                    let payloadB = {
-                        'link': '/canals/' + canalId + '/fields',
-                        'mutation': 'setFields',
-                        'all': true
-                    };
-                    this.$store.dispatch('getRequest', payloadB);
+            let canalId = this.$route.params.id;
+            let payloadA = {
+                'link': '/canal-service/Allcanals/'+ canalId,
+                'mutation': 'setCanal',
+                'all': false
+            };
+
+            console.log(this.$store.getters.getCanal)
+
+
+            this.$store.dispatch('getRequest', payloadA);
+            let payloadB = {
+                'link': '/canal-service/Allcanals/' + canalId + '/fields',
+                'mutation': 'setFields',
+                'all': false
+            };
+            this.$store.dispatch('getRequest', payloadB);
             // });
             $('.tabs').tabs();
         }
@@ -134,10 +138,10 @@
     "description": "Description :",
     "delete-channel": "Channel",
     "component-toggle": {
-        "view": "Visualisation",
-        "api-keys": "API keys",
-        "channel-settings": "Channel Settings",
-        "import-export": "Data import / export"
+    "view": "Visualisation",
+    "api-keys": "API keys",
+    "channel-settings": "Channel Settings",
+    "import-export": "Data import / export"
     }
     },
     "fr": {

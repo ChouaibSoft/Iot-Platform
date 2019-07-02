@@ -133,7 +133,7 @@
                 }
                 var payload = {
                     'data': postData,
-                    'link': '/trigger'
+                    'link': '/trigger-service/trigger'
                 };
                 this.postRequest(payload).then(() => {
                     this.flash(this.$t('trigger.add-success'), 'success');

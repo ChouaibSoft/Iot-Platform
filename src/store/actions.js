@@ -24,7 +24,7 @@ const actions = {
         if (state.token != null){
             headers['Authorization'] = 'Bearer '+ state.token
         }
-        return axios.post(state.apiURL + payload.link, payload.data, {
+        return axios.post(state.apiURL1 + payload.link, payload.data, {
             headers
         })
     },
@@ -38,10 +38,10 @@ const actions = {
         );
     },
     getRequest({state, commit}, payload) {
-        axios.get(state.apiURL + payload.link, {
+        axios.get(state.apiURL1 + payload.link, {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + state.token
+                'Authorijzation': 'Bearer ' + state.token
             }
         }).then(request => {
             if (payload.all){
@@ -54,8 +54,9 @@ const actions = {
                 commit(payload.mutation, request.data);
             }
         }).catch(error => {
+            console.log("here")
             commit(payload.mutation, null);
-            router.push("/dashboard");
+            // router.push("/dashboard");
         })
     },
     changeLocale({commit, state}, lang){

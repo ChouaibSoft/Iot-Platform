@@ -100,23 +100,23 @@
 
 
                                 <div v-if="provider==='twilio'">
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input
-                                                    id="message"
-                                                    type="text"
-                                                    v-model="message">
-                                            <label for="message">{{ $t('react.message') }}</label>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input
+                                                id="message"
+                                                type="text"
+                                                v-model="message">
+                                        <label for="message">{{ $t('react.message') }}</label>
 
-                                        </div>
                                     </div>
+                                </div>
 
 
-                                    <div class="row" style="margin-bottom: 30px">
-                                        <vue-tel-input v-model="phone" enabledCountryCode
-                                                       :preferredCountries="['dz']"
-                                        ></vue-tel-input>
-                                    </div>
+                                <div class="row" style="margin-bottom: 30px">
+                                    <vue-tel-input v-model="phone" enabledCountryCode
+                                                   :preferredCountries="['dz']"
+                                    ></vue-tel-input>
+                                </div>
 
                                 </div>
 
@@ -125,18 +125,18 @@
                                     <div class="row">
                                         <div class="input-field col s12">
 
-                                            <p v-for="triger in getTriggers" v-bind:key="triger">
-                                                <label>
-                                                    <input :value="triger.id" name="group2" v-model="trigeID" type="radio" class="with-gap" />
+                                           <p v-for="triger in getTriggers" v-bind:key="triger">
+                                               <label>
+                                               <input :value="triger.id" name="group2" v-model="trigeID" type="radio" class="with-gap" />
 
-                                                    <span>{{triger.nom}}</span>
-                                                </label>
-                                            </p>
+                                            <span>{{triger.nom}}</span>
+                                               </label>
+                                           </p>
 
                                             <input id="cmd"
-                                                   type="text"
-                                                   class="validate"
-                                                   minlength="3"
+                                                    type="text"
+                                                    class="validate"
+                                                    minlength="3"
                                                    v-model="commande"
                                                    placeholder="Commande"
                                             >

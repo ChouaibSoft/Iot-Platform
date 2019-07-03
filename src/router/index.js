@@ -22,6 +22,34 @@ const router = new Router({
             },
         },
         {
+            path: '/confirm-account',
+            name: 'account-confirmation',
+            component: () => import("@/views/ConfirmAccount"),
+            props: {
+                token: {
+                    type: String,
+                    default: null
+                }
+            },
+            meta: {
+                title: i18n.t('page-title.confirm-account')
+            }
+        },
+        {
+            path: '/reset-password',
+            name: 'reset-password',
+            component: () => import("@/views/ResetPassword"),
+            props: {
+                token: {
+                    type: String,
+                    default: null
+                }
+            },
+            meta: {
+                title: i18n.t('page-title.reset-password')
+            }
+        },
+        {
             path: "/dashboard",
             name:"dashboard",
             component: () => import("@/views/Dashboard"),

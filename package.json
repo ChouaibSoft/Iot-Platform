@@ -11,11 +11,13 @@
   "dependencies": {
     "axios": "^0.18.0",
     "chart.js": "^2.8.0",
+    "core-js": "^3.1.4",
     "css-loader": "^2.1.1",
     "jquery": "^3.4.1",
     "jwt-decode": "^2.2.0",
     "plotly.js": "^1.47.4",
     "pusher-js": "^4.4.0",
+    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "vue": "^2.6.6",
     "vue-axios": "^2.1.4",
@@ -51,7 +53,9 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

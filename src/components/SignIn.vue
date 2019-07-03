@@ -51,7 +51,7 @@
                 </generic-form>
             </div>
         </form>
-        <form v-else class="col s12"  @submit.prevent="forgetPassword">
+        <form v-else class="col s12"  @submit.prevent="resetPassword">
             <div class="form-container form">
                 <h5>{{ $t('auth.forgot-password') }}</h5>
                 <generic-form>
@@ -64,11 +64,11 @@
                                         type="text"
                                         class="validate"
                                         required
-                                        v-model="email"
-                                        @input="$v.email.$touch()">
+                                        v-model="emailReset"
+                                        @input="$v.emailReset.$touch()">
                                 <label for="email-2">{{ $t('auth.email') }}</label>
-                                <div v-if="$v.email.$dirty">
-                                    <p class="error-message red-text " v-if="!$v.email.required">
+                                <div v-if="$v.emailReset.$dirty">
+                                    <p class="error-message red-text " v-if="!$v.emailReset.required">
                                         {{ $t('errors.required') }}
                                     </p>
                                 </div>
@@ -78,7 +78,7 @@
                     <div slot="form-controls">
                         <center>
                             <a @click="forgetPassword= !forgetPassword" class="btn waves-effect waves-light" name="action">{{ $t('auth.cancel') }}</a>
-                            <a style="margin-left: 50px" class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.submit') }}</a>
+                            <button style="margin-left: 30px" class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.submit') }}</button>
                         </center>
                     </div>
                 </generic-form>
@@ -91,7 +91,6 @@
     import Form from "@/components/Form";
     import { required } from 'vuelidate/lib/validators'
     import {  mapActions, mapGetters } from 'vuex';
-
     export default {
         name: "SignIn",
         components: {
@@ -102,6 +101,7 @@
                 component: 'sign-in',
                 selected: 1,
                 email: '',
+                emailReset: '',
                 password: '',
                 forgetPassword: false
             }
@@ -141,8 +141,6 @@
                         console.log(request.data)
                     })
                     this.switchProgress()
-
-
                     setTimeout(() => {
                         this.switchProgress();
                         this.$router.push('/dashboard');
@@ -150,6 +148,21 @@
                     return false;
                 }
             },
+            resetPassword(){
+                var postData = {
+                    email: this.emailReset,
+                };
+                var payloadA = {
+                    'data': postData,
+                    'link': '/authentification-service/send-email'
+                };
+                this.postRequest(payloadA).then((res) => {
+                    console.log(res)
+                    this.flash(this.$t('auth.reset-password.email'), 'success')
+                }).catch( ()=> {
+                    this.flash(this.$t('auth.reset-password.email-err'), 'error')
+                })
+            }
         },
         validations: {
             email: {
@@ -157,11 +170,148 @@
             },
             password: {
                 required,
+            },
+            emailReset: {
+                required
             }
         },
     }
 </script>
 
-<style scoped>
+<!--<template>-->
+    <!--<div id="sign-in" class="col s12">-->
+        <!--<form v-if="!forgetPassword" class="col s12 form"  @submit.prevent="login">-->
+            <!--<div class="form-container">-->
+                <!--<h4>{{ $t('auth.welcome') }}</h4>-->
+                <!--<generic-form>-->
+                    <!--<div slot="form-fields">-->
+                        <!--<div class="row">-->
+                            <!--<div class="input-field col s12">-->
+                                <!--<i class="material-icons prefix">account_circle</i>-->
+                                <!--<input-->
+                                        <!--id="email"-->
+                                        <!--type="text"-->
+                                        <!--class="validate"-->
+                                        <!--required-->
+                                        <!--v-model="email"-->
+                                        <!--@input="$v.email.$touch()">-->
+                                <!--<label for="email">{{ $t('auth.email') }}</label>-->
+                                <!--<div v-if="$v.email.$dirty">-->
+                                    <!--<p class="error-message red-text " v-if="!$v.email.required">-->
+                                        <!--{{ $t('errors.required') }}-->
+                                    <!--</p>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row">-->
+                            <!--<div class="input-field col s12">-->
+                                <!--<i class="material-icons prefix">lock</i>-->
+                                <!--<input-->
+                                        <!--id="password"-->
+                                        <!--type="password"-->
+                                        <!--class="validate"-->
+                                        <!--required-->
+                                        <!--v-model="password"-->
+                                        <!--@input="$v.password.$touch()">-->
+                                <!--<label for="password">{{ $t('auth.password') }}</label>-->
+                                <!--<div v-if="$v.password.$dirty">-->
+                                    <!--<p class="error-message red-text " v-if="!$v.password.required">-->
+                                        <!--{{ $t('errors.required') }}-->
+                                    <!--</p>-->
+                                <!--</div>-->
+                               <!--<a href="#" class="forget-password" @click="forgetPassword = !forgetPassword">{{ $t('auth.forgot-password') }}</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div slot="form-controls">-->
+                        <!--<center>-->
+                            <!--<button class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.sign-in') }}</button>-->
+                        <!--</center>-->
+                    <!--</div>-->
+                <!--</generic-form>-->
+            <!--</div>-->
+        <!--</form>-->
 
-</style>
+    <!--</div>-->
+<!--</template>-->
+
+<!--<script>-->
+    <!--import Form from "@/components/Form";-->
+    <!--import { required } from 'vuelidate/lib/validators'-->
+    <!--import {  mapActions, mapGetters } from 'vuex';-->
+
+    <!--export default {-->
+        <!--name: "SignIn",-->
+        <!--components: {-->
+            <!--'generic-form': Form-->
+        <!--},-->
+        <!--data() {-->
+            <!--return {-->
+                <!--component: 'sign-in',-->
+                <!--selected: 1,-->
+                <!--email: '',-->
+                <!--emailReset: '',-->
+                <!--password: '',-->
+                <!--forgetPassword: false-->
+            <!--}-->
+        <!--},-->
+        <!--computed: {-->
+            <!--...mapGetters(['getApiUrl'])-->
+        <!--},-->
+        <!--methods: {-->
+            <!--...mapActions([-->
+                <!--'switchProgress',-->
+                <!--'postRequest'-->
+            <!--]),-->
+            <!--login() {-->
+                <!--var postData = {-->
+                    <!--email: this.email,-->
+                    <!--password: this.password-->
+                <!--};-->
+                <!--var payload = {-->
+                    <!--'data': postData,-->
+                    <!--'link': '/authentification-service/login'-->
+                <!--};-->
+                <!--this.postRequest(payload).then(request => this.loginSuccessful(request))-->
+                    <!--.catch( ()=> {-->
+                        <!--this.flash(this.$t('auth.login-failed'), 'error')-->
+                    <!--})-->
+            <!--},-->
+            <!--loginSuccessful(req) {-->
+                <!--if (req.headers) {-->
+                    <!--this.$store.dispatch('saveUserToken', req.headers.authorization);-->
+                    <!--this.$http.get( this.getApiUrl +  '/authentification-service/id',{-->
+                            <!--headers:{-->
+                                <!--'Content-Type': 'application/json',-->
+                                <!--'Authorization': 'Bearer '+ this.$store.state.token-->
+                            <!--}-->
+                        <!--}-->
+                    <!--).then(request=>{this.$store.dispatch('saveUserId', request.data)-->
+                        <!--console.log(request.data)-->
+                    <!--})-->
+
+                    <!--this.$store.dispatch('getRequest', payloadB);-->
+                    <!--this.switchProgress();-->
+                    <!--setTimeout(() => {-->
+                        <!--this.switchProgress();-->
+                        <!--this.$router.push('/dashboard');-->
+                    <!--},2000);-->
+                    <!--return false;-->
+                <!--}-->
+            <!--}-->
+
+        <!--},-->
+        <!--validations: {-->
+            <!--email: {-->
+                <!--required-->
+            <!--},-->
+            <!--password: {-->
+                <!--required-->
+            <!--},-->
+            <!--emailReset: {-->
+                <!--required-->
+            <!--}-->
+        <!--},-->
+    <!--}-->
+<!--</script>-->
+

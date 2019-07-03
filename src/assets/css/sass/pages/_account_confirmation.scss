@@ -1,0 +1,26 @@
+.confirm-account{
+  .tab{
+    width: 100% !important;
+  }
+  .confirm-account-msg {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 50px 0;
+    width: 100%;
+    i{
+      color: #2bbbad;
+      font-size: 7rem;
+      margin-top: 10px;
+    }
+    p{
+      font-weight: bold;
+      margin-left: 0;
+    }
+    .redirection{
+      font-weight: normal;
+    }
+  }
+}

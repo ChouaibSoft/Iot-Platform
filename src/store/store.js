@@ -23,7 +23,10 @@ export const store = new Vuex.Store ({
       react: null,
       commands: null,
       fields: null,
-      apiURL: 'http://localhost:8091'
+      apiURL1: 'http://localhost:8082',
+
+
+
   },
   getters: getters,
   mutations: mutations,

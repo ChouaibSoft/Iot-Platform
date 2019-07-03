@@ -36,6 +36,9 @@
                                    data-position="bottom" :data-tooltip="this.$t('tooltips.notification')">
                                 <i class="material-icons">notifications_active</i></a>
                             </li>
+                            <li>
+                                <p class="red-text" style="width: 100%">Your account is not activated please verifie your account</p>
+                            </li>
                         </ul>
                     </div>
                 </div>

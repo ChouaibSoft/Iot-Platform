@@ -13,6 +13,9 @@ const mutations = {
         state.isLogged = true;
         state.token = token;
     },
+    setState(state, isActivated){
+        state.isActivated = isActivated
+    },
     deleteToken(state){
         state.token = null;
     },

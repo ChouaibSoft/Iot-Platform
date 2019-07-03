@@ -14,7 +14,22 @@
     "submit": "Submit",
     "cancel": "Annuler",
     "account-not-activated": "Votre compte n'est pas activé, veuillez vérifier votre boîte de réception pour confirmer votre email.",
-    "login-failed": "email ou mot de passe incorrect"
+    "login-failed": "email ou mot de passe incorrect",
+    "password-reset": "veuillez vérifier votre boîte de réception pour continuer!",
+    "reset-password": {
+      "email": "veuillez vérifier votre boîte de réception pour continuer",
+      "email-err": "une erreur est survenue?",
+      "title": "nouveau mot de passe",
+      "set-password": "Définir un nouveau mot de passe",
+      "success-msg": "opération effectuée !, vous serez redirigé vers la page de connexion après  {delay}s ",
+      "error-msg": "operation echouée"
+    },
+    "confirm-account": {
+      "title": "Confirmation du Compte",
+      "success-msg": "Félicitation, votre adresse email a été vérifiée!",
+      "error-msg": "Account activation failed, try again",
+      "redirection": "Redirection vers la page d'accueil après "
+    }
   },
   "errors": {
     "required": "ce champ est obligatoire.",
@@ -100,7 +115,7 @@
     "my-reacts": "Mes reacts",
     "detail-trigger": "Detail de Trigger",
     "trigger-overview": "Trigger Overview",
-    "trigger-settings": "Paramètres de Trigger"
-
+    "trigger-settings": "Paramètres de Trigger",
+    "confirm-account": "Confirmation du Compte"
   }
 }

@@ -13,13 +13,13 @@
                                             v-model="this.keyWrite"
                                             :class="{valid: isValid}"
                                             class="validate"
-                                    >
+                                            >
                                     <label for="write-key" :class="{active: isActive}">{{ $t('write-api-key') }}</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input
+                                        <input
                                             id="read-key"
                                             type="text"
                                             v-model="this.keyRead"

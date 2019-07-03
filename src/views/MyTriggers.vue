@@ -22,19 +22,19 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(trigger, index) in displayTriggers" :key="index" :data-url="'/dashboard/triggers/' + trigger.id">
-                            <td>{{index + 1}}</td>
-                            <td>{{trigger.nom}}</td>
-                            <td>30/04/2019</td>
-                            <td class="action not-allowed" width="15%">
-                                <router-link :to="{ name: 'trigger-overview', params: { id: trigger.id}}">
-                                    <i class="fa fa-chart-bar"></i>
-                                </router-link>
-                                <a  class="waves-effect waves-light modal-trigger" href="#modal1">
-                                    <i class="material-icons prefix">settings</i>
-                                </a>
-                            </td>
-                        </tr>
+                            <tr v-for="(trigger, index) in displayTriggers" :key="index" :data-url="'/dashboard/triggers/' + trigger.id">
+                                <td>{{index + 1}}</td>
+                                <td>{{trigger.nom}}</td>
+                                <td>30/04/2019</td>
+                                <td class="action not-allowed" width="15%">
+                                    <router-link :to="{ name: 'trigger-overview', params: { id: trigger.id}}">
+                                        <i class="fa fa-chart-bar"></i>
+                                    </router-link>
+                                    <a  class="waves-effect waves-light modal-trigger" href="#modal1">
+                                        <i class="material-icons prefix">settings</i>
+                                    </a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <div class="right">

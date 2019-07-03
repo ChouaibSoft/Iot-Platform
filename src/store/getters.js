@@ -10,7 +10,10 @@ const getters = {
         return state.locale
     },
     getApiUrl: state=>{
-        return state.apiURL;
+        return state.apiURL1;
+    },
+    getState: state=>{
+        return state.isActivated
     },
     // Channels & Fields
     getCanals: state =>{
@@ -45,7 +48,7 @@ const getters = {
         return state.userId
     },
     getAPIUrl: state=>{
-        return state.apiURL;
+        return state.apiURL1;
     }
 }
 export default getters

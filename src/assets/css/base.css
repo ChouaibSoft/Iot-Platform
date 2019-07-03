@@ -484,6 +484,8 @@ aside .now .router-link-exact-active {
   width: 35%;
   margin: 100px auto;
   padding-bottom: 25px;
+  position: relative;
+  min-height: 280px;
 }
 .auth i {
   color: #5b616e;
@@ -513,6 +515,31 @@ aside .now .router-link-exact-active {
     width: 90%;
   }
 }
+.confirm-account .tab {
+  width: 100% !important;
+}
+.confirm-account .confirm-account-msg {
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 50px 0;
+  width: 100%;
+}
+.confirm-account .confirm-account-msg i {
+  color: #2bbbad;
+  font-size: 7rem;
+  margin-top: 10px;
+}
+.confirm-account .confirm-account-msg p {
+  font-weight: bold;
+  margin-left: 0;
+}
+.confirm-account .confirm-account-msg .redirection {
+  font-weight: normal;
+}
+
 .component-section .channel-head p {
   line-height: 1rem;
 }

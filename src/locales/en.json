@@ -14,7 +14,21 @@
     "submit": "Submit",
     "cancel": "Cancel",
     "account-not-activated": "Your account is not activated, please check your inbox to confirm your email.",
-    "login-failed": "email or password wrong"
+    "login-failed": "email or password wrong",
+    "reset-password": {
+      "email": "please check your inbox, to continue!",
+      "email-err": "an error occurred",
+      "title": "Reset Password",
+      "set-password": "Set a new Password",
+      "success-msg": "operation done!, you'll redirected to the login page after {delay}s ",
+      "error-msg": "operation failed"
+    },
+    "confirm-account": {
+      "title": "Account Confirmation",
+      "success-msg": "Congratulation, your email address has been verified!",
+      "error-msg": "L'activation du compte a échoué, essayez à nouveau!",
+      "redirection": "Redirection to the home page after"
+    }
   },
   "errors": {
     "required": "this is field is required.",
@@ -97,6 +111,7 @@
     "my-reacts": "My Reacts",
     "detail-trigger": "Detail Trigger",
     "trigger-overview": "Trigger Overview",
-    "trigger-settings": "Trigger Settings"
+    "trigger-settings": "Trigger Settings",
+    "confirm-account": "Account Confirmation"
   }
 }

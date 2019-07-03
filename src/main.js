@@ -17,6 +17,8 @@ Vue.use(Vuelidate);
 Vue.use(FlagIcon);
 Vue.config.productionTip = false;
 
+require('@/assets/css/base.css');
+
 
 Vue.use(VueFlashMessage, {
     mixin: true,
@@ -37,7 +39,6 @@ Vue.use(VueBreadcrumbs, {
 
 Vue.prototype.$http  =  axios;
 require('vue-flash-message/dist/vue-flash-message.min.css');
-require('@/assets/css/base.css');
 
 new Vue({
     mounted() {

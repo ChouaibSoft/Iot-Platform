@@ -1,4 +1,4 @@
-<template xmlns:active="http://www.w3.org/1999/xhtml">
+<template>
     <div id="auth">
         <home-nav/>
         <div class="container auth white z-depth-2">
@@ -26,34 +26,34 @@
 </template>
 
 <script>
-    import homeNav from '@/components/HomeNav'
-    import singnIn from '@/components/SignIn'
-    import signUp from '@/components/SignUp'
-    import Form from "@/components/Form";
+import homeNav from '@/components/HomeNav'
+import singnIn from '@/components/SignIn'
+import signUp from '@/components/SignUp'
+import Form from "@/components/Form";
 
-    import { mapState } from 'vuex';
+import { mapState } from 'vuex';
 
-    export default {
-        name : 'auth',
-        components : {
-            'home-nav': homeNav,
-            'sign-in': singnIn,
-            'sign-up': signUp,
-            'generic-form': Form
-        },
-        computed: {
-            ...mapState(['progress'])
-        },
-        data() {
-            return {
-                component: 'sign-in',
-                selected: 1,
-            }
-        },
-        methods: {
-
+export default {
+    name : 'auth',
+    components : {
+        'home-nav': homeNav,
+        'sign-in': singnIn,
+        'sign-up': signUp,
+        'generic-form': Form
+    },
+    computed: {
+        ...mapState(['progress'])
+    },
+    data() {
+        return {
+            component: 'sign-in',
+            selected: 1,
         }
+    },
+    methods: {
 
     }
+
+}
 </script>
 

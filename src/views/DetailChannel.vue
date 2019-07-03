@@ -103,23 +103,23 @@
         },
         mounted(){
             // this.$nextTick(function () {
-            let canalId = this.$route.params.id;
-            let payloadA = {
-                'link': '/canal-service/Allcanals/'+ canalId,
-                'mutation': 'setCanal',
-                'all': false
-            };
+                    let canalId = this.$route.params.id;
+                    let payloadA = {
+                        'link': '/canal-service/Allcanals/'+ canalId,
+                        'mutation': 'setCanal',
+                        'all': false
+                    };
 
-            console.log(this.$store.getters.getCanal)
+                    console.log(this.$store.getters.getCanal)
 
 
-            this.$store.dispatch('getRequest', payloadA);
-            let payloadB = {
-                'link': '/canal-service/Allcanals/' + canalId + '/fields',
-                'mutation': 'setFields',
-                'all': false
-            };
-            this.$store.dispatch('getRequest', payloadB);
+                    this.$store.dispatch('getRequest', payloadA);
+                    let payloadB = {
+                        'link': '/canal-service/Allcanals/' + canalId + '/fields',
+                        'mutation': 'setFields',
+                        'all': false
+                    };
+                    this.$store.dispatch('getRequest', payloadB);
             // });
             $('.tabs').tabs();
         }
@@ -138,10 +138,10 @@
     "description": "Description :",
     "delete-channel": "Channel",
     "component-toggle": {
-    "view": "Visualisation",
-    "api-keys": "API keys",
-    "channel-settings": "Channel Settings",
-    "import-export": "Data import / export"
+        "view": "Visualisation",
+        "api-keys": "API keys",
+        "channel-settings": "Channel Settings",
+        "import-export": "Data import / export"
     }
     },
     "fr": {

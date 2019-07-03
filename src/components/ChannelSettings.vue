@@ -146,16 +146,14 @@
             }
         },
         computed:{
-            ...mapState['userId'],
-            ...mapGetters(['getFields', 'getCanal', 'getUserId'])
-
+            ...mapGetters(['getFields', 'getCanal'])
         },
         watch: {
             updated(newValue, oldValue) {
                 if (newValue != oldValue ) {
                     let canalId = this.$route.params.id;
                     let payloadA = {
-                        'link': '/canal-service/canals/' + this.getUserId,
+                        'link': '/canal-service/canals/' + localStorage.getItem('userId'),
                         'mutation': 'setCanal',
                         'all': false
                     };
@@ -177,7 +175,7 @@
                 var postData = {
                     nom: this.name,
                     description: this.description,
-                    userId: this.$store.state.userId,
+                    userId: localStorage.getItem('userId'),
                     fields: this.fields
                 };
                 let payload = {

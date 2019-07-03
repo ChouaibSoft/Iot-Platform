@@ -197,13 +197,13 @@ const router = new Router({
 });
 router.beforeEach((to, from, next) => {
     if (!to.meta.protected) { //route is public, don't check for authentication
-        if(store.state.token!= null && to.path === '/auth'){
+        if(localStorage.getItem('userToken') != null && to.path === '/auth'){
             router.push('/dashboard');
         }else{
             next()
         }
     } else {  //route is protected, if authenticated, proceed. Else, login
-        if(store.getters.getToken!= null){
+        if(localStorage.getItem('userToken') != null){
             next()
         }else{
             router.push('/auth');

@@ -93,6 +93,17 @@
 }
 .navbar-home{
   background-color: $navbarBackground;
+  width: 100%;
+  overflow: hidden;
+  .brand-logo{
+    margin: 0;
+    background-color: $brandBackground;
+    font-size: 1.2rem;
+    padding-left: 1.2rem;
+    color: $textColor;
+    font-weight: bold;
+    text-align: center;
+  }
 }
 .dropdown-content{
   top: 64px !important;

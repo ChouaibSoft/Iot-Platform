@@ -75,7 +75,7 @@
             }
         },
         computed: {
-            ...mapGetters(['getCanal', 'getFields', 'getUserId'])
+            ...mapGetters(['getCanal', 'getFields'])
         },
         methods: {
             ...mapActions(['deleteRequest']),
@@ -89,7 +89,7 @@
                     this.deleteRequest(payloadC).then(() => {
                         this.flash(this.$t('canal.delete-success'), 'success');
                         let payload = {
-                            'link': '/canal-service/canals/'+ this.getUserId,
+                            'link': '/canal-service/canals/'+ localStorage.getItem('userId'),
                             'mutation': 'setCanals',
                             'all': false
                         };
@@ -109,9 +109,6 @@
                         'mutation': 'setCanal',
                         'all': false
                     };
-
-                    console.log(this.$store.getters.getCanal)
-
 
                     this.$store.dispatch('getRequest', payloadA);
                     let payloadB = {

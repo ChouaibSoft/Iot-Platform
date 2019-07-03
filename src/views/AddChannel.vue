@@ -162,18 +162,13 @@
                 iduser:'',
             }
         },
-        computed:{
-            ...mapState['userId']
-        },
         methods: {
             ...mapActions(['postRequest']),
-            ...mapGetters(['getUserId']),
-
             addCanal: function () {
                 let postData = {
                     nom: this.name,
                     description: this.description,
-                    userId:1
+                    userId: localStorage.getItem('userId')
                 };
 
                 for(let i = 1; i <= this.fields.length; i++){

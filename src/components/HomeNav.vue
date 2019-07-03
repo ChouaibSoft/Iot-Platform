@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav class="nav-wraper navbar-home navbar">
+        <nav class="nav-wraper navbar-home">
             <div class="container">
                 <router-link to="/" class="brand-logo">IoT-Platform</router-link>
                 <a href="#" class="sidenav-trigger" data-target="mobile-links">
@@ -24,14 +24,12 @@
     </div>
 </template>
 <script>
-    import { mapGetters } from 'vuex';
     export default {
         name: 'home',
-
-        computed: {
-            ...mapGetters([
-                'isLogged'
-            ])
+        data(){
+            return{
+                isLogged: localStorage.getItem('userToken')
+            }
         },
         mounted(){
             $('.sidenav').sidenav();

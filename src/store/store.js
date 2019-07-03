@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import createPersistedState from "vuex-persistedstate";
 import getters from './getters'
 import mutations from './mutations'
 import actions from './actions'
@@ -23,20 +22,12 @@ export const store = new Vuex.Store ({
       react: null,
       commands: null,
       fields: null,
-      apiURL1: 'http://localhost:8082',
-
-
-
+      apiURL1: 'http://localhost:8082'
   },
   getters: getters,
   mutations: mutations,
   actions: actions,
   modules:{
       user : user
-  },
-  plugins: [
-    createPersistedState({
-        modules: ['user']
-    }),
-  ],
+  }
 });

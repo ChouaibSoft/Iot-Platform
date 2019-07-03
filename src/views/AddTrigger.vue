@@ -121,7 +121,7 @@
             addTrigger: function () {
                 var postData = {
                     nom: this.name,
-                    userId: this.$store.state.userId
+                    userId: localStorage.getItem('userId')
                 };
                 for(var i = 1; i <= this.commandes.length; i++){
                     var key = 'commande' + i,

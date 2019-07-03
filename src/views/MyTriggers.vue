@@ -90,7 +90,7 @@
             }
         },
         computed: {
-            ...mapGetters(['getTriggers', 'getUserId']),
+            ...mapGetters(['getTriggers']),
             displayTriggers () {
                 return this.paginate(this.getTriggers);
             }
@@ -121,7 +121,7 @@
         },
         created() {
             let payload = {
-                'link': '/trigger-service/userTriger/' + this.getUserId ,
+                'link': '/trigger-service/userTriger/' + localStorage.getItem('userId') ,
                 'mutation': 'setTriggers',
                 'all': false
             };

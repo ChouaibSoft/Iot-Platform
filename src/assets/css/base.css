@@ -284,6 +284,17 @@ body .content .component-section .help .help-list li ul li {
 
 .navbar-home {
   background-color: #273146;
+  width: 100%;
+  overflow: hidden;
+}
+.navbar-home .brand-logo {
+  margin: 0;
+  background-color: #273146;
+  font-size: 1.2rem;
+  padding-left: 1.2rem;
+  color: #d1d1d1;
+  font-weight: bold;
+  text-align: center;
 }
 
 .dropdown-content {

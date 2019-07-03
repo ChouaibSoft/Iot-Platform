@@ -43,9 +43,10 @@ require('vue-flash-message/dist/vue-flash-message.min.css');
 new Vue({
     mounted() {
         this.$store.dispatch('switchProgress');
-        i18n.locale = this.$store.state.locale;
-        if(this.$store.getters.getToken != null){
+        i18n.locale = localStorage.getItem('locale');
+        if(localStorage.getItem('userToken') != null){
             this.$store.state.isLogged = true;
+            localStorage.setItem('isLogged', true);
         }
     },
     store: store,

@@ -3,12 +3,6 @@ const getters = {
     isLogged: state => {
         return state.isLogged;
     },
-    getToken: state => {
-        return state.token;
-    },
-    getLang: state =>{
-        return state.locale
-    },
     getApiUrl: state=>{
         return state.apiURL1;
     },

@@ -255,19 +255,19 @@
         },
         computed:{
             ...mapState['userId'],
-            ...mapGetters(['getCanals','getFields', 'getUserId', 'getToken', 'getAPIUrl','getTriggers'])
+            ...mapGetters(['getCanals','getFields', 'getAPIUrl','getTriggers'])
 
         },
         created() {
             var payload = {
-                'link': '/canal-service/canals/'+ this.getUserId,
+                'link': '/canal-service/canals/'+ localStorage.get('userId'),
                 'mutation': 'setCanals',
                 'all': false
             };
             this.$store.dispatch('getRequest', payload);
 
             let payloadB={
-                'link': '/trigger-service/userTriger/' + this.getUserId ,
+                'link': '/trigger-service/userTriger/' + localStorage.get('userId') ,
                 'mutation': 'setTriggers',
                 'all': false
             };
@@ -290,9 +290,8 @@
                     commande:this.commande,
                     email_react:this.email_react,
                     message_email:this.message_email,
-                    trigerId:this.trigeID
-                    ,
-                    userId: this.$store.state.userId
+                    trigerId:this.trigeID,
+                    userId: localStorage.getItem('userId')
 
                 };
 
@@ -302,7 +301,6 @@
                 this.postRequest(payload).then(() => {
                     this.flash(this.$t('react.add-success'), 'success');
                     this.$router.push('/dashboard/reacts');
-                    // this.twilio();
                 }).catch(() => {
                     this.flash(this.$t('react.add-error'), 'error');
                 })
@@ -314,7 +312,7 @@
                     this.$http.get(this.getAPIUrl + '/canal-service/canals/' + canalId + '/fields' , {
                         headers: {
                             'Content-Type': 'application/json',
-                            'Authorization': 'Bearer ' + this.getToken
+                            'Authorization': 'Bearer ' + localStorage.getItem('userToken')
                         }
                     }).then(request => {
                         this.channelFields = request.data.content;

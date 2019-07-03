@@ -130,16 +130,16 @@
             },
             loginSuccessful(req) {
                 if (req.headers) {
-                    this.$store.dispatch('saveUserToken', req.headers.authorization);
+                    localStorage.setItem('userToken', req.headers.authorization);
                     this.$http.get( this.getApiUrl +  '/authentification-service/id',{
                             headers:{
                                 'Content-Type': 'application/json',
-                                'Authorization': 'Bearer '+ this.$store.state.token
+                                'Authorization': 'Bearer '+  localStorage.getItem('userToken')
                             }
                         }
-                    ).then(request=>{this.$store.dispatch('saveUserId', request.data)
-                        console.log(request.data)
-                    })
+                    ).then(request=>{localStorage.setItem('userId', request.data);
+
+                    });
                     this.switchProgress()
                     setTimeout(() => {
                         this.switchProgress();
@@ -174,7 +174,7 @@
             emailReset: {
                 required
             }
-        },
+        }
     }
 </script>
 

@@ -3,26 +3,20 @@ import axios from "axios";
 import i18n from "../i18n";
 
 const actions = {
-    logout({ commit }) {
+    logout() {
         router.push('/');
-        commit('LOGOUT');
+        localStorage.removeItem('userToken')
     },
     switchProgress({ commit }) {
         commit('switchProgress');
-    },
-    saveUserId (context, Id) {
-        context.commit('saveUserId', Id)
-    },
-    saveUserToken (context, token) {
-        context.commit('saveUserToken', token)
     },
     postRequest({state},  payload){
         var headers = {
             'Content-Type': 'application/json;charset=UTF-8',
 
         };
-        if (state.token != null){
-            headers['Authorization'] = 'Bearer '+ state.token
+        if (localStorage.getItem('userToken') != null){
+            headers['Authorization'] = 'Bearer '+ localStorage.getItem('userToken')
         }
         return axios.post(state.apiURL1 + payload.link, payload.data, {
             headers
@@ -32,16 +26,17 @@ const actions = {
         axios.delete(state.apiURL+payload.link, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + state.token
+                    'Authorization': 'Bearer ' + localStorage.getItem('userToken')
                 }
             }
         );
     },
     getRequest({state, commit}, payload) {
+        console.log("get =======" + localStorage.getItem('userToken'))
         axios.get(state.apiURL1 + payload.link, {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorijzation': 'Bearer ' + state.token
+                'Authorijzation': 'Bearer ' + localStorage.getItem('userToken')
             }
         }).then(request => {
             if (payload.all){
@@ -60,8 +55,8 @@ const actions = {
         })
     },
     changeLocale({commit, state}, lang){
-        commit('changeLocale', lang);
-        i18n.locale = state.locale;
+        localStorage.setItem('locale', lang.language)
+        i18n.locale = lang.language
     },
     setPages (perPageParam) {
         let numberOfPages = Math.ceil(this.getCommands.length / perPageParam);

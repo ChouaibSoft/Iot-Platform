@@ -88,7 +88,7 @@
             }
         },
         computed: {
-            ...mapGetters(['getCanals', 'getUserId']),
+            ...mapGetters(['getCanals']),
             displayChannels () {
                 return this.paginate(this.getCanals);
             }
@@ -138,7 +138,7 @@
         },
         created() {
             var payload = {
-                'link': '/canal-service/canals/'+ this.getUserId,
+                'link': '/canal-service/canals/'+ localStorage.getItem('userId'),
                 'mutation': 'setCanals',
                 'all': false
             };

@@ -12,7 +12,7 @@
                         <ul class="actions right">
                             <li>
                                 <a class="dropdown-trigger drop-button waves-effect waves-light" data-target="lang" href="#!">
-                                    {{ getLang }}
+                                   {{ this.getLang }}
                                  </a>
                             </li>
                             <li><a class=" dropdown-trigger drop-button waves-effect waves-light" href="" data-target="dropdown1"><img src="../assets/images/header6.jpg" alt="profile-image"></a></li>
@@ -36,9 +36,9 @@
                                    data-position="bottom" :data-tooltip="this.$t('tooltips.notification')">
                                 <i class="material-icons">notifications_active</i></a>
                             </li>
-                            <li>
-                                <p class="red-text" style="width: 100%">Your account is not activated please verifie your account</p>
-                            </li>
+                            <!--<li>-->
+                                <!--<p class="red-text" style="width: 100%">Your account is not activated please verifie your account</p>-->
+                            <!--</li>-->
                         </ul>
                     </div>
                 </div>
@@ -72,11 +72,11 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
     export default {
         name: "Navbar",
         data() {
             return {
+                lang: localStorage.getItem('locale'),
                 languages: [
                     { flag: 'us', language: 'en', title: 'English', selected: true},
                     { flag: 'fr', language: 'fr', title: 'Français', selected: false}
@@ -84,12 +84,16 @@
             }
         },
         computed: {
-            ...mapGetters(['getLang'])
+            getLang(){
+                return this.lang
+
+            }
         },
         methods: {
             changeLocale(locale) {
                 this.$store.dispatch('changeLocale', locale);
-            },
+                this.lang = localStorage.getItem('locale')
+            }
         },
         mounted(){
             $(".drop-button").dropdown();

@@ -90,7 +90,7 @@
             }
         },
         computed: {
-            ...mapGetters(['getReacts', 'getUserId']),
+            ...mapGetters(['getReacts']),
             displayReacts () {
                 return this.paginate(this.getReacts);
             }
@@ -121,7 +121,7 @@
         },
         created() {
             let payload = {
-                'link': '/trigger-service/UserReact/' + this.getUserId ,
+                'link': '/trigger-service/UserReact/' + localStorage.getItem('userId') ,
                 'mutation': 'setReacts',
                 'all': false
             };

@@ -142,7 +142,7 @@
             'generic-form': Form,
         },
         computed: {
-            ...mapGetters(['getTrigger', 'getCommands', 'getUserId']),
+            ...mapGetters(['getTrigger', 'getCommands']),
             displayCommands() {
                 return this.paginate(this.getCommands);
             }
@@ -210,7 +210,7 @@
             var triggerId = this.$route.params.id;
             this.IdTriger = triggerId
             var payloadA = {
-                'link': '/trigger-service/userTriger/' + this.getUserId ,
+                'link': '/trigger-service/userTriger/' + localStorage.getItem('userId') ,
                 'mutation': 'setTriggers',
                 'all': false
             };

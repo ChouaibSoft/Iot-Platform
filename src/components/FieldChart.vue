@@ -60,7 +60,7 @@
 
             var key = this.$store.state.canal.cleLecture,
                 keyWrite = this.$store.state.canal.cleEcriture,
-                token = this.$store.state.token,
+                token = localStorage.getItem('userToken'),
                 nameF = this.nameField,
                 idChart = this.id;
 

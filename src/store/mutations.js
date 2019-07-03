@@ -1,23 +1,6 @@
 const mutations = {
-    LOGOUT(state) {
-        state.token = null;
-        state.isLogged = false;
-    },
     switchProgress(state) {
         state.progress = !state.progress;
-    },
-    saveUserId (state, id) {
-        state.userId = id
-    },
-    saveUserToken (state, token) {
-        state.isLogged = true;
-        state.token = token;
-    },
-    setState(state, isActivated){
-        state.isActivated = isActivated
-    },
-    deleteToken(state){
-        state.token = null;
     },
     // Channels & Fields
     setCanals(state, payload){
@@ -46,11 +29,6 @@ const mutations = {
     },
     setReact(state, payload){
         state.react = payload;
-    },
-
-    changeLocale(state, lang){
-        state.locale = lang.language;
-        state.flag = lang.flag;
     }
 }
 export default mutations

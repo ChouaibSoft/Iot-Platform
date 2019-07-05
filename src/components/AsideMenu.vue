@@ -6,7 +6,7 @@
                 <span>{{ $t('home') }}</span>
             </li>
             <li class="item-header">
-                <router-link :to="{ name: 'dashboard'}" class="group-name">
+                <router-link :to="{ name: 'dash-overview'}" class="group-name">
                     <i class="fa fa-home"></i>
                     <span class="nav-text">{{ $t('page-title.dashboard') }}</span>
                 </router-link>

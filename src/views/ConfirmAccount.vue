@@ -55,7 +55,7 @@
                 window.setInterval(() => {
                     if(this.interval === 1){
                         if(this.isLogged){
-                            window.location.href= '/dashboard'
+                            window.location.href= '/dashboard/'
                         }else{
                             window.location.href= '/auth'
                         }

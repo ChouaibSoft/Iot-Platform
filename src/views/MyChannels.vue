@@ -157,7 +157,7 @@
     {
     "en": {
     "main-title": "My Channels",
-    "no-channel": "No Channel to displayed",
+    "no-channel": "No Channel to display",
     "add-channel": "New Channel",
     "help": "Help",
     "text": "Collect data in a Iot-Platform ESI-SBA channel from a device, from another channel, or from the web. <br>Click <strong>New Channel </strong> to create a new Iot-Platform ESI-SBA channel. <br>Click on the column headers of the table to sort by the entries in that column or click on a tag to show channels with that tag.",

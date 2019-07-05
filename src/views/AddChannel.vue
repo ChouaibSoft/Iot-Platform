@@ -7,7 +7,6 @@
             <div class="col right">
                 <p>Home > <span> Ajouter Canal</span></p>
             </div>
-
         </div>
         <section class="component-section">
             <div class="row">

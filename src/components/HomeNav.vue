@@ -11,7 +11,7 @@
                     <li><a href="#" class="waves-effect waves-light">{{ $t('about') }}</a></li>
                     <li><a href="#" class="waves-effect waves-light">Contact</a></li>
                     <li v-if="!isLogged"><router-link :to="{ name: 'auth'}" class="waves-effect waves-light">{{ $t('login') }}</router-link></li>
-                    <li v-else><router-link :to="{ name: 'dashboard'}" class="waves-effect waves-light">{{ $t('dashboard') }}</router-link></li>
+                    <li v-else><router-link :to="{ name: 'dash-overview'}" class="waves-effect waves-light">{{ $t('dashboard') }}</router-link></li>
                 </ul>
             </div>
         </nav>

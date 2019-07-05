@@ -18,6 +18,7 @@
                             <router-view></router-view>
                             <!-- End Main Content -->
                         </section>
+                        <footer-dash></footer-dash>
                     </div>
                 </div>
             </div>
@@ -30,6 +31,7 @@
 <script>
     import AsideMenu from "@/components/AsideMenu";
     import Navbar from "@/components/Navbar";
+    import Footer from "@/components/Footer";
     export default {
         name: "Dashboard",
         date(){
@@ -39,7 +41,8 @@
         },
         components: {
             'aside-menu': AsideMenu,
-            'navbar': Navbar
+            'navbar': Navbar,
+            'footer-dash': Footer
         },
         methods: {
         }

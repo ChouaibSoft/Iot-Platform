@@ -60,6 +60,15 @@ const router = new Router({
             },
             children: [
                 {
+                    path: "/",
+                    name: "dash-overview",
+                    meta: {
+                        breadcrumb: 'Items',
+                        protected: false,
+                        title: i18n.t('page-title.dashboard'),},
+                    component: () => import("@/views/DashOverview")
+                },
+                {
                     path: "channels/new",
                     name: "new-channel",
                     meta: {
@@ -198,7 +207,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
     if (!to.meta.protected) { //route is public, don't check for authentication
         if(localStorage.getItem('userToken') != null && to.path === '/auth'){
-            router.push('/dashboard');
+            router.push('/dashboard/');
         }else{
             next()
         }

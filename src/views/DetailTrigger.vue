@@ -224,9 +224,6 @@
         },
     }
 </script>
-
-<style scoped>
-</style>
 <i18n>
     {
     "en": {

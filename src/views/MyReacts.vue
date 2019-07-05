@@ -18,7 +18,7 @@
                             <th style="width: 4%">{{ $t('table.id') }}</th>
                             <th>{{ $t('table.name') }}</th>
                             <th>{{ $t('table.created') }}</th>
-                            <th>{{ $t('table.actions') }}</th>
+                            <th style="width: 25%">{{ $t('table.actions') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -33,6 +33,12 @@
                                 <a  class="waves-effect waves-light modal-React" href="#modal1">
                                     <i class="material-icons prefix">settings</i>
                                 </a>
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox">
+                                        <span class="lever"></span>
+                                    </label>
+                                </div>
                             </td>
                         </tr>
                         </tbody>

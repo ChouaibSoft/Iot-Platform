@@ -91,6 +91,8 @@
     import Form from "@/components/Form";
     import { required } from 'vuelidate/lib/validators'
     import {  mapActions, mapGetters } from 'vuex';
+    import axios from 'axios';
+
     export default {
         name: "SignIn",
         components: {
@@ -107,7 +109,7 @@
             }
         },
         computed: {
-            ...mapGetters(['getApiUrl'])
+            ...mapGetters(['getApiUrl','getUserId',])
         },
         methods: {
             ...mapActions([
@@ -140,6 +142,13 @@
                     ).then(request=>{localStorage.setItem('userId', request.data);
 
                     });
+
+                    axios.get(this.getApiUrl+"/achat-service/appUsers/"+ localStorage.getItem('userId')+'/abonnement').then(response => {
+                        console.log(response.data) ;
+
+                        this.$store.dispatch('setParams',response.data);
+                    }) ;
+
                     this.switchProgress()
                     setTimeout(() => {
                         this.switchProgress();

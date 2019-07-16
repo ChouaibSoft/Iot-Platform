@@ -39,6 +39,22 @@ body {
   line-height: 1.5;
   font-family: "Raleway", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
 }
+body .tabs .tab a {
+  color: #5b616e;
+}
+body .tabs .tab a.active {
+  color: #2bbbad;
+  background-color: rgba(43, 187, 173, 0.1) !important;
+}
+body .tabs .tab a:hover {
+  color: #2bbbad;
+}
+body .tabs .tab a:focus {
+  background-color: rgba(43, 187, 173, 0.1) !important;
+}
+body .tabs .indicator {
+  background-color: #2bbbad;
+}
 body .alert {
   padding: 15px;
   margin-bottom: 20px;

@@ -43,6 +43,13 @@ const getters = {
     },
     getAPIUrl: state=>{
         return state.apiURL1;
+    },
+    getMaxChannels: state=>{
+        return state.maxChannels;
+    },
+
+    getMaxFields: state=>{
+        return state.maxFields ;
     }
 }
 export default getters

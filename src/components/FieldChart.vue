@@ -127,7 +127,7 @@
         methods: {
             getData() {
                 var key = this.$store.state.canal.cleLecture,
-                    token = this.$store.state.token,
+                    token = localStorage.getItem('userToken'),
                     nameF = this.nameField,
                     apiUrl  =  this.getApiUrl,
                     idChart = this.id;
@@ -191,7 +191,7 @@
                     axios.post( apiUrl +  '/canal-service/import-data/' + this.idField, formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
-                            'Authorization': 'Bearer ' + this.$store.state.token,
+                            'Authorization': 'Bearer ' + localStorage.getItem('userToken'),
                         }
 
                     }).then(function () {

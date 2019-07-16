@@ -36,7 +36,7 @@ const actions = {
         axios.get(state.apiURL1 + payload.link, {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorijzation': 'Bearer ' + localStorage.getItem('userToken')
+                'Authorization': 'Bearer ' + localStorage.getItem('userToken')
             }
         }).then(request => {
             if (payload.all){
@@ -49,9 +49,8 @@ const actions = {
                 commit(payload.mutation, request.data);
             }
         }).catch(error => {
-            console.log("here")
             commit(payload.mutation, null);
-            // router.push("/dashboard");
+            router.push("/dashboard");
         })
     },
     changeLocale({commit, state}, lang){

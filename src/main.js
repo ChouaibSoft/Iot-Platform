@@ -9,8 +9,11 @@ import Vuelidate from 'vuelidate'
 import i18n from './i18n'
 import FlagIcon from 'vue-flag-icon';
 import VueBreadcrumbs from 'vue-breadcrumbs'
+import vSelect from 'vue-select';
 
 
+
+Vue.component('v-select', vSelect)
 
 Vue.use(VueBreadcrumbs);
 Vue.use(Vuelidate);

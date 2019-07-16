@@ -199,7 +199,16 @@ const router = new Router({
                             component: () => import("@/components/TriggerSettings")
                         },
                     ]
-                }
+                },
+                {
+                    path: "compte",
+                    name: "compte",
+                    meta: {
+                        protected: true,
+                        title: i18n.t('page-title.detail-trigger')
+                    },
+                    component: () => import("@/views/Compte"),
+                },
             ]
         }
     ]

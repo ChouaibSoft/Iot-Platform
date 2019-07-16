@@ -9,10 +9,13 @@
 
 export default {
   name: 'app',
+  data(){
+      return{
+          checked: false
+      }
+  },
   components: {
   }
-
-
 }
 
 

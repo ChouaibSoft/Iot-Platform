@@ -84,10 +84,10 @@
                 <span>Information</span>
             </li>
             <li class="item-header">
-                <a href="#" class="group-name has-arrow">
+                <router-link :to="{name: 'compte'}" class="group-name has-arrow">
                     <i class="fa fa-user"></i>
-                    <span class="nav-text">Profile</span>
-                </a>
+                    <span class="nav-text">{{ $t('page-title.profile') }}</span>
+                </router-link>
             </li>
             <li class="item-header">
                 <a href="#" class="group-name has-arrow">

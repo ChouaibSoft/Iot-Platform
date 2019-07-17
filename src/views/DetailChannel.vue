@@ -35,19 +35,19 @@
                             <div class="col s12">
                                 <ul class="tabs" id="tabs-swipe-demo">
                                     <li class="tab col s4">
-                                        <router-link  :to="{ name: 'view', params: { id: getCanal.id}}"
+                                        <router-link  :to="{ name: 'view', params: { id: getCanal.canalId}}"
                                                       exact-active-class="active">
                                             {{ $t('component-toggle.view') }}
                                         </router-link>
                                     </li>
                                     <li class="tab col s4">
-                                        <router-link :to="{ name: 'api-key', params: { id: getCanal.id}}"
+                                        <router-link :to="{ name: 'api-key', params: { id: getCanal.canalId}}"
                                                      exact-active-class="active">
                                             {{ $t('component-toggle.api-keys') }}
                                         </router-link>
                                     </li>
                                     <li class="tab col s4">
-                                        <router-link :to="{ name: 'settings', params: { id: getCanal.id}}"
+                                        <router-link :to="{ name: 'settings', params: { id: getCanal.canalId}}"
                                                      exact-active-class="active">
                                             {{ $t('component-toggle.channel-settings') }}
                                         </router-link>
@@ -67,7 +67,6 @@
 
 <script>
     import { mapGetters, mapActions } from 'vuex'
-
     export default {
         name: "detail-channel",
         data() {
@@ -83,7 +82,7 @@
                 var confirmR = confirm(this.$t('canal.delete-msg'));
                 if (confirmR){
                     let payloadC={
-                        'link':'/canal-service/canals/'+ this.getCanal.id,
+                        'link':'/canal-service/canals/'+ this.getCanal.canalId,
                         'mutation':'setCanals',
                     };
                     this.deleteRequest(payloadC).then(() => {
@@ -103,27 +102,25 @@
         },
         mounted(){
             // this.$nextTick(function () {
-                    let canalId = this.$route.params.id;
-                    let payloadA = {
-                        'link': '/canal-service/Allcanals/'+ canalId,
-                        'mutation': 'setCanal',
-                        'all': false
-                    };
-
-                    this.$store.dispatch('getRequest', payloadA);
-                    let payloadB = {
-                        'link': '/canal-service/Allcanals/' + canalId + '/fields',
-                        'mutation': 'setFields',
-                        'all': false
-                    };
-                    this.$store.dispatch('getRequest', payloadB);
+            let canalId = this.$route.params.id;
+            let payloadA = {
+                'link': '/canal-service/Allcanals/'+ canalId,
+                'mutation': 'setCanal',
+                'all': false
+            };
+            this.$store.dispatch('getRequest', payloadA);
+            let payloadB = {
+                'link': '/canal-service/Allcanals/' + canalId + '/fields',
+                'mutation': 'setFields',
+                'all': false
+            };
+            this.$store.dispatch('getRequest', payloadB);
             // });
             $('.tabs').tabs();
         }
     }
 </script>
 <style scoped>
-
 </style>
 <i18n>
     {
@@ -135,10 +132,10 @@
     "description": "Description :",
     "delete-channel": "Channel",
     "component-toggle": {
-        "view": "Visualisation",
-        "api-keys": "API keys",
-        "channel-settings": "Channel Settings",
-        "import-export": "Data import / export"
+    "view": "Visualisation",
+    "api-keys": "API keys",
+    "channel-settings": "Channel Settings",
+    "import-export": "Data import / export"
     }
     },
     "fr": {

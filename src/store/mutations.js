@@ -17,7 +17,6 @@ const mutations = {
         state.triggers = payload;
     },
     setTrigger(state, payload){
-        console.log('mutaition : ' + payload)
         state.trigger = payload;
     },
     setCommands(state, payload){

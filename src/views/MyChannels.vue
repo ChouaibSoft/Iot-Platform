@@ -23,27 +23,27 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(canal, index) in displayChannels"  :key="index" :data-url="'/dashboard/channels/' + canal.id +  '/view'">
-                                <td>{{ index + 1 }}</td>
-                                <td>{{canal.nom}}</td>
-                                <td>{{canal.description.length > 40 ? canal.description.substring(1, 50) + '...': canal.description }}</td>
-                                <td>{{getDateCreated(canal.dateCreation)}}</td>
-                                <td>{{getDateCreated(canal.dateCreation)}}</td>
-                                <td class="action not-allowed">
-                                    <router-link :to="{ name: 'view', params: { id: canal.id}}">
-                                        <i class="fa fa-chart-bar"></i>
-                                    </router-link>
-                                    <router-link :to="{ name: 'api-key', params: { id: canal.id}}">
-                                        <i class="material-icons prefix">vpn_key</i>
-                                    </router-link>
-                                    <router-link :to="{ name: 'settings', params: { id: canal.id}}">
-                                        <i class="material-icons prefix">settings</i>
-                                    </router-link>
-                                    <a href="#" @click="deleteChannel(canal.id, index)">
-                                        <i class="material-icons prefix red-text lighten-2">delete</i>
-                                    </a>
-                                </td>
-                            </tr>
+                        <tr v-for="(canal, index) in displayChannels"  :key="index" :data-url="'/dashboard/channels/' + canal.canalId +  '/view'">
+                            <td>{{ index + 1 }}</td>
+                            <td>{{canal.nom}}</td>
+                            <td>{{canal.description.length > 40 ? canal.description.substring(1, 50) + '...': canal.description }}</td>
+                            <td>{{getDateCreated(canal.dateCreation)}}</td>
+                            <td>{{getDateCreated(canal.dateCreation)}}</td>
+                            <td class="action not-allowed">
+                                <router-link :to="{ name: 'view', params: { id: canal.canalId}}">
+                                    <i class="fa fa-chart-bar"></i>
+                                </router-link>
+                                <router-link :to="{ name: 'api-key', params: { id: canal.canalId}}">
+                                    <i class="material-icons prefix">vpn_key</i>
+                                </router-link>
+                                <router-link :to="{ name: 'settings', params: { id: canal.canalId}}">
+                                    <i class="material-icons prefix">settings</i>
+                                </router-link>
+                                <a href="#" @click="deleteChannel(canal.canalId, index)">
+                                    <i class="material-icons prefix red-text lighten-2">delete</i>
+                                </a>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                     <div class="right">
@@ -162,12 +162,12 @@
     "help": "Help",
     "text": "Collect data in a Iot-Platform ESI-SBA channel from a device, from another channel, or from the web. <br>Click <strong>New Channel </strong> to create a new Iot-Platform ESI-SBA channel. <br>Click on the column headers of the table to sort by the entries in that column or click on a tag to show channels with that tag.",
     "table": {
-        "num": "#",
-        "name": "Name",
-        "description": "Description",
-        "created": "Created",
-        "updated": "Updated",
-        "actions": "Actions"
+    "num": "#",
+    "name": "Name",
+    "description": "Description",
+    "created": "Created",
+    "updated": "Updated",
+    "actions": "Actions"
     }
     },
     "fr": {
@@ -177,12 +177,12 @@
     "help": "Aide",
     "text": "Collectez des données sur un canal ESI-SBA Iot-Platform à partir d'un périphérique, d'un autre canal ou du Web. <br> Cliquez sur <strong> Nouveau canal </strong> pour créer un nouveau canal ESI-SBA Iot-Platform. <br> Cliquez sur les en-têtes de colonne du tableau pour trier les entrées de cette colonne ou cliquez sur une balise pour afficher les canaux avec cette balise.",
     "table": {
-        "num": "#",
-        "name": "Nom",
-        "description": "Description",
-        "created": "Créé",
-        "updated": "mis à jour",
-        "actions": "Actions"
+    "num": "#",
+    "name": "Nom",
+    "description": "Description",
+    "created": "Créé",
+    "updated": "mis à jour",
+    "actions": "Actions"
     }
     }
     }

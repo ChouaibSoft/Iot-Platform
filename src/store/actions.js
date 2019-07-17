@@ -23,7 +23,7 @@ const actions = {
         })
     },
     deleteRequest({state},payload){
-        axios.delete(state.apiURL+payload.link, {
+        axios.delete(state.apiURL1 + payload.link, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + localStorage.getItem('userToken')
@@ -32,25 +32,32 @@ const actions = {
         );
     },
     getRequest({state, commit}, payload) {
-        console.log("get =======" + localStorage.getItem('userToken'))
         axios.get(state.apiURL1 + payload.link, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + localStorage.getItem('userToken')
             }
         }).then(request => {
+            // console.log("trigger" +  JSON.stringify(request.data))
+            // if( request.data.length === 0){
+            //     commit(payload.mutation, null);
+            //
+            // }else{
+            //     commit(payload.mutation, request.data);
+            // }
             if (payload.all){
-                if (request.data.content[0].id === undefined){
+                commit(payload.mutation, request.data.content);
+            }else{
+                if(request.data.length === 0){
                     commit(payload.mutation, null);
                 }else{
-                    commit(payload.mutation, request.data.content);
+                    commit(payload.mutation, request.data);
+
                 }
-            }else{
-                commit(payload.mutation, request.data);
             }
         }).catch(error => {
             commit(payload.mutation, null);
-            router.push("/dashboard");
+            // router.push("/dashboard");
         })
     },
     changeLocale({commit, state}, lang){

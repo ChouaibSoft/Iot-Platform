@@ -207,8 +207,17 @@ const router = new Router({
                         protected: true,
                         title: i18n.t('page-title.detail-trigger')
                     },
-                    component: () => import("@/views/Compte"),
+                    component: () => import("@/views/Compte")
                 },
+                {
+                    path: "choose/plan",
+                    name: "choose-plan",
+                    meta: {
+                        protected: true,
+                        title: i18n.t('page-title.detail-trigger')
+                    },
+                    component: () => import("@/views/BuyNow")
+                }
             ]
         }
     ]

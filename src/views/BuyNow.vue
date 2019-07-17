@@ -1,150 +1,120 @@
 <template>
-    <section>
-        <div class="average">
-            <div class="price-package">
-                <div class="package-name">
-                    <h2>Economical</h2>
+        <section>
+            <div class="row page-title-path">
+                <div class="col">
+                    <h2>{{ $t('main-title') }}</h2>
                 </div>
-                <div class="package-price">
-                    <div class="package-arrow"></div>
-                    <div class="price">
-                        <sup>R</sup>
-                        <span>899</span>
-                    </div>
-                    <div class="term">
-                        <sup>.99</sup>
-                        <span>/once off</span>
-                    </div>
-                    <div class="package-features">
-                        <div class="package-arrow"></div>
-                        <ul>
-                            <li>1 Page</li>
-                        </ul>
-                        <button class="sign-up">
-                            <h3>sign up now!</h3>
-                        </button>
-                    </div><!--package-features-->
-                </div><!--package-price-->
-            </div><!--price-package-->
-        </div><!--Economical-->
-
-        <div class="average">
-            <div class="price-package">
-                <div class="package-name">
-                    <h2>Start-Up</h2>
+                <div class="col right">
+                    <p>Home > <span> My Channels</span></p>
                 </div>
-                <div class="package-price">
-                    <div class="package-arrow"></div>
-                    <div class="price">
-                        <sup>R</sup>
-                        <span>1,119</span>
-                    </div>
-                    <div class="term">
-                        <sup>.99</sup>
-                        <span>/per month *3</span>
-                    </div>
-                    <div class="package-features">
-                        <div class="package-arrow"></div>
-                        <ul>
-                            <li>3 Pages</li>
-                            <li>Custom Design</li>
-                            <li>Search Engine Optimization</li>
-                            <li>Basic Google Adword</li>
-                            <li>10 Key words</li>
-                            <li>Contact Form</li>
-                        </ul>
-                        <button class="sign-up">
-                            <h3>sign up now!</h3>
-                        </button>
-                    </div><!--package-features-->
-                </div><!--package-price-->
-            </div><!--price-package-->
-        </div><!--average-->
-
-        <div class="special">
-            <div class="price-package">
-                <div class="package-name">
-                    <h2>Business</h2>
+            </div>
+            <div class="row plans">
+                <div class="col s12 l4">
+                    <div class="average">
+                        <div class="price-package">
+                            <div class="package-name">
+                                <h2>Start-Up</h2>
+                            </div>
+                            <div class="package-price">
+                                <div class="package-arrow"></div>
+                                <div class="price">
+                                    <sup>R</sup>
+                                    <span>1,119</span>
+                                </div>
+                                <div class="term">
+                                    <sup>.99</sup>
+                                    <span>/per month *3</span>
+                                </div>
+                                <div class="package-features">
+                                    <div class="package-arrow"></div>
+                                    <ul>
+                                        <li>3 Pages</li>
+                                        <li>Custom Design</li>
+                                        <li>Search Engine Optimization</li>
+                                        <li>Basic Google Adword</li>
+                                        <li>10 Key words</li>
+                                        <li>Contact Form</li>
+                                    </ul>
+                                    <button class="sign-up">
+                                        <h3>sign up now!</h3>
+                                    </button>
+                                </div><!--package-features-->
+                            </div><!--package-price-->
+                        </div><!--price-package-->
+                    </div><!--average-->
                 </div>
-                <div class="package-price">
-                    <div class="package-arrow"></div>
-                    <div class="price">
-                        <sup>R</sup>
-                        <span>1,999</span>
-                    </div>
-                    <div class="term">
-                        <sup>.99</sup>
-                        <span>/per month *3</span>
-                    </div>
-                    <div class="package-features">
-                        <div class="package-arrow"></div>
-                        <ul>
-                            <li>6 Pages</li>
-                            <li>Custom Design</li>
-                            <li>Search Engine Optimization</li>
-                            <li>Pay Per Click</li>
-                            <li>Advanced Google Adword</li>
-                            <li>25 Key words</li>
-                            <li>Contact Form</li>
-                            <li>Free Digital Marketing material</li>
-                            <button class="sign-up">
-                                <h3>sign up now!</h3>
-                            </button>
-                    </div><!--package-features-->
-                </div><!--package-price-->
-            </div><!--price-package-->
-        </div><!--special-->
-
-        <div class="superduper">
-            <div class="price-package">
-                <div class="package-name">
-                    <h2>super duper</h2>
+                <div class="col s12 l4">
+                    <div class="special">
+                        <div class="price-package">
+                            <div class="package-name">
+                                <h2>Business</h2>
+                            </div>
+                            <div class="package-price">
+                                <div class="package-arrow"></div>
+                                <div class="price">
+                                    <sup>R</sup>
+                                    <span>1,999</span>
+                                </div>
+                                <div class="term">
+                                    <sup>.99</sup>
+                                    <span>/per month *3</span>
+                                </div>
+                                <div class="package-features">
+                                    <div class="package-arrow"></div>
+                                    <ul>
+                                        <li>6 Pages</li>
+                                        <li>Custom Design</li>
+                                        <li>Search Engine Optimization</li>
+                                        <li>Pay Per Click</li>
+                                        <li>Advanced Google Adword</li>
+                                        <li>25 Key words</li>
+                                        <li>Contact Form</li>
+                                        <li>Free Digital Marketing material</li>
+                                        <button class="sign-up">
+                                            <h3>sign up now!</h3>
+                                        </button>
+                                    </ul>
+                                </div><!--package-features-->
+                            </div><!--package-price-->
+                        </div><!--price-package-->
+                    </div><!--special-->
                 </div>
-                <div class="package-price">
-                    <div class="package-arrow"></div>
-                    <div class="price">
-                        <sup>$</sup>
-                        <span>99</span>
-                    </div>
-                    <div class="term">
-                        <sup>.99</sup>
-                        <span>/month</span>
-                    </div>
-                    <div class="package-features">
-                        <div class="package-arrow"></div>
-                        <ul>
-                            <li><em>Super Duper Feature</em></li>
-                            <li>Special Feature 1</li>
-                            <li>Special Feature 2</li>
-                            <li>Average Feature 1</li>
-                            <li>Average Feature 2</li>
-                            <li>Average Feature 3</li>
-                        </ul>
-                        <button class="sign-up">
-                            <h3>sign up now!</h3>
-                        </button>
-                    </div><!--package-features-->
-                </div><!--package-price-->
-            </div><!--price-package-->
-        </div><!--superduper-->
-
-        <div class="all-plans">
-            <div class="price-package">
-                <div class="package-name">
-                    <h2>included in all plans</h2>
+                <div class="col s12 l4">
+                    <div class="superduper">
+                        <div class="price-package">
+                            <div class="package-name">
+                                <h2>super duper</h2>
+                            </div>
+                            <div class="package-price">
+                                <div class="package-arrow"></div>
+                                <div class="price">
+                                    <sup>$</sup>
+                                    <span>99</span>
+                                </div>
+                                <div class="term">
+                                    <sup>.99</sup>
+                                    <span>/month</span>
+                                </div>
+                                <div class="package-features">
+                                    <div class="package-arrow"></div>
+                                    <ul>
+                                        <li><em>Super Duper Feature</em></li>
+                                        <li>Special Feature 1</li>
+                                        <li>Special Feature 2</li>
+                                        <li>Average Feature 1</li>
+                                        <li>Average Feature 2</li>
+                                        <li>Average Feature 3</li>
+                                    </ul>
+                                    <button class="sign-up">
+                                        <h3>sign up now!</h3>
+                                    </button>
+                                </div><!--package-features-->
+                            </div><!--package-price-->
+                        </div><!--price-package-->
+                    </div><!--superduper-->
                 </div>
-                <div class="package-features">
-                    <div class="package-arrow"></div>
-                    <div class="all-plans-features">
-                        <text>Less Than Average Features</text>
-                        <text>Super Duper Support</text>
-                        <text>No Money Back Guarantee!</text>
-                    </div>
-                </div>
-            </div><!--package-features-->
-        </div><!--price-package-->
-        </div><!--all-plans-->
-    </section>
+            </div>
+        </section>
 </template>
 
 <script>
@@ -154,27 +124,28 @@
 </script>
 
 <style scoped>
-    h2 {
-        font-size: 1.6em;
+    .plans h2 {
+        font-size: .9em;
+        font-weight: bold;
         display: inline;
         text-transform: uppercase;
     }
     h3 {
-        font-size: 1.6em;
+        font-size: 1.2em;
         display: inline;
         text-transform: capitalize;
     }
     em {
         font-style: normal;
         text-decoration: underline;
-        font-size: 1.7rem;
+        font-size: 1rem;
     }
-    section {
+    plans section {
         text-align: justify !important;
         text-justify: distribute-all-lines;
         font-size: 0 !important;
     }
-    section > * {
+    .plans  > * {
         text-align: left;
         font-size: medium;
     }
@@ -185,9 +156,7 @@
     }
     section > div {
         vertical-align: top;
-        display: inline-block;
         width: 100%;
-        width: 24%;
         margin-bottom: 1.9%;
     }
     @media only screen and (max-width: 529px) {
@@ -196,12 +165,8 @@
             margin-bottom: 1.9%;
         }
     }
-    section > div.all-plans {
-        width: 100%;
-        margin-bottom: 1.9%;
-    }
     .price-package {
-        padding-top: 25px;
+        padding-top: 20px;
         margin-bottom: 10px;
         text-align: center;
         -moz-border-radius-topleft: 10px;
@@ -242,7 +207,7 @@
         display: inline-block;
     }
     .price-package .package-price .price sup {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
         position: absolute;
         top: 6px;
         left: -12px;
@@ -257,7 +222,7 @@
         padding-top: 6px;
     }
     .price-package .package-price .term sup {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         display: block;
         padding: 0;
     }
@@ -278,13 +243,13 @@
         margin-top: 16.666666666667px;
     }
     .price-package .package-features ul {
-        font-size: 1.6rem;
+        font-size: 1.1rem;
         margin: 0;
         padding: 0;
         list-style: none;
     }
     .price-package .package-features ul li {
-        margin: 20px auto;
+        margin: 10px auto;
         padding: 0;
     }
     @media only screen and (max-width: 529px) {
@@ -367,69 +332,69 @@
         border-top-color: #e0f2ed;
     }
     .special .price-package {
-        background-color: #8654ff;
+        background-color: #273146;
     }
     .special .price-package .package-name {
         color: white;
     }
     .special .price-package .package-price {
-        background-color: #b191ff;
+        background-color: # #273146c2;
         color: white;
     }
     .special .price-package .package-features {
         background-color: #efe9fc;
-        color: #8654ff;
+        color: #273146;
     }
     .special .price-package .sign-up {
-        background-color: #8654ff;
+        background-color: #273146;
         color: white;
         transition: background-color 0.5s ease;
     }
     .special .price-package .sign-up:hover {
-        background-color: #b191ff;
+        background-color: # #273146c2;
     }
     .special .price-package .sign-up:active {
         background-color: #efe9fc;
     }
     .special .price-package .package-price .package-arrow {
-        border-top-color: #8654ff;
+        border-top-color: #273146;
     }
     .special .price-package .package-features .package-arrow {
-        border-top-color: #b191ff;
+        border-top-color: # #273146c2;
     }
     .special .price-package .sign-up .package-arrow {
         border-top-color: #efe9fc;
     }
     .superduper .price-package {
-        background-color: #00b9f2;
+        background-color: #757575;
     }
     .superduper .price-package .package-name {
         color: white;
     }
     .superduper .price-package .package-price {
-        background-color: #7dd4fe;
+        background-color: #9e9e9e;
         color: white;
     }
     .superduper .price-package .package-features {
         background-color: #e0f2fa;
-        color: #00b9f2;
+        color: #757575;
     }
     .superduper .price-package .sign-up {
-        background-color: #00b9f2;
+        background-color: #757575;
         color: white;
         transition: background-color 0.5s ease;
     }
     .superduper .price-package .sign-up:hover {
-        background-color: #7dd4fe;
+        background-color: #9e9e9e;
     }
     .superduper .price-package .sign-up:active {
         background-color: #e0f2fa;
     }
     .superduper .price-package .package-price .package-arrow {
-        border-top-color: #00b9f2;
+        border-top-color: #757575;
     }
     .superduper .price-package .package-features .package-arrow {
-        border-top-color: #7dd4fe;
+        border-top-color: #9e9e9e;
     }
     .superduper .price-package .sign-up .package-arrow {
         border-top-color: #e0f2fa;
@@ -475,3 +440,13 @@
         padding-bottom: 20px;
     }
 </style>
+<i18n>
+    {
+    "en": {
+    "main-title": "Choose a Plan"
+    },
+    "fr": {
+    "main-title": "Choisir un Plan "
+    }
+    }
+</i18n>

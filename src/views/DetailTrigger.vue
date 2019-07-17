@@ -7,6 +7,7 @@
             <div class="col right">
                 <p>Home > <span> My Triggers</span></p>
             </div>
+
         </div>
         <section class="component-section">
             <div class="row">
@@ -47,7 +48,7 @@
                                     </thead>
                                     <tbody>
                                     <tr v-for="(command, index) in displayCommands" v-bind:key="command"
-                                        v-bind:class="{ 'hide': command.executed	 }">
+                                        v-bind:class="{'teal lighten-3': command.executed === false}">
                                         <td>{{ index + 1 }}</td>
                                         <td>{{command.id}}</td>
                                         <td>{{command.valeur}}</td>
@@ -125,7 +126,6 @@
 <script>
     import {mapActions, mapGetters} from 'vuex'
     import Form from "@/components/Form";
-
     export default {
         name: "detail-trigger",
         data() {
@@ -160,7 +160,7 @@
                 }
                 var payload = {
                     'data': postData,
-                    'link': '/trigger-service/trigger/' + this.IdTriger
+                    'link': '/trigger-service/trigers/' + this.IdTriger
                 };
                 this.postRequest(payload).then(() => {
                     this.flash(this.$t('commande.add-success'), 'success');
@@ -209,10 +209,11 @@
             var triggerId = this.$route.params.id;
             this.IdTriger = triggerId
             var payloadA = {
-                'link': '/trigger-service/userTriger/' + localStorage.getItem('userId') ,
-                'mutation': 'setTriggers',
+                'link': '/trigger-service/trigers/' + triggerId,
+                'mutation': 'setTrigger',
                 'all': false
             };
+            console.log(this.getTrigger)
             this.$store.dispatch('getRequest', payloadA);
             var payloadB = {
                 'link': '/trigger-service/trigers/' + triggerId + '/commandes',

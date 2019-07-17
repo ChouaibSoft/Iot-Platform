@@ -40,7 +40,7 @@
                                     <div class="input-field  col s12">
                                         <select  @change="getChannelFields" v-model="channelID">
                                             <option value="" disabled selected>{{$t('react.channel-select')}}</option>
-                                            <option  v-for="canal in getCanals" :value="canal.id">{{ canal.nom }}</option>
+                                            <option  v-for="canal in getCanals" :value="canal.canalId">{{ canal.nom }}</option>
                                         </select>
                                         <label>{{$t('react.channel')}}</label>
                                     </div>
@@ -50,8 +50,8 @@
                                 <div class="row">
                                     <p v-for="field in this.channelFields" class="col">
                                         <label>
-                                            <input :value="field.id" name="group1" v-model="fieldID" type="radio" class="with-gap" />
-                                            <span>{{ field.nom }}</span>
+                                            <input :value="field.fieldId" name="group1" v-model="filedID" type="radio" class="with-gap" />
+                                            <span>{{ field.nom }} </span>
                                         </label>
                                     </p>
                                 </div>
@@ -100,23 +100,23 @@
 
 
                                 <div v-if="provider==='twilio'">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input
-                                                id="message"
-                                                type="text"
-                                                v-model="message">
-                                        <label for="message">{{ $t('react.message') }}</label>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input
+                                                    id="message"
+                                                    type="text"
+                                                    v-model="message">
+                                            <label for="message">{{ $t('react.message') }}</label>
 
+                                        </div>
                                     </div>
-                                </div>
 
 
-                                <div class="row" style="margin-bottom: 30px">
-                                    <vue-tel-input v-model="phone" enabledCountryCode
-                                                   :preferredCountries="['dz']"
-                                    ></vue-tel-input>
-                                </div>
+                                    <div class="row" style="margin-bottom: 30px">
+                                        <vue-tel-input v-model="phone" enabledCountryCode
+                                                       :preferredCountries="['dz']"
+                                        ></vue-tel-input>
+                                    </div>
 
                                 </div>
 
@@ -125,18 +125,18 @@
                                     <div class="row">
                                         <div class="input-field col s12">
 
-                                           <p v-for="triger in getTriggers" v-bind:key="triger">
-                                               <label>
-                                               <input :value="triger.id" name="group2" v-model="trigeID" type="radio" class="with-gap" />
+                                            <p v-for="triger in getTriggers" v-bind:key="triger">
+                                                <label>
+                                                    <input :value="triger.id" name="group2" v-model="trigeID" type="radio" class="with-gap" />
 
-                                            <span>{{triger.nom}}</span>
-                                               </label>
-                                           </p>
+                                                    <span>{{triger.nom}}</span>
+                                                </label>
+                                            </p>
 
                                             <input id="cmd"
-                                                    type="text"
-                                                    class="validate"
-                                                    minlength="3"
+                                                   type="text"
+                                                   class="validate"
+                                                   minlength="3"
                                                    v-model="commande"
                                                    placeholder="Commande"
                                             >
@@ -225,7 +225,6 @@
     import Form from "@/components/Form";
     import 'vue-tel-input/dist/vue-tel-input.css';
     import VueTelInput from 'vue-tel-input';
-
     export default {
         name: "new-react",
         components: {
@@ -237,7 +236,7 @@
                 name: '',
                 channelFields : null,
                 channelID: '',
-                fieldID:'',
+                filedID:'',
                 condition:'',
                 provider:'',
                 phone: '',
@@ -250,13 +249,11 @@
                 commande:'',
                 email_react:'',
                 message_email:''
-
             }
         },
         computed:{
             ...mapState['userId'],
-            ...mapGetters(['getCanals','getFields', 'getAPIUrl','getTriggers'])
-
+            ...mapGetters(['getCanals','getFields', 'getUserId', 'getToken', 'getAPIUrl','getTriggers'])
         },
         created() {
             var payload = {
@@ -265,16 +262,12 @@
                 'all': false
             };
             this.$store.dispatch('getRequest', payload);
-
             let payloadB={
-                'link': '/trigger-service/userTriger/' + localStorage.get('userId') ,
+                'link': '/trigger-service/userTriger/' +localStorage.getItem('userId') ,
                 'mutation': 'setTriggers',
                 'all': false
             };
             this.$store.dispatch('getRequest',payloadB)
-
-
-
         },
         methods: {
             ...mapActions(['postRequest']),
@@ -284,23 +277,23 @@
                     condition:this.condition,
                     valeur:this.value,
                     CanalId:this.channelID,
-                    fieldId:this.fieldID,
+                    field:this.filedID,
                     message:this.message,
                     tel:this.phone,
                     commande:this.commande,
                     email_react:this.email_react,
                     message_email:this.message_email,
-                    trigerId:this.trigeID,
+                    trigerId:this.trigeID
+                    ,
                     userId: localStorage.getItem('userId')
-
                 };
-
                 let payload = {
                     'data': postData,
                     'link': '/trigger-service/react'};
                 this.postRequest(payload).then(() => {
                     this.flash(this.$t('react.add-success'), 'success');
                     this.$router.push('/dashboard/reacts');
+                    // this.twilio();
                 }).catch(() => {
                     this.flash(this.$t('react.add-error'), 'error');
                 })
@@ -309,20 +302,18 @@
                 // e => Get Selected Channel Id
                 if(e.target.options.selectedIndex > -1) {
                     let canalId = e.target.options[e.target.options.selectedIndex].value;
-                    this.$http.get(this.getAPIUrl + '/canal-service/canals/' + canalId + '/fields' , {
+                        this.$http.get(this.getAPIUrl + '/canal-service/canals/' + canalId + '/fields' , {
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': 'Bearer ' + localStorage.getItem('userToken')
                         }
                     }).then(request => {
-                        this.channelFields = request.data.content;
+                        this.channelFields = request.data;
+                        console.log("dfdfdf" + this.channelFields)
                     }).catch(error => {
-
                     })
                 }
             },
-
-
         },
         mounted(){
             $('textarea#description').characterCounter();
@@ -341,8 +332,6 @@
 </script>
 
 <style scoped lang="scss">
-
-
 </style>
 <i18n>
     {

@@ -26,13 +26,7 @@
                             <td>{{index + 1}}</td>
                             <td>{{React.nom}}</td>
                             <td>30/04/2019</td>
-                            <td class="action not-allowed" width="15%">
-                                <router-link :to="{ name: 'React-overview', params: { id: React.id}}">
-                                    <i class="fa fa-chart-bar"></i>
-                                </router-link>
-                                <a  class="waves-effect waves-light modal-React" href="#modal1">
-                                    <i class="material-icons prefix">settings</i>
-                                </a>
+                            <td class="action not-allowed" width="5%">
                                 <div class="switch">
                                     <label>
                                         <input type="checkbox">
@@ -154,8 +148,8 @@
     "table": {
     "id": "#",
     "name": "Name",
-    "created": "Created",
-    "actions": "Actions"
+    "created": "Created Date",
+    "actions": "enable/disable"
     }
     },
     "fr": {
@@ -167,8 +161,8 @@
     "table": {
     "id": "#",
     "name": "Nom",
-    "created": "Créé",
-    "actions": "Actions"
+    "created": "Date  de Création",
+    "actions": "activer/disactiver"
     }
     }
     }

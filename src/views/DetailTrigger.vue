@@ -48,7 +48,7 @@
                                     </thead>
                                     <tbody>
                                     <tr v-for="(command, index) in displayCommands" v-bind:key="command"
-                                        v-bind:class="{'teal lighten-3': command.executed === false}">
+                                        v-bind:class="{'teal lighten-3': command.executed === true}">
                                         <td>{{ index + 1 }}</td>
                                         <td>{{command.id}}</td>
                                         <td>{{command.valeur}}</td>

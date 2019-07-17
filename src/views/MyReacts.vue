@@ -29,7 +29,7 @@
                             <td class="action not-allowed" width="5%">
                                 <div class="switch">
                                     <label>
-                                        <input type="checkbox">
+                                        <input type="checkbox" :checked="React.activated === true" @click="switchStatus(React.id, React.activated)">
                                         <span class="lever"></span>
                                     </label>
                                 </div>
@@ -57,7 +57,7 @@
                     <div class="alert alert-info" role="alert">
                         {{ $t('no-React') }}
                     </div>
-                    <router-link :to="{ name: 'new-React'}" class="waves-effect waves-light btn">
+                    <router-link :to="{ name: 'add-React'}" class="waves-effect waves-light btn">
                         {{ $t('add-React') }}
                     </router-link>
                 </div>
@@ -95,23 +95,42 @@
                 return this.paginate(this.getReacts);
             }
         },
-        methods:{
-            getDateCreated(data){
-                return data.substring(0,10);
+        methods: {
+            getDateCreated(data) {
+                return data.substring(0, 10);
             },
-            setPages () {
+            setPages() {
                 this.pages = [];
                 let numberOfPages = Math.ceil(this.getReacts.length / this.perPage);
                 for (let index = 1; index <= numberOfPages; index++) {
                     this.pages.push(index);
                 }
             },
-            paginate (Reacts) {
+            paginate(Reacts) {
                 let page = this.page;
                 let perPage = this.perPage;
                 let from = (page * perPage) - perPage;
                 let to = (page * perPage);
-                return  Reacts.slice(from, to);
+                return Reacts.slice(from, to);
+            },
+            switchStatus(id, status) {
+                console.log("status " + status)
+                if (status === true) {
+                    var payload = {
+                        'link': '/trigger-service/DesactivateReact/' + id,
+                        'mutation': '',
+                        'all': false
+                    };
+
+                } else {
+                    var payload = {
+                        'link': '/trigger-service/ActivateReact/' + id,
+                        'mutation': '',
+                        'all': false
+                    }
+                }
+                this.$store.dispatch('getRequest', payload);
+
             },
         },
         watch: {

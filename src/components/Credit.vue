@@ -39,12 +39,6 @@
                         <div slot="form-fields">
                             <div class="row">
                                 <div class="input-field col s6">
-                                        <p v-for="select in selected">
-                                            <label>
-                                                <input  name="group1" type="radio" checked v-model="one" />
-                                                <span>{{ selected }}</span>
-                                            </label>
-                                        </p>
                                     <v-select v-model="one" label="credit" :options="selected"></v-select>
 
 
@@ -621,7 +615,8 @@
     "information": "Information",
     "add-credit": "Add Credit",
     "select-type": "selec a type",
-    "confirm": "confirm"
+    "confirm": "confirm",
+    "profile.add-success": "credit added successfully"
     },
     "fr": {
     "main-title": "Mon Compte",
@@ -630,7 +625,8 @@
     "information": "Information",
     "add-credit": "ajouter  crédit",
     "select-type": "sélectionner un type",
-    "confirm": "confirmer"
+    "confirm": "confirmer",
+    "profile.add-error": "crédit ajouté avec succès"
     }
     }
 </i18n>

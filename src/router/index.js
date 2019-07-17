@@ -64,7 +64,7 @@ const router = new Router({
                     name: "dash-overview",
                     meta: {
                         breadcrumb: 'Items',
-                        protected: false,
+                        protected: true,
                         title: i18n.t('page-title.dashboard'),},
                     component: () => import("@/views/DashOverview")
                 },

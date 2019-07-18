@@ -15,6 +15,7 @@
     "cancel": "Cancel",
     "account-not-activated": "Your account is not activated, please check your inbox to confirm your email.",
     "login-failed": "email or password wrong",
+    "payment": "Payment type",
     "reset-password": {
       "email": "please check your inbox, to continue!",
       "email-err": "an error occurred",

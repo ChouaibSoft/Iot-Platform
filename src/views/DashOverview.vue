@@ -19,7 +19,7 @@
                                     Channel
                                 </div>
                                 <div class="collapsible-body">
-                                    <h3 style="display: inline-block">25</h3>
+                                    <h3 class="center-align">5 / <span class="grey-text" style="font-size: 1.6rem">9 Remaining</span></h3>
                                 </div>
                             </li>
                         </ul>
@@ -29,7 +29,9 @@
                                     <i class="fa fa-charging-station"></i>
                                     Trigger
                                     <span class="new badge">3</span></div>
-                                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                                <div class="collapsible-body">
+                                    <h3 class="center-align">8 / <span class="grey-text" style="font-size: 1.6rem">7 Remaining</span></h3>
+                                </div>
                             </li>
                         </ul>
                         <ul class="collapsible">
@@ -38,7 +40,9 @@
                                     <i class="fa fa-react"></i>
                                     React
                                     <span class="new badge">2</span></div>
-                                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                                <div class="collapsible-body">
+                                    <h3 class="center-align">3 / <span class="grey-text" style="font-size: 1.6rem">3 Remaining</span></h3>
+                                </div>
                             </li>
                         </ul>
                     </div>

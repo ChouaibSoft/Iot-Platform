@@ -80,244 +80,112 @@
                                     </div>
                                 </div>
                             </div>
+                            <h5 class="center-align">{{ $t('auth.payment') }}</h5>
+                            <div class="carousel">
+                                <div style="margin-top: -80px;">
+                                    <a @click="this.opt = 'Standard'" href="#one!" class="carousel-item">
+                                        <section>
+                                            <div class="row plans">
+                                                <div class="superduper">
+                                                    <div class="price-package">
+                                                        <div class="package-name">
+                                                            <h2>Free</h2>
+                                                        </div>
+                                                        <div class="package-price">
+                                                            <div class="package-arrow"></div>
+                                                            <div class="price">
+                                                                <sup>DA </sup>
+                                                                <h2> 1000 </h2>
+                                                            </div>
+                                                            <div class="term">
+                                                                <sup>.99</sup>
+                                                                <span>/month</span>
+                                                            </div>
+                                                            <div class="package-features">
+                                                                <div class="package-arrow"></div>
+                                                                <ul>
+                                                                    <li>Max Channel : 4</li>
+                                                                    <li>Max Fields : 4</li>
+                                                                    <li>Credit : 300000</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </a>
+                                    <a @click="this.opt = 'Basic'" class="carousel-item" href="#four!">
+                                        <section>
+                                            <div class="row plans">
+                                                <div class="special">
+                                                    <div class="price-package">
+                                                        <div class="package-name">
+                                                            <h2>Basic</h2>
+                                                        </div>
+                                                        <div class="package-price">
+                                                            <div class="package-arrow"></div>
+                                                            <div class="price">
+                                                                <sup>DA</sup>
+                                                                <h2>0</h2>
+                                                            </div>
+                                                            <div class="term">
+                                                                <sup>.99</sup>
+                                                                <span>/month</span>
+                                                            </div>
+                                                            <div class="package-features">
+                                                                <div class="package-arrow"></div>
+                                                                <ul>
+                                                                    <li>Max Channel : 4</li>
+                                                                    <li>Max Fields : 4</li>
+                                                                    <li>Credit : 300000</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><!--special-->
+                                            </div>
+                                        </section>
+                                    </a>
+                                    <a @click="this.opt = 'Pro'" class="carousel-item" href="#three!">
+                                        <section>
+                                            <div class="row plans">
+                                                <div class="average">
+                                                    <div class="price-package">
+                                                        <div class="package-name">
+                                                            <h2>Pro</h2>
+                                                        </div>
+                                                        <div class="package-price">
+                                                            <div class="package-arrow"></div>
+                                                            <div class="price">
+                                                                <sup>DA</sup>
+                                                                <h2>0</h2>
+                                                            </div>
+                                                            <div class="term">
+                                                                <sup>.99</sup>
+                                                                <span>/month</span>
+                                                            </div>
+                                                            <div class="package-features">
+                                                                <div class="package-arrow"></div>
+                                                                <ul>
+                                                                    <li>Max Channel : 10</li>
+                                                                    <li>Max Fields : 8</li>
+                                                                    <li>Credit : 9000000</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><!--average-->
+                                            </div>
+                                        </section>
+                                    </a>
+                                </div>
+                            </div>
                             <center>
-                                <button class="btn waves-effect waves-light" @click.prevent="next()">Next</button>
+                                <button style="margin-top: -150px" class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.submit') }}</button>
                             </center>
                         </div>
-                        <!--<div v-if="step === 2">-->
-                            <!--<div class="row">-->
-                                <!--<div class="col s6 center-align ">-->
-                                    <!--<div class="ab-item">    {{Abonnements[0].option}}-->
-                                    <!--</div>-->
-                                    <!--<div class="ab-item">   max channels {{Abonnements[0].maxChannels}}</div>-->
-
-                                    <!--<div class="ab-item">   max fields {{Abonnements[0].maxFields}}</div>-->
-
-                                    <!--<label> <input type="radio" id="one" name="selectedoption" v-model="opt" :value="Abonnements[0].option" checked  >-->
-                                        <!--<span></span>-->
-                                    <!--</label>-->
-                                <!--</div>-->
-                                <!--<div class="col s6 center-align">-->
-                                    <!--<div class="ab-item">    {{Abonnements[1].option}}-->
-                                    <!--</div>-->
-
-                                    <!--<div class="ab-item">   max channels <span>{{Abonnements[1].maxChannels}}</span></div>-->
-
-                                    <!--<div class="ab-item">   max fields <span>{{Abonnements[1].maxFields}}</span></div>-->
-                                    <!--<label><input type="radio" id="two" name="selectedoption" v-model="opt":value="Abonnements[1].option"  >-->
-                                        <!--<span></span>-->
-                                    <!--</label>-->
-                                <!--</div></div>-->
-                            <!--<div slot="form-controls">-->
-                                <!--<center>-->
-                                    <!--<button class="btn waves-effect waves-light" @click.prevent="prev()">Previous</button>-->
-
-                                    <!--<button class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.sign-up') }}</button>-->
-                                <!--</center>-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                        <div v-if="step === 2">
-
-                            <!--<div class="carousel">-->
-                                <!--<a class="carousel-item" href="#one!">-->
-                                    <!--<section>-->
-                                        <!--<div class="row plans">-->
-                                    <!--<div class="superduper">-->
-                                        <!--<div class="price-package">-->
-                                            <!--<div class="package-name">-->
-                                                <!--<h2>super duper</h2>-->
-                                            <!--</div>-->
-                                            <!--<div class="package-price">-->
-                                                <!--<div class="package-arrow"></div>-->
-                                                <!--<div class="price">-->
-                                                    <!--<sup>$</sup>-->
-                                                    <!--<span>99</span>-->
-                                                <!--</div>-->
-                                                <!--<div class="term">-->
-                                                    <!--<sup>.99</sup>-->
-                                                    <!--<span>/month</span>-->
-                                                <!--</div>-->
-                                                <!--<div class="package-features">-->
-                                                    <!--<div class="package-arrow"></div>-->
-                                                    <!--<ul>-->
-                                                        <!--<li><em>Super Duper Feature</em></li>-->
-                                                        <!--<li>Special Feature 1</li>-->
-                                                    <!--</ul>-->
-
-                                                <!--</div>&lt;!&ndash;package-features&ndash;&gt;-->
-                                            <!--</div>&lt;!&ndash;package-price&ndash;&gt;-->
-                                        <!--</div>&lt;!&ndash;price-package&ndash;&gt;-->
-                                    <!--</div>&lt;!&ndash;superduper&ndash;&gt;-->
-                                        <!--</div>-->
-                                    <!--</section>-->
-                                <!--</a>-->
-                                <!--<a class="carousel-item" href="#two!">-->
-                                    <!--<section>-->
-                                        <!--<div class="row plans">-->
-                                            <!--<div class="superduper">-->
-                                                <!--<div class="price-package">-->
-                                                    <!--<div class="package-name">-->
-                                                        <!--<h2>super duper</h2>-->
-                                                    <!--</div>-->
-                                                    <!--<div class="package-price">-->
-                                                        <!--<div class="package-arrow"></div>-->
-                                                        <!--<div class="price">-->
-                                                            <!--<sup>$</sup>-->
-                                                            <!--<span>99</span>-->
-                                                        <!--</div>-->
-                                                        <!--<div class="term">-->
-                                                            <!--<sup>.99</sup>-->
-                                                            <!--<span>/month</span>-->
-                                                        <!--</div>-->
-                                                        <!--<div class="package-features">-->
-                                                            <!--<div class="package-arrow"></div>-->
-                                                            <!--<ul>-->
-                                                                <!--<li><em>Super Duper Feature</em></li>-->
-                                                                <!--<li>Special Feature 1</li>-->
-                                                            <!--</ul>-->
-
-                                                        <!--</div>&lt;!&ndash;package-features&ndash;&gt;-->
-                                                    <!--</div>&lt;!&ndash;package-price&ndash;&gt;-->
-                                                <!--</div>&lt;!&ndash;price-package&ndash;&gt;-->
-                                            <!--</div>&lt;!&ndash;superduper&ndash;&gt;-->
-                                        <!--</div>-->
-                                    <!--</section>-->
-                                <!--</a>-->
-                                <!--<a class="carousel-item" href="#three!">-->
-                                    <!--<section>-->
-                                        <!--<div class="row plans">-->
-                                            <!--<div class="superduper">-->
-                                                <!--<div class="price-package">-->
-                                                    <!--<div class="package-name">-->
-                                                        <!--<h2>super duper</h2>-->
-                                                    <!--</div>-->
-                                                    <!--<div class="package-price">-->
-                                                        <!--<div class="package-arrow"></div>-->
-                                                        <!--<div class="price">-->
-                                                            <!--<sup>$</sup>-->
-                                                            <!--<span>99</span>-->
-                                                        <!--</div>-->
-                                                        <!--<div class="term">-->
-                                                            <!--<sup>.99</sup>-->
-                                                            <!--<span>/month</span>-->
-                                                        <!--</div>-->
-                                                        <!--<div class="package-features">-->
-                                                            <!--<div class="package-arrow"></div>-->
-                                                            <!--<ul>-->
-                                                                <!--<li><em>Super Duper Feature</em></li>-->
-                                                                <!--<li>Special Feature 1</li>-->
-                                                            <!--</ul>-->
-
-                                                        <!--</div>&lt;!&ndash;package-features&ndash;&gt;-->
-                                                    <!--</div>&lt;!&ndash;package-price&ndash;&gt;-->
-                                                <!--</div>&lt;!&ndash;price-package&ndash;&gt;-->
-                                            <!--</div>&lt;!&ndash;superduper&ndash;&gt;-->
-                                        <!--</div>-->
-                                    <!--</section>-->
-                                <!--</a>-->
-                            <!--</div>-->
-
-
-
-                            <!--<section>-->
-                                <!--<div class="row plans">-->
-                                    <!--<div class="col s12 l4">-->
-
-                                    <!--</div>-->
-                                    <!--<div class="col s12 l4">-->
-                                        <!--<div class="special">-->
-                                            <!--<div class="price-package">-->
-                                                <!--<div class="package-name">-->
-                                                    <!--<h2>Business</h2>-->
-                                                <!--</div>-->
-                                                <!--<div class="package-price">-->
-                                                    <!--<div class="package-arrow"></div>-->
-                                                    <!--<div class="price">-->
-                                                        <!--<sup>R</sup>-->
-                                                        <!--<span>1,999</span>-->
-                                                    <!--</div>-->
-                                                    <!--<div class="term">-->
-                                                        <!--<sup>.99</sup>-->
-                                                        <!--<span>/per month *3</span>-->
-                                                    <!--</div>-->
-                                                    <!--<div class="package-features">-->
-                                                        <!--<div class="package-arrow"></div>-->
-                                                        <!--<ul>-->
-                                                            <!--<li>6 Pages</li>-->
-                                                            <!--<li>Custom Design</li>-->
-                                                            <!--<li>Search Engine Optimization</li>-->
-                                                        <!--</ul>-->
-                                                    <!--</div>&lt;!&ndash;package-features&ndash;&gt;-->
-                                                <!--</div>&lt;!&ndash;package-price&ndash;&gt;-->
-                                            <!--</div>&lt;!&ndash;price-package&ndash;&gt;-->
-                                        <!--</div>&lt;!&ndash;special&ndash;&gt;-->
-                                    <!--</div>-->
-                                    <!--<div class="col s12 l4">-->
-                                        <!--<div class="average">-->
-                                            <!--<div class="price-package">-->
-                                                <!--<div class="package-name">-->
-                                                    <!--<h2>Free</h2>-->
-                                                <!--</div>-->
-                                                <!--<div class="package-price">-->
-                                                    <!--<div class="package-arrow"></div>-->
-                                                    <!--<div class="price">-->
-                                                        <!--<sup>R</sup>-->
-                                                        <!--<span>0</span>-->
-                                                    <!--</div>-->
-                                                    <!--<div class="term">-->
-                                                        <!--<sup>0</sup>-->
-                                                        <!--<span>/per month</span>-->
-                                                    <!--</div>-->
-                                                    <!--<div class="package-features">-->
-                                                        <!--<div class="package-arrow"></div>-->
-                                                        <!--<ul>-->
-                                                            <!--<li>4 max Channels</li>-->
-                                                            <!--<li>1 max Fields</li>-->
-                                                            <!--<li>1500 Credit</li>-->
-                                                        <!--</ul>-->
-
-                                                    <!--</div>&lt;!&ndash;package-features&ndash;&gt;-->
-                                                <!--</div>&lt;!&ndash;package-price&ndash;&gt;-->
-                                            <!--</div>&lt;!&ndash;price-package&ndash;&gt;-->
-                                        <!--</div>&lt;!&ndash;average&ndash;&gt;-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</section>-->
-
-
-                            <!--<div class="row">-->
-                                <!--<div class="col s6 center-align ">-->
-                                    <!--<div class="ab-item">    Standart-->
-                                    <!--</div>-->
-                                    <!--<div class="ab-item">   max channels 5</div>-->
-
-                                    <!--<div class="ab-item">   max fields 3</div>-->
-
-                                    <!--<label> <input type="radio" id="one" name="selectedoption"  >-->
-                                        <!--<span></span>-->
-                                    <!--</label>-->
-                                <!--</div>-->
-                                <!--<div class="col s6 center-align">-->
-                                    <!--<div class="ab-item">   3-->
-                                    <!--</div>-->
-
-                                    <!--<div class="ab-item">   max channels <span>Pro</span></div>-->
-
-                                    <!--<div class="ab-item">   max fields <span>3</span></div>-->
-                                    <!--<label><input type="radio" id="two" name="selectedoption"  >-->
-                                        <!--<span></span>-->
-                                    <!--</label>-->
-                                <!--</div></div>-->
-                            <div slot="form-controls">
-                                <center>
-                                    <button class="btn waves-effect waves-light" style="margin-right: 30px" @click.prevent="prev()">Previous</button>
-                                    <button class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.sign-up') }}</button>
-                                </center>
-                            </div>
-                        </div>
                     </div>
-
                 </generic-form>
             </div>
         </form>
@@ -325,7 +193,7 @@
 </template>
 
 <script>
-    import {  mapActions } from 'vuex';
+    import {  mapActions, mapGetters } from 'vuex';
     import { required, minLength, sameAs } from 'vuelidate/lib/validators'
     import Form from "@/components/Form";
     import axios from 'axios';
@@ -342,16 +210,20 @@
                 email: '',
                 password: '',
                 confpass:'',
-                Abonnements : [],
-                opt:'',
+                Abonnements : null,
+                opt:'Standard',
                 selected: 1,
                 step:1,
-
-
             }
         },
-        created: function () {
-            this.fetchAbonnements();
+        created() {
+            axios.get(this.getApiUrl +  "/achat-service/abonnements").then(response => {
+                this.Abonnements = response.data.content;
+                console.log(response.data.content);
+            }) ;
+        },
+        computed:{
+            ...mapGetters(['getApiUrl'])
         },
         methods: {
             ...mapActions([
@@ -364,13 +236,6 @@
             next() {
                 this.step++;
             },
-            // fetchAbonnements () {
-            //     axios.get("http://localhost:8082/achat-service/abonnements").then(response => {
-            //         this.Abonnements = response.data.content;
-            //         console.log(response.data.content);
-            //     }) ;
-            //
-            // },
             register(){
                 var postData = {
                     username: this.username,
@@ -413,6 +278,9 @@
     }
 </script>
 <style scoped>
+    .carousel{
+        overflow: visible;
+    }
     .plans h2 {
         font-size: .8em;
         font-weight: bold;
@@ -432,7 +300,7 @@
     .plans{
         margin-left: 0;
     }
-    plans section {
+    .plans section {
         text-align: justify !important;
         text-justify: distribute-all-lines;
         font-size: 0 !important;

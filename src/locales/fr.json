@@ -13,6 +13,7 @@
     "forgot-password": "Mot de passe oublié?",
     "submit": "Submit",
     "cancel": "Annuler",
+    "payment": "Type de payment",
     "account-not-activated": "Votre compte n'est pas activé, veuillez vérifier votre boîte de réception pour confirmer votre email.",
     "login-failed": "email ou mot de passe incorrect",
     "password-reset": "veuillez vérifier votre boîte de réception pour continuer!",

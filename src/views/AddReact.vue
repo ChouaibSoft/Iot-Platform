@@ -7,7 +7,6 @@
             <div class="col right">
                 <p>Home > <span> Ajouter React</span></p>
             </div>
-
         </div>
         <section class="component-section">
             <div class="row">
@@ -257,7 +256,7 @@
         },
         created() {
             var payload = {
-                'link': '/canal-service/canals/'+ localStorage.get('userId'),
+                'link': '/canal-service/canals/'+ localStorage.getItem('userId'),
                 'mutation': 'setCanals',
                 'all': false
             };

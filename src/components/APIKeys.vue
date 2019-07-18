@@ -47,11 +47,11 @@
                 <div v-if="isShow" class="urls">
                     <div>
                         <h6>{{$t('update-url')}}</h6>
-                        <pre>  POST : <span>http://localhost:8082/canal-service/record?key=</span><span class="key">{{getCanal.cleEcriture}}{{this.paramlist}}</span></pre>
+                        <pre>  POST : <span>{{ getApiUrl }}/canal-service/record?key=</span><span class="key">{{getCanal.cleEcriture}}{{this.paramlist}}</span></pre>
                     </div>
                     <div v-if="isShow">
                         <h6>{{$t('read-url')}}</h6>
-                        <pre  v-for="f in displayFields()" v-bind:key="f.id">  GET : <span>http://localhost:8082/canal-service/read?key=</span><span class="key">{{getCanal.cleLecture}}&field={{f.nom}}</span></pre>
+                        <pre  v-for="f in displayFields()" v-bind:key="f.id">  GET : <span>{{  getApiUrl }}/canal-service/read?key=</span><span class="key">{{getCanal.cleLecture}}&field={{f.nom}}</span></pre>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@
             }
         },
         computed:{
-            ...mapGetters(['getCanal', 'getFields'])
+            ...mapGetters(['getCanal', 'getFields', 'getApiUrl'])
         },
         methods: {
             keyGenerator(){
@@ -116,6 +116,9 @@
             displayFields(){
                 return this.$store.getters.getFields
             }
+        },
+        created(){
+            console.log(localStorage.getItem("userToken"))
         }
     }
 </script>

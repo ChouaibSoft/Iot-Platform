@@ -57,23 +57,13 @@
                     <div class="alert alert-info" role="alert">
                         {{ $t('no-React') }}
                     </div>
-                    <router-link :to="{ name: 'add-React'}" class="waves-effect waves-light btn">
+                    <router-link :to="{ name: 'add-react'}" class="waves-effect waves-light btn">
                         {{ $t('add-React') }}
                     </router-link>
                 </div>
             </div>
         </section>
         <!-- Modal Structure -->
-        <div id="modal1" class="modal modal-fixed-footer">
-            <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
-        </div>
-
     </div>
 </template>
 

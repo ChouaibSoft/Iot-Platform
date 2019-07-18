@@ -145,9 +145,28 @@
 
                     axios.get(this.getApiUrl+"/achat-service/appUsers/"+ localStorage.getItem('userId')+'/abonnement').then(response => {
                         console.log(response.data) ;
-
-                        this.$store.dispatch('setParams',response.data);
+                        localStorage.setItem("maxChannels", response.data.maxChannels)
+                        localStorage.setItem("maxFields", response.data.maxFields)
                     }) ;
+
+
+                    var postData = {
+                        email: this.email,
+                    };
+
+                    var payload = {
+                        'data': postData,
+                        'link': '/achat-service/appUsers/getId'
+                    };
+
+                    this.postRequest(payload).then(response =>
+                    {
+                        localStorage.setItem('userId2',response.data);
+                        console.log(localStorage.getItem('userId2'));
+                        this.$store.dispatch('setParams',response.data);
+
+                    });
+
 
                     this.switchProgress()
                     setTimeout(() => {

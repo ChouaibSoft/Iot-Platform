@@ -14,8 +14,8 @@
                 <div class="col s12 l5">
                     <div class="channel-head">
                         <p><strong>{{ $t('channel-name') }}</strong>{{ getCanal.nom }}</p>
-                        <p><strong>{{ $t('channel-id') }}</strong>#{{ getCanal.id }}</p>
-                        <p><strong>{{ $t('channel-name')}}</strong>@chouaib</p>
+                        <p><strong>{{ $t('channel-id') }}</strong>#{{ getCanal.canalId }}</p>
+                        <p><strong>{{ $t('channel-owner')}}</strong>@chouaib</p>
                     </div>
                 </div>
                 <div class="col s12 l7">
@@ -120,8 +120,6 @@
         }
     }
 </script>
-<style scoped>
-</style>
 <i18n>
     {
     "en": {

@@ -2,7 +2,7 @@
     <div id="content">
         <div class="row page-title-path">
             <div class="col">
-                <h2>{{ $t('main-title') }}</h2>
+                <h2>{{ $t('main-title') }}  <span style="font-size: 1.2rem" class="grey-text">({{ getCanalsAvailable }} {{ $t('remaining') }})</span> </h2>
             </div>
             <div class="col right">
                 <p>Home > <span> Ajouter Canal</span></p>
@@ -10,7 +10,7 @@
         </div>
         <section class="component-section">
             <div class="row">
-                <div class="col s12 l5">
+                <div v-if="getCanalsAvailable > 0"  class="col s12 l5">
                     <form class="form" id="add-canal" @submit.prevent="addCanal">
                         <generic-form>
                             <div slot="form-fields">
@@ -93,6 +93,13 @@
                         </generic-form>
                     </form>
                 </div>
+                <div v-else class="col s12 l5">
+                    <div  class="col s12">
+                        <div class="alert alert-info" role="alert">
+                            {{ $t('not-enough') }}
+                        </div>
+                    </div>
+                </div>
                 <div class="col l7 s12">
                     <div class="help">
                         <h4>{{ $t('help') }}</h4>
@@ -152,6 +159,7 @@
                 name: '',
                 description: '',
                 id: '',
+                canalAvailable: '',
                 fields: [
                     {
                         name: 'field1',
@@ -159,6 +167,16 @@
                     },
                 ],
                 iduser:'',
+            }
+        },
+        computed:{
+            ...mapGetters(['getCanals']),
+            getCanalsAvailable(){
+                if( this.getCanals === null){
+                    return localStorage.getItem("maxChannels");
+                }else{
+                    return localStorage.getItem("maxChannels") -  this.getCanals.length
+                }
             }
         },
         methods: {
@@ -199,6 +217,14 @@
                 this.fields.splice(index, 1);
             }
         },
+        created(){
+            var payload = {
+                'link': '/canal-service/canals/'+ localStorage.getItem('userId'),
+                'mutation': 'setCanals',
+                'all': false
+            };
+            this.$store.dispatch('getRequest', payload);
+        },
         mounted(){
             $('textarea#description').characterCounter();
 
@@ -230,6 +256,8 @@
     "channel": "Channel",
     "channel-des": "Channels store all the data that a Iot-Platform ESI-SBA application collects. Each channel includes eight fields that can hold any type of data, plus three fields for location data and one for status data. Once you collect data in a channel, you can use ThingSpeak apps to analyze and visualize it.",
     "channel-settings": "Channel Settings",
+    "not-enough": "you can't add any more a channel",
+    "remaining": "Remaining",
     "settings": {
         "name": "Channel Name : ",
         "name-det": "Enter a unique name for the Iot-Platform ESI-SBA channel.",
@@ -248,9 +276,11 @@
     },
     "fr": {
     "main-title": "Nouveau Canal",
+    "not-enough": "vous ne pouvez plus ajouter de chaîne! ",
     "channel": "Canal",
     "channel-des": "Les canaux stockent toutes les données collectées par une application Iot-Platform ESI-SBA. Chaque canal comprend huit champs pouvant contenir tout type de données, ainsi que trois champs pour les données de localisation et un pour les données d'état. , vous pouvez utiliser les applications ThingSpeak pour l’analyser et le visualiser. ",
     "channel-settings": "Paramètres de Canal",
+    "remaining": "Restantes",
     "settings": {
     "name": "Nom du Canal : ",
     "name-det": "Enter a unique name for the Iot-Platform ESI-SBA channel.",

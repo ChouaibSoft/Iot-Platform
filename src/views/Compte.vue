@@ -7,6 +7,7 @@
 
             <ul class="collapsible">
                 <li>
+
                     <div class="collapsible-body"
                          style="display: block; position:relative; height: 290px !important; overflow: hidden">
                         <div id="mychart" width="100%" height="100%"
@@ -105,14 +106,6 @@
     }
 </script>
 <style scoped>
+
+
 </style>
-<i18n>
-    {
-    "en": {
-    "main-title": "My Account"
-    },
-    "fr": {
-    "main-title": "Mon Compte"
-    }
-    }
-</i18n>

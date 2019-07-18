@@ -242,8 +242,7 @@
                     email: this.email,
                     password: this.password,
                     passwordConfirmed: this.confpass,
-                    opt:this.opt,
-
+                    opt:this.opt
                 };
                 var payload = {
                     'data': postData,

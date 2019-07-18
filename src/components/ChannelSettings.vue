@@ -1,33 +1,33 @@
 <template>
     <div id="channel-settings">
         <div class="row">
-                <div class="col s12 l5">
-                    <form class="form" id="add-canal" @submit.prevent="updateCanal">
-                        <generic-form>
-                            <div slot="form-fields">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input
-                                                id="name"
-                                                type="text"
-                                                required
-                                                minlength="3"
-                                                class="validate valid"
-                                                v-model="name"
-                                                @input="$v.name.$touch()">
-                                        <label for="name" class="active">{{ $t('canal.name') }}</label>
-                                        <div v-if="$v.name.$dirty">
-                                            <p class="error-message red-text " v-if="!$v.name.required">
-                                                {{ $t('errors.required') }}
-                                            </p>
-                                            <p class="error-message red-text " v-if="!$v.name.minLength">
-                                                {{ $t('errors.min-length', {minLength: 3}) }}
-                                            </p>
-                                        </div>
+            <div class="col s12 l5">
+                <form class="form" id="add-canal" @submit.prevent="updateCanal">
+                    <generic-form>
+                        <div slot="form-fields">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input
+                                            id="name"
+                                            type="text"
+                                            required
+                                            minlength="3"
+                                            class="validate valid"
+                                            v-model="name"
+                                            @input="$v.name.$touch()">
+                                    <label for="name" class="active">{{ $t('canal.name') }}</label>
+                                    <div v-if="$v.name.$dirty">
+                                        <p class="error-message red-text " v-if="!$v.name.required">
+                                            {{ $t('errors.required') }}
+                                        </p>
+                                        <p class="error-message red-text " v-if="!$v.name.minLength">
+                                            {{ $t('errors.min-length', {minLength: 3}) }}
+                                        </p>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
                                         <textarea
                                                 id="description"
                                                 class="validate valid"
@@ -36,93 +36,93 @@
                                                 v-model="description"
                                                 @input="$v.description.$touch()">
                                         </textarea>
-                                        <label for="description" class="active">{{ $t('canal.description') }}</label>
-                                        <div v-if="$v.description.$dirty">
-                                            <p class="error-message red-text " v-if="!$v.description.required">
-                                                {{ $t('errors.required') }}
-                                            </p>
-                                            <p class="error-message red-text " v-if="!$v.description.minLength">
-                                                {{ $t('errors.min-length', {minLength: 5}) }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row" v-for="(field, index) in fields" :key="field">
-                                    <div class="input-field col s12">
-                                        <input
-                                                v-bind:id="field.name"
-                                                type="text"
-                                                class="validate valid"
-                                                minlength="3"
-                                                required
-                                                v-model="fields[index].nom">
-                                        <label  v-bind:for="field.name" class="active">
-                                            {{ $t('canal.fieldX', {num: index + 1}) }}
-                                        </label>
-                                        <i @click="deleteField(index)" class="fa fa-times delete-field red-text text-darken-5"></i>
+                                    <label for="description" class="active">{{ $t('canal.description') }}</label>
+                                    <div v-if="$v.description.$dirty">
+                                        <p class="error-message red-text " v-if="!$v.description.required">
+                                            {{ $t('errors.required') }}
+                                        </p>
+                                        <p class="error-message red-text " v-if="!$v.description.minLength">
+                                            {{ $t('errors.min-length', {minLength: 5}) }}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-                            <div slot="form-controls">
-                                <div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div v-if="fields.length < 8" @click="addField" class="btn waves-effect waves-light submit">
-                                                <i style="font-size: .9rem" class="fa fa-plus"></i> {{ $t('canal.fieldX', {num: ''}) }}
-                                            </div>
+                            <div class="row" v-for="(field, index) in fields" :key="field">
+                                <div class="input-field col s12">
+                                    <input
+                                            v-bind:id="field.name"
+                                            type="text"
+                                            class="validate valid"
+                                            minlength="3"
+                                            required
+                                            v-model="fields[index].nom">
+                                    <label  v-bind:for="field.name" class="active">
+                                        {{ $t('canal.fieldX', {num: index + 1}) }}
+                                    </label>
+                                    <i @click="deleteField(index)" class="fa fa-times delete-field red-text text-darken-5"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div slot="form-controls">
+                            <div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div v-if="fields.length < 8" @click="addField" class="btn waves-effect waves-light submit">
+                                            <i style="font-size: .9rem" class="fa fa-plus"></i> {{ $t('canal.fieldX', {num: ''}) }}
                                         </div>
-                                        <div class="col right">
-                                            <button type="submit" class="button waves-effect waves-light btn">
-                                                {{ $t('canal.update') }}
-                                                <i class="material-icons right">send</i>
-                                            </button>
-                                        </div>
+                                    </div>
+                                    <div class="col right">
+                                        <button type="submit" class="button waves-effect waves-light btn">
+                                            {{ $t('canal.update') }}
+                                            <i class="material-icons right">send</i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                        </generic-form>
-                    </form>
-                </div>
-                <div class="col l7 s12">
-                    <div class="help">
-                        <h4>{{ $t('help') }}</h4>
-                        <h5>{{ $t('channel') }}</h5>
-                        <p>{{ $t('channel-des') }}</p>
-                        <h5>{{ $t('channel-settings') }}</h5>
-                        <ul class="help-list">
-                            <li>
-                                <p><strong>{{ $t('settings.name') }}</strong>{{ $t('settings.name-det') }}</p>
-                            </li>
-                            <li>
-                                <p><strong>{{ $t('settings.description') }}</strong>{{ $t('settings.description-det') }}</p>
-                            </li>
-                            <li>
-                                <p><strong>{{ $t('settings.field#') }}</strong>{{ $t('settings.field#-det') }}</p>
-                            </li>
-                            <li>
-                                <strong>{{ $t('settings.location') }}</strong>
-                                <ul>
-                                    <li>
-                                        <p><strong>{{ $t('settings.latitude') }}</strong>
-                                            {{ $t('settings.latitude-det') }}
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p><strong>{{ $t('settings.longitude') }}</strong>
-                                            {{ $t('settings.longitude-det') }}
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p><strong>{{ $t('settings.evaluation') }}</strong>
-                                            {{ $t('settings.evaluation-det') }}
-                                        </p>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                        </div>
+                    </generic-form>
+                </form>
+            </div>
+            <div class="col l7 s12">
+                <div class="help">
+                    <h4>{{ $t('help') }}</h4>
+                    <h5>{{ $t('channel') }}</h5>
+                    <p>{{ $t('channel-des') }}</p>
+                    <h5>{{ $t('channel-settings') }}</h5>
+                    <ul class="help-list">
+                        <li>
+                            <p><strong>{{ $t('settings.name') }}</strong>{{ $t('settings.name-det') }}</p>
+                        </li>
+                        <li>
+                            <p><strong>{{ $t('settings.description') }}</strong>{{ $t('settings.description-det') }}</p>
+                        </li>
+                        <li>
+                            <p><strong>{{ $t('settings.field#') }}</strong>{{ $t('settings.field#-det') }}</p>
+                        </li>
+                        <li>
+                            <strong>{{ $t('settings.location') }}</strong>
+                            <ul>
+                                <li>
+                                    <p><strong>{{ $t('settings.latitude') }}</strong>
+                                        {{ $t('settings.latitude-det') }}
+                                    </p>
+                                </li>
+                                <li>
+                                    <p><strong>{{ $t('settings.longitude') }}</strong>
+                                        {{ $t('settings.longitude-det') }}
+                                    </p>
+                                </li>
+                                <li>
+                                    <p><strong>{{ $t('settings.evaluation') }}</strong>
+                                        {{ $t('settings.evaluation-det') }}
+                                    </p>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </div>
     </div>
 </template>
 
@@ -146,14 +146,16 @@
             }
         },
         computed:{
-            ...mapGetters(['getFields', 'getCanal'])
+            ...mapState['userId'],
+            ...mapGetters(['getFields', 'getCanal', 'getUserId'])
+
         },
         watch: {
             updated(newValue, oldValue) {
                 if (newValue != oldValue ) {
                     let canalId = this.$route.params.id;
                     let payloadA = {
-                        'link': '/canal-service/canals/' + localStorage.getItem('userId'),
+                        'link': '/canal-service/Mycanal/' + canalId,
                         'mutation': 'setCanal',
                         'all': false
                     };
@@ -161,7 +163,7 @@
                     let payloadB = {
                         'link': '/canal-service/canals/' + canalId + '/fields',
                         'mutation': 'setFields',
-                        'all': true
+                        'all': false
                     };
                     this.$store.dispatch('getRequest', payloadB);
 
@@ -203,7 +205,7 @@
         created(){
             this.getFields.forEach( f => {
                 this.fields.push({
-                    id: f.id,
+                    id: f.fieldId,
                     nom: f.nom
                 })
             });

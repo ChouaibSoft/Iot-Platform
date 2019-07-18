@@ -6,12 +6,12 @@
                     <i class="material-icons">filter_drama</i>{{ $t('canal.fieldX', {num: ''}) }} : <span class="teal-text lighten-1">{{ this.nameField }}</span>
                     <ul class="right">
                         <li>
-                            <label for="import-file">
+                            <label :for="nameField">
                                 <a class="btn-floating  grey darken-1 tooltipped"
                                    data-position="bottm" :data-tooltip="this.$t('tooltips.import')">
                                     <i  class="material-icons">attach_file</i></a>
                             </label>
-                            <input id="import-file" type="file" accept=".csv" @change="processFile($event)">
+                            <input :id="nameField" type="file" accept=".csv" @change="processFile($event)">
                         </li>
                         <li><a class="btn-floating publish tooltipped"
                                data-position="bottom" :data-tooltip="this.$t('tooltips.export')"
@@ -185,13 +185,14 @@
 
                     let formData = new FormData();
                     let apiUrl  =  this.getApiUrl;
+                    let token = localStorage.getItem('userToken');
 
                     formData.append('file', this.file);
 
                     axios.post( apiUrl +  '/canal-service/import-data/' + this.idField, formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
-                            'Authorization': 'Bearer ' + localStorage.getItem('userToken'),
+                            'Authorization': 'Bearer ' + token,
                         }
 
                     }).then(function () {

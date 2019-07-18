@@ -4,8 +4,8 @@
             <div class="col s12">
             </div>
             <div v-if="!(this.getFields === null) ">
-                <div v-for="field in getFields" :key="field" class="col s12 l6">
-                    <field-chart  v-bind:nameField="field.nom" v-bind:idField="field.id"></field-chart>
+                <div v-for="(field, index) in getFields" :key="field.fieldId" class="col s12 l6">
+                    <field-chart  v-bind:nameField="field.nom" v-bind:idField="field.fieldId"></field-chart>
                 </div>
             </div>
             <div  v-else class="col s12">

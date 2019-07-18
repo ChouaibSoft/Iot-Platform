@@ -94,8 +94,8 @@
                                                         <div class="package-price">
                                                             <div class="package-arrow"></div>
                                                             <div class="price">
-                                                                <sup>DA </sup>
-                                                                <h2> 1000 </h2>
+                                                                <sup>$ </sup>
+                                                                <h2> 0.00 </h2>
                                                             </div>
                                                             <div class="term">
                                                                 <sup>.99</sup>
@@ -126,8 +126,8 @@
                                                         <div class="package-price">
                                                             <div class="package-arrow"></div>
                                                             <div class="price">
-                                                                <sup>DA</sup>
-                                                                <h2>0</h2>
+                                                                <sup>$</sup>
+                                                                <h2>199</h2>
                                                             </div>
                                                             <div class="term">
                                                                 <sup>.99</sup>
@@ -158,8 +158,8 @@
                                                         <div class="package-price">
                                                             <div class="package-arrow"></div>
                                                             <div class="price">
-                                                                <sup>DA</sup>
-                                                                <h2>0</h2>
+                                                                <sup>$</sup>
+                                                                <h2>299</h2>
                                                             </div>
                                                             <div class="term">
                                                                 <sup>.99</sup>
@@ -182,7 +182,7 @@
                                 </div>
                             </div>
                             <center>
-                                <button style="margin-top: -150px" class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.submit') }}</button>
+                                <button style="margin-top: -80px" class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.submit') }}</button>
                             </center>
                         </div>
                     </div>
@@ -282,20 +282,20 @@
         overflow: visible;
     }
     .plans h2 {
-        font-size: .8em;
+        font-size: 1.1em;
         font-weight: bold;
         display: inline;
         text-transform: uppercase;
     }
     h3 {
-        font-size: .8em;
+        font-size: 1em;
         display: inline;
         text-transform: capitalize;
     }
     em {
         font-style: normal;
         text-decoration: underline;
-        font-size: .7rem;
+        font-size: .9rem;
     }
     .plans{
         margin-left: 0;

@@ -23,7 +23,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(canal, index) in displayChannels"  :key="index" :data-url="'/dashboard/channels/' + canal.canalId +  '/view'">
+                        <tr v-for="(canal, index) in displayChannels"  :key="canal.id" :data-url="'/dashboard/channels/' + canal.canalId +  '/view'">
                             <td>{{ index + 1 }}</td>
                             <td>{{canal.nom}}</td>
                             <td>{{canal.description.length > 40 ? canal.description.substring(1, 50) + '...': canal.description }}</td>

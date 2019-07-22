@@ -5,12 +5,12 @@
                 <h2>{{ $t('main-title') }}  <span style="font-size: 1.2rem" class="grey-text">({{ getCanalsAvailable }} {{ $t('remaining') }})</span> </h2>
             </div>
             <div class="col right">
-                <p>Home > <span> Ajouter Canal</span></p>
+                <p>Home > <span> {{ $t('main-title') }}</span></p>
             </div>
         </div>
         <section class="component-section">
             <div class="row">
-                <div v-if="getCanalsAvailable > 0"  class="col s12 l5">
+                <div  class="col s12 l5">
                     <form class="form" id="add-canal" @submit.prevent="addCanal">
                         <generic-form>
                             <div slot="form-fields">
@@ -93,13 +93,7 @@
                         </generic-form>
                     </form>
                 </div>
-                <div v-else class="col s12 l5">
-                    <div  class="col s12">
-                        <div class="alert alert-info" role="alert">
-                            {{ $t('not-enough') }}
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col l7 s12">
                     <div class="help">
                         <h4>{{ $t('help') }}</h4>
@@ -175,6 +169,7 @@
                 if( this.getCanals === null){
                     return localStorage.getItem("maxChannels");
                 }else{
+                    console.log(localStorage.getItem('maxChannels'));
                     return localStorage.getItem("maxChannels") -  this.getCanals.length
                 }
             }

@@ -24,7 +24,7 @@ export const store = new Vuex.Store ({
         fields: null,
         maxChannels : null,
         maxFields: null,
-        apiURL1: "http://192.168.8.103:8082"
+        apiURL1: "http://be25f549.ngrok.io"
     },
     getters: getters,
     mutations: mutations,

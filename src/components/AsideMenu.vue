@@ -39,7 +39,7 @@
             <li class="item-header">
                 <a href="#!" class="group-name has-arrow">
                     <i class="fa fa-charging-station"></i>
-                    <span class="nav-text">{{ $t('Trigger') }}</span>
+                    <span class="nav-text">{{ $t('Action') }}</span>
                 </a>
                 <div>
                     <ul class="items-group">
@@ -61,7 +61,7 @@
             <li class="item-header">
                 <a href="#!" class="group-name has-arrow">
                     <i class="fa fa-react"></i>
-                    <span class="nav-text">{{ $t('React') }}</span>
+                    <span class="nav-text">{{ $t('Trigger') }}</span>
                 </a>
                 <div>
                     <ul class="items-group">

@@ -8,14 +8,13 @@
     "password": "Password",
     "email": "Email",
     "conf-password": "Password Confirmation",
-    "success": "Congratulation, please check your inbox to activate your account!",
+    "success": "Congratulation!",
     "error": "Registration Failed !",
     "forgot-password": "Forgot Password?",
     "submit": "Submit",
     "cancel": "Cancel",
     "account-not-activated": "Your account is not activated, please check your inbox to confirm your email.",
     "login-failed": "email or password wrong",
-    "payment": "Choose your Subscription",
     "reset-password": {
       "email": "please check your inbox, to continue!",
       "email-err": "an error occurred",
@@ -52,13 +51,13 @@
     "delete-msg": "Are you sure to delete this channel"
   },
   "trigger": {
-    "name": "Name of The Trigger",
+    "name": "Name of The Action",
     "commandX": "Command {num}",
     "add": "Add",
     "update": "Update",
-    "add-success": "Trigger added successfully.",
-    "add-error": "Trigger add operation failed !",
-    "delete-msg": "Are you sure to delete this Trigger"
+    "add-success": "Action added successfully.",
+    "add-error": "Action add operation failed !",
+    "delete-msg": "Are you sure to delete this Action"
   },
   "commande": {
     "add-success": "Commande added successfully. ",
@@ -66,11 +65,11 @@
 
   },
   "react": {
-    "name": "Name of The React",
+    "name": "Name of The Trigger",
     "channel": "Log to Canal",
     "channel-select": "Choose a Channel",
     "field": "Field of canal",
-    "condition": "Condition Of React",
+    "condition": "Condition Of the Trigger",
     "condition-select": "Choose a  condition",
     "value": "Value of the condition",
     "action" : "Action",
@@ -78,12 +77,12 @@
     "provider": "Provider",
     "add": "Add",
     "update": "Update",
-    "add-success": "React added successfully.",
-    "add-error": "React add operation failed !",
+    "add-success": "Trigger added successfully.",
+    "add-error": "Trigger add operation failed !",
     "is-greater-than": "is greater than",
     "is-less-than": "is less than",
     "is-equal-to": "is equal to",
-    "delete-msg": "Are you sure to delete this React"
+    "delete-msg": "Are you sure to delete this Trigger"
   },
 
   "tooltips": {
@@ -106,13 +105,13 @@
     "api-key": "Channel API Keys",
     "settings": "Channel Settings",
     "import-export": "Import/Export Data",
-    "new-trigger": "New Trigger",
-    "my-triggers": "My Triggers",
-    "new-react": "New React",
-    "my-reacts": "My Reacts",
-    "detail-trigger": "Detail Trigger",
-    "trigger-overview": "Trigger Overview",
-    "trigger-settings": "Trigger Settings",
+    "new-trigger": "New Action",
+    "my-triggers": "My Actions",
+    "new-react": "New Trigger",
+    "my-reacts": "My Triggers",
+    "detail-trigger": "Detail Action",
+    "trigger-overview": "Action Overview",
+    "trigger-settings": "Action Settings",
     "confirm-account": "Account Confirmation",
     "profile": "Profile"
   }

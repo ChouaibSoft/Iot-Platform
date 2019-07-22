@@ -8,12 +8,11 @@
     "email": "Email",
     "password": "mot de passe",
     "conf-password": "Confirmation",
-    "success": "Félicitation!, veuillez vérifier votre boîte de réception pour activer votre compte",
+    "success": "Félicitation !",
     "error": "échec d'inscription !",
     "forgot-password": "Mot de passe oublié?",
     "submit": "Submit",
     "cancel": "Annuler",
-    "payment": "Choisir votre Abonnement",
     "account-not-activated": "Votre compte n'est pas activé, veuillez vérifier votre boîte de réception pour confirmer votre email.",
     "login-failed": "email ou mot de passe incorrect",
     "password-reset": "veuillez vérifier votre boîte de réception pour continuer!",
@@ -59,17 +58,17 @@
 
   },
   "trigger": {
-    "name": "Nom du Trigger",
+    "name": "Nom de l'Action",
     "commandX": "Commande {num}",
     "add": "Ajouter",
     "update": "Modifier",
-    "add-success": "Trigger ajouté avec succès.",
-    "add-error": "L'opération d'ajout de Trigger a échoué !",
-    "delete-msg": "Êtes-vous sûr de supprimer ce Trigger"
+    "add-success": "Action ajouté avec succès.",
+    "add-error": "L'opération d'ajout de l'Action a échoué !",
+    "delete-msg": "Êtes-vous sûr de supprimer cette Action"
 
   },
   "react": {
-    "name": "Nom du React",
+    "name": "Nom du Trigger",
     "channel": "Log To Canal",
     "channel-select": "choisir un Canal",
     "field": "Les champs de canal",
@@ -81,12 +80,12 @@
     "provider": "Provider",
     "add": "Ajouter",
     "update": "Modifier",
-    "add-success": "React ajouté avec success",
-    "add-error": "L'opération d'ajout de React a échoué !",
+    "add-success": "Trigger ajouté avec success",
+    "add-error": "L'opération d'ajout de Trigger a échoué !",
     "is-greater-than": "est supérieur à",
     "is-less-than": "est inférieur à",
     "is-equal-to": "est égal à",
-    "delete-msg": "Êtes-vous sûr de supprimer ce React"
+    "delete-msg": "Êtes-vous sûr de supprimer ce Trigger"
   },
 
 
@@ -110,13 +109,13 @@
     "api-key": "Canal API Keys",
     "settings": "paramètres de Canal",
     "import-export": "Import/Export Données",
-    "new-trigger": "Nouveau Trigger",
-    "my-triggers": "Mes Triggers",
-    "new-react": "Nouveau React",
-    "my-reacts": "Mes reacts",
-    "detail-trigger": "Detail de Trigger",
-    "trigger-overview": "Trigger Overview",
-    "trigger-settings": "Paramètres de Trigger",
+    "new-trigger": "Nouveau Action",
+    "my-triggers": "Mes Actions",
+    "new-react": "Nouveau Trigger",
+    "my-reacts": "Mes Triggers",
+    "detail-trigger": "Detail de l'action",
+    "trigger-overview": "Action Overview",
+    "trigger-settings": "Paramètres de Action",
     "confirm-account": "Confirmation du Compte",
     "profile": "Profile"
   }

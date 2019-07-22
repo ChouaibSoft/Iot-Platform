@@ -5,10 +5,10 @@
                 <h2>{{ $t('main-title') }}</h2>
             </div>
             <div class="col right">
-                <p>Home > <span></span></p>
+                <p>Home > <span>{{ $t('main-title') }}</span></p>
             </div>
         </div>
-        <section class="component-section">
+        <section  class="component-section">
             <div v-if="!(this.getCanals === null) " class="row">
                 <div class="col s12 l8">
                     <table class = "striped bordered">
@@ -73,6 +73,8 @@
             </div>
         </section>
     </div>
+    </div>
+
 </template>
 
 <script>
@@ -84,7 +86,7 @@
                 CreatedDate: '',
                 page: 1,
                 perPage: 3,
-                pages: [],
+                pages: []
             }
         },
         computed: {
@@ -110,8 +112,10 @@
                         if(this.getCanals.length === 0){
                             this.$store.state.canals = null;
                         }
+                        this.flash.destroyAll();
                         this.flash(this.$t('canal.delete-success'), 'success');
                     }).catch(() => {
+                        this.flash.destroyAll();
                         this.flash(this.$t('canal.delete-error'), 'error');
                     })
                 }
@@ -143,6 +147,9 @@
                 'all': false
             };
             this.$store.dispatch('getRequest', payload);
+            setTimeout(() => {
+                this.loading = false;
+            },1500);
         },
         mounted(){
             $("tr").find("td").click(function(){
@@ -187,3 +194,12 @@
     }
     }
 </i18n>
+<style scoped>
+    .progress{
+        position: relative;
+        top: -65px;
+        width: 109%;
+        left: -46px;
+
+    }
+</style>

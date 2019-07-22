@@ -9,7 +9,7 @@
             </div>
         </div>
         <section class="component-section">
-            <div class="row">
+            <div v-if="getCanalsAvailable > 0" class="row">
                 <div  class="col s12 l5">
                     <form class="form" id="add-canal" @submit.prevent="addCanal">
                         <generic-form>
@@ -82,7 +82,7 @@
                                             </div>
                                         </div>
                                         <div class="col right">
-                                            <button type="submit" class="button waves-effect waves-light btn">
+                                            <button :disabled="look === true" type="submit" class="button waves-effect waves-light btn">
                                                 {{ $t('canal.add') }}
                                                 <i class="material-icons right">send</i>
                                             </button>
@@ -134,6 +134,13 @@
                     </div>
                 </div>
             </div>
+            <div v-else class="row">
+                <div  class="col s12">
+                    <div class="alert alert-info" role="alert">
+                        {{ $t('you-cant-add') }}
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
 </template>
@@ -161,6 +168,7 @@
                     },
                 ],
                 iduser:'',
+                look: false
             }
         },
         computed:{
@@ -177,6 +185,7 @@
         methods: {
             ...mapActions(['postRequest']),
             addCanal: function () {
+                this.look = true;
                 let postData = {
                     nom: this.name,
                     description: this.description,
@@ -253,6 +262,7 @@
     "channel-settings": "Channel Settings",
     "not-enough": "you can't add any more a channel",
     "remaining": "Remaining",
+    "you-cant-add": "You can't add channel",
     "settings": {
         "name": "Channel Name : ",
         "name-det": "Enter a unique name for the Iot-Platform ESI-SBA channel.",
@@ -276,6 +286,7 @@
     "channel-des": "Les canaux stockent toutes les données collectées par une application Iot-Platform ESI-SBA. Chaque canal comprend huit champs pouvant contenir tout type de données, ainsi que trois champs pour les données de localisation et un pour les données d'état. , vous pouvez utiliser les applications ThingSpeak pour l’analyser et le visualiser. ",
     "channel-settings": "Paramètres de Canal",
     "remaining": "Restantes",
+    "you-cant-add": "Vous ne pouvez pas ajouter de canal",
     "settings": {
     "name": "Nom du Canal : ",
     "name-det": "Enter a unique name for the Iot-Platform ESI-SBA channel.",

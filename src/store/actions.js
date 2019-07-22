@@ -46,6 +46,7 @@ const actions = {
             //     commit(payload.mutation, request.data);
             // }
             if (payload.all){
+                this.$store.state.loading = true;
                 commit(payload.mutation, request.data.content);
             }else{
                 if(request.data.length === 0){

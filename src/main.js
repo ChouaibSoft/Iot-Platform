@@ -26,7 +26,7 @@ require('@/assets/css/base.css');
 Vue.use(VueFlashMessage, {
     mixin: true,
     messageOptions: {
-        timeout: 3000,
+        timeout: 6000,
         important: true,
         pauseOnInteract: true
     }

@@ -44,7 +44,6 @@
                 </div>
             </nav>
         </div>
-
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
             <li><a href="#!">one</a></li>

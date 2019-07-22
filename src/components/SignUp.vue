@@ -182,7 +182,7 @@
                                 </div>
                             </div>
                             <center>
-                                <button style="margin-top: -80px" class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.submit') }}</button>
+                                <button style="margin-top: -80px" :disabled="look === true" class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.submit') }}</button>
                             </center>
                         </div>
                     </div>
@@ -214,6 +214,7 @@
                 opt:'Standard',
                 selected: 1,
                 step:1,
+                look :false
             }
         },
         created() {
@@ -237,6 +238,7 @@
                 this.step++;
             },
             register(){
+                this.look = true;
                 var postData = {
                     username: this.username,
                     email: this.email,

@@ -118,7 +118,6 @@
                                             <p v-for="triger in getTriggers" :key="triger.id">
                                                 <label>
                                                     <input :value="triger.id" name="group2" v-model="trigeID" type="radio" class="with-gap" />
-
                                                     <span>{{triger.nom}}</span>
                                                 </label>
                                             </p>
@@ -277,7 +276,7 @@
                     'link': '/trigger-service/react'};
                 this.postRequest(payload).then(() => {
                     this.flash(this.$t('react.add-success'), 'success');
-                    this.$router.push('/dashboard/reacts');
+                    this.$router.push('/dashboard/triggers');
                     // this.twilio();
                 }).catch(() => {
                     this.flash(this.$t('react.add-error'), 'error');

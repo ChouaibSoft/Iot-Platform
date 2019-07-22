@@ -13,6 +13,7 @@
     "forgot-password": "Mot de passe oublié?",
     "submit": "Submit",
     "cancel": "Annuler",
+    "payment": "Choisir un Plan",
     "account-not-activated": "Votre compte n'est pas activé, veuillez vérifier votre boîte de réception pour confirmer votre email.",
     "login-failed": "email ou mot de passe incorrect",
     "password-reset": "veuillez vérifier votre boîte de réception pour continuer!",
@@ -89,8 +90,14 @@
     "is-equal-to": "est égal à",
     "delete-msg": "Êtes-vous sûr de supprimer ce Trigger"
   },
-
-
+  "time-control": {
+    "name": "Nom de Time Control",
+    "date": "date",
+    "add": "Ajouter",
+    "update": "Modifier",
+    "add-success": "Time Control ajouté avec succès.",
+    "add-error": "L'opération d'ajout de Time Control a échoué !"
+  },
   "tooltips": {
     "add-channel": "nouveau canal",
     "notification": "notifications",
@@ -119,6 +126,7 @@
     "trigger-overview": "Action Overview",
     "trigger-settings": "Paramètres de Action",
     "confirm-account": "Confirmation du Compte",
-    "profile": "Profile"
+    "profile": "Profile",
+    "new-timeControl": "Nouveau Time Control"
   }
 }

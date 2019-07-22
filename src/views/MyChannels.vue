@@ -145,9 +145,10 @@
                 'all': false
             };
             this.$store.dispatch('getRequest', payload);
-            setTimeout(() => {
-                this.loading = false;
-            },1500);
+            console.log("user id " + localStorage.getItem("userId"))
+            console.log("user token " + localStorage.getItem("userToken"))
+
+
         },
         mounted(){
             $("tr").find("td").click(function(){

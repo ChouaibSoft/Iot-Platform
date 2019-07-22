@@ -138,7 +138,7 @@
                 };
                 this.postRequest(payload).then(() => {
                     this.flash(this.$t('trigger.add-success'), 'success');
-                    this.$router.push('/dashboard/triggers');
+                    this.$router.push('/dashboard/actions');
                 }).catch(() => {
                     this.flash(this.$t('trigger.add-error'), 'error');
                 })

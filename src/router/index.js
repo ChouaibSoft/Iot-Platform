@@ -201,6 +201,24 @@ const router = new Router({
                     ]
                 },
                 {
+                    path:"timeControl/new",
+                    name :"add-timeControl",
+                    meta:{
+                        protected: true,
+                        title: i18n.t('page-title.new-timeControl')
+                    }  ,
+                    component: ()=> import("@/views/AddTimeControl")
+                },
+                // {
+                //     path:"timeControls",
+                //     name :"my-timeControls",
+                //     meta:{
+                //         protected: true,
+                //         title: i18n.t('page-title.my-timeControl')
+                //     }  ,
+                //     component: ()=> import("@/views/MyTimeControl")
+                // },
+                {
                     path: "compte",
                     name: "compte",
                     meta: {

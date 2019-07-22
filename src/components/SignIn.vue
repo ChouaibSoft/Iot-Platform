@@ -78,7 +78,7 @@
                     <div slot="form-controls">
                         <center>
                             <a @click="forgetPassword= !forgetPassword" class="btn waves-effect waves-light" name="action">{{ $t('auth.cancel') }}</a>
-                            <button style="margin-left: 30px" class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.submit') }}</button>
+                            <button style="margin-left: 30px"  :disabled="look === true" class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.submit') }}</button>
                         </center>
                     </div>
                 </generic-form>
@@ -105,7 +105,8 @@
                 email: '',
                 emailReset: '',
                 password: '',
-                forgetPassword: false
+                forgetPassword: false,
+                look: false
             }
         },
         computed: {
@@ -114,9 +115,11 @@
         methods: {
             ...mapActions([
                 'switchProgress',
-                'postRequest'
+                'postRequest',
+                'loginProcedure'
             ]),
             login() {
+                this.look = true;
                 var postData = {
                     email: this.email,
                     password: this.password

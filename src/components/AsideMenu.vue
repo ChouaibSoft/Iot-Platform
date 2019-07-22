@@ -80,6 +80,22 @@
                     </ul>
                 </div>
             </li>
+            <li class="item-header">
+                <a href="#!" class="group-name has-arrow">
+                    <i class="fa fa-calendar-alt"></i>
+                    <span class="nav-text">{{ $t('TimeControl') }}</span>
+                </a>
+                <div>
+                    <ul class="items-group">
+                        <li>
+                            <router-link :to="{ name: 'add-timeControl'}">
+                                <i class="fa fa-dot-circle"></i>
+                                <span>{{ $t('page-title.new-timeControl') }}</span>
+                            </router-link>
+                        </li>
+                    </ul>
+                </div>
+            </li>
             <li class="small-cap">
                 <span>Information</span>
             </li>

@@ -15,6 +15,7 @@
     "cancel": "Cancel",
     "account-not-activated": "Your account is not activated, please check your inbox to confirm your email.",
     "login-failed": "email or password wrong",
+    "payment": "Select a Plan",
     "reset-password": {
       "email": "please check your inbox, to continue!",
       "email-err": "an error occurred",
@@ -86,7 +87,19 @@
     "is-equal-to": "is equal to",
     "delete-msg": "Are you sure to delete this Trigger"
   },
-
+  "time-control": {
+    "name": "Name of the Time Control",
+    "date": "date",
+    "add": "Add",
+    "update": "Update",
+    "add-success": "Time Control added successfully.",
+    "update-success": "Time Control updated successfully .",
+    "add-error": "add Time Control operation failed !",
+    "update-error": "Update Time Control operation failed!",
+    "delete-success": "Time Control successfully deleted",
+    "delete-error": "Channel delete operation failed",
+    "delete-msg": "Are you sure to delete this Time Control"
+  },
   "tooltips": {
     "add-channel": "new channel",
     "notification": "notifications",
@@ -115,6 +128,7 @@
     "trigger-overview": "Action Overview",
     "trigger-settings": "Action Settings",
     "confirm-account": "Account Confirmation",
-    "profile": "Profile"
+    "profile": "Profile",
+    "new-timeControl": "New Time Control"
   }
 }

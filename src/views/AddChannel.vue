@@ -93,7 +93,6 @@
                         </generic-form>
                     </form>
                 </div>
-
                 <div class="col l7 s12">
                     <div class="help">
                         <h4>{{ $t('help') }}</h4>

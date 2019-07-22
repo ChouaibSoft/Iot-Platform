@@ -72,7 +72,7 @@
                                         </div>
                                     </div>
                                     <div class="col right">
-                                        <button type="submit" class="button waves-effect waves-light btn">
+                                        <button type="submit" :disabled="look === true" class="button waves-effect waves-light btn">
                                             {{ $t('canal.update') }}
                                             <i class="material-icons right">send</i>
                                         </button>
@@ -142,7 +142,8 @@
                 description: this.$store.getters.getCanal.description,
                 fields: [],
                 field: {},
-                updated: false
+                updated: false,
+                look: false
             }
         },
         computed:{
@@ -174,6 +175,7 @@
         methods: {
             ...mapActions(['postRequest']),
             updateCanal: function () {
+                this.look = true;
                 var postData = {
                     nom: this.name,
                     description: this.description,
@@ -186,11 +188,11 @@
                 };
                 this.postRequest(payload).then(() => {
                     this.flash(this.$t('canal.update-success'), 'success');
+                    this.look = false;
                 }).catch(() => {
                     this.flash(this.$t('canal.update-error'), 'error');
                 });
                 this.updated = true;
-
             },
             addField: function () {
                 this.fields.push({

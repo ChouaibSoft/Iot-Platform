@@ -1,22 +1,6 @@
 <template>
     <div>
         <credit/>
-        <br><br>
-        <h5>User Stats</h5>
-        <div id="field-chart" class="field-chart">
-
-            <ul class="collapsible">
-                <li>
-
-                    <div class="collapsible-body"
-                         style="display: block; position:relative; height: 290px !important; overflow: hidden">
-                        <div id="mychart" width="100%" height="100%"
-                             style="display: block; position: absolute; width: 100%; height: 300px !important; top:0; left:0;"></div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
     </div>
 </template>
 

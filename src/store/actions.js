@@ -38,13 +38,6 @@ const actions = {
                 'Authorization': 'Bearer ' + localStorage.getItem('userToken')
             }
         }).then(request => {
-            // console.log("trigger" +  JSON.stringify(request.data))
-            // if( request.data.length === 0){
-            //     commit(payload.mutation, null);
-            //
-            // }else{
-            //     commit(payload.mutation, request.data);
-            // }
             if (payload.all){
                 this.$store.state.loading = true;
                 commit(payload.mutation, request.data.content);
@@ -59,6 +52,15 @@ const actions = {
         }).catch(error => {
             commit(payload.mutation, null);
             // router.push("/dashboard");
+        })
+    },
+    getRequestLite({state},  payload){
+        var headers = {
+            'Content-Type': 'application/json;charset=UTF-8',
+            'Authorization': 'Bearer ' + localStorage.getItem('userToken')
+        };
+        return axios.get(state.apiURL1 + payload.link, {
+            headers
         })
     },
     changeLocale({commit, state}, lang){

@@ -5,7 +5,7 @@
                 <h2>{{ $t('main-title') }}</h2>
             </div>
             <div class="col right">
-                <p>Home > <span> My Channels</span></p>
+                <p>Home > <span> {{ $t('main-title') }}</span></p>
             </div>
 
         </div>
@@ -22,7 +22,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(React, index) in displayReacts" :key="index" :data-url="'/dashboard/Reacts/' + React.id">
+                        <tr v-for="(React, index) in displayReacts" :key="React.id" :data-url="'/dashboard/Reacts/' + React.id">
                             <td>{{index + 1}}</td>
                             <td>{{React.nom}}</td>
                             <td>30/04/2019</td>
@@ -149,29 +149,29 @@
 <i18n>
     {
     "en": {
-    "main-title": "My Reacts",
-    "no-React": "No React to display",
-    "add-React": "New React",
+    "main-title": "My Triggers",
+    "no-React": "No Trigger to display",
+    "add-React": "New Trigger",
     "help": "Help",
-    "text": "React works with ThingHTTP, ThingTweet, and MATLAB Analysis apps to perform actions when channel data meets a certain condition. For example, you can have a mobile app report your latitude and longitude to a ThingSpeak channel. When your position is within a certain distance of your house, have ThingHTTP turn on your living room lights <br>To create a new reaction, click <strong>New React</strong>.",
+    "text": "Trigger works with ThingHTTP, ThingTweet, and MATLAB Analysis apps to perform actions when channel data meets a certain condition. For example, you can have a mobile app report your latitude and longitude to a ThingSpeak channel. When your position is within a certain distance of your house, have ThingHTTP turn on your living room lights <br>To create a new reaction, click <strong>New React</strong>.",
     "table": {
     "id": "#",
     "name": "Name",
-    "created": "Created Date",
-    "actions": "enable/disable"
+    "created": "Created",
+    "actions": "Actions"
     }
     },
     "fr": {
-    "main-title": "Mes Reacts",
-    "no-React": "Aucun React à Afficher",
-    "add-React": "Nouveau React",
+    "main-title": "Mes Triggers",
+    "no-React": "Aucun Trigger à Afficher",
+    "add-React": "Nouveau Trigger",
     "help": "Aide",
-    "text": "React fonctionne avec les applications ThingHTTP, ThingTweet et MATLAB Analysis pour effectuer des actions lorsque les données de canal remplissent certaines conditions. Par exemple, vous pouvez demander à une application mobile d'indiquer votre latitude et votre longitude à un canal ThingSpeak. Lorsque votre position est à une certaine distance de votre maison, demandez à ThingHTTP d’allumer les lumières de votre salon. <br>Pour créer une nouvelle réaction, cliquez sur <strong> Nouveau React </strong>.",
+    "text": "Trigger fonctionne avec les applications ThingHTTP, ThingTweet et MATLAB Analysis pour effectuer des actions lorsque les données de canal remplissent certaines conditions. Par exemple, vous pouvez demander à une application mobile d'indiquer votre latitude et votre longitude à un canal ThingSpeak. Lorsque votre position est à une certaine distance de votre maison, demandez à ThingHTTP d’allumer les lumières de votre salon. <br>Pour créer une nouvelle réaction, cliquez sur <strong> Nouveau React </strong>.",
     "table": {
     "id": "#",
     "name": "Nom",
-    "created": "Date  de Création",
-    "actions": "activer/disactiver"
+    "created": "Créé",
+    "actions": "Actions"
     }
     }
     }

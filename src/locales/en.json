@@ -57,7 +57,9 @@
     "update": "Update",
     "add-success": "Action added successfully.",
     "add-error": "Action add operation failed !",
-    "delete-msg": "Are you sure to delete this Action"
+    "delete-msg": "Are you sure to delete this Action",
+    "delete-success": "Action successfully deleted",
+    "delete-error": "Action delete operation failed"
   },
   "commande": {
     "add-success": "Commande added successfully. ",

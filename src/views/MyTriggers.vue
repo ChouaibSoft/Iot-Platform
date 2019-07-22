@@ -5,7 +5,7 @@
                 <h2>{{ $t('main-title') }}</h2>
             </div>
             <div class="col right">
-                <p>Home > <span></span></p>
+                <p>Home > <span>{{ $t('main-title') }}</span></p>
             </div>
 
         </div>
@@ -22,16 +22,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(trigger, index) in displayTriggers" :key="index" :data-url="'/dashboard/triggers/' + trigger.id">
+                            <tr v-for="(trigger, index) in displayTriggers" :key="trigger.id" :data-url="'/dashboard/actions/' + trigger.id + '/overview'">
                                 <td>{{index + 1}}</td>
                                 <td>{{trigger.nom}}</td>
                                 <td>30/04/2019</td>
-                                <td class="action not-allowed" width="15%">
+                                <td class="action not-allowed" width="10%">
                                     <router-link :to="{ name: 'trigger-overview', params: { id: trigger.id}}">
-                                        <i class="fa fa-chart-bar"></i>
+                                        <i class="fa fa-plus"></i>
                                     </router-link>
-                                    <a  class="waves-effect waves-light modal-trigger" href="#modal1">
-                                        <i class="material-icons prefix">settings</i>
+                                    <a href="#" @click="deleteTrigger(trigger.id, index)">
+                                        <i class="material-icons prefix red-text lighten-2">delete</i>
                                     </a>
                                 </td>
                             </tr>
@@ -63,29 +63,19 @@
                 </div>
             </div>
         </section>
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal modal-fixed-footer">
-            <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
-        </div>
 
     </div>
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import { mapGetters, mapActions } from 'vuex'
     export default {
         name: "my-triggers",
         data(){
             return{
                 CreatedDate: '',
                 page: 1,
-                perPage: 3,
+                perPage: 8,
                 pages: [],
             }
         },
@@ -96,6 +86,7 @@
             }
         },
         methods:{
+            ...mapActions(['deleteRequest']),
             getDateCreated(data){
                 return data.substring(0,10);
             },
@@ -112,6 +103,24 @@
                 let from = (page * perPage) - perPage;
                 let to = (page * perPage);
                 return  triggers.slice(from, to);
+            },
+            deleteTrigger:function (triggerID, index) {
+                var confirmR = confirm(this.$t('trigger.delete-msg'));
+                if (confirmR){
+                    var payload={
+                        'link':'/canal-service/trigers/'+ triggerID,
+                        'mutation':'setTriggers',
+                    };
+                    this.deleteRequest(payload).then(() => {
+                        this.getTriggers.splice(index, 1);
+                        if(this.getTriggers.length === 0){
+                            this.$store.state.triggers = null;
+                        }
+                        this.flash(this.$t('trigger.delete-success'), 'success');
+                    }).catch(() => {
+                        this.flash(this.$t('trigger.delete-error'), 'error');
+                    })
+                }
             },
         },
         watch: {
@@ -140,9 +149,9 @@
 <i18n>
     {
     "en": {
-    "main-title": "My Triggers",
-    "no-trigger": "No Trigger to display",
-    "add-trigger": "New Trigger",
+    "main-title": "My Actions",
+    "no-trigger": "No Action to display",
+    "add-trigger": "New Action",
     "help": "Help",
     "text": "TalkBack enables any device to act on queued commands. For example, if you have a door that is outfitted with Wi-Fi and a motion sensor, you can queue up commands to open and close the door. When the door senses someone nearby, open the door. After a specified time, close the door. If there are no more commands in the queue, the door does not open when the next person approaches.",
     "table": {
@@ -153,9 +162,9 @@
     }
     },
     "fr": {
-    "main-title": "Mes Triggers",
-    "no-trigger": "Aucun Trigger à Afficher",
-    "add-trigger": "Nouveau Trigger",
+    "main-title": "Mes Actions",
+    "no-trigger": "Aucune Action à Afficher",
+    "add-trigger": "Nouveau Action",
     "help": "Aide",
     "text": "TalkBack permet à tout appareil d'agir sur les commandes en file d'attente. Par exemple, si une porte est équipée du Wi-Fi et d'un détecteur de mouvement, vous pouvez mettre en file d'attente les commandes permettant d'ouvrir et de fermer la porte. Lorsque la porte détecte quelqu'un à proximité, ouvrez-la. Après un temps spécifié, fermez la porte. S'il n'y a plus de commandes dans la file d'attente, la porte ne s'ouvre pas à l'approche de la personne suivante. ",
     "table": {

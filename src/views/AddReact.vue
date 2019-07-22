@@ -5,7 +5,7 @@
                 <h2>{{ $t('main-title') }}</h2>
             </div>
             <div class="col right">
-                <p>Home > <span> Ajouter React</span></p>
+                <p>Home > <span> {{ $t('main-title') }}</span></p>
             </div>
         </div>
         <section class="component-section">
@@ -39,15 +39,13 @@
                                     <div class="input-field  col s12">
                                         <select  @change="getChannelFields" v-model="channelID">
                                             <option value="" disabled selected>{{$t('react.channel-select')}}</option>
-                                            <option  v-for="canal in getCanals" :value="canal.canalId">{{ canal.nom }}</option>
+                                            <option  v-for="canal in getCanals" :key="canal.id" :value="canal.canalId">{{ canal.nom }}</option>
                                         </select>
                                         <label>{{$t('react.channel')}}</label>
                                     </div>
                                 </div>
-
-
                                 <div class="row">
-                                    <p v-for="field in this.channelFields" class="col">
+                                    <p v-for="field in this.channelFields" :key="field.id" class="col">
                                         <label>
                                             <input :value="field.fieldId" name="group1" v-model="filedID" type="radio" class="with-gap" />
                                             <span>{{ field.nom }} </span>
@@ -94,10 +92,6 @@
                                         <label>{{$t('react.provider')}}</label>
                                     </div>
                                 </div>
-
-
-
-
                                 <div v-if="provider==='twilio'">
                                     <div class="row">
                                         <div class="input-field col s12">
@@ -109,8 +103,6 @@
 
                                         </div>
                                     </div>
-
-
                                     <div class="row" style="margin-bottom: 30px">
                                         <vue-tel-input v-model="phone" enabledCountryCode
                                                        :preferredCountries="['dz']"
@@ -118,13 +110,12 @@
                                     </div>
 
                                 </div>
-
                                 <div v-if="provider==='http'">
 
                                     <div class="row">
                                         <div class="input-field col s12">
 
-                                            <p v-for="triger in getTriggers" v-bind:key="triger">
+                                            <p v-for="triger in getTriggers" :key="triger.id">
                                                 <label>
                                                     <input :value="triger.id" name="group2" v-model="trigeID" type="radio" class="with-gap" />
 
@@ -142,12 +133,7 @@
 
                                         </div>
                                     </div>
-
-
                                 </div>
-
-
-
                                 <div v-if="provider==='email'">
                                     <div class="row">
                                         <div class="input-field col s12">
@@ -160,8 +146,6 @@
 
                                         </div>
                                     </div>
-
-
                                     <div class="row">
                                         <div class="input-field col s12">
 
@@ -174,16 +158,13 @@
 
                                         </div>
                                     </div>
-
                                 </div>
-
-
                             </div>
                             <div slot="form-controls">
                                 <div>
                                     <div class="row">
                                         <div class="col right">
-                                            <button type="submit" class="button waves-effect waves-light btn">
+                                            <button type="submit" :disabled="look === true"  class="button waves-effect waves-light btn">
                                                 {{ $t('react.add') }}
                                                 <i class="material-icons right">send</i>
                                             </button>
@@ -247,7 +228,10 @@
                 trigeID:'',
                 commande:'',
                 email_react:'',
-                message_email:''
+                message_email:'',
+                token: '',
+                userId: '',
+                look: false
             }
         },
         computed:{
@@ -255,14 +239,16 @@
             ...mapGetters(['getCanals','getFields', 'getUserId', 'getToken', 'getAPIUrl','getTriggers'])
         },
         created() {
+            this.token = localStorage.getItem("userToken");
+            this.userId =  localStorage.getItem("userId");
             var payload = {
-                'link': '/canal-service/canals/'+ localStorage.getItem('userId'),
+                'link': '/canal-service/canals/'+ this.userId,
                 'mutation': 'setCanals',
                 'all': false
             };
             this.$store.dispatch('getRequest', payload);
             let payloadB={
-                'link': '/trigger-service/userTriger/' +localStorage.getItem('userId') ,
+                'link': '/trigger-service/userTriger/' + this.userId,
                 'mutation': 'setTriggers',
                 'all': false
             };
@@ -271,6 +257,7 @@
         methods: {
             ...mapActions(['postRequest']),
             addReact: function () {
+                this.look = true;
                 let postData = {
                     nom: this.name,
                     condition:this.condition,
@@ -282,9 +269,8 @@
                     commande:this.commande,
                     email_react:this.email_react,
                     message_email:this.message_email,
-                    trigerId:this.trigeID
-                    ,
-                    userId: localStorage.getItem('userId')
+                    trigerId:this.trigeID,
+                    userId: this.userId
                 };
                 let payload = {
                     'data': postData,
@@ -301,15 +287,15 @@
                 // e => Get Selected Channel Id
                 if(e.target.options.selectedIndex > -1) {
                     let canalId = e.target.options[e.target.options.selectedIndex].value;
-                        this.$http.get(this.getAPIUrl + '/canal-service/canals/' + canalId + '/fields' , {
+                    this.$http.get(this.getAPIUrl + '/canal-service/canals/' + canalId + '/fields' , {
                         headers: {
                             'Content-Type': 'application/json',
-                            'Authorization': 'Bearer ' + localStorage.getItem('userToken')
+                            'Authorization': 'Bearer ' + this.token
                         }
                     }).then(request => {
                         this.channelFields = request.data;
-                        console.log("dfdfdf" + this.channelFields)
                     }).catch(error => {
+
                     })
                 }
             },
@@ -335,31 +321,31 @@
 <i18n>
     {
     "en": {
-    "main-title": "New React",
+    "main-title": "New Trigger",
     "no-channel": "No Channel to displayed",
     "add-channel": "New Channel",
     "help": "Help",
-    "react-settings": "React Settings",
+    "react-settings": "Trigger Settings",
     "settings": {
-    "name": "React Name : ",
-    "name-det": "Enter a unique name for your React.",
+    "name": "Trigger Name : ",
+    "name-det": "Enter a unique name for your Trigger.",
     "condition-type":  "<strong>Condition Type : </strong> Select a condition type corresponding with your data. A channel can hold numeric sensor data, text, strings, status updates, or geographic location information.",
     "test-frequency":  "<strong>Test Frequency : </strong> Choose whether to test your condition every time data enters the channel or on a periodic basis.",
-    "condition":  "<strong>Condition : </strong> Select a channel, a field and the condition for your React."
+    "condition":  "<strong>Condition : </strong> Select a channel, a field and the condition for your Trigger."
     }
     },
     "fr": {
-    "main-title": "Nouveau React",
+    "main-title": "Nouveau Trigger",
     "no-channel": "Aucun Canal à Afficher",
     "add-react": "Nouveau React",
     "help": "Aide",
-    "react-settings": "Paramètres de  React",
+    "react-settings": "Paramètres de  Trigger",
     "settings": {
-    "name": "Nom de  React : ",
-    "name-det": " Entrez un nom unique pour votre React.",
+    "name": "Nom de  Trigger : ",
+    "name-det": " Entrez un nom unique pour votre Trigger.",
     "condition-type":  "<strong> Type de condition: </ strong> sélectionnez un type de condition correspondant à vos données. Un canal peut contenir des données de capteur numérique, du texte, des chaînes, des mises à jour de statut ou des informations de localisation géographique.",
     "test-frequency":  "<strong> Fréquence de test: </ strong> choisissez de tester votre condition à chaque fois que des données entrent dans le canal ou de manière périodique..",
-    "condition":  "<strong> Condition </strong>: sélectionnez un canal, un champ et la condition de votre réaction."
+    "condition":  "<strong> Condition </strong>: sélectionnez un canal, un champ et la condition de votre Trigger."
     }
     }
     }

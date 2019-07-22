@@ -78,7 +78,7 @@ const router = new Router({
                     component: () => import("@/views/AddChannel")
                 },
                 {
-                    path: "triggers/new",
+                    path: "actions/new",
                     name: "new-trigger",
                     meta: {
                         protected: true,
@@ -88,7 +88,7 @@ const router = new Router({
                     component: () => import("@/views/AddTrigger")
                 },
                 {
-                    path: "triggers",
+                    path: "actions",
                     name: "my-triggers",
                     meta: {
                         protected: true,
@@ -97,7 +97,7 @@ const router = new Router({
                     component: () => import("@/views/MyTriggers")
                 },
                 {
-                    path: "react/new",
+                    path: "triggers/new",
                     name: "add-react",
                     meta: {
                         protected: true,
@@ -106,7 +106,7 @@ const router = new Router({
                     component: () => import("@/views/AddReact")
                 },
                 {
-                    path: "reacts",
+                    path: "triggers",
                     name: "my-reacts",
                     meta: {
                         protected: true,
@@ -172,7 +172,7 @@ const router = new Router({
                     ]
                 },
                 {
-                    path: "triggers/:id",
+                    path: "actions/:id",
                     name: "detail-trigger",
                     meta: {
                         protected: true,

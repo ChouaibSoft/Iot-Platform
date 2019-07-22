@@ -17,6 +17,7 @@ const mutations = {
         state.triggers = payload;
     },
     setTrigger(state, payload){
+        console.log("=====" + payload)
         state.trigger = payload;
     },
     setCommands(state, payload){
@@ -25,23 +26,22 @@ const mutations = {
 
     // React
     setReacts(state, payload){
+        console.log("im here");
+        console.log("===== " + payload)
         state.reacts = payload;
     },
     setReact(state, payload){
         state.react = payload;
     },
-    setParams(state,data)
-    {
+    setParams(state,data) {
         state.maxChannels = data.maxChannels ;
         state.maxFields = data.maxFields ;
     },
-    setMaxChannels(state,payload)
-    {
+    setMaxChannels(state,payload) {
         state.maxChannels = payload ;
-    } ,
-    setMaxFields(state,payload)
-    {
+    },
+    setMaxFields(state,payload) {
         state.maxFields = payload ;
-    } ,
+    }
 }
 export default mutations

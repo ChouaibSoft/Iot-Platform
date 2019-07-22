@@ -5,9 +5,8 @@
                 <h2>{{ $t('main-title') }}</h2>
             </div>
             <div class="col right">
-                <p>Home > <span> Ajouter Trigger</span></p>
+                <p>Home > <span> {{ $t('main-title') }}</span></p>
             </div>
-
         </div>
         <section class="component-section">
             <div class="row">
@@ -61,7 +60,7 @@
                                             </div>
                                         </div>
                                         <div class="col right">
-                                            <button type="submit" class="button waves-effect waves-light btn">
+                                            <button type="submit" :disabled="look === true" class="button waves-effect waves-light btn">
                                                 {{ $t('trigger.add') }}
                                                 <i class="material-icons right">send</i>
                                             </button>
@@ -111,6 +110,7 @@
                     },
                 ],
                 iduser:'',
+                look: false
             }
         },
         computed:{
@@ -119,6 +119,7 @@
         methods: {
             ...mapActions(['postRequest']),
             addTrigger: function () {
+                this.look = true;
                 var postData = {
                     nom: this.name,
                     userId: localStorage.getItem('userId')
@@ -174,25 +175,25 @@
 <i18n>
     {
     "en": {
-    "main-title": "New Trigger",
+    "main-title": "New Action",
     "trigger-des": "Use the TalkBack app to send new commands to any device.",
-    "trigger-settings": "Trigger Settings",
+    "trigger-settings": "Action Settings",
     "settings": {
-    "name": "Trigger Name : ",
-    "name-det": "Enter a unique name for your Trigger.",
+    "name": "Action Name : ",
+    "name-det": "Enter a unique name for your Action.",
     "command": "Commands",
-    "command-det": "<strong>Commands : </strong> Click  <strong>+ command </strong> to queue new commands to your TalkBack. You can also queue up commands using the Trigger API."
+    "command-det": "<strong>Commands : </strong> Click  <strong>+ command </strong> to queue new commands to your TalkBack. You can also queue up commands using the Action API."
     }
 
     },
     "fr": {
-    "main-title": "Nouveau Trigger",
-    "trigger-settings": "Paramètres de Trigger",
+    "main-title": "Nouveau Action",
+    "trigger-settings": "Paramètres de Action",
     "settings": {
-    "name": "Nom du Trigger : ",
-    "name-det": "Entrez un nom unique pour votre triggers.",
+    "name": "Nom du Action : ",
+    "name-det": "Entrez un nom unique pour votre Actions.",
     "command": "Commandes",
-    "command-det": "<strong>Commandes : </strong> Cliquez sur  <strong>+ commande </strong> pour ajouter une nouvelle commande pour votre trigger"
+    "command-det": "<strong>Commandes : </strong> Cliquez sur  <strong>+ commande </strong> pour ajouter une nouvelle commande pour votre Action"
     }
     }
     }

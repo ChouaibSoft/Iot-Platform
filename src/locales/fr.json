@@ -64,7 +64,9 @@
     "update": "Modifier",
     "add-success": "Action ajouté avec succès.",
     "add-error": "L'opération d'ajout de l'Action a échoué !",
-    "delete-msg": "Êtes-vous sûr de supprimer cette Action"
+    "delete-msg": "Êtes-vous sûr de supprimer cette Action",
+    "delete-success": "Action successfully deleted",
+    "delete-error": "Action delete operation failed"
 
   },
   "react": {

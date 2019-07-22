@@ -85,7 +85,7 @@
             return{
                 CreatedDate: '',
                 page: 1,
-                perPage: 3,
+                perPage: 4,
                 pages: []
             }
         },
@@ -112,10 +112,8 @@
                         if(this.getCanals.length === 0){
                             this.$store.state.canals = null;
                         }
-                        this.flash.destroyAll();
                         this.flash(this.$t('canal.delete-success'), 'success');
                     }).catch(() => {
-                        this.flash.destroyAll();
                         this.flash(this.$t('canal.delete-error'), 'error');
                     })
                 }

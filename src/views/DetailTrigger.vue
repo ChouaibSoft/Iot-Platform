@@ -5,7 +5,7 @@
                 <h2>{{ $t('main-title') }}</h2>
             </div>
             <div class="col right">
-                <p>Home > <span> My Triggers</span></p>
+                <p>Home > <span> {{ $t('main-title') }}</span></p>
             </div>
 
         </div>
@@ -13,8 +13,8 @@
             <div class="row">
                 <div class="col s12 l5">
                     <div class="Trigger-head">
-                        <p><strong>{{ $t('trigger-name') }}</strong>{{ getTrigger.nom }}</p>
-                        <p><strong>{{ $t('trigger-id') }}</strong>#{{ getTrigger.id }}</p>
+                        <p><strong>{{ $t('trigger-name') }}</strong>{{ this.trigger.nom }}</p>
+                        <p><strong>{{ $t('trigger-id') }}</strong>#{{ this.trigger.id }}</p>
                         <p><strong>{{ $t('trigger-owner')}}</strong>@chouaib</p>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                     <div class="Trigger-head ch-head-2"
                          style="border-left: 1px solid #9e9e9e; padding: 0 20px 5px 30px">
                         <p><strong class="transparent">{{ $t('trigger-key')}}</strong><span
-                                class="red  lighten-4 red-text">{{ getTrigger.apikey }}</span></p>
+                                class="red  lighten-4 red-text">{{ this.trigger.apikey }}</span></p>
                         <div>
                             <router-link to="/dashboard/Triggers/new"
                                          class="waves-effect waves-light btn delete-Trigger">
@@ -47,8 +47,8 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr v-for="(command, index) in displayCommands" v-bind:key="command"
-                                        v-bind:class="{'teal lighten-3': command.executed === true}">
+                                    <tr v-for="(command, index) in displayCommands" v-bind:key="command.id"
+                                        v-bind:class="{ 'teal lighten-4': command.executed}">
                                         <td>{{ index + 1 }}</td>
                                         <td>{{command.id}}</td>
                                         <td>{{command.valeur}}</td>
@@ -95,7 +95,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col right">
-                                                    <button v-if="this.commands.length > 0" type="submit"
+                                                    <button v-if="this.commands.length > 0" :disabled="look === true" type="submit"
                                                             class="button waves-effect waves-light btn">
                                                         {{ $t('trigger.add') }}
                                                         <i class="material-icons right">send</i>
@@ -111,7 +111,8 @@
                                 <div class="urls">
                                     <div>
                                         <h6>{{$t('update-url')}}</h6>
-                                        <pre>  POST : http://localhost:8091/ExecuteCommands/<span class="key">{{IdTriger}}</span></pre>
+                                        <pre>  POST : <span>{{ getApiUrl }}/ExecuteCommands/</span><span class="key">{{IdTriger}}</span></pre>
+
                                     </div>
                                 </div>
                             </div>
@@ -126,6 +127,7 @@
 <script>
     import {mapActions, mapGetters} from 'vuex'
     import Form from "@/components/Form";
+
     export default {
         name: "detail-trigger",
         data() {
@@ -135,20 +137,27 @@
                 page: 1,
                 perPage: 4,
                 pages: [],
+                trigger: '',
+                triggerCommands: '',
+                look: false
             }
         },
         components: {
             'generic-form': Form,
         },
         computed: {
-            ...mapGetters(['getTrigger', 'getCommands']),
+            ...mapGetters(['getTrigger', 'getUserId', 'getApiUrl']),
             displayCommands() {
-                return this.paginate(this.getCommands);
-            }
+                return this.paginate(this.triggerCommands);
+            },
+            getCommands(){
+                return this.triggerCommands;
+             }
         },
         methods: {
-            ...mapActions(['postRequest']),
+            ...mapActions(['postRequest', 'getRequestLite']),
             pushCommand: function () {
+                this.look = true
                 var postData = {};
                 for (var i = 1; i <= this.commands.length; i++) {
                     var key = 'commande' + i,
@@ -165,15 +174,18 @@
                 this.postRequest(payload).then(() => {
                     this.flash(this.$t('commande.add-success'), 'success');
                     var payloadB = {
-                        'link': '/trigger-service/trigers/' + this.IdTriger + '/commandes',
-                        'mutation': 'setCommands',
-                        'all': true
+                        'link': '/trigger-service/trigers/' + this.IdTriger + '/commandes'
                     };
-                    this.$store.dispatch('getRequest', payloadB);
+                    this.getRequestLite(payloadB).then(request => {
+                        this.triggerCommands = request.data
+                    }).catch( (err)=> {
+                        console.log("error " + err);
+                    });
                     this.commands = [];
                 }).catch(() => {
                     this.flash(this.$t('commande.add-error'), 'error');
                 })
+                this.look = false;
             },
             addCommand: function () {
                 var commande = "Commande" + (this.commands.length + 1);
@@ -187,7 +199,7 @@
             },
             setPages() {
                 this.pages = [];
-                let numberOfPages = Math.ceil(this.getCommands.length / this.perPage);
+                let numberOfPages = Math.ceil(this.triggerCommands.length / this.perPage);
                 for (let index = 1; index <= numberOfPages; index++) {
                     this.pages.push(index);
                 }
@@ -209,31 +221,40 @@
             var triggerId = this.$route.params.id;
             this.IdTriger = triggerId
             var payloadA = {
-                'link': '/trigger-service/trigers/' + triggerId,
-                'mutation': 'setTrigger',
-                'all': false
+                'link': '/trigger-service/trigers/' + triggerId
             };
-            console.log(this.getTrigger)
+
+            this.getRequestLite(payloadA).then(request => {
+                this.trigger = request.data
+                 }).catch( (err)=> {
+                    console.log("error " + err);
+            });
+
             this.$store.dispatch('getRequest', payloadA);
             var payloadB = {
-                'link': '/trigger-service/trigers/' + triggerId + '/commandes',
-                'mutation': 'setCommands',
-                'all': true
+                'link': '/trigger-service/trigers/' + triggerId + '/commandes'
             };
-            this.$store.dispatch('getRequest', payloadB);
-        },
+            this.getRequestLite(payloadB).then(request => {
+                this.triggerCommands = request.data
+            }).catch( (err)=> {
+                console.log("error " + err);
+            });
+        }
     }
 </script>
+
+<style scoped>
+</style>
 <i18n>
     {
     "en": {
-    "main-title": "Trigger Detail :",
-    "trigger-name": "Trigger Name :",
-    "trigger-id": "Trigger ID :",
+    "main-title": "Action Detail :",
+    "trigger-name": "Action Name :",
+    "trigger-id": "Action ID :",
     "trigger-owner": "Owner :",
     "trigger-key": "API Key : ",
     "description": "Description :",
-    "delete-trigger": "Trigger",
+    "delete-trigger": "Action",
     "commands": "Commands",
     "api-requests": "Requêtes API",
     "update-url": "Update URL",
@@ -244,13 +265,13 @@
     }
     },
     "fr": {
-    "main-title": "Detail de Trigger",
-    "trigger-name": "Nom de Trigger :",
-    "trigger-id": "ID de Trigger :",
+    "main-title": "Detail de Action",
+    "trigger-name": "Nom de l'Action :",
+    "trigger-id": "ID de Action :",
     "trigger-owner": "Propriétaire :",
     "trigger-key": "API Key : ",
     "description": "Description :",
-    "delete-trigger": "Trigger",
+    "delete-trigger": "Action",
     "commands": "Commandes",
     "api-requests": "API Requests",
     "update-url": "Update URL",

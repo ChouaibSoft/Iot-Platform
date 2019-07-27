@@ -14,14 +14,14 @@
     background-color: $brandBackground;
     font-size: 1.2rem;
     padding-left: 1.2rem;
-    color: $textColor;
+    color: white;
     font-weight: bold;
     display: table;
     -webkit-transition:width .03s linear;
     transition:width .3s linear;
     -webkit-transform:translateZ(0) scale(1,1);
     @media #{$maxSmall} {
-      width: 110px;
+      width: 110px !important;
       margin-left: -6px;
       padding-left: 10px !important;
     }
@@ -32,6 +32,7 @@
     }
     span{
       vertical-align: middle;
+      display: none;
     }
   }
   a{
@@ -118,12 +119,19 @@
     width: 63px;
     color: #fff;
     overflow: hidden;
+    margin-right: 50px;
     img{
       width: 100%;
       margin-left: -8px;
     }
     span{
       display: none;
+    }
+    @media #{$maxSmall} {
+      img{
+        width: 60%;
+        margin-left:05px;
+      }
     }
   }
   .controls{

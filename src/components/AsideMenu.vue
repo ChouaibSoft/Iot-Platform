@@ -154,7 +154,7 @@
                 navbar = $(".navbar"),
                 dashArea = $(".dash-area");
             if (window.innerWidth < 992) {
-                aside.addeClass("collapse");
+                aside.addClass("collapse");
                 mainAside.animate({
                     left: "-256px"
                 }, 500);

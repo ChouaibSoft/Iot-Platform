@@ -215,7 +215,7 @@ body .content .component-section .help .help-list li ul li {
   background-color: #273146;
   font-size: 1.2rem;
   padding-left: 1.2rem;
-  color: #d1d1d1;
+  color: white;
   font-weight: bold;
   display: table;
   -webkit-transition: width 0.03s linear;
@@ -224,7 +224,7 @@ body .content .component-section .help .help-list li ul li {
 }
 @media (max-width: 992px) {
   .navbar .brand-logo {
-    width: 110px;
+    width: 110px !important;
     margin-left: -6px;
     padding-left: 10px !important;
   }
@@ -236,6 +236,7 @@ body .content .component-section .help .help-list li ul li {
 }
 .navbar .brand-logo span {
   vertical-align: middle;
+  display: none;
 }
 .navbar a {
   height: 63px;
@@ -326,6 +327,7 @@ body .content .component-section .help .help-list li ul li {
   width: 63px;
   color: #fff;
   overflow: hidden;
+  margin-right: 50px;
 }
 .collapse-nav .brand-logo img {
   width: 100%;
@@ -333,6 +335,12 @@ body .content .component-section .help .help-list li ul li {
 }
 .collapse-nav .brand-logo span {
   display: none;
+}
+@media (max-width: 992px) {
+  .collapse-nav .brand-logo img {
+    width: 60%;
+    margin-left: 5px;
+  }
 }
 .collapse-nav .controls {
   margin-left: 54px;

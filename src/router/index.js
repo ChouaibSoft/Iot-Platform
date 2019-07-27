@@ -55,7 +55,7 @@ const router = new Router({
             component: () => import("@/views/Dashboard"),
             meta: {
                 breadcrumb: 'Home Page',
-                protected: true,
+                protected: false,
                 title: i18n.t('page-title.dashboard')
             },
             children: [
@@ -64,7 +64,7 @@ const router = new Router({
                     name: "dash-overview",
                     meta: {
                         breadcrumb: 'Items',
-                        protected: true,
+                        protected: false,
                         title: i18n.t('page-title.dashboard'),},
                     component: () => import("@/views/DashOverview")
                 },
@@ -73,7 +73,7 @@ const router = new Router({
                     name: "new-channel",
                     meta: {
                         breadcrumb: 'Items',
-                        protected: true,
+                        protected: false,
                         title: i18n.t('page-title.new-channel'),},
                     component: () => import("@/views/AddChannel")
                 },
@@ -81,7 +81,7 @@ const router = new Router({
                     path: "actions/new",
                     name: "new-trigger",
                     meta: {
-                        protected: true,
+                        protected: false,
                         title: i18n.t('page-title.new-trigger'),
                         breadcrumb: 'Home Page'
                     },
@@ -91,7 +91,7 @@ const router = new Router({
                     path: "actions",
                     name: "my-triggers",
                     meta: {
-                        protected: true,
+                        protected: false,
                         title: i18n.t('page-title.my-triggers')
                     },
                     component: () => import("@/views/MyTriggers")
@@ -100,7 +100,7 @@ const router = new Router({
                     path: "triggers/new",
                     name: "add-react",
                     meta: {
-                        protected: true,
+                        protected: false,
                         title: i18n.t('page-title.new-react')
                     },
                     component: () => import("@/views/AddReact")
@@ -109,7 +109,7 @@ const router = new Router({
                     path: "triggers",
                     name: "my-reacts",
                     meta: {
-                        protected: true,
+                        protected: false,
                         title: i18n.t('page-title.my-reacts')
                     },
                     component: () => import("@/views/MyReacts")
@@ -119,7 +119,7 @@ const router = new Router({
                     name: "my-channels",
                     component: () => import("@/views/MyChannels"),
                     meta: {
-                        protected: true,
+                        protected: false,
                         title: i18n.t('page-title.my-channels'),
                         breadcrumb: 'Home Page'
                     }
@@ -128,7 +128,7 @@ const router = new Router({
                     path: "channels/:id",
                     name: "detail-channels",
                     meta: {
-                        protected: true,
+                        protected: false,
                         title: i18n.t('page-title.detail-channel')
                     },
                     component: () => import("@/views/DetailChannel"),
@@ -137,7 +137,7 @@ const router = new Router({
                             path: "view",
                             name: "view",
                             meta: {
-                                protected: true,
+                                protected: false,
                                 title: i18n.t('page-title.view')
                             },
                             component: () => import("@/components/Visualisation")
@@ -146,7 +146,7 @@ const router = new Router({
                             path: "api-key",
                             name: "api-key",
                             meta: {
-                                protected: true,
+                                protected: false,
                                 title: i18n.t('page-title.api-key')
                             },
                             component: () => import("@/components/APIKeys")
@@ -155,7 +155,7 @@ const router = new Router({
                             path: "settings",
                             name: "settings",
                             meta: {
-                                protected: true,
+                                protected: false,
                                 title: i18n.t('page-title.settings')
                             },
                             component: () => import("@/components/ChannelSettings")
@@ -164,7 +164,7 @@ const router = new Router({
                             path: "data-import-export",
                             name: "data-import-export",
                             meta: {
-                                protected: true,
+                                protected: false,
                                 title: i18n.t('page-title.import-export')
                             },
                             component: () => import("@/components/DataImportExport")
@@ -175,7 +175,7 @@ const router = new Router({
                     path: "actions/:id",
                     name: "detail-trigger",
                     meta: {
-                        protected: true,
+                        protected: false,
                         title: i18n.t('page-title.detail-trigger')
                     },
                     component: () => import("@/views/DetailTrigger"),
@@ -184,7 +184,7 @@ const router = new Router({
                             path: "overview",
                             name: "trigger-overview",
                             meta: {
-                                protected: true,
+                                protected: false,
                                 title: i18n.t('page-title.trigger-overview')
                             },
                             component: () => import("@/components/TriggerOverview")
@@ -193,7 +193,7 @@ const router = new Router({
                             path: "settings",
                             name: "trigger-settings",
                             meta: {
-                                protected: true,
+                                protected: false,
                                 title: i18n.t('page-title.trigger-settings')
                             },
                             component: () => import("@/components/TriggerSettings")
@@ -204,7 +204,7 @@ const router = new Router({
                     path:"timeControl/new",
                     name :"add-timeControl",
                     meta:{
-                        protected: true,
+                        protected: false,
                         title: i18n.t('page-title.new-timeControl')
                     }  ,
                     component: ()=> import("@/views/AddTimeControl")
@@ -213,7 +213,7 @@ const router = new Router({
                 //     path:"timeControls",
                 //     name :"my-timeControls",
                 //     meta:{
-                //         protected: true,
+                //         protected: false,
                 //         title: i18n.t('page-title.my-timeControl')
                 //     }  ,
                 //     component: ()=> import("@/views/MyTimeControl")
@@ -222,7 +222,7 @@ const router = new Router({
                     path: "compte",
                     name: "compte",
                     meta: {
-                        protected: true,
+                        protected: false,
                         title: i18n.t('page-title.detail-trigger')
                     },
                     component: () => import("@/views/Compte")
@@ -231,7 +231,7 @@ const router = new Router({
                     path: "choose/plan",
                     name: "choose-plan",
                     meta: {
-                        protected: true,
+                        protected: false,
                         title: i18n.t('page-title.detail-trigger')
                     },
                     component: () => import("@/views/BuyNow")

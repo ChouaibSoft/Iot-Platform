@@ -8,7 +8,7 @@
     "password": "Password",
     "email": "Email",
     "conf-password": "Password Confirmation",
-    "success": "Congratulation!",
+    "success": "Congratulation!, please check your inbox to activate your account",
     "error": "Registration Failed !",
     "forgot-password": "Forgot Password?",
     "submit": "Submit",

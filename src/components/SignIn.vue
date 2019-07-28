@@ -10,7 +10,7 @@
                                 <i class="material-icons prefix">account_circle</i>
                                 <input
                                         id="email"
-                                        type="text"
+                                        type="email"
                                         class="validate"
                                         required
                                         v-model="email"
@@ -61,7 +61,7 @@
                                 <i class="material-icons prefix">email</i>
                                 <input
                                         id="email-2"
-                                        type="text"
+                                        type="email"
                                         class="validate"
                                         required
                                         v-model="emailReset"

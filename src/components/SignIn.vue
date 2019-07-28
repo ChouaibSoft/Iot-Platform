@@ -45,7 +45,7 @@
                     </div>
                     <div slot="form-controls">
                         <center>
-                            <button class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.sign-in') }}</button>
+                            <button class="btn waves-effect waves-light  submit" :disabled="lock === true" type="submit" name="action">{{ $t('auth.sign-in') }}</button>
                         </center>
                     </div>
                 </generic-form>
@@ -78,7 +78,7 @@
                     <div slot="form-controls">
                         <center>
                             <a @click="forgetPassword= !forgetPassword" class="btn waves-effect waves-light" name="action">{{ $t('auth.cancel') }}</a>
-                            <button style="margin-left: 30px"  :disabled="look === true" class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.submit') }}</button>
+                            <button style="margin-left: 30px" :disabled="lockR === true"   class="btn waves-effect waves-light  submit" type="submit" name="action">{{ $t('auth.submit') }}</button>
                         </center>
                     </div>
                 </generic-form>
@@ -106,7 +106,8 @@
                 emailReset: '',
                 password: '',
                 forgetPassword: false,
-                look: false
+                lock: false,
+                lockR: false
             }
         },
         computed: {
@@ -119,7 +120,8 @@
                 'loginProcedure'
             ]),
             login() {
-                this.look = true;
+                this.lock = true;
+                this.switchProgress();
                 var postData = {
                     email: this.email,
                     password: this.password
@@ -131,6 +133,8 @@
                 this.postRequest(payload).then(request => this.loginSuccessful(request))
                     .catch( ()=> {
                         this.flash(this.$t('auth.login-failed'), 'error')
+                        this.switchProgress();
+                        this.lock = false;
                     })
             },
             loginSuccessful(req) {
@@ -169,17 +173,12 @@
                         this.$store.dispatch('setParams',response.data);
 
                     });
-
-
-                    this.switchProgress()
-                    setTimeout(() => {
-                        this.switchProgress();
-                        this.$router.push('/dashboard');
-                    },2000);
+                    this.switchProgress();
                     return false;
                 }
             },
             resetPassword(){
+                this.lockR = true;
                 var postData = {
                     email: this.emailReset,
                 };
@@ -190,8 +189,10 @@
                 this.postRequest(payloadA).then((res) => {
                     console.log(res)
                     this.flash(this.$t('auth.reset-password.email'), 'success')
+                    this.lockR = false;
                 }).catch( ()=> {
                     this.flash(this.$t('auth.reset-password.email-err'), 'error')
+                    this.lockR = false;
                 })
             }
         },

@@ -17,7 +17,7 @@
                     <div class="indeterminate"></div>
                 </div>
             </ul>
-            <ul style="margin-top: 9px">
+            <ul style="margin-top: 8px">
                 <flash-message class="center-align"></flash-message>
             </ul>
             <component v-bind:is="component"></component>

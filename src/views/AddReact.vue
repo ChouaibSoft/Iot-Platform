@@ -163,7 +163,7 @@
                                 <div>
                                     <div class="row">
                                         <div class="col right">
-                                            <button type="submit" :disabled="look === true"  class="button waves-effect waves-light btn">
+                                            <button type="submit" :disabled="lock === true"  class="button waves-effect waves-light btn">
                                                 {{ $t('react.add') }}
                                                 <i class="material-icons right">send</i>
                                             </button>
@@ -230,7 +230,7 @@
                 message_email:'',
                 token: '',
                 userId: '',
-                look: false
+                lock: false
             }
         },
         computed:{
@@ -256,7 +256,7 @@
         methods: {
             ...mapActions(['postRequest']),
             addReact: function () {
-                this.look = true;
+                this.lock = true;
                 let postData = {
                     nom: this.name,
                     condition:this.condition,

@@ -60,7 +60,7 @@
                                             </div>
                                         </div>
                                         <div class="col right">
-                                            <button type="submit" :disabled="look === true" class="button waves-effect waves-light btn">
+                                            <button type="submit" :disabled="lock === true" class="button waves-effect waves-light btn">
                                                 {{ $t('trigger.add') }}
                                                 <i class="material-icons right">send</i>
                                             </button>
@@ -110,7 +110,7 @@
                     },
                 ],
                 iduser:'',
-                look: false
+                lock: false
             }
         },
         computed:{
@@ -119,7 +119,7 @@
         methods: {
             ...mapActions(['postRequest']),
             addTrigger: function () {
-                this.look = true;
+                this.lock = true;
                 var postData = {
                     nom: this.name,
                     userId: localStorage.getItem('userId')

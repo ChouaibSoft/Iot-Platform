@@ -82,7 +82,7 @@
                                             </div>
                                         </div>
                                         <div class="col right">
-                                            <button :disabled="look === true" type="submit" class="button waves-effect waves-light btn">
+                                            <button :disabled="lock === true" type="submit" class="button waves-effect waves-light btn">
                                                 {{ $t('canal.add') }}
                                                 <i class="material-icons right">send</i>
                                             </button>
@@ -167,7 +167,7 @@
                     },
                 ],
                 iduser:'',
-                look: false
+                lock: false
             }
         },
         computed:{
@@ -184,7 +184,7 @@
         methods: {
             ...mapActions(['postRequest']),
             addCanal: function () {
-                this.look = true;
+                this.lock = true;
                 let postData = {
                     nom: this.name,
                     description: this.description,

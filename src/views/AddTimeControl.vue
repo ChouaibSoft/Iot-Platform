@@ -121,7 +121,7 @@
                                 <div>
                                     <div class="row">
                                         <div class="col right">
-                                            <button type="submit" :disabled="look === true" class="button waves-effect waves-light btn">
+                                            <button type="submit" :disabled="lock === true" class="button waves-effect waves-light btn">
                                                 {{ $t('time-control.add') }}
                                                 <i class="material-icons right">send</i>
                                             </button>
@@ -178,7 +178,7 @@
                 trigeID:'',
                 hour : '',
                 minu: '',
-                look : false
+                lock : false
             }
         },
         computed:{
@@ -201,7 +201,7 @@
         methods: {
             ...mapActions(['postRequest']),
             addTimeControl: function () {
-                this.look = true
+                this.lock = true
                 let postData = {
                     nom: this.name,
                     dateControl:this.dateControl,
